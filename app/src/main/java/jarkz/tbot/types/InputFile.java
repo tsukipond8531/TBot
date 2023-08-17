@@ -4,9 +4,14 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 
+import com.google.gson.annotations.SerializedName;
+
 public class InputFile {
 
 	private byte[] data;
+
+  //It is not necessary, but I'll follow the contract
+  @SerializedName("file_attach_name")
 	private String fileAttachName;
 
 	public InputFile() {
@@ -41,7 +46,7 @@ public class InputFile {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Arrays.hashCode(data);
@@ -50,7 +55,7 @@ public class InputFile {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InputFile other))

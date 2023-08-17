@@ -3,6 +3,8 @@ package jarkz.tbot.types;
 import java.util.Objects;
 import java.util.Optional;
 
+import com.google.gson.annotations.SerializedName;
+
 import jakarta.validation.constraints.NotNull;
 import jarkz.tbot.types.chat.ChatJoinRequest;
 import jarkz.tbot.types.chatmember.ChatMemberUpdated;
@@ -15,21 +17,48 @@ import jarkz.tbot.types.poll.PollAnswer;
 
 public class Update {
 
+  @SerializedName("update_id")
 	@NotNull
 	private long updateId;
+
 	private Message message;
+
+  @SerializedName("edited_message")
 	private Message editedMessage;
+
+  @SerializedName("channel_post")
 	private Message channelPost;
+
+  @SerializedName("edited_channel_post")
 	private Message editedChannelPost;
+
+  @SerializedName("inline_query")
 	private InlineQuery inlineQuery;
+
+  @SerializedName("chosen_inline_result")
 	private ChosenInlineResult chosenInlineResult;
+
+  @SerializedName("callback_query")
 	private CallbackQuery callbackQuery;
+
+  @SerializedName("shipping_query")
 	private ShippingQuery shippingQuery;
+
+  @SerializedName("pre_checkout_query")
 	private PreCheckoutQuery preCheckoutQuery;
+
 	private Poll poll;
+
+  @SerializedName("poll_answer")
 	private PollAnswer pollAnswer;
+
+  @SerializedName("my_chat_member")
 	private ChatMemberUpdated myChatMember;
+
+  @SerializedName("chat_member")
 	private ChatMemberUpdated chatMember;
+
+  @SerializedName("chat_join_request")
 	private ChatJoinRequest chatJoinRequest;
 
 	public Update() {
@@ -156,7 +185,7 @@ public class Update {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(updateId,
 				message,
 				editedMessage,
@@ -175,7 +204,7 @@ public class Update {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Update other))

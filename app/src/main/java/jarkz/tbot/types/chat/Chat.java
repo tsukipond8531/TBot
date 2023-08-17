@@ -139,11 +139,11 @@ public class Chat {
 		this.lastName = lastName;
 	}
 
-	public Optional<Boolean> isForum() {
+	public Optional<Boolean> getIsForum() {
 		return Optional.of(isForum);
 	}
 
-	public void setForum(Boolean isForum) {
+	public void setIsForum(Boolean isForum) {
 		this.isForum = isForum;
 	}
 
@@ -179,7 +179,7 @@ public class Chat {
 		this.bio = bio;
 	}
 
-	public Optional<Boolean> isHasPrivateForwards() {
+	public Optional<Boolean> getHasPrivateForwards() {
 		return Optional.of(hasPrivateForwards);
 	}
 
@@ -187,7 +187,7 @@ public class Chat {
 		this.hasPrivateForwards = hasPrivateForwards;
 	}
 
-	public Optional<Boolean> isHasRestrictedVoiceAndVideoMessages() {
+	public Optional<Boolean> getHasRestrictedVoiceAndVideoMessages() {
 		return Optional.of(hasRestrictedVoiceAndVideoMessages);
 	}
 
@@ -195,7 +195,7 @@ public class Chat {
 		this.hasRestrictedVoiceAndVideoMessages = hasRestrictedVoiceAndVideoMessages;
 	}
 
-	public Optional<Boolean> isJoinToSendMessages() {
+	public Optional<Boolean> getJoinToSendMessages() {
 		return Optional.of(joinToSendMessages);
 	}
 
@@ -203,7 +203,7 @@ public class Chat {
 		this.joinToSendMessages = joinToSendMessages;
 	}
 
-	public Optional<Boolean> isJoinByRequest() {
+	public Optional<Boolean> getJoinByRequest() {
 		return Optional.of(joinByRequest);
 	}
 
@@ -259,7 +259,7 @@ public class Chat {
 		this.messageAutoDeleteTime = messageAutoDeleteTime;
 	}
 
-	public Optional<Boolean> isHasAggressiveAntiSpamEnabled() {
+	public Optional<Boolean> getHasAggressiveAntiSpamEnabled() {
 		return Optional.of(hasAggressiveAntiSpamEnabled);
 	}
 
@@ -267,7 +267,7 @@ public class Chat {
 		this.hasAggressiveAntiSpamEnabled = hasAggressiveAntiSpamEnabled;
 	}
 
-	public Optional<Boolean> isHasHiddenMembers() {
+	public Optional<Boolean> getHasHiddenMembers() {
 		return Optional.of(hasHiddenMembers);
 	}
 
@@ -275,7 +275,7 @@ public class Chat {
 		this.hasHiddenMembers = hasHiddenMembers;
 	}
 
-	public Optional<Boolean> isHasProtectedContent() {
+	public Optional<Boolean> getHasProtectedContent() {
 		return Optional.of(hasProtectedContent);
 	}
 
@@ -291,7 +291,7 @@ public class Chat {
 		this.stickerSetName = stickerSetName;
 	}
 
-	public Optional<Boolean> isCanSetStickerSet() {
+	public Optional<Boolean> getCanSetStickerSet() {
 		return Optional.of(canSetStickerSet);
 	}
 
@@ -316,7 +316,7 @@ public class Chat {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(id,
 				type,
 				title,
@@ -348,7 +348,7 @@ public class Chat {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Chat other))

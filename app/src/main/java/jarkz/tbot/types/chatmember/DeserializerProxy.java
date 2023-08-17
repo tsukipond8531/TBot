@@ -3,9 +3,11 @@ package jarkz.tbot.types.chatmember;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.JsonNotFoundKey;
 import jarkz.tbot.types.deserializers.JsonTypeNotDefined;
 
+@Deserializer
 public class DeserializerProxy {
 
 	private static final String CHAT_MEMBER_KEY = "status";

@@ -120,7 +120,7 @@ public class ChatAdministratorRights {
 		this.canInviteUsers = canInviteUsers;
 	}
 
-	public Optional<Boolean> isCanPostMessages() {
+	public Optional<Boolean> getCanPostMessages() {
 		return Optional.of(canPostMessages);
 	}
 
@@ -128,7 +128,7 @@ public class ChatAdministratorRights {
 		this.canPostMessages = canPostMessages;
 	}
 
-	public Optional<Boolean> isCanEditMessages() {
+	public Optional<Boolean> getCanEditMessages() {
 		return Optional.of(canEditMessages);
 	}
 
@@ -136,7 +136,7 @@ public class ChatAdministratorRights {
 		this.canEditMessages = canEditMessages;
 	}
 
-	public Optional<Boolean> isCanPinMessages() {
+	public Optional<Boolean> getCanPinMessages() {
 		return Optional.of(canPinMessages);
 	}
 
@@ -144,7 +144,7 @@ public class ChatAdministratorRights {
 		this.canPinMessages = canPinMessages;
 	}
 
-	public Optional<Boolean> isCanManageTopics() {
+	public Optional<Boolean> getCanManageTopics() {
 		return Optional.of(canManageTopics);
 	}
 
@@ -153,7 +153,7 @@ public class ChatAdministratorRights {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(isAnonymous,
 				canManageChat,
 				canDeleteMessages,
@@ -169,7 +169,7 @@ public class ChatAdministratorRights {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatAdministratorRights other))

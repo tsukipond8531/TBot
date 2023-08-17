@@ -33,12 +33,12 @@ public class ResponseParameters {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(migrateToChatId, retryAfter);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ResponseParameters other))

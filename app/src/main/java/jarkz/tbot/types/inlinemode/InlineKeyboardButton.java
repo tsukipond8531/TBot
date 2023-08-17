@@ -116,7 +116,7 @@ public class InlineKeyboardButton {
 		this.callbackGame = callbackGame;
 	}
 
-	public Optional<Boolean> isPay() {
+	public Optional<Boolean> getPay() {
 		return Optional.of(pay);
 	}
 
@@ -125,7 +125,7 @@ public class InlineKeyboardButton {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(text,
 				url,
 				callbackData,
@@ -139,7 +139,7 @@ public class InlineKeyboardButton {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InlineKeyboardButton other))

@@ -70,12 +70,12 @@ public class Voice {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(fileId, fileUniqueId, duration, mimeType, fileSize);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Voice other))

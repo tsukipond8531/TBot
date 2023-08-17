@@ -3,9 +3,11 @@ package jarkz.tbot.types.botcommandscope;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.JsonNotFoundKey;
 import jarkz.tbot.types.deserializers.JsonTypeNotDefined;
 
+@Deserializer
 public class DeserializerProxy {
 
 	private static final String BOT_COMMAND_SCOPE_KEY = "type";

@@ -44,12 +44,12 @@ public class ChatMemberBanned implements ChatMember {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(status, user, untilDate);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatMemberBanned other))

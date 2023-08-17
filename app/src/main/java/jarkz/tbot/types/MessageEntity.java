@@ -87,12 +87,12 @@ public class MessageEntity {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type, offset, length, url, user, language, customEmojiId);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof MessageEntity other))

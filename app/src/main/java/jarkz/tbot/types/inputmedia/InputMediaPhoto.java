@@ -68,7 +68,7 @@ public class InputMediaPhoto implements InputMedia {
 		this.captionEntities = captionEntities;
 	}
 
-	public Optional<Boolean> isHasSpoiler() {
+	public Optional<Boolean> getHasSpoiler() {
 		return Optional.of(hasSpoiler);
 	}
 
@@ -77,12 +77,12 @@ public class InputMediaPhoto implements InputMedia {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type, media, caption, parseMode, captionEntities, hasSpoiler);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InputMediaPhoto other))

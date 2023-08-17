@@ -79,7 +79,7 @@ public class InputMediaDocument implements InputMedia {
 		this.captionEntities = captionEntities;
 	}
 
-	public Optional<Boolean> isDisableContentTypeDetection() {
+	public Optional<Boolean> getDisableContentTypeDetection() {
 		return Optional.of(disableContentTypeDetection);
 	}
 
@@ -88,12 +88,12 @@ public class InputMediaDocument implements InputMedia {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type, media, thumbnail, caption, parseMode, captionEntities, disableContentTypeDetection);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InputMediaDocument other))

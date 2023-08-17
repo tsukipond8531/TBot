@@ -224,7 +224,7 @@ public class ChatMemberRestricted implements ChatMember {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(status,
 				user,
 				isMember,
@@ -246,7 +246,7 @@ public class ChatMemberRestricted implements ChatMember {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatMemberRestricted other))

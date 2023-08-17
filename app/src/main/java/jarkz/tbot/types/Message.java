@@ -1,12 +1,9 @@
 package jarkz.tbot.types;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
 import com.google.gson.annotations.SerializedName;
 
 import jakarta.validation.constraints.NotNull;
+
 import jarkz.tbot.types.chat.Chat;
 import jarkz.tbot.types.chat.ChatShared;
 import jarkz.tbot.types.document.Animation;
@@ -36,6 +33,10 @@ import jarkz.tbot.types.videochat.VideoChatEnded;
 import jarkz.tbot.types.videochat.VideoChatParticipantsInvited;
 import jarkz.tbot.types.videochat.VideoChatScheduled;
 import jarkz.tbot.types.videochat.VideoChatStarted;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class Message {
 
@@ -212,10 +213,10 @@ public class Message {
 	private ForumTopicReopened forumTopicReopened;
 
 	@SerializedName("general_forum_topic_hidden")
-	private GeneralForumTopicHidden forumTopicHidden;
+	private GeneralForumTopicHidden generalForumTopicHidden;
 
 	@SerializedName("general_forum_topic_unhidden")
-	private GeneralForumTopicUnhidden forumTopicUnhidden;
+	private GeneralForumTopicUnhidden generalForumTopicUnhidden;
 
 	@SerializedName("video_chat_scheduled")
 	private VideoChatScheduled videoChatScheduled;
@@ -334,19 +335,19 @@ public class Message {
 		this.forwardDate = forwardDate;
 	}
 
-	public Optional<Boolean> isTopicMessage() {
+	public Optional<Boolean> getIsTopicMessage() {
 		return Optional.of(isTopicMessage);
 	}
 
-	public void setTopicMessage(Boolean isTopicMessage) {
+	public void setIsTopicMessage(Boolean isTopicMessage) {
 		this.isTopicMessage = isTopicMessage;
 	}
 
-	public Optional<Boolean> isAutomaticForward() {
+	public Optional<Boolean> getIsAutomaticForward() {
 		return Optional.of(isAutomaticForward);
 	}
 
-	public void setAutomaticForward(Boolean isAutomaticForward) {
+	public void setIsAutomaticForward(Boolean isAutomaticForward) {
 		this.isAutomaticForward = isAutomaticForward;
 	}
 
@@ -374,7 +375,7 @@ public class Message {
 		this.editDate = editDate;
 	}
 
-	public Optional<Boolean> isHasProtectedContent() {
+	public Optional<Boolean> getHasProtectedContent() {
 		return Optional.of(hasProtectedContent);
 	}
 
@@ -494,7 +495,7 @@ public class Message {
 		this.captionEntities = captionEntities;
 	}
 
-	public Optional<Boolean> isHasMediaSpoiler() {
+	public Optional<Boolean> getHasMediaSpoiler() {
 		return Optional.of(hasMediaSpoiler);
 	}
 
@@ -582,7 +583,7 @@ public class Message {
 		this.newChatPhoto = newChatPhoto;
 	}
 
-	public Optional<Boolean> isDeleteChatPhoto() {
+	public Optional<Boolean> getDeleteChatPhoto() {
 		return Optional.of(deleteChatPhoto);
 	}
 
@@ -590,7 +591,7 @@ public class Message {
 		this.deleteChatPhoto = deleteChatPhoto;
 	}
 
-	public Optional<Boolean> isGroupChatCreated() {
+	public Optional<Boolean> getGroupChatCreated() {
 		return Optional.of(groupChatCreated);
 	}
 
@@ -598,7 +599,7 @@ public class Message {
 		this.groupChatCreated = groupChatCreated;
 	}
 
-	public Optional<Boolean> isSupergroupChatCreated() {
+	public Optional<Boolean> getSupergroupChatCreated() {
 		return Optional.of(supergroupChatCreated);
 	}
 
@@ -606,7 +607,7 @@ public class Message {
 		this.supergroupChatCreated = supergroupChatCreated;
 	}
 
-	public Optional<Boolean> isChannelChatCreated() {
+	public Optional<Boolean> getChannelChatCreated() {
 		return Optional.of(channelChatCreated);
 	}
 
@@ -618,7 +619,8 @@ public class Message {
 		return Optional.of(messageAutoDeleteTimerChanged);
 	}
 
-	public void setMessageAutoDeleteTimerChanged(MessageAutoDeleteTimerChanged messageAutoDeleteTimerChanged) {
+	public void setMessageAutoDeleteTimerChanged(
+			MessageAutoDeleteTimerChanged messageAutoDeleteTimerChanged) {
 		this.messageAutoDeleteTimerChanged = messageAutoDeleteTimerChanged;
 	}
 
@@ -742,27 +744,27 @@ public class Message {
 		this.forumTopicReopened = forumTopicReopened;
 	}
 
-	public Optional<GeneralForumTopicHidden> getForumTopicHidden() {
-		return Optional.of(forumTopicHidden);
+	public Optional<GeneralForumTopicHidden> getGeneralForumTopicHidden() {
+		return Optional.of(generalForumTopicHidden);
 	}
 
-	public void setForumTopicHidden(GeneralForumTopicHidden forumTopicHidden) {
-		this.forumTopicHidden = forumTopicHidden;
+	public void setGeneralForumTopicHidden(GeneralForumTopicHidden generalForumTopicHidden) {
+		this.generalForumTopicHidden = generalForumTopicHidden;
 	}
 
-	public Optional<GeneralForumTopicUnhidden> getForumTopicUnhidden() {
-		return Optional.of(forumTopicUnhidden);
+	public Optional<GeneralForumTopicUnhidden> getGeneralForumTopicUnhidden() {
+		return Optional.of(generalForumTopicUnhidden);
 	}
 
-	public void setForumTopicUnhidden(GeneralForumTopicUnhidden forumTopicUnhidden) {
-		this.forumTopicUnhidden = forumTopicUnhidden;
+	public void setGeneralForumTopicUnhidden(GeneralForumTopicUnhidden generalForumTopicUnhidden) {
+		this.generalForumTopicUnhidden = generalForumTopicUnhidden;
 	}
 
 	public Optional<VideoChatScheduled> getVideoChatScheduled() {
 		return Optional.of(videoChatScheduled);
 	}
 
-	public void setVideoChatSheduled(VideoChatScheduled videoChatScheduled) {
+	public void setVideoChatScheduled(VideoChatScheduled videoChatScheduled) {
 		this.videoChatScheduled = videoChatScheduled;
 	}
 
@@ -786,7 +788,8 @@ public class Message {
 		return Optional.of(videoChatParticipantsInvited);
 	}
 
-	public void setVideoChatParticipantsInvited(VideoChatParticipantsInvited videoChatParticipantsInvited) {
+	public void setVideoChatParticipantsInvited(
+			VideoChatParticipantsInvited videoChatParticipantsInvited) {
 		this.videoChatParticipantsInvited = videoChatParticipantsInvited;
 	}
 
@@ -807,8 +810,9 @@ public class Message {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(messageId,
+	public final int hashCode() {
+		return Objects.hash(
+				messageId,
 				messageThreadId,
 				from,
 				senderChat,
@@ -871,8 +875,8 @@ public class Message {
 				forumTopicEdited,
 				forumTopicClosed,
 				forumTopicReopened,
-				forumTopicHidden,
-				forumTopicUnhidden,
+				generalForumTopicHidden,
+				generalForumTopicUnhidden,
 				videoChatScheduled,
 				videoChatStarted,
 				videoChatEnded,
@@ -882,7 +886,7 @@ public class Message {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Message other))
@@ -934,7 +938,8 @@ public class Message {
 				&& Objects.equals(groupChatCreated, other.groupChatCreated)
 				&& Objects.equals(supergroupChatCreated, other.supergroupChatCreated)
 				&& Objects.equals(channelChatCreated, other.channelChatCreated)
-				&& Objects.equals(messageAutoDeleteTimerChanged, other.messageAutoDeleteTimerChanged)
+				&& Objects.equals(
+						messageAutoDeleteTimerChanged, other.messageAutoDeleteTimerChanged)
 				&& Objects.equals(migrateToChatId, other.migrateToChatId)
 				&& Objects.equals(migrateFromChatId, other.migrateFromChatId)
 				&& Objects.equals(pinnedMessage, other.pinnedMessage)
@@ -950,8 +955,8 @@ public class Message {
 				&& Objects.equals(forumTopicEdited, other.forumTopicEdited)
 				&& Objects.equals(forumTopicClosed, other.forumTopicClosed)
 				&& Objects.equals(forumTopicReopened, other.forumTopicReopened)
-				&& Objects.equals(forumTopicHidden, other.forumTopicHidden)
-				&& Objects.equals(forumTopicUnhidden, other.forumTopicUnhidden)
+				&& Objects.equals(generalForumTopicHidden, other.generalForumTopicHidden)
+				&& Objects.equals(generalForumTopicUnhidden, other.generalForumTopicUnhidden)
 				&& Objects.equals(videoChatScheduled, other.videoChatScheduled)
 				&& Objects.equals(videoChatStarted, other.videoChatStarted)
 				&& Objects.equals(videoChatEnded, other.videoChatEnded)
@@ -963,77 +968,149 @@ public class Message {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Message[messageId=").append(messageId)
-				.append(", messageThreadId=").append(messageThreadId)
-				.append(", from=").append(from)
-				.append(", senderChat=").append(senderChat)
-				.append(", date=").append(date)
-				.append(", chat=").append(chat)
-				.append(", forwardFrom=").append(forwardFrom)
-				.append(", forwardFromChat=").append(forwardFromChat)
-				.append(", forwardFromMessageId=").append(forwardFromMessageId)
-				.append(", forwardSignature=").append(forwardSignature)
-				.append(", forwardSenderName=").append(forwardSenderName)
-				.append(", forwardDate=").append(forwardDate)
-				.append(", isTopicMessage=").append(isTopicMessage)
-				.append(", isAutomaticForward=").append(isAutomaticForward)
-				.append(", replyToMessage=").append(replyToMessage)
-				.append(", viaBot=").append(viaBot)
-				.append(", editDate=").append(editDate)
-				.append(", hasProtectedContent=").append(hasProtectedContent)
-				.append(", mediaGroupId=").append(mediaGroupId)
-				.append(", authorSignature=").append(authorSignature)
-				.append(", text=").append(text)
-				.append(", entities=").append(entities)
-				.append(", animation=").append(animation)
-				.append(", audio=").append(audio)
-				.append(", document=").append(document)
-				.append(", photo=").append(photo)
-				.append(", sticker=").append(sticker)
-				.append(", video=").append(video)
-				.append(", videoNote=").append(videoNote)
-				.append(", voice=").append(voice)
-				.append(", caption=").append(caption)
-				.append(", captionEntities=").append(captionEntities)
-				.append(", hasMediaSpoiler=").append(hasMediaSpoiler)
-				.append(", contact=").append(contact)
-				.append(", dice=").append(dice)
-				.append(", game=").append(game)
-				.append(", poll=").append(poll)
-				.append(", venue=").append(venue)
-				.append(", location=").append(location)
-				.append(", newChatMembers=").append(newChatMembers)
-				.append(", leftChatMember=").append(leftChatMember)
-				.append(", newChatTitle=").append(newChatTitle)
-				.append(", newChatPhoto=").append(newChatPhoto)
-				.append(", deleteChatPhoto=").append(deleteChatPhoto)
-				.append(", groupChatCreated=").append(groupChatCreated)
-				.append(", supergroupChatCreated=").append(supergroupChatCreated)
-				.append(", channelChatCreated=").append(channelChatCreated)
-				.append(", messageAutoDeleteTimerChanged=").append(messageAutoDeleteTimerChanged)
-				.append(", migrateToChatId=").append(migrateToChatId)
-				.append(", migrateFromChatId=").append(migrateFromChatId)
-				.append(", pinnedMessage=").append(pinnedMessage)
-				.append(", invoice=").append(invoice)
-				.append(", successfulPayment=").append(successfulPayment)
-				.append(", userShared=").append(userShared)
-				.append(", chatShared=").append(chatShared)
-				.append(", connectedWebsite=").append(connectedWebsite)
-				.append(", writeAccessAllowed=").append(writeAccessAllowed)
-				.append(", passportData=").append(passportData)
-				.append(", proximityAlertTriggered=").append(proximityAlertTriggered)
-				.append(", forumTopicCreated=").append(forumTopicCreated)
-				.append(", forumTopicEdited=").append(forumTopicEdited)
-				.append(", forumTopicClosed=").append(forumTopicClosed)
-				.append(", forumTopicReopened=").append(forumTopicReopened)
-				.append(", forumTopicHidden=").append(forumTopicHidden)
-				.append(", forumTopicUnhidden=").append(forumTopicUnhidden)
-				.append(", videoChatScheduled=").append(videoChatScheduled)
-				.append(", videoChatStarted=").append(videoChatStarted)
-				.append(", videoChatEnded=").append(videoChatEnded)
-				.append(", videoChatParticipantsInvited=").append(videoChatParticipantsInvited)
-				.append(", webAppData=").append(webAppData)
-				.append(", replyMarkup=").append(replyMarkup).append("]");
+		builder.append("Message[messageId=")
+				.append(messageId)
+				.append(", messageThreadId=")
+				.append(messageThreadId)
+				.append(", from=")
+				.append(from)
+				.append(", senderChat=")
+				.append(senderChat)
+				.append(", date=")
+				.append(date)
+				.append(", chat=")
+				.append(chat)
+				.append(", forwardFrom=")
+				.append(forwardFrom)
+				.append(", forwardFromChat=")
+				.append(forwardFromChat)
+				.append(", forwardFromMessageId=")
+				.append(forwardFromMessageId)
+				.append(", forwardSignature=")
+				.append(forwardSignature)
+				.append(", forwardSenderName=")
+				.append(forwardSenderName)
+				.append(", forwardDate=")
+				.append(forwardDate)
+				.append(", isTopicMessage=")
+				.append(isTopicMessage)
+				.append(", isAutomaticForward=")
+				.append(isAutomaticForward)
+				.append(", replyToMessage=")
+				.append(replyToMessage)
+				.append(", viaBot=")
+				.append(viaBot)
+				.append(", editDate=")
+				.append(editDate)
+				.append(", hasProtectedContent=")
+				.append(hasProtectedContent)
+				.append(", mediaGroupId=")
+				.append(mediaGroupId)
+				.append(", authorSignature=")
+				.append(authorSignature)
+				.append(", text=")
+				.append(text)
+				.append(", entities=")
+				.append(entities)
+				.append(", animation=")
+				.append(animation)
+				.append(", audio=")
+				.append(audio)
+				.append(", document=")
+				.append(document)
+				.append(", photo=")
+				.append(photo)
+				.append(", sticker=")
+				.append(sticker)
+				.append(", video=")
+				.append(video)
+				.append(", videoNote=")
+				.append(videoNote)
+				.append(", voice=")
+				.append(voice)
+				.append(", caption=")
+				.append(caption)
+				.append(", captionEntities=")
+				.append(captionEntities)
+				.append(", hasMediaSpoiler=")
+				.append(hasMediaSpoiler)
+				.append(", contact=")
+				.append(contact)
+				.append(", dice=")
+				.append(dice)
+				.append(", game=")
+				.append(game)
+				.append(", poll=")
+				.append(poll)
+				.append(", venue=")
+				.append(venue)
+				.append(", location=")
+				.append(location)
+				.append(", newChatMembers=")
+				.append(newChatMembers)
+				.append(", leftChatMember=")
+				.append(leftChatMember)
+				.append(", newChatTitle=")
+				.append(newChatTitle)
+				.append(", newChatPhoto=")
+				.append(newChatPhoto)
+				.append(", deleteChatPhoto=")
+				.append(deleteChatPhoto)
+				.append(", groupChatCreated=")
+				.append(groupChatCreated)
+				.append(", supergroupChatCreated=")
+				.append(supergroupChatCreated)
+				.append(", channelChatCreated=")
+				.append(channelChatCreated)
+				.append(", messageAutoDeleteTimerChanged=")
+				.append(messageAutoDeleteTimerChanged)
+				.append(", migrateToChatId=")
+				.append(migrateToChatId)
+				.append(", migrateFromChatId=")
+				.append(migrateFromChatId)
+				.append(", pinnedMessage=")
+				.append(pinnedMessage)
+				.append(", invoice=")
+				.append(invoice)
+				.append(", successfulPayment=")
+				.append(successfulPayment)
+				.append(", userShared=")
+				.append(userShared)
+				.append(", chatShared=")
+				.append(chatShared)
+				.append(", connectedWebsite=")
+				.append(connectedWebsite)
+				.append(", writeAccessAllowed=")
+				.append(writeAccessAllowed)
+				.append(", passportData=")
+				.append(passportData)
+				.append(", proximityAlertTriggered=")
+				.append(proximityAlertTriggered)
+				.append(", forumTopicCreated=")
+				.append(forumTopicCreated)
+				.append(", forumTopicEdited=")
+				.append(forumTopicEdited)
+				.append(", forumTopicClosed=")
+				.append(forumTopicClosed)
+				.append(", forumTopicReopened=")
+				.append(forumTopicReopened)
+				.append(", generalForumTopicHidden=")
+				.append(generalForumTopicHidden)
+				.append(", generalForumTopicUnhidden=")
+				.append(generalForumTopicUnhidden)
+				.append(", videoChatScheduled=")
+				.append(videoChatScheduled)
+				.append(", videoChatStarted=")
+				.append(videoChatStarted)
+				.append(", videoChatEnded=")
+				.append(videoChatEnded)
+				.append(", videoChatParticipantsInvited=")
+				.append(videoChatParticipantsInvited)
+				.append(", webAppData=")
+				.append(webAppData)
+				.append(", replyMarkup=")
+				.append(replyMarkup)
+				.append("]");
 		return builder.toString();
 	}
 }

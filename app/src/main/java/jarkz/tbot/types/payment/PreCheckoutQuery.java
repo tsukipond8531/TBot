@@ -93,12 +93,12 @@ public class PreCheckoutQuery {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(id, from, currency, totalAmount, invoicePayload, shippingOptionId, orderInfo);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof PreCheckoutQuery other))

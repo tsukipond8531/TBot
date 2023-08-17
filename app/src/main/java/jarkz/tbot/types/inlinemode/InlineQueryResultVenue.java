@@ -17,10 +17,10 @@ public class InlineQueryResultVenue implements InlineQueryResult {
 	private String id;
 
 	@NotNull
-	private Float latitude;
+	private float latitude;
 
 	@NotNull
-	private Float longitude;
+	private float longitude;
 
 	@NotNull
 	private String title;
@@ -70,19 +70,19 @@ public class InlineQueryResultVenue implements InlineQueryResult {
 		this.id = id;
 	}
 
-	public Float getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Float latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
-	public Float getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(Float longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 
@@ -175,7 +175,7 @@ public class InlineQueryResultVenue implements InlineQueryResult {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type,
 				id,
 				latitude,
@@ -194,7 +194,7 @@ public class InlineQueryResultVenue implements InlineQueryResult {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InlineQueryResultVenue other))

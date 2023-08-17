@@ -86,7 +86,7 @@ public class ChatMemberUpdated {
 		this.inviteLink = inviteLink;
 	}
 
-	public Optional<Boolean> isViaChatFolderInviteLink() {
+	public Optional<Boolean> getViaChatFolderInviteLink() {
 		return Optional.of(viaChatFolderInviteLink);
 	}
 
@@ -95,12 +95,12 @@ public class ChatMemberUpdated {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(chat, from, date, oldChatMember, newChatMember, inviteLink, viaChatFolderInviteLink);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatMemberUpdated other))

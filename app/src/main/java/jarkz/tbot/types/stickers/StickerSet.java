@@ -23,11 +23,11 @@ public class StickerSet {
 
 	@SerializedName("is_animated")
 	@NotNull
-	private Boolean isAnimated;
+	private boolean isAnimated;
 
 	@SerializedName("is_video")
 	@NotNull
-	private Boolean isVideo;
+	private boolean isVideo;
 
 	@NotNull
 	private List<Sticker> stickers;
@@ -61,19 +61,19 @@ public class StickerSet {
 		this.stickerType = stickerType;
 	}
 
-	public Boolean getIsAnimated() {
+	public boolean isAnimated() {
 		return isAnimated;
 	}
 
-	public void setIsAnimated(Boolean isAnimated) {
+	public void setAnimated(boolean isAnimated) {
 		this.isAnimated = isAnimated;
 	}
 
-	public Boolean getIsVideo() {
+	public boolean isVideo() {
 		return isVideo;
 	}
 
-	public void setIsVideo(Boolean isVideo) {
+	public void setVideo(boolean isVideo) {
 		this.isVideo = isVideo;
 	}
 
@@ -94,12 +94,12 @@ public class StickerSet {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(name, title, stickerType, isAnimated, isVideo, stickers, thumbnail);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof StickerSet other))

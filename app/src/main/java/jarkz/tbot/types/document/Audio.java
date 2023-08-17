@@ -101,12 +101,12 @@ public class Audio {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(fileId, fileUniqueId, duration, performer, title, fileName, mimeType, fileSize);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Audio other))

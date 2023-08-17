@@ -1,6 +1,7 @@
 package jarkz.tbot.types.chat;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -31,13 +32,13 @@ public class ChatInviteLink {
 	private String name;
 
 	@SerializedName("expire_date")
-	private long expireData;
+	private Long expireDate;
 
 	@SerializedName("member_limit")
-	private int memberLimit;
+	private Integer memberLimit;
 
 	@SerializedName("pending_join_request_count")
-	private int pendingJoinRequestCount;
+	private Integer pendingJoinRequestCount;
 
 	public ChatInviteLink() {
 	}
@@ -82,53 +83,53 @@ public class ChatInviteLink {
 		this.isRevoked = isRevoked;
 	}
 
-	public String getName() {
-		return name;
+	public Optional<String> getName() {
+		return Optional.of(name);
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public long getExpireData() {
-		return expireData;
+	public Optional<Long> getExpireDate() {
+		return Optional.of(expireDate);
 	}
 
-	public void setExpireData(long expireData) {
-		this.expireData = expireData;
+	public void setExpireDate(Long expireDate) {
+		this.expireDate = expireDate;
 	}
 
-	public int getMemberLimit() {
-		return memberLimit;
+	public Optional<Integer> getMemberLimit() {
+		return Optional.of(memberLimit);
 	}
 
-	public void setMemberLimit(int memberLimit) {
+	public void setMemberLimit(Integer memberLimit) {
 		this.memberLimit = memberLimit;
 	}
 
-	public int getPendingJoinRequestCount() {
-		return pendingJoinRequestCount;
+	public Optional<Integer> getPendingJoinRequestCount() {
+		return Optional.of(pendingJoinRequestCount);
 	}
 
-	public void setPendingJoinRequestCount(int pendingJoinRequestCount) {
+	public void setPendingJoinRequestCount(Integer pendingJoinRequestCount) {
 		this.pendingJoinRequestCount = pendingJoinRequestCount;
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(inviteLink,
 				creator,
 				createsJoinRequest,
 				isPrimary,
 				isRevoked,
 				name,
-				expireData,
+				expireDate,
 				memberLimit,
 				pendingJoinRequestCount);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatInviteLink other))
@@ -139,9 +140,9 @@ public class ChatInviteLink {
 				&& isPrimary == other.isPrimary
 				&& isRevoked == other.isRevoked
 				&& Objects.equals(name, other.name)
-				&& expireData == other.expireData
-				&& memberLimit == other.memberLimit
-				&& pendingJoinRequestCount == other.pendingJoinRequestCount;
+				&& Objects.equals(expireDate,other.expireDate)
+				&& Objects.equals(memberLimit, other.memberLimit)
+				&& Objects.equals(pendingJoinRequestCount, other.pendingJoinRequestCount);
 	}
 
 	@Override
@@ -153,7 +154,7 @@ public class ChatInviteLink {
 				.append(", isPrimary=").append(isPrimary)
 				.append(", isRevoked=").append(isRevoked)
 				.append(", name=").append(name)
-				.append(", expireData=").append(expireData)
+				.append(", expireDate=").append(expireDate)
 				.append(", memberLimit=").append(memberLimit)
 				.append(", pendingJoinRequestCount=").append(pendingJoinRequestCount).append("]");
 		return builder.toString();

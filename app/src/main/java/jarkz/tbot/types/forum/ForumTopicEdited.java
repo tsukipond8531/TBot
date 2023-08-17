@@ -1,9 +1,9 @@
 package jarkz.tbot.types.forum;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 import java.util.Optional;
-
-import com.google.gson.annotations.SerializedName;
 
 public class ForumTopicEdited {
 
@@ -32,24 +32,28 @@ public class ForumTopicEdited {
 	}
 
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		return Objects.hash(name, iconCustomEmojiId);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ForumTopicEdited other))
 			return false;
-		return Objects.equals(name, other.name) && Objects.equals(iconCustomEmojiId, other.iconCustomEmojiId);
+		return Objects.equals(name, other.name)
+				&& Objects.equals(iconCustomEmojiId, other.iconCustomEmojiId);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ForumTopicEdited[name=").append(name)
-				.append(", iconCustomEmojiId=").append(iconCustomEmojiId).append("]");
+		builder.append("ForumTopicEdited[name=")
+				.append(name)
+				.append(", iconCustomEmojiId=")
+				.append(iconCustomEmojiId)
+				.append("]");
 		return builder.toString();
 	}
 }

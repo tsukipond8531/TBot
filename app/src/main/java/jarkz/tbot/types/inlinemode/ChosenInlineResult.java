@@ -70,12 +70,12 @@ public class ChosenInlineResult {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(resultId, from, location, inlineMessageId, query);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChosenInlineResult other))

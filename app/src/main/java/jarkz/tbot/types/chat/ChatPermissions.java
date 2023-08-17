@@ -180,7 +180,7 @@ public class ChatPermissions {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(canSendMessages,
 				canSendAudios,
 				canSendDocuments,
@@ -198,7 +198,7 @@ public class ChatPermissions {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatPermissions other))

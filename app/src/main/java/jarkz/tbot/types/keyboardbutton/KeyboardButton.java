@@ -58,7 +58,7 @@ public class KeyboardButton {
 		this.requestChat = requestChat;
 	}
 
-	public Optional<Boolean> isRequestContact() {
+	public Optional<Boolean> getRequestContact() {
 		return Optional.of(requestContact);
 	}
 
@@ -66,7 +66,7 @@ public class KeyboardButton {
 		this.requestContact = requestContact;
 	}
 
-	public Optional<Boolean> isRequestLocation() {
+	public Optional<Boolean> getRequestLocation() {
 		return Optional.of(requestLocation);
 	}
 
@@ -91,12 +91,12 @@ public class KeyboardButton {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(text, requestUser, requestChat, requestContact, requestLocation, requestPoll, webApp);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof KeyboardButton other))

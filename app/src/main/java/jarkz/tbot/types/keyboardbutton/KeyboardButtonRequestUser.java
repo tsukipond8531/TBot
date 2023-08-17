@@ -30,7 +30,7 @@ public class KeyboardButtonRequestUser {
 		this.requestId = requestId;
 	}
 
-	public Optional<Boolean> isUserIsBot() {
+	public Optional<Boolean> getUserIsBot() {
 		return Optional.of(userIsBot);
 	}
 
@@ -38,7 +38,7 @@ public class KeyboardButtonRequestUser {
 		this.userIsBot = userIsBot;
 	}
 
-	public Optional<Boolean> isUserIsPremium() {
+	public Optional<Boolean> getUserIsPremium() {
 		return Optional.of(userIsPremium);
 	}
 
@@ -47,12 +47,12 @@ public class KeyboardButtonRequestUser {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(requestId, userIsBot, userIsPremium);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof KeyboardButtonRequestUser other))

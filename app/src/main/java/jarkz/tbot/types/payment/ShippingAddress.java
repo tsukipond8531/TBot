@@ -82,12 +82,12 @@ public class ShippingAddress {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(countryCode, state, city, streetLine1, streetLine2, postCode);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ShippingAddress other))

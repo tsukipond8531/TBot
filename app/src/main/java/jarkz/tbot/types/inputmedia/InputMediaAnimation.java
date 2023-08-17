@@ -109,7 +109,7 @@ public class InputMediaAnimation implements InputMedia {
 		this.duration = duration;
 	}
 
-	public Optional<Boolean> isHasSpoiler() {
+	public Optional<Boolean> getHasSpoiler() {
 		return Optional.of(hasSpoiler);
 	}
 
@@ -118,7 +118,7 @@ public class InputMediaAnimation implements InputMedia {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type,
 				media,
 				thumbnail,
@@ -132,7 +132,7 @@ public class InputMediaAnimation implements InputMedia {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InputMediaAnimation other))

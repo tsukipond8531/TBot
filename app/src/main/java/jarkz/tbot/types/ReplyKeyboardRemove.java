@@ -26,7 +26,7 @@ public class ReplyKeyboardRemove {
 		this.removeKeyboard = removeKeyboard;
 	}
 
-	public Optional<Boolean> isSelective() {
+	public Optional<Boolean> getSelective() {
 		return Optional.of(selective);
 	}
 
@@ -35,12 +35,12 @@ public class ReplyKeyboardRemove {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(removeKeyboard, selective);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ReplyKeyboardRemove other))

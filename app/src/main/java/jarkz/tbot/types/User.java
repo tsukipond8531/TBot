@@ -31,7 +31,7 @@ public class User {
 	@SerializedName("is_premium")
 	private Boolean isPremium;
 
-	@SerializedName("added_to_attachmeht_menu")
+	@SerializedName("added_to_attachment_menu")
 	private Boolean addedToAttachmentMenu;
 
 	@SerializedName("can_join_groups")
@@ -94,15 +94,15 @@ public class User {
 		this.languageCode = languageCode;
 	}
 
-	public Optional<Boolean> isPremium() {
+	public Optional<Boolean> getIsPremium() {
 		return Optional.of(isPremium);
 	}
 
-	public void setPremium(Boolean isPremium) {
+	public void setIsPremium(Boolean isPremium) {
 		this.isPremium = isPremium;
 	}
 
-	public Optional<Boolean> isAddedToAttachmentMenu() {
+	public Optional<Boolean> getAddedToAttachmentMenu() {
 		return Optional.of(addedToAttachmentMenu);
 	}
 
@@ -110,7 +110,7 @@ public class User {
 		this.addedToAttachmentMenu = addedToAttachmentMenu;
 	}
 
-	public Optional<Boolean> isCanJoinGroups() {
+	public Optional<Boolean> getCanJoinGroups() {
 		return Optional.of(canJoinGroups);
 	}
 
@@ -118,7 +118,7 @@ public class User {
 		this.canJoinGroups = canJoinGroups;
 	}
 
-	public Optional<Boolean> isCanReadAllGroupMessages() {
+	public Optional<Boolean> getCanReadAllGroupMessages() {
 		return Optional.of(canReadAllGroupMessages);
 	}
 
@@ -126,7 +126,7 @@ public class User {
 		this.canReadAllGroupMessages = canReadAllGroupMessages;
 	}
 
-	public Optional<Boolean> isSupportInlineQueries() {
+	public Optional<Boolean> getSupportInlineQueries() {
 		return Optional.of(supportInlineQueries);
 	}
 
@@ -135,7 +135,7 @@ public class User {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(id,
 				isBot,
 				firstName,
@@ -150,7 +150,7 @@ public class User {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof User other))

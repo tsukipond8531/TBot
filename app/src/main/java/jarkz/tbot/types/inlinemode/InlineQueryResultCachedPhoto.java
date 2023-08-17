@@ -38,7 +38,7 @@ public class InlineQueryResultCachedPhoto implements InlineQueryResult {
 	private String parseMode;
 
 	@SerializedName("caption_entities")
-	private List<MessageEntity> captioinEntities;
+	private List<MessageEntity> captionEntities;
 
 	@SerializedName("reply_markup")
 	private InlineKeyboardMarkup replyMarkup;
@@ -101,12 +101,12 @@ public class InlineQueryResultCachedPhoto implements InlineQueryResult {
 		this.parseMode = parseMode;
 	}
 
-	public Optional<List<MessageEntity>> getCaptioinEntities() {
-		return Optional.of(captioinEntities);
+	public Optional<List<MessageEntity>> getCaptionEntities() {
+		return Optional.of(captionEntities);
 	}
 
-	public void setCaptioinEntities(List<MessageEntity> captioinEntities) {
-		this.captioinEntities = captioinEntities;
+	public void setCaptionEntities(List<MessageEntity> captionEntities) {
+		this.captionEntities = captionEntities;
 	}
 
 	public Optional<InlineKeyboardMarkup> getReplyMarkup() {
@@ -126,7 +126,7 @@ public class InlineQueryResultCachedPhoto implements InlineQueryResult {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type,
 				id,
 				photoFileId,
@@ -134,13 +134,13 @@ public class InlineQueryResultCachedPhoto implements InlineQueryResult {
 				description,
 				caption,
 				parseMode,
-				captioinEntities,
+				captionEntities,
 				replyMarkup,
 				inputMessageContent);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InlineQueryResultCachedPhoto other))
@@ -152,7 +152,7 @@ public class InlineQueryResultCachedPhoto implements InlineQueryResult {
 				&& Objects.equals(description, other.description)
 				&& Objects.equals(caption, other.caption)
 				&& Objects.equals(parseMode, other.parseMode)
-				&& Objects.equals(captioinEntities, other.captioinEntities)
+				&& Objects.equals(captionEntities, other.captionEntities)
 				&& Objects.equals(replyMarkup, other.replyMarkup)
 				&& Objects.equals(inputMessageContent, other.inputMessageContent);
 	}
@@ -167,7 +167,7 @@ public class InlineQueryResultCachedPhoto implements InlineQueryResult {
 				.append(", description=").append(description)
 				.append(", caption=").append(caption)
 				.append(", parseMode=").append(parseMode)
-				.append(", captioinEntities=").append(captioinEntities)
+				.append(", captionEntities=").append(captionEntities)
 				.append(", replyMarkup=").append(replyMarkup)
 				.append(", inputMessageContent=").append(inputMessageContent).append("]");
 		return builder.toString();

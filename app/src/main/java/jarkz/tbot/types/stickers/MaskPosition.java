@@ -13,14 +13,14 @@ public class MaskPosition {
 
 	@SerializedName("x_shift")
 	@NotNull
-	private Float xShift;
+	private float xShift;
 
 	@SerializedName("y_shift")
 	@NotNull
-	private Float yShift;
+	private float yShift;
 
 	@NotNull
-	private Float scale;
+	private float scale;
 
 	public MaskPosition() {
 	}
@@ -33,37 +33,37 @@ public class MaskPosition {
 		this.point = point;
 	}
 
-	public Float getxShift() {
+	public float getXShift() {
 		return xShift;
 	}
 
-	public void setxShift(Float xShift) {
+	public void setXShift(float xShift) {
 		this.xShift = xShift;
 	}
 
-	public Float getyShift() {
+	public float getYShift() {
 		return yShift;
 	}
 
-	public void setyShift(Float yShift) {
+	public void setYShift(float yShift) {
 		this.yShift = yShift;
 	}
 
-	public Float getScale() {
+	public float getScale() {
 		return scale;
 	}
 
-	public void setScale(Float scale) {
+	public void setScale(float scale) {
 		this.scale = scale;
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(point, xShift, yShift, scale);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof MaskPosition other))

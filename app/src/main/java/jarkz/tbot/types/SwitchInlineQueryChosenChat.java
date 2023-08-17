@@ -32,7 +32,7 @@ public class SwitchInlineQueryChosenChat {
 		this.query = query;
 	}
 
-	public Optional<Boolean> isAllowUserChats() {
+	public Optional<Boolean> getAllowUserChats() {
 		return Optional.of(allowUserChats);
 	}
 
@@ -40,7 +40,7 @@ public class SwitchInlineQueryChosenChat {
 		this.allowUserChats = allowUserChats;
 	}
 
-	public Optional<Boolean> isAllowBotChats() {
+	public Optional<Boolean> getAllowBotChats() {
 		return Optional.of(allowBotChats);
 	}
 
@@ -48,7 +48,7 @@ public class SwitchInlineQueryChosenChat {
 		this.allowBotChats = allowBotChats;
 	}
 
-	public Optional<Boolean> isAllowGroupChats() {
+	public Optional<Boolean> getAllowGroupChats() {
 		return Optional.of(allowGroupChats);
 	}
 
@@ -56,7 +56,7 @@ public class SwitchInlineQueryChosenChat {
 		this.allowGroupChats = allowGroupChats;
 	}
 
-	public Optional<Boolean> isAllowChannelChats() {
+	public Optional<Boolean> getAllowChannelChats() {
 		return Optional.of(allowChannelChats);
 	}
 
@@ -65,12 +65,12 @@ public class SwitchInlineQueryChosenChat {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(query, allowUserChats, allowBotChats, allowGroupChats, allowChannelChats);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof SwitchInlineQueryChosenChat other))

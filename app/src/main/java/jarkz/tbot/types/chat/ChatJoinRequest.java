@@ -80,12 +80,12 @@ public class ChatJoinRequest {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(chat, from, userChatId, date, bio, inviteLink);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ChatJoinRequest other))

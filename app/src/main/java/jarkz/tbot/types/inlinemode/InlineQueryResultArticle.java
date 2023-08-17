@@ -24,7 +24,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
 	private InputMessageContent inputMessageContent;
 
 	@SerializedName("reply_markup")
-	private InlineKeyboardMarkup inlineKeyboardMarkup;
+	private InlineKeyboardMarkup replyMarkup;
 
 	private String url;
 
@@ -73,12 +73,12 @@ public class InlineQueryResultArticle implements InlineQueryResult {
 		this.inputMessageContent = inputMessageContent;
 	}
 
-	public Optional<InlineKeyboardMarkup> getInlineKeyboardMarkup() {
-		return Optional.of(inlineKeyboardMarkup);
+	public Optional<InlineKeyboardMarkup> getReplyMarkup() {
+		return Optional.of(replyMarkup);
 	}
 
-	public void setInlineKeyboardMarkup(InlineKeyboardMarkup inlineKeyboardMarkup) {
-		this.inlineKeyboardMarkup = inlineKeyboardMarkup;
+	public void setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+		this.replyMarkup = replyMarkup;
 	}
 
 	public Optional<String> getUrl() {
@@ -130,12 +130,12 @@ public class InlineQueryResultArticle implements InlineQueryResult {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type,
 				id,
 				title,
 				inputMessageContent,
-				inlineKeyboardMarkup,
+				replyMarkup,
 				url,
 				hideUrl,
 				description,
@@ -145,7 +145,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InlineQueryResultArticle other))
@@ -154,7 +154,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
 				&& Objects.equals(id, other.id)
 				&& Objects.equals(title, other.title)
 				&& Objects.equals(inputMessageContent, other.inputMessageContent)
-				&& Objects.equals(inlineKeyboardMarkup, other.inlineKeyboardMarkup)
+				&& Objects.equals(replyMarkup, other.replyMarkup)
 				&& Objects.equals(url, other.url)
 				&& Objects.equals(hideUrl, other.hideUrl)
 				&& Objects.equals(description, other.description)
@@ -170,7 +170,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
 				.append(", id=").append(id)
 				.append(", title=").append(title)
 				.append(", inputMessageContent=").append(inputMessageContent)
-				.append(", inlineKeyboardMarkup=").append(inlineKeyboardMarkup)
+				.append(", replyMarkup=").append(replyMarkup)
 				.append(", url=").append(url)
 				.append(", hideUrl=").append(hideUrl)
 				.append(", description=").append(description)

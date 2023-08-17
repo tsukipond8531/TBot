@@ -116,7 +116,7 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(type,
 				id,
 				mpeg4FileId,
@@ -129,7 +129,7 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InlineQueryResultCachedMpeg4Gif other))

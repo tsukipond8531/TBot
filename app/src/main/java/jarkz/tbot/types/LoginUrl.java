@@ -48,7 +48,7 @@ public class LoginUrl {
 		this.botUsername = botUsername;
 	}
 
-	public Optional<Boolean> isRequestWriteAccess() {
+	public Optional<Boolean> getRequestWriteAccess() {
 		return Optional.of(requestWriteAccess);
 	}
 
@@ -57,12 +57,12 @@ public class LoginUrl {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(url, forwardText, botUsername, requestWriteAccess);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof LoginUrl other))

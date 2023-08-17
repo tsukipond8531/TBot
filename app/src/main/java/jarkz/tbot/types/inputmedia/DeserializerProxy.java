@@ -3,9 +3,11 @@ package jarkz.tbot.types.inputmedia;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.JsonNotFoundKey;
 import jarkz.tbot.types.deserializers.JsonTypeNotDefined;
 
+@Deserializer
 public class DeserializerProxy {
 
 	private static final String INPUT_MEDIA_KEY = "type";

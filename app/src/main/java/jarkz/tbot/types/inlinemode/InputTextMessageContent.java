@@ -59,12 +59,12 @@ public class InputTextMessageContent implements InputMessageContent {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(messageText, parseMode, entities, disableWebPagePreview);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof InputTextMessageContent other))

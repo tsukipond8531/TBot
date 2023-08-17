@@ -39,15 +39,15 @@ public class ReplyKeyboardMarkup {
 		this.keyboard = keyboard;
 	}
 
-	public Optional<Boolean> isPersistent() {
+	public Optional<Boolean> getIsPersistent() {
 		return Optional.of(isPersistent);
 	}
 
-	public void setPersistent(Boolean isPersistent) {
+	public void setIsPersistent(Boolean isPersistent) {
 		this.isPersistent = isPersistent;
 	}
 
-	public Optional<Boolean> isResizeKeyboard() {
+	public Optional<Boolean> getResizeKeyboard() {
 		return Optional.of(resizeKeyboard);
 	}
 
@@ -55,7 +55,7 @@ public class ReplyKeyboardMarkup {
 		this.resizeKeyboard = resizeKeyboard;
 	}
 
-	public Optional<Boolean> isOneTimeKeyboard() {
+	public Optional<Boolean> getOneTimeKeyboard() {
 		return Optional.of(oneTimeKeyboard);
 	}
 
@@ -71,7 +71,7 @@ public class ReplyKeyboardMarkup {
 		this.inputFieldPlaceholder = inputFieldPlaceholder;
 	}
 
-	public Optional<Boolean> isSelective() {
+	public Optional<Boolean> getSelective() {
 		return Optional.of(selective);
 	}
 
@@ -80,12 +80,12 @@ public class ReplyKeyboardMarkup {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(keyboard, isPersistent, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof ReplyKeyboardMarkup other))

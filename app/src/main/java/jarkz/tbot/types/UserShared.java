@@ -10,11 +10,11 @@ public class UserShared {
 
 	@SerializedName("request_id")
 	@NotNull
-	public int requestId;
+	private int requestId;
 
 	@SerializedName("user_id")
 	@NotNull
-	public long userId;
+	private long userId;
 
 	public UserShared(){
 	}
@@ -36,12 +36,12 @@ public class UserShared {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(requestId, userId);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof UserShared other))

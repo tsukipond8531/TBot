@@ -80,12 +80,12 @@ public class VideoNote {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(fileId, fileUniqueId, length, duration, thumbnail, fileSize);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof VideoNote other))

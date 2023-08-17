@@ -23,17 +23,17 @@ public class Sticker {
 	private String type;
 
 	@NotNull
-	private Integer width;
+	private int width;
 	@NotNull
-	private Integer height;
+	private int height;
 
 	@SerializedName("is_animated")
 	@NotNull
-	private Boolean isAnimated;
+	private boolean isAnimated;
 
 	@SerializedName("is_video")
 	@NotNull
-	private Boolean isVideo;
+	private boolean isVideo;
 
 	private PhotoSize thumbnail;
 
@@ -84,35 +84,35 @@ public class Sticker {
 		this.type = type;
 	}
 
-	public Integer getWidth() {
+	public int getWidth() {
 		return width;
 	}
 
-	public void setWidth(Integer width) {
+	public void setWidth(int width) {
 		this.width = width;
 	}
 
-	public Integer getHeight() {
+	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(Integer height) {
+	public void setHeight(int height) {
 		this.height = height;
 	}
 
-	public Boolean getIsAnimated() {
+	public boolean isAnimated() {
 		return isAnimated;
 	}
 
-	public void setIsAnimated(Boolean isAnimated) {
+	public void setAnimated(boolean isAnimated) {
 		this.isAnimated = isAnimated;
 	}
 
-	public Boolean getIsVideo() {
+	public boolean isVideo() {
 		return isVideo;
 	}
 
-	public void setIsVideo(Boolean isVideo) {
+	public void setVideo(boolean isVideo) {
 		this.isVideo = isVideo;
 	}
 
@@ -181,7 +181,7 @@ public class Sticker {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(fileId,
 				fileUniqueId,
 				type,
@@ -200,7 +200,7 @@ public class Sticker {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Sticker other))

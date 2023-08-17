@@ -161,7 +161,7 @@ public class Poll {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(id,
 				question,
 				options,
@@ -178,7 +178,7 @@ public class Poll {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Poll other))

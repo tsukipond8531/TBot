@@ -12,11 +12,11 @@ public class KeyboardButtonRequestChat {
 
 	@SerializedName("request_id")
 	@NotNull
-	public int requestId;
+	private int requestId;
 
 	@SerializedName("chat_is_channel")
 	@NotNull
-	private boolean chatIsChatnel;
+	private boolean chatIsChannel;
 
 	@SerializedName("chat_is_forum")
 	private Boolean chatIsForum;
@@ -47,15 +47,15 @@ public class KeyboardButtonRequestChat {
 		this.requestId = requestId;
 	}
 
-	public boolean isChatIsChatnel() {
-		return chatIsChatnel;
+	public boolean isChatIsChannel() {
+		return chatIsChannel;
 	}
 
-	public void setChatIsChatnel(boolean chatIsChatnel) {
-		this.chatIsChatnel = chatIsChatnel;
+	public void setChatIsChannel(boolean chatIsChannel) {
+		this.chatIsChannel = chatIsChannel;
 	}
 
-	public Optional<Boolean> isChatIsForum() {
+	public Optional<Boolean> getChatIsForum() {
 		return Optional.of(chatIsForum);
 	}
 
@@ -63,7 +63,7 @@ public class KeyboardButtonRequestChat {
 		this.chatIsForum = chatIsForum;
 	}
 
-	public Optional<Boolean> isChatHasUsername() {
+	public Optional<Boolean> getChatHasUsername() {
 		return Optional.of(chatHasUsername);
 	}
 
@@ -71,7 +71,7 @@ public class KeyboardButtonRequestChat {
 		this.chatHasUsername = chatHasUsername;
 	}
 
-	public Optional<Boolean> isChatIsCreated() {
+	public Optional<Boolean> getChatIsCreated() {
 		return Optional.of(chatIsCreated);
 	}
 
@@ -95,7 +95,7 @@ public class KeyboardButtonRequestChat {
 		this.botAdministratorRights = botAdministratorRights;
 	}
 
-	public Optional<Boolean> isBotIsMember() {
+	public Optional<Boolean> getBotIsMember() {
 		return Optional.of(botIsMember);
 	}
 
@@ -104,9 +104,9 @@ public class KeyboardButtonRequestChat {
 	}
 
 	@Override
-	public int hashCode() {
+	final public int hashCode() {
 		return Objects.hash(requestId,
-				chatIsChatnel,
+				chatIsChannel,
 				chatIsForum,
 				chatHasUsername,
 				chatIsCreated,
@@ -116,13 +116,13 @@ public class KeyboardButtonRequestChat {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	final public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof KeyboardButtonRequestChat other))
 			return false;
 		return requestId == other.requestId
-				&& chatIsChatnel == other.chatIsChatnel
+				&& chatIsChannel == other.chatIsChannel
 				&& Objects.equals(chatIsForum, other.chatIsForum)
 				&& Objects.equals(chatHasUsername, other.chatHasUsername)
 				&& Objects.equals(chatIsCreated, other.chatIsCreated)
@@ -135,7 +135,7 @@ public class KeyboardButtonRequestChat {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("KeyboardButtonRequestChat[requestId=").append(requestId)
-				.append(", chatIsChatnel=").append(chatIsChatnel)
+				.append(", chatIsChannel=").append(chatIsChannel)
 				.append(", chatIsForum=").append(chatIsForum)
 				.append(", chatHasUsername=").append(chatHasUsername)
 				.append(", chatIsCreated=").append(chatIsCreated)
