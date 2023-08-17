@@ -1,5 +1,8 @@
 package jarkz.tbot.types;
 
+import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.TestContainer;
+import jarkz.tbot.exceptions.types.TypeGenerationException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -7,10 +10,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
-import jakarta.validation.constraints.NotNull;
-import jarkz.tbot.TestContainer;
-import jarkz.tbot.exceptions.types.TypeGenerationException;
 
 @TestContainer
 public class TypeFactory<T> {
@@ -367,7 +366,8 @@ public class TypeFactory<T> {
 
       try {
         Object instance = field.getType().getDeclaredConstructor().newInstance();
-        TypeFactory<Object> generator = new TypeFactory<>(depth - 1, chanceGenerationNullableFields);
+        TypeFactory<Object> generator =
+            new TypeFactory<>(depth - 1, chanceGenerationNullableFields);
         generator.generate(instance);
         mapObject(baseType, field, instance);
       } catch (InvocationTargetException
@@ -398,7 +398,8 @@ public class TypeFactory<T> {
 
       try {
         Object instance = objectField.getType().getDeclaredConstructor().newInstance();
-        TypeFactory<Object> generator = new TypeFactory<>(depth - 1, chanceGenerationNullableFields);
+        TypeFactory<Object> generator =
+            new TypeFactory<>(depth - 1, chanceGenerationNullableFields);
         generator.generate(instance);
         mapObject(baseType, objectField, instance);
       } catch (InvocationTargetException

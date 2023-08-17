@@ -2,37 +2,34 @@ package jarkz.tbot.types.botcommandscope;
 
 import java.util.Objects;
 
-public class BotCommandScopeAllChatAdministrators implements BotCommandScope{
+public class BotCommandScopeAllChatAdministrators implements BotCommandScope {
 
-	protected static final String TYPE = "all_chat_administrators";
+  protected static final String TYPE = "all_chat_administrators";
 
-	private final String type = BotCommandScopeAllChatAdministrators.TYPE;
+  private final String type = BotCommandScopeAllChatAdministrators.TYPE;
 
-	public BotCommandScopeAllChatAdministrators() {
-	}
+  public BotCommandScopeAllChatAdministrators() {}
 
-	public String getType() {
-		return type;
-	}
+  public String getType() {
+    return type;
+  }
 
-	@Override
-	final public int hashCode() {
-		return Objects.hash(type);
-	}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(type);
+  }
 
-	@Override
-	final public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof BotCommandScopeAllChatAdministrators other))
-			return false;
-		return Objects.equals(type, other.type);
-	}
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof BotCommandScopeAllChatAdministrators other)) return false;
+    return Objects.equals(type, other.type);
+  }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("BotCommandScopeAllChatAdministrators[type=").append(type).append("]");
-		return builder.toString();
-	}
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("BotCommandScopeAllChatAdministrators[type=").append(type).append("]");
+    return builder.toString();
+  }
 }

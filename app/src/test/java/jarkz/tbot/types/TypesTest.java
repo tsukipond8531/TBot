@@ -1,14 +1,7 @@
 package jarkz.tbot.types;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.junit.jupiter.api.Test;
-import org.reflections.Reflections;
-import org.reflections.scanners.Scanners;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
 import jarkz.tbot.exceptions.types.JsonSerializationException;
@@ -26,8 +19,12 @@ import jarkz.tbot.types.inlinemode.InlineQueryResult;
 import jarkz.tbot.types.inputmedia.InputMedia;
 import jarkz.tbot.types.menubutton.MenuButton;
 import jarkz.tbot.types.passport.PassportElementError;
+import java.lang.reflect.InvocationTargetException;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
+import org.junit.jupiter.api.Test;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 
 @TestContainer
 public class TypesTest {

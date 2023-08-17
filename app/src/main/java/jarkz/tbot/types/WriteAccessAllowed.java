@@ -1,44 +1,40 @@
 package jarkz.tbot.types;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 import java.util.Optional;
 
-import com.google.gson.annotations.SerializedName;
-
 public class WriteAccessAllowed {
 
-	@SerializedName("web_app_name")
-	private String webAppName;
+  @SerializedName("web_app_name")
+  private String webAppName;
 
-	public WriteAccessAllowed() {
-	}
+  public WriteAccessAllowed() {}
 
-	public Optional<String> getWebAppName() {
-		return Optional.of(webAppName);
-	}
+  public Optional<String> getWebAppName() {
+    return Optional.of(webAppName);
+  }
 
-	public void setWebAppName(String webAppName) {
-		this.webAppName = webAppName;
-	}
+  public void setWebAppName(String webAppName) {
+    this.webAppName = webAppName;
+  }
 
-	@Override
-	final public int hashCode() {
-		return Objects.hash(webAppName);
-	}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(webAppName);
+  }
 
-	@Override
-	final public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof WriteAccessAllowed other))
-			return false;
-		return Objects.equals(webAppName, other.webAppName);
-	}
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof WriteAccessAllowed other)) return false;
+    return Objects.equals(webAppName, other.webAppName);
+  }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("WriteAccessAllowed[webAppName=").append(webAppName).append("]");
-		return builder.toString();
-	}
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("WriteAccessAllowed[webAppName=").append(webAppName).append("]");
+    return builder.toString();
+  }
 }

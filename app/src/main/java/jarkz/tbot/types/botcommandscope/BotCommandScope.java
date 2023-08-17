@@ -5,5 +5,5 @@ import jarkz.tbot.types.annotations.GeneralInterface;
 @GeneralInterface
 public interface BotCommandScope {
 
-	String getType();
+  String getType();
 }

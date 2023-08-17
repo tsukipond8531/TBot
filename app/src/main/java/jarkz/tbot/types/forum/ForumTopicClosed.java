@@ -5,16 +5,16 @@ import jarkz.tbot.types.annotations.EmptyClass;
 @EmptyClass
 public class ForumTopicClosed {
 
-	public ForumTopicClosed(){}
+  public ForumTopicClosed() {}
 
   @Override
-  final public int hashCode() {
+  public final int hashCode() {
     int prime = 31;
     return prime;
   }
 
   @Override
-  final public boolean equals(Object obj) {
+  public final boolean equals(Object obj) {
     if (obj == this) {
       return true;
     }

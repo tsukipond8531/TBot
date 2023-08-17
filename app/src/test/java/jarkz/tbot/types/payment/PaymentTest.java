@@ -1,9 +1,5 @@
 package jarkz.tbot.types.payment;
 
-import org.junit.jupiter.api.Test;
-import org.reflections.Reflections;
-import org.reflections.scanners.Scanners;
-
 import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
 import jarkz.tbot.exceptions.types.JsonSerializationException;
@@ -11,6 +7,9 @@ import jarkz.tbot.types.ContractVerifier;
 import jarkz.tbot.types.TypesTest;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
+import org.junit.jupiter.api.Test;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 
 @TestContainer
 public class PaymentTest {

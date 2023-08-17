@@ -1,86 +1,85 @@
 package jarkz.tbot.types.stickers;
 
-import java.util.Objects;
-
 import com.google.gson.annotations.SerializedName;
-
 import jakarta.validation.constraints.NotNull;
+import java.util.Objects;
 
 public class MaskPosition {
 
-	@NotNull
-	private String point;
+  @NotNull private String point;
 
-	@SerializedName("x_shift")
-	@NotNull
-	private float xShift;
+  @SerializedName("x_shift")
+  @NotNull
+  private float xShift;
 
-	@SerializedName("y_shift")
-	@NotNull
-	private float yShift;
+  @SerializedName("y_shift")
+  @NotNull
+  private float yShift;
 
-	@NotNull
-	private float scale;
+  @NotNull private float scale;
 
-	public MaskPosition() {
-	}
+  public MaskPosition() {}
 
-	public String getPoint() {
-		return point;
-	}
+  public String getPoint() {
+    return point;
+  }
 
-	public void setPoint(String point) {
-		this.point = point;
-	}
+  public void setPoint(String point) {
+    this.point = point;
+  }
 
-	public float getXShift() {
-		return xShift;
-	}
+  public float getXShift() {
+    return xShift;
+  }
 
-	public void setXShift(float xShift) {
-		this.xShift = xShift;
-	}
+  public void setXShift(float xShift) {
+    this.xShift = xShift;
+  }
 
-	public float getYShift() {
-		return yShift;
-	}
+  public float getYShift() {
+    return yShift;
+  }
 
-	public void setYShift(float yShift) {
-		this.yShift = yShift;
-	}
+  public void setYShift(float yShift) {
+    this.yShift = yShift;
+  }
 
-	public float getScale() {
-		return scale;
-	}
+  public float getScale() {
+    return scale;
+  }
 
-	public void setScale(float scale) {
-		this.scale = scale;
-	}
+  public void setScale(float scale) {
+    this.scale = scale;
+  }
 
-	@Override
-	final public int hashCode() {
-		return Objects.hash(point, xShift, yShift, scale);
-	}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(point, xShift, yShift, scale);
+  }
 
-	@Override
-	final public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof MaskPosition other))
-			return false;
-		return Objects.equals(point, other.point)
-				&& Objects.equals(xShift, other.xShift)
-				&& Objects.equals(yShift, other.yShift)
-				&& Objects.equals(scale, other.scale);
-	}
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof MaskPosition other)) return false;
+    return Objects.equals(point, other.point)
+        && Objects.equals(xShift, other.xShift)
+        && Objects.equals(yShift, other.yShift)
+        && Objects.equals(scale, other.scale);
+  }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("MaskPosition[point=").append(point)
-				.append(", xShift=").append(xShift)
-				.append(", yShift=").append(yShift)
-				.append(", scale=").append(scale).append("]");
-		return builder.toString();
-	}
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder
+        .append("MaskPosition[point=")
+        .append(point)
+        .append(", xShift=")
+        .append(xShift)
+        .append(", yShift=")
+        .append(yShift)
+        .append(", scale=")
+        .append(scale)
+        .append("]");
+    return builder.toString();
+  }
 }

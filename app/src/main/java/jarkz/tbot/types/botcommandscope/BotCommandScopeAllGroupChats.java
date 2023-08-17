@@ -4,35 +4,32 @@ import java.util.Objects;
 
 public class BotCommandScopeAllGroupChats implements BotCommandScope {
 
-	protected static final String TYPE = "all_group_chats";
+  protected static final String TYPE = "all_group_chats";
 
-	private final String type = BotCommandScopeAllGroupChats.TYPE;
+  private final String type = BotCommandScopeAllGroupChats.TYPE;
 
-	public BotCommandScopeAllGroupChats() {
-	}
+  public BotCommandScopeAllGroupChats() {}
 
-	public String getType() {
-		return type;
-	}
+  public String getType() {
+    return type;
+  }
 
-	@Override
-	final public int hashCode() {
-		return Objects.hash(type);
-	}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(type);
+  }
 
-	@Override
-	final public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof BotCommandScopeAllGroupChats other))
-			return false;
-		return Objects.equals(type, other.type);
-	}
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof BotCommandScopeAllGroupChats other)) return false;
+    return Objects.equals(type, other.type);
+  }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("BotCommandScopeAllGroupChats[type=").append(type).append("]");
-		return builder.toString();
-	}
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("BotCommandScopeAllGroupChats[type=").append(type).append("]");
+    return builder.toString();
+  }
 }

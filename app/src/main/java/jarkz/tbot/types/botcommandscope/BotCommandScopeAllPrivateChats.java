@@ -4,35 +4,32 @@ import java.util.Objects;
 
 public class BotCommandScopeAllPrivateChats implements BotCommandScope {
 
-	protected static final String TYPE = "all_private_chats";
+  protected static final String TYPE = "all_private_chats";
 
-	private final String type = BotCommandScopeAllPrivateChats.TYPE;
+  private final String type = BotCommandScopeAllPrivateChats.TYPE;
 
-	public BotCommandScopeAllPrivateChats() {
-	}
+  public BotCommandScopeAllPrivateChats() {}
 
-	public String getType() {
-		return type;
-	}
+  public String getType() {
+    return type;
+  }
 
-	@Override
-	final public int hashCode() {
-		return Objects.hash(type);
-	}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(type);
+  }
 
-	@Override
-	final public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof BotCommandScopeAllPrivateChats other))
-			return false;
-		return Objects.equals(type, other.type);
-	}
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof BotCommandScopeAllPrivateChats other)) return false;
+    return Objects.equals(type, other.type);
+  }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("BotCommandScopeAllPrivateChats[type=").append(type).append("]");
-		return builder.toString();
-	}
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("BotCommandScopeAllPrivateChats[type=").append(type).append("]");
+    return builder.toString();
+  }
 }

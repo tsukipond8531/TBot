@@ -1,9 +1,5 @@
 package jarkz.tbot.types.chatmember;
 
-import org.junit.jupiter.api.Test;
-import org.reflections.Reflections;
-import org.reflections.scanners.Scanners;
-
 import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
 import jarkz.tbot.exceptions.types.JsonSerializationException;
@@ -15,6 +11,9 @@ import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.chat.Chat;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
+import org.junit.jupiter.api.Test;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 
 @TestContainer
 public class ChatMemberTest {
@@ -34,9 +33,7 @@ public class ChatMemberTest {
             PrefabTypes.getChatInstance(TYPE_DEPTH, CHANCE_OF_NULLABLE_FIELD),
             PrefabTypes.getChatInstance(TYPE_DEPTH, CHANCE_OF_NULLABLE_FIELD))
         .except(c -> c.isAnnotationPresent(Deserializer.class))
-        .suppress(
-            Warning.ALL_FIELDS_SHOULD_BE_USED,
-            Warning.NONFINAL_FIELDS)
+        .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
         .verify();
   }
 
