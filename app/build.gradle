@@ -19,11 +19,15 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    testImplementation 'nl.jqno.equalsverifier:equalsverifier:3.15'
+    testImplementation 'org.reflections:reflections:0.10.2'
+    testImplementation 'org.slf4j:slf4j-api:2.0.7'
+    testImplementation 'org.slf4j:slf4j-log4j12:2.0.7'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
-	implementation 'com.google.code.gson:gson:2.10.1'
-	implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
