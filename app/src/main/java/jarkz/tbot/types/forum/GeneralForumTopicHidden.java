@@ -2,9 +2,16 @@ package jarkz.tbot.types.forum;
 
 import jarkz.tbot.types.annotations.EmptyClass;
 
+/**
+ * This object represents a service message about General forum topic hidden in the chat. Currently
+ * holds no information.
+ *
+ * @author Pavel Bialiauski
+ */
 @EmptyClass
 public class GeneralForumTopicHidden {
 
+  /** Default constructor. */
   public GeneralForumTopicHidden() {}
 
   @Override

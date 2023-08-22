@@ -5,6 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * This object represents a phone contact.
+ *
+ * @author Pavel Bialiauski
+ */
 public class Contact {
 
   @SerializedName("phone_number")
@@ -23,44 +28,98 @@ public class Contact {
 
   private String vcard;
 
+  /** Default constructor. */
   public Contact() {}
 
+  /**
+   * Contact's phone number.
+   *
+   * @return phone_number as String.
+   */
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
+  /**
+   * Sets the contact's phone number.
+   *
+   * @param phoneNumber the contact's phone number as String.
+   */
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
+  /**
+   * Contact's first name.
+   *
+   * @return first_name as String.
+   */
   public String getFirstName() {
     return firstName;
   }
 
+  /**
+   * Sets the contact's first name.
+   *
+   * @param firstName the contact's first name as String.
+   */
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
 
+  /**
+   * <i>Optional.</i> Contact's last name.
+   *
+   * @return an optional value of last_name as String.
+   */
   public Optional<String> getLastName() {
     return Optional.of(lastName);
   }
 
+  /**
+   * Sets the contact's last name.
+   *
+   * @param lastName the contact's last name as String or null if it doesn't provided.
+   */
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
+  /**
+   * <i>Optional.</i> Contact's user identifier in Telegram.
+   *
+   * @return an optional value of user_id as Long.
+   */
   public Optional<Long> getUserId() {
     return Optional.of(userId);
   }
 
+  /**
+   * Sets the contact's user identifier in Telegram.
+   *
+   * @param userId the contact's user identifier in Telegram as Long or null if it doesn't provided.
+   */
   public void setUserId(Long userId) {
     this.userId = userId;
   }
 
+  /**
+   * <i>Optional.</i> Additional data about the contact in the form of a <a
+   * href="https://en.wikipedia.org/wiki/VCard">vCard</a>.
+   *
+   * @return an optional value of vcard as String.
+   */
   public Optional<String> getVcard() {
     return Optional.of(vcard);
   }
 
+  /**
+   * Sets the additional data about the contact in the form of a <a
+   * href="https://en.wikipedia.org/wiki/VCard">vCard</a>.
+   *
+   * @param vcard the additional data about the contact in the form of a vCard as String or null if
+   *     doesn't provided.
+   */
   public void setVcard(String vcard) {
     this.vcard = vcard;
   }

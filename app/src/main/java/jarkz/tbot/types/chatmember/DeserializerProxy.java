@@ -6,11 +6,25 @@ import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.JsonNotFoundKey;
 import jarkz.tbot.types.deserializers.JsonTypeNotDefined;
 
+/**
+ * The deserializer proxy for general interface {@link ChatMember}.
+ *
+ * <p>Uses for the JSON deserializer adapter. Contains only one static method, which defines which
+ * child type needed to map and returns the needed class.
+ *
+ * @author Pavel Bialiauski
+ */
 @Deserializer
 public class DeserializerProxy {
 
   private static final String CHAT_MEMBER_KEY = "status";
 
+  /**
+   * Returns a implemented class from the {@link ChatMember} by specific type.
+   *
+   * @param jsonObject the ChatMember as json object.
+   * @return a implemented class from the {@link ChatMember}.
+   */
   public static Class<? extends ChatMember> getChatMemberClass(JsonObject jsonObject) {
 
     JsonElement element = jsonObject.get(CHAT_MEMBER_KEY);

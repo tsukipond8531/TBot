@@ -4,28 +4,60 @@ import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
 import jarkz.tbot.exceptions.types.JsonSerializationException;
 import jarkz.tbot.types.ContractVerifier;
+import jarkz.tbot.types.Message;
+import jarkz.tbot.types.PrefabTypes;
 import jarkz.tbot.types.TypesTest;
+import jarkz.tbot.types.chat.Chat;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Test;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
+/**
+ * This test verifies package {@link jarkz.tbot.types.poll}.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class PollTest {
 
+  /**
+   * This test verifies package {@link jarkz.tbot.types.poll}.
+   *
+   * @author Pavel Bialiauski
+   */
   @Test
   public void verifyEqualsAndHashCode() {
+    final int depth = 1;
+    final float chanceGenerationNullableFields = 0.35f;
+
     EqualsVerifier.forPackage(this.getClass().getPackageName())
+        .withPrefabValues(
+            Message.class,
+            PrefabTypes.getMessageInstance(depth, chanceGenerationNullableFields),
+            PrefabTypes.getMessageInstance(depth, chanceGenerationNullableFields))
+        .withPrefabValues(
+            Chat.class,
+            PrefabTypes.getChatInstance(depth, chanceGenerationNullableFields),
+            PrefabTypes.getChatInstance(depth, chanceGenerationNullableFields))
         .suppress(Warning.NONFINAL_FIELDS)
         .verify();
   }
 
+  /**
+   * Verifies the datatype contracts for each class, except deserializers, test containers and etc.,
+   * from the packages {@link jarkz.tbot.types.poll}.
+   */
   @Test
   public void verifyDatatypesContract() throws ContractException {
     ContractVerifier.verifyPackage(this.getClass().getPackageName());
   }
 
+  /**
+   * Verifies the JSON serialization for each class, except deserializers, test containers and etc.,
+   * from the package {@link jarkz.tbot.types.poll}.
+   */
   @Test
   public void verifyJsonSerialization() {
     var reflections =

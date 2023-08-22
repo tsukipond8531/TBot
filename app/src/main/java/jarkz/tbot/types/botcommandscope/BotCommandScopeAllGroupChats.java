@@ -2,14 +2,31 @@ package jarkz.tbot.types.botcommandscope;
 
 import java.util.Objects;
 
+/**
+ * Represents the <a href="https://core.telegram.org/bots/api#botcommandscope">scope</a> of bot
+ * commands, covering all group and supergroup chats.
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotCommandScopeAllGroupChats implements BotCommandScope {
 
+  /**
+   * Type of {@link BotCommandScope}. Always "all_group_chats".
+   */
   protected static final String TYPE = "all_group_chats";
 
   private final String type = BotCommandScopeAllGroupChats.TYPE;
 
+  /**
+   * Default constructor.
+   */
   public BotCommandScopeAllGroupChats() {}
 
+  /**
+   * Scope type, must be <i>all_group_chats</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }

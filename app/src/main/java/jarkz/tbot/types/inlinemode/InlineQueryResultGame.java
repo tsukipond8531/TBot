@@ -5,8 +5,18 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Represents a <a href="https://core.telegram.org/bots/api#games">Game</a>.
+ *
+ * @apiNote This will only work in Telegram versions released after October 1, 2016. Older clients
+ *     will not display any inline results if a game result is among them.
+ * @author Pavel Bialiauski
+ */
 public class InlineQueryResultGame implements InlineQueryResult {
 
+  /**
+   * Type of {@link InlineQueryResult}. Always "game".
+   */
   protected static final String TYPE = "game";
 
   private final String type = InlineQueryResultGame.TYPE;
@@ -20,32 +30,71 @@ public class InlineQueryResultGame implements InlineQueryResult {
   @SerializedName("reply_markup")
   private InlineKeyboardMarkup replyMarkup;
 
+  /** Default constructor. */
   public InlineQueryResultGame() {}
 
+  /**
+   * Type of the result, must be <i>game</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   * Unique identifier for this result, 1-64 Bytes.
+   *
+   * @return id as String.
+   */
   public String getId() {
     return id;
   }
 
+  /**
+   * Sets the unique identifier for this result, 1-64 Bytes.
+   *
+   * @param id the unique identifier for this result (1-64 Bytes) as String.
+   */
   public void setId(String id) {
     this.id = id;
   }
 
+  /**
+   * Short name of the game.
+   *
+   * @return game_short_name as String.
+   */
   public String getGameShortName() {
     return gameShortName;
   }
 
+  /**
+   * Sets the short name of the game.
+   *
+   * @param gameShortName the short name fo the game as String.
+   */
   public void setGameShortName(String gameShortName) {
     this.gameShortName = gameShortName;
   }
 
+  /**
+   * <i>Optional.</i> <a href="https://core.telegram.org/bots/features#inline-keyboards">Inline
+   * keyboard</a> attached to the message.
+   *
+   * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
+   */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
     return Optional.of(replyMarkup);
   }
 
+  /**
+   * Sets the <a href="https://core.telegram.org/bots/features#inline-keyboards">inline keyboard</a>
+   * attached to the message.
+   *
+   * @param replyMarkup the inline keyboard attached to the message as {@link InlineKeyboardMarkup}
+   *     or null if it is not required.
+   */
   public void setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
     this.replyMarkup = replyMarkup;
   }

@@ -1,21 +1,41 @@
 package jarkz.tbot.types.videochat;
 
 import com.google.gson.annotations.SerializedName;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
-import java.util.Optional;
 
+/**
+ * This object represents a service message about a video chat scheduled in the chat.
+ *
+ * @author Pavel Bialiauski
+ */
 public class VideoChatScheduled {
 
   @SerializedName("start_date")
-  private Long startDate;
+  @NotNull
+  private long startDate;
 
+  /** Default constructor. */
   public VideoChatScheduled() {}
 
-  public Optional<Long> getStartDate() {
-    return Optional.of(startDate);
+  /**
+   * Point in time (Unix timestamp) when the video chat is supposed to be started by a chat
+   * administrator.
+   *
+   * @return start_date as long.
+   */
+  public long getStartDate() {
+    return startDate;
   }
 
-  public void setStartDate(Long startDate) {
+  /**
+   * Sets the point in time (Unix timestamp) when the video chat is supposed to be started by a chat
+   * administrator.
+   *
+   * @param startDate the point in time (Unix timestamp) when the video chat is supposed to be
+   *     started by a chat administrator as long.
+   */
+  public void setStartDate(long startDate) {
     this.startDate = startDate;
   }
 
@@ -28,7 +48,7 @@ public class VideoChatScheduled {
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof VideoChatScheduled other)) return false;
-    return Objects.equals(startDate, other.startDate);
+    return startDate == other.startDate;
   }
 
   @Override

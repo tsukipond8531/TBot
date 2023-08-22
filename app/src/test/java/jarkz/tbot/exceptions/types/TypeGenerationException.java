@@ -1,7 +1,13 @@
 package jarkz.tbot.exceptions.types;
 
 import jarkz.tbot.TestContainer;
+import jarkz.tbot.types.TypeFactory;
 
+/**
+ * This excpetion uses for any errors in {@link TypeFactory} class.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class TypeGenerationException extends RuntimeException {
 

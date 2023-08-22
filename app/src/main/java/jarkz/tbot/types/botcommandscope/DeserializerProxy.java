@@ -6,11 +6,25 @@ import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.JsonNotFoundKey;
 import jarkz.tbot.types.deserializers.JsonTypeNotDefined;
 
+/**
+ * The deserializer proxy for general interface {@link BotCommandScope}.
+ *
+ * <p>Uses for the JSON deserializer adapter. Contains only one static method, which defines which
+ * child type needed to map and returns the needed class.
+ *
+ * @author Pavel Bialiauski
+ */
 @Deserializer
 public class DeserializerProxy {
 
   private static final String BOT_COMMAND_SCOPE_KEY = "type";
 
+  /**
+   * Returns a implemented class from the {@link BotCommandScope} by specific type.
+   *
+   * @param jsonObject the BotCommandScope as json object.
+   * @return a implemented class from the {@link BotCommandScope}.
+   */
   public static Class<? extends BotCommandScope> getBotCommandScopeClass(JsonObject jsonObject) {
 
     JsonElement element = jsonObject.get(BOT_COMMAND_SCOPE_KEY);

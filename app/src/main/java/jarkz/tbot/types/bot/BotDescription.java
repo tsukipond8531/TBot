@@ -3,16 +3,34 @@ package jarkz.tbot.types.bot;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
+/**
+ * This object represents the bot's description.
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotDescription {
 
   @NotNull private String description;
 
+  /**
+   * Default constructor.
+   */
   public BotDescription() {}
 
+  /**
+   * The bot's description.
+   *
+   * @return description as String.
+   */
   public String getDescription() {
     return description;
   }
 
+  /**
+   * Sets the bot's description.
+   *
+   * @param description the bot's description as String.
+   */
   public void setDescription(String description) {
     this.description = description;
   }

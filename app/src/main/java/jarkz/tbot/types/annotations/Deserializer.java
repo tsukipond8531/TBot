@@ -5,6 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * This annotation marks the class or the package as Desrializer.
+ *
+ * Uses for exception from classpool for runtime application.
+ *
+ * @author Pavel Bialiauski
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.PACKAGE})
 public @interface Deserializer {}

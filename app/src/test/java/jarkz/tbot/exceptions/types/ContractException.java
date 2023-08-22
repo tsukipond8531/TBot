@@ -2,6 +2,11 @@ package jarkz.tbot.exceptions.types;
 
 import jarkz.tbot.TestContainer;
 
+/**
+ * The exception for contract violations.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class ContractException extends Exception {
 

@@ -13,12 +13,21 @@ import org.junit.jupiter.api.Test;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
+/**
+ * This test verifies package {@link jarkz.tbot.types.chat}.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class ChatTest {
 
   private final int TYPE_DEPTH = 1;
   private final float CHANCE_OF_NULLABLE_FIELD = 0.35f;
 
+  /**
+   * Verifies the equals and hashCode for each class, except deserializers, test containers and
+   * etc., from the package {@link jarkz.tbot.types.chat}.
+   */
   @Test
   public void verifyEqualsAndHashCode() {
     EqualsVerifier.forPackage(this.getClass().getPackageName())
@@ -34,11 +43,19 @@ public class ChatTest {
         .verify();
   }
 
+  /**
+   * Verifies the datatype contracts for each class, except deserializers, test containers and etc.,
+   * from the packages {@link jarkz.tbot.types.chat}.
+   */
   @Test
   public void verifyDatatypesContract() throws ContractException {
     ContractVerifier.verifyPackage(this.getClass().getPackageName());
   }
 
+  /**
+   * Verifies the JSON serialization for each class, except deserializers, test containers and etc.,
+   * from the package {@link jarkz.tbot.types.chat}.
+   */
   @Test
   public void verifyJsonSerialization() {
     var reflections =

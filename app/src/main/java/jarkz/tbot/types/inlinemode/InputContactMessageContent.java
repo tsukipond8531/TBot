@@ -5,6 +5,12 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Represents the <a href="https://core.telegram.org/bots/api#inputmessagecontent">content</a> of a
+ * contact message to be sent as the result of an inline query.
+ *
+ * @author Pavel Bialiauski
+ */
 public class InputContactMessageContent implements InputMessageContent {
 
   @SerializedName("phone_number")
@@ -20,36 +26,80 @@ public class InputContactMessageContent implements InputMessageContent {
 
   private String vcard;
 
+  /** Default constructor. */
   public InputContactMessageContent() {}
 
+  /**
+   * Contact's phone number.
+   *
+   * @return phone_number as String.
+   */
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
+  /**
+   * Sets the contact's phone number.
+   *
+   * @param phoneNumber the contact's phone number as String.
+   */
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
+  /**
+   * Contact's first name.
+   *
+   * @return first_name as String.
+   */
   public String getFirstName() {
     return firstName;
   }
 
+  /**
+   * Sets the contact's first name.
+   *
+   * @param firstName the contact's first name as String.
+   */
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
 
+  /**
+   * <i>Optional.</i> Contact's last name.
+   *
+   * @return an optional value of last_name as String.
+   */
   public Optional<String> getLastName() {
     return Optional.of(lastName);
   }
 
+  /**
+   * Sets the contact's last name.
+   *
+   * @param lastName the contact's last name as String or null if it is not required.
+   */
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
+  /**
+   * <i>Optional.</i> Additional data about the contact in the form of a <a
+   * href="https://en.wikipedia.org/wiki/VCard">vCard</a>, 0-2048 bytes.
+   *
+   * @return an optional value of vcard as String.
+   */
   public Optional<String> getVcard() {
     return Optional.of(vcard);
   }
 
+  /**
+   * Sets the additional data about the contact in the form of a <a
+   * href="https://en.wikipedia.org/wiki/VCard">vCard</a>, 0-2048 bytes.
+   *
+   * @param vcard the additional data about the contact in the form of a vcard (0-2048 bytes) as
+   *     String or null if it is not required.
+   */
   public void setVcard(String vcard) {
     this.vcard = vcard;
   }

@@ -9,6 +9,11 @@ import jarkz.tbot.types.chatmember.ChatMember;
 import jarkz.tbot.types.chatmember.DeserializerProxy;
 import java.lang.reflect.Type;
 
+/**
+ * The JSON deserializer for general interface {@link ChatMember}.
+ *
+ * @author Pavel Bialiauski
+ */
 public class ChatMemberDeserializer implements JsonDeserializer<ChatMember> {
 
   @Override

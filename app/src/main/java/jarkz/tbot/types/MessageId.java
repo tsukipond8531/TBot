@@ -1,21 +1,38 @@
 package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
-import java.util.Optional;
 
+/**
+ * This object represents a unique message identifier.
+ *
+ * @author Pavel Bialiauski
+ */
 public class MessageId {
 
   @SerializedName("message_id")
-  private Long messageId;
+  @NotNull
+  private long messageId;
 
+  /** Default constructor. */
   public MessageId() {}
 
-  public Optional<Long> getMessageId() {
-    return Optional.of(messageId);
+  /**
+   * Unique message identifier.
+   *
+   * @return message identifier.
+   */
+  public long getMessageId() {
+    return messageId;
   }
 
-  public void setMessageId(Long messageId) {
+  /**
+   * Sets the unique message identifier.
+   *
+   * @param messageId the unique message identifier as long.
+   */
+  public void setMessageId(long messageId) {
     this.messageId = messageId;
   }
 
@@ -28,7 +45,7 @@ public class MessageId {
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof MessageId other)) return false;
-    return Objects.equals(messageId, other.messageId);
+    return messageId == other.messageId;
   }
 
   @Override

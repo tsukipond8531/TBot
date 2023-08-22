@@ -9,6 +9,11 @@ import jarkz.tbot.types.passport.DeserializerProxy;
 import jarkz.tbot.types.passport.PassportElementError;
 import java.lang.reflect.Type;
 
+/**
+ * The JSON deserializer for general interface {@link PassportElementError}.
+ *
+ * @author Pavel Bialiauski
+ */
 public class PassportElementErrorDeserializer implements JsonDeserializer<PassportElementError> {
 
   @Override

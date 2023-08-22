@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Represents the <a href="https://core.telegram.org/bots/api#inputmessagecontent">content</a> of a
+ * text message to be sent as the result of an inline query.
+ *
+ * @author Pavel Bialiauski
+ */
 public class InputTextMessageContent implements InputMessageContent {
 
   @SerializedName("message_text")
@@ -21,36 +27,87 @@ public class InputTextMessageContent implements InputMessageContent {
   @SerializedName("disable_web_page_preview")
   private Boolean disableWebPagePreview;
 
+  /** Default constructor. */
   public InputTextMessageContent() {}
 
+  /**
+   * Text of the message to be sent, 1-4096 characters.
+   *
+   * @return message_text as String.
+   */
   public String getMessageText() {
     return messageText;
   }
 
+  /**
+   * Sets the text of the message to be sent, 1-4096 characters.
+   *
+   * @param messageText the text of the message to be sent (1-4096 characters) as String.
+   */
   public void setMessageText(String messageText) {
     this.messageText = messageText;
   }
 
+  /**
+   * <i>Optional.</i> Mode for parsing entities in the message text. See <a
+   * href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more
+   * details.
+   *
+   * @return an optional value of parse_mode as String.
+   */
   public Optional<String> getParseMode() {
     return Optional.of(parseMode);
   }
 
+  /**
+   * Sets the mode for parsing entities in the message text. See <a
+   * href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more
+   * details.
+   *
+   * @param parseMode the mode for parsing entities in the message text as String or null if the
+   *     entities is exists.
+   */
   public void setParseMode(String parseMode) {
     this.parseMode = parseMode;
   }
 
+  /**
+   * <i>Optional.</i> List of special entities that appear in message text, which can be specified
+   * instead of <i>parse_mode</i>.
+   *
+   * @return an optional value of entities as {@link List}&lt;{@link MessageEntity}&gt;.
+   */
   public Optional<List<MessageEntity>> getEntities() {
     return Optional.of(entities);
   }
 
+  /**
+   * Sets the list of special entities that appear in message text, which can be specified instead
+   * of <i>parse_mode</i>.
+   *
+   * @param entities the list of special entities that appear in message text, which can be
+   *     specified instead of <i>parse_mode</i>, as {@link List}&lt;{@link MessageEntity}&gt; or
+   *     null if the parse mode is specified.
+   */
   public void setEntities(List<MessageEntity> entities) {
     this.entities = entities;
   }
 
+  /**
+   * <i>Optional.</i> Disables link previews for links in the sent message.
+   *
+   * @return an optional value of disable_web_page_preview as Boolean.
+   */
   public Optional<Boolean> getDisableWebPagePreview() {
     return Optional.of(disableWebPagePreview);
   }
 
+  /**
+   * Sets the disables link previews for links in the sent message.
+   *
+   * @param disableWebPagePreview true if disable link previews for links in the sent message,
+   *     otherwise - null or false.
+   */
   public void setDisableWebPagePreview(Boolean disableWebPagePreview) {
     this.disableWebPagePreview = disableWebPagePreview;
   }

@@ -9,6 +9,11 @@ import jarkz.tbot.types.inlinemode.DeserializerProxy;
 import jarkz.tbot.types.inlinemode.InlineQueryResult;
 import java.lang.reflect.Type;
 
+/**
+ * The JSON deserializer for general interface {@link InlineQueryResult}.
+ *
+ * @author Pavel Bialiauski
+ */
 public class InlineQueryResultDeserializer implements JsonDeserializer<InlineQueryResult> {
 
   @Override

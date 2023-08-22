@@ -2,14 +2,31 @@ package jarkz.tbot.types.botcommandscope;
 
 import java.util.Objects;
 
+/**
+ * Represents the <a href="https://core.telegram.org/bots/api#botcommandscope">scope</a> of bot
+ * commands, covering all private chats.
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotCommandScopeAllPrivateChats implements BotCommandScope {
 
+  /**
+   * Type of {@link BotCommandScope}. Always "all_private_chats".
+   */
   protected static final String TYPE = "all_private_chats";
 
   private final String type = BotCommandScopeAllPrivateChats.TYPE;
 
+  /**
+   * Default constructor.
+   */
   public BotCommandScopeAllPrivateChats() {}
 
+  /**
+   * Scope type, must be <i>all_private_chats</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }

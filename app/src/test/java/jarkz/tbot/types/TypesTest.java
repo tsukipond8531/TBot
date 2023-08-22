@@ -26,6 +26,12 @@ import org.junit.jupiter.api.Test;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
+/**
+ * This test verifies package {@link jarkz.tbot.types} and some methods verifies packages {@link
+ * jarkz.tbot.types}.*.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class TypesTest {
 
@@ -33,6 +39,12 @@ public class TypesTest {
   private static final float CHANCE_OF_NULLABLE_FIELD = 0.35f;
   private static final float GENERATE_ALL_FIELDS = 1f;
 
+  /**
+   * Verifies a class by JSON serialization.
+   *
+   * @param clazz a datatype class
+   * @param errMessage the string builder that uses for writing any errors
+   */
   public static void verifyClassByJsonSerialization(Class<?> clazz, StringBuilder errMessage) {
     Object instance;
     try {
@@ -70,6 +82,11 @@ public class TypesTest {
     }
   }
 
+  /**
+   * Generates general gson and returns it.
+   *
+   * @return a gson instance
+   */
   public static Gson getGson() {
     GsonBuilder gsonBuilder =
         new GsonBuilder()
@@ -83,11 +100,19 @@ public class TypesTest {
     return gsonBuilder.create();
   }
 
+  /**
+   * Verifies the equals and hashCode for each class, except deserializers, test containers and
+   * etc., from the package {@link jarkz.tbot.types}.
+   */
   @Test
   public void verifyEqualsAndHashCode() {
     verifyEqualsAndHashCodeForPackage(this.getClass().getPackageName());
   }
 
+  /**
+   * Verifies the JSON serialization for each class, except deserializers, test containers and etc.,
+   * from the package {@link jarkz.tbot.types}.
+   */
   @Test
   public void verifyJsonSerialization() {
     final String currentPackageName = this.getClass().getPackageName();
@@ -108,6 +133,10 @@ public class TypesTest {
     }
   }
 
+  /**
+   * Verifies the JSON serialization for each class, except deserializers, test containers and etc.,
+   * from the packages {@link jarkz.tbot.types}.*.
+   */
   @Test
   public void verifyJsonSerializationAllPackages() {
     var reflections =
@@ -129,6 +158,10 @@ public class TypesTest {
     }
   }
 
+  /**
+   * Verifies the equals and hashCode for each class, except deserializers, test containers and
+   * etc., from the packages {@link jarkz.tbot.types}.*.
+   */
   @Test
   public void verifyEqualsAndHashCodeAllPackages() {
     Reflections reflections =
@@ -141,6 +174,10 @@ public class TypesTest {
         .forEach(p -> verifyEqualsAndHashCodeForPackage(p));
   }
 
+  /**
+   * Verifies the datatype contracts for each class, except deserializers, test containers and etc.,
+   * from the packages {@link jarkz.tbot.types}.
+   */
   @Test
   public void verifyDatatypeContract() throws ContractException {
     Reflections reflections =
@@ -169,6 +206,12 @@ public class TypesTest {
     if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
   }
 
+  /**
+   * Verifies the equals and hashCode for each class, except deserializers, test containers and
+   * etc., from the specific package.
+   *
+   * @param packageName the specific package, from which gets the classes to pass the test.
+   */
   private void verifyEqualsAndHashCodeForPackage(String packageName) {
     var verifier =
         EqualsVerifier.forPackage(packageName)

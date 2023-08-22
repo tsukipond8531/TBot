@@ -2,9 +2,16 @@ package jarkz.tbot.types.forum;
 
 import jarkz.tbot.types.annotations.EmptyClass;
 
+/**
+ * This object represents a service message about a forum topic closed in the chat. Currently holds
+ * no information.
+ *
+ * @author Pavel Bialiauski
+ */
 @EmptyClass
 public class ForumTopicClosed {
 
+  /** Default constructor. */
   public ForumTopicClosed() {}
 
   @Override

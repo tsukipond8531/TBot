@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * This object represents a chat in Telegram API.
+ *
+ * @author Pavel Bialiauski
+ */
 public class Chat {
 
   @NotNull private long id;
@@ -84,228 +89,565 @@ public class Chat {
 
   private ChatLocation location;
 
+  /**
+   * Default constructor.
+   */
   public Chat() {}
 
+  /**
+   * Unique identifier for this chat.
+   *
+   * @return chat identifier as long value.
+   */
   public long getId() {
     return id;
   }
 
+  /**
+   * Sets the unique identifier for this chat.
+   *
+   * @param id the unique identifier for this chat as long value.
+   */
   public void setId(long id) {
     this.id = id;
   }
 
+  /**
+   * Type of chat, can be either “private”, “group”, “supergroup” or “channel”.
+   *
+   * @return type of chat as String.
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   * Sets the type of chat. Can be either “private”, “group”, “supergroup” or “channel”.
+   *
+   * @param type the type of chat as String.
+   */
   public void setType(String type) {
     this.type = type;
   }
 
+  /**
+   * <i>Optional.</i> Title, for supergroups, channels and group chats.
+   *
+   * @return an optional value of title as String.
+   */
   public Optional<String> getTitle() {
     return Optional.of(title);
   }
 
+  /**
+   * Sets the title, for supergroups, channels and group chats.
+   *
+   * @param title the title as String or null if it not of supergroups, channels and group chats.
+   */
   public void setTitle(String title) {
     this.title = title;
   }
 
+  /**
+   * <i>Optional.</i> Username, for private chats, supergroups and channels if available.
+   *
+   * @return an optional value of username as String.
+   */
   public Optional<String> getUsername() {
     return Optional.of(username);
   }
 
+  /**
+   * Sets the username, for private chats, supergroups and channels if available.
+   *
+   * @param username the username as String or null if it not for private chats, supergroups and
+   *     channels.
+   */
   public void setUsername(String username) {
     this.username = username;
   }
 
+  /**
+   * <i>Optional.</i> First name of the other party in a private chat.
+   *
+   * @return an optional value of first_name as String.
+   */
   public Optional<String> getFirstName() {
     return Optional.of(firstName);
   }
 
+  /**
+   * Sets the first name of the other party in a private chat.
+   *
+   * @param firstName the first name of the other party in a private chat as String or null if the
+   *     chat is not private.
+   */
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
 
+  /**
+   * <i>Optional.</i> Last name of the other party in a private chat.
+   *
+   * @return an optional value of last_name as String.
+   */
   public Optional<String> getLastName() {
     return Optional.of(lastName);
   }
 
+  /**
+   * Sets the last name of the other party in a private chat.
+   *
+   * @param lastName the last name of the other party in a private chat as String or null if the
+   *     other party doesn't contains it or the chat is not private.
+   */
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
+  /**
+   * <i>Optional.</i> True, if the supergroup chat is a forum (has <a href=
+   * "https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups">topics</a>
+   * enabled).
+   *
+   * @return an optional value of is_forum as Boolean.
+   */
   public Optional<Boolean> getIsForum() {
     return Optional.of(isForum);
   }
 
+  /**
+   * Sets wheter the supergroup chat is a forum (has <a href=
+   * "https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups">topics</a>
+   * enabled).
+   *
+   * @param isForum true if the supregroup chat is a forum, otherwise - false or null.
+   */
   public void setIsForum(Boolean isForum) {
     this.isForum = isForum;
   }
 
+  /**
+   * <i>Optional.</i> Chat photo. Returned only in getChat.
+   *
+   * @return an optional value of photo as {@link ChatPhoto}.
+   */
   public Optional<ChatPhoto> getPhoto() {
     return Optional.of(photo);
   }
 
+  /**
+   * Sets the chat photo.
+   *
+   * @param photo the chat photo as {@link ChatPhoto} or null if the chat doesn't contains it.
+   */
   public void setPhoto(ChatPhoto photo) {
     this.photo = photo;
   }
 
+  /**
+   * <i>Optional.</i> If non-empty, the list of all active chat usernames; for private chats,
+   * supergroups and channels. Returned only in getChat.
+   *
+   * @return an optional value of active_usernames as {@link List}&lt;String&gt;.
+   */
   public Optional<List<String>> getActiveUsernames() {
     return Optional.of(activeUsernames);
   }
 
+  /**
+   * Sets the list of all active chat usernames; for private chats, supergroups and channels.
+   *
+   * @param activeUsernames the list of all active chat usernames as {@link List}&lt;String&gt; or
+   *     null if the chat is not private, supertroup or channel, or the list is empty.
+   */
   public void setActiveUsernames(List<String> activeUsernames) {
     this.activeUsernames = activeUsernames;
   }
 
+  /**
+   * <i>Optional.</i> Custom emoji identifier of emoji status of the other party in a private chat.
+   * Returned only in getChat.
+   *
+   * @return an optional value of emoji_status_custom_emoji_id as String.
+   */
   public Optional<String> getEmojiStatusCustomEmojiId() {
     return Optional.of(emojiStatusCustomEmojiId);
   }
 
+  /**
+   * Sets the custom emoji identifier of emoji status of the other party in a private chat.
+   *
+   * @param emojiStatusCustomEmojiId the custom emoji identifier of emoji status of the other party
+   *     in a private chat as String or null if the chat is not private or the other party doesn't
+   *     have emoji status.
+   */
   public void setEmojiStatusCustomEmojiId(String emojiStatusCustomEmojiId) {
     this.emojiStatusCustomEmojiId = emojiStatusCustomEmojiId;
   }
 
+  /**
+   * <i>Optional.</i> Bio of the other party in a private chat. Returned only in getChat.
+   *
+   * @return an optional value of bio as String.
+   */
   public Optional<String> getBio() {
     return Optional.of(bio);
   }
 
+  /**
+   * Sets the bio of the other party in a private chat.
+   *
+   * @param bio the bio of the other party in a private chat as String or null if the chat is not
+   *     private or the other party doesn't have it.
+   */
   public void setBio(String bio) {
     this.bio = bio;
   }
 
+  /**
+   * <i>Optional.</i> True if privacy settings of the other party in the private chat allows to use
+   * tg://user?id=&lt;user_id&gt; links only in chats with the user. Returned only in getChat.
+   *
+   * @return an optional value of has_private_forwards as Boolean.
+   */
   public Optional<Boolean> getHasPrivateForwards() {
     return Optional.of(hasPrivateForwards);
   }
 
+  /**
+   * Sets wheter privacy settings of the other party in the private chat allows to use
+   * tg://user?id=&lt;user_id&gt; links only in chats with the user.
+   *
+   * @param hasPrivateForwards true if privacy settings of the other party in the private chats
+   *     allows to use specific links only in chats whith the user, otherwise - false or null.
+   */
   public void setHasPrivateForwards(Boolean hasPrivateForwards) {
     this.hasPrivateForwards = hasPrivateForwards;
   }
 
+  /**
+   * <i>Optional.</i> True if the privacy settings of the other party restrict sending voice and
+   * video note messages in the private chat. Returned only in getChat.
+   *
+   * @return an optional value of has_restricted_voice_and_video_messages as Boolean.
+   */
   public Optional<Boolean> getHasRestrictedVoiceAndVideoMessages() {
     return Optional.of(hasRestrictedVoiceAndVideoMessages);
   }
 
+  /**
+   * Sets whether the privacy settings of the other party restrict sending the voice and video note
+   * messges in the private chat.
+   *
+   * @param hasRestrictedVoiceAndVideoMessages true if the privacy settings of the other party
+   *     restrict sending voice and video note messages in the private chat, otherwise - false or
+   *     null.
+   */
   public void setHasRestrictedVoiceAndVideoMessages(Boolean hasRestrictedVoiceAndVideoMessages) {
     this.hasRestrictedVoiceAndVideoMessages = hasRestrictedVoiceAndVideoMessages;
   }
 
+  /**
+   * <i>Optional.</i> True if users need to join the supergroup before they can send messages.
+   * Returned only in getChat.
+   *
+   * @return an optional value of join_to_send_messages as Boolean.
+   */
   public Optional<Boolean> getJoinToSendMessages() {
     return Optional.of(joinToSendMessages);
   }
 
+  /**
+   * Sets whether users need to join the supegroup before they can send messages.
+   *
+   * @param joinToSendMessages true if users need to jooin the supegroup before they can send
+   *     messages, otherwise - false or null.
+   */
   public void setJoinToSendMessages(Boolean joinToSendMessages) {
     this.joinToSendMessages = joinToSendMessages;
   }
 
+  /**
+   * <i>Optional.</i> True if all users directly joining the supergroup need to be approved by
+   * supergroup administrators. Returned only in getChat.
+   *
+   * @return an optional value of join_by_request as Boolean.
+   */
   public Optional<Boolean> getJoinByRequest() {
     return Optional.of(joinByRequest);
   }
 
+  /**
+   * Sets whether all users directly joining the supegroup neeed to be approved by supegroup
+   * administrators.
+   *
+   * @param joinByRequest true if all users directly joining the supergroup need to be approved by
+   *     supegroup administrators, otherwise - false or null.
+   */
   public void setJoinByRequest(Boolean joinByRequest) {
     this.joinByRequest = joinByRequest;
   }
 
+  /**
+   * <i>Optional.</i> Description, for groups, supergroups and channel chats. Returned only in
+   * getChat.
+   *
+   * @return an optional value of description as String.
+   */
   public Optional<String> getDescription() {
     return Optional.of(description);
   }
 
+  /**
+   * Sets the description for groups, supegroups and channel chats.
+   *
+   * @param description the description as String or null if the chat is not group, supergroup or
+   *     channel.
+   */
   public void setDescription(String description) {
     this.description = description;
   }
 
+  /**
+   * <i>Optional.</i> Primary invite link, for groups, supergroups and channel chats. Returned only
+   * in getChat.
+   *
+   * @return an optional value of invite_link as String.
+   */
   public Optional<String> getInviteLink() {
     return Optional.of(inviteLink);
   }
 
+  /**
+   * Sets the primary invite link for groups, supregroups and channel chats.
+   *
+   * @param inviteLink the primary invite link as String or null if the chat is not group,
+   *     supergroup or channel.
+   */
   public void setInviteLink(String inviteLink) {
     this.inviteLink = inviteLink;
   }
 
+  /**
+   * <i>Optional.</i> The most recent pinned message (by sending date). Returned only in getChat.
+   *
+   * @return an optional value of pinned_message as {@link Message}.
+   */
   public Optional<Message> getPinnedMessage() {
     return Optional.of(pinnedMessage);
   }
 
+  /**
+   * Sets the most recent pinned message (by sending data).
+   *
+   * @param pinnedMessage the most recent pinned message (by sending data) as {@link Message} or
+   *     null if the chat doesn't contains a pin.
+   */
   public void setPinnedMessage(Message pinnedMessage) {
     this.pinnedMessage = pinnedMessage;
   }
 
+  /**
+   * <i>Optional.</i> Default chat member permissions, for groups and supergroups. Returned only in
+   * getChat.
+   *
+   * @return an optional value of permissions as {@link ChatPermissions}.
+   */
   public Optional<ChatPermissions> getPermissions() {
     return Optional.of(permissions);
   }
 
+  /**
+   * Sets the overriden chat member permissions for groups and supergroups.
+   *
+   * @param permissions the overriden chat member permissions as {@link ChatPermissions} or null if
+   *     the chat is not group or supegroup.
+   */
   public void setPermissions(ChatPermissions permissions) {
     this.permissions = permissions;
   }
 
+  /**
+   * <i>Optional.</i> For supergroups, the minimum allowed delay between consecutive messages sent
+   * by each unpriviledged user; in seconds. Returned only in getChat.
+   *
+   * @return an optional value of slow_mode_delay as Integer.
+   */
   public Optional<Integer> getSlowModeDelay() {
     return Optional.of(slowModeDelay);
   }
 
+  /**
+   * Sets the slow mode delay for supegroups in seconds.
+   *
+   * <p>Slow mode delay - the minimum allowed delay between consecutive messages sent by each
+   * unprivilidged user.
+   *
+   * @param slowModeDelay the slow mode delay in seconds as Integer or null if the chat is not
+   *     supergroup.
+   */
   public void setSlowModeDelay(Integer slowModeDelay) {
     this.slowModeDelay = slowModeDelay;
   }
 
+  /**
+   * <i>Optional.</i> The time after which all messages sent to the chat will be automatically
+   * deleted; in seconds. Returned only in getChat.
+   *
+   * @return an optional value of message_auto_delete_time as Integer.
+   */
   public Optional<Integer> getMessageAutoDeleteTime() {
     return Optional.of(messageAutoDeleteTime);
   }
 
+  /**
+   * Sets the time after which all messages sent to the chat will be automatically deleted; in
+   * seconds.
+   *
+   * @param messageAutoDeleteTime the time after which all messages sent to the chat will be
+   *     automatically deleted (in seconds) as Integer or null if it is not required.
+   */
   public void setMessageAutoDeleteTime(Integer messageAutoDeleteTime) {
     this.messageAutoDeleteTime = messageAutoDeleteTime;
   }
 
+  /**
+   * <i>Optional.</i> True if aggressive anti-spam checks are enabled in the supergroup. The field
+   * is only available to chat administrators. Returned only in getChat.
+   *
+   * @return an optional value of has_agressive_anti_spam_enabled as Boolean.
+   */
   public Optional<Boolean> getHasAggressiveAntiSpamEnabled() {
     return Optional.of(hasAggressiveAntiSpamEnabled);
   }
 
+  /**
+   * Sets whether agressive anti-spam check are enabled in supegroup. The field is only available to
+   * caht administrators.
+   *
+   * @param hasAggressiveAntiSpamEnabled true if agressive anti-spam check are enabled in
+   *     supergroup, otherwise - false or null.
+   */
   public void setHasAggressiveAntiSpamEnabled(Boolean hasAggressiveAntiSpamEnabled) {
     this.hasAggressiveAntiSpamEnabled = hasAggressiveAntiSpamEnabled;
   }
 
+  /**
+   * <i>Optional.</i> True if non-administrators can only get the list of bots and administrators in
+   * the chat. Returned only in getChat.
+   *
+   * @return an optional value of has_hidden_members as Boolean.
+   */
   public Optional<Boolean> getHasHiddenMembers() {
     return Optional.of(hasHiddenMembers);
   }
 
+  /**
+   * Sets whether non-administrators can only get the list of bots and administrators in the chat.
+   *
+   * @param hasHiddenMembers true if non-administrators can only get the list of bots and
+   *     administrators in the chat, otherwise - false or null.
+   */
   public void setHasHiddenMembers(Boolean hasHiddenMembers) {
     this.hasHiddenMembers = hasHiddenMembers;
   }
 
+  /**
+   * <i>Optional.</i> True if messages from the chat can't be forwarded to other chats. Returned
+   * only in getChat.
+   *
+   * @return an optional value of has_protected_content as Boolean.
+   */
   public Optional<Boolean> getHasProtectedContent() {
     return Optional.of(hasProtectedContent);
   }
 
+  /**
+   * Sets whether messages from the chat can't be forwarded to other chats.
+   *
+   * @param hasProtectedContent true if messages from the chat can't be forwarded to other chats,
+   *     otherwise - false or null.
+   */
   public void setHasProtectedContent(Boolean hasProtectedContent) {
     this.hasProtectedContent = hasProtectedContent;
   }
 
+  /**
+   * <i>Optional.</i> For supergroups, name of group sticker set. Returned only in getChat.
+   *
+   * @return an optional value of sticker_set_name as String.
+   */
   public Optional<String> getStickerSetName() {
     return Optional.of(stickerSetName);
   }
 
+  /**
+   * Sets the name of group sticker set for supergroups.
+   *
+   * @param stickerSetName the name of group sticker set as String or null if the chat is not
+   *     supegroup.
+   */
   public void setStickerSetName(String stickerSetName) {
     this.stickerSetName = stickerSetName;
   }
 
+  /**
+   * <i>Optional.</i> True if the bot can change the group sticker set. Returned only in getChat.
+   *
+   * @return an optional value of can_set_sticker_set as Boolean.
+   */
   public Optional<Boolean> getCanSetStickerSet() {
     return Optional.of(canSetStickerSet);
   }
 
+  /**
+   * Sets whether the bot can change the group sticker set.
+   *
+   * @param canSetStickerSet true if the bot can change the group sticker set, otherwise - false or
+   *     null.
+   */
   public void setCanSetStickerSet(Boolean canSetStickerSet) {
     this.canSetStickerSet = canSetStickerSet;
   }
 
+  /**
+   * <i>Optional.</i> Unique identifier for the linked chat, i.e. the discussion group identifier
+   * for a channel and vice versa; for supergroups and channel chats. Returned only in getChat.
+   *
+   * @return an optional value of linked_chat_id as Long.
+   */
   public Optional<Long> getLinkedChatId() {
     return Optional.of(linkedChatId);
   }
 
+  /**
+   * Sets the unique identifier for the linked chat, i.e. the discussion group identifier for a
+   * channel and vice versa; for supergroups and channel chats.
+   *
+   * @param linkedChatId the unique identifier for the linked chat as Long or null if the chat is
+   *     not supergroup or channel.
+   */
   public void setLinkedChatId(Long linkedChatId) {
     this.linkedChatId = linkedChatId;
   }
 
+  /**
+   * <i>Optional.</i> For supergroups, the location to which the supergroup is connected. Returned
+   * only in getChat.
+   *
+   * @return an optional value of location as {@link ChatLocation}.
+   */
   public Optional<ChatLocation> getLocation() {
     return Optional.of(location);
   }
 
+  /**
+   * Sets the location to which the supergroup is connected. Only for supegroups.
+   *
+   * @param location the location to which the supegroup is connected as {@link ChatLocation} or
+   *     null if the chat is not supergroup.
+   */
   public void setLocation(ChatLocation location) {
     this.location = location;
   }

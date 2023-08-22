@@ -3,16 +3,34 @@ package jarkz.tbot.types.bot;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
+/**
+ * This object represents the bot's name.
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotName {
 
   @NotNull private String name;
 
+  /**
+   * Default constructor.
+   */
   public BotName() {}
 
+  /**
+   * The bot's name.
+   *
+   * @return name as String.
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Sets the bot's name.
+   *
+   * @param name the bot's name as String.
+   */
   public void setName(String name) {
     this.name = name;
   }

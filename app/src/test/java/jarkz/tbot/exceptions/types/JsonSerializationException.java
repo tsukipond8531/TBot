@@ -2,6 +2,11 @@ package jarkz.tbot.exceptions.types;
 
 import jarkz.tbot.TestContainer;
 
+/**
+ * This exception for JSON serialization/deserialization violations.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class JsonSerializationException extends RuntimeException {
 

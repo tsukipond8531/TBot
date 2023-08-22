@@ -5,16 +5,33 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * This object represents a service message about new members invited to a video chat.
+ *
+ * @author Pavel Bialiauski
+ */
 public class VideoChatParticipantsInvited {
 
   private List<User> users;
 
+  /** Default constructor. */
   public VideoChatParticipantsInvited() {}
 
+  /**
+   * New members that were invited to the video chat.
+   *
+   * @return users as {@link List}&lt;{@link User}&gt;.
+   */
   public Optional<List<User>> getUsers() {
     return Optional.of(users);
   }
 
+  /**
+   * Sets the new members that were invited to the video chat.
+   *
+   * @param users the new members that were invited to the video chat as {@link List}&lt;{@link
+   *     User}&gt; or null if there are no new members.
+   */
   public void setUsers(List<User> users) {
     this.users = users;
   }

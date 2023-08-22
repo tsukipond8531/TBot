@@ -6,11 +6,25 @@ import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.JsonNotFoundKey;
 import jarkz.tbot.types.deserializers.JsonTypeNotDefined;
 
+/**
+ * The deserializer proxy for general interface {@link InlineQueryResult}.
+ *
+ * <p>Uses for the JSON deserializer adapter. Contains only one static method, which defines which
+ * child type needed to map and returns the needed class.
+ *
+ * @author Pavel Bialiauski
+ */
 @Deserializer
 public class DeserializerProxy {
 
   private static final String INLINE_QUERY_RESULT_KEY = "type";
 
+  /**
+   * Returns a implemented class from the {@link InlineQueryResult} by specific type.
+   *
+   * @param jsonObject the InlineQueryResult as json object.
+   * @return a implemented class from the {@link InlineQueryResult}.
+   */
   public static Class<? extends InlineQueryResult> getInlineQueryResultClass(
       JsonObject jsonObject) {
 

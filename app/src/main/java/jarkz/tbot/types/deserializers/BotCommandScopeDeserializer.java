@@ -9,6 +9,11 @@ import jarkz.tbot.types.botcommandscope.BotCommandScope;
 import jarkz.tbot.types.botcommandscope.DeserializerProxy;
 import java.lang.reflect.Type;
 
+/**
+ * The JSON deserializer adapter for general interface {@link BotCommandScope}.
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotCommandScopeDeserializer implements JsonDeserializer<BotCommandScope> {
 
   @Override

@@ -2,6 +2,11 @@ package jarkz.tbot.exceptions.types;
 
 import jarkz.tbot.TestContainer;
 
+/**
+ * The exception for toString method contract violations.
+ *
+ * @authro Pavel Bialiauski
+ */
 @TestContainer
 public class ToStringContractException extends ContractException {
 

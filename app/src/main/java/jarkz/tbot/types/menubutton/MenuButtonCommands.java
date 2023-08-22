@@ -2,14 +2,28 @@ package jarkz.tbot.types.menubutton;
 
 import java.util.Objects;
 
+/**
+ * Represents a menu button, which opens the bot's list of commands.
+ *
+ * @author Pavel Bialiauski
+ */
 public class MenuButtonCommands implements MenuButton {
 
+  /**
+   * Type of {@link MenuButton}. Always "commands".
+   */
   protected static final String TYPE = "commands";
 
   private final String type = MenuButtonCommands.TYPE;
 
+  /** Default constructor. */
   public MenuButtonCommands() {}
 
+  /**
+   * Type of the button, must be <i>commands</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }

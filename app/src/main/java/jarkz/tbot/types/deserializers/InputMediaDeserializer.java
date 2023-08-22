@@ -9,6 +9,11 @@ import jarkz.tbot.types.inputmedia.DeserializerProxy;
 import jarkz.tbot.types.inputmedia.InputMedia;
 import java.lang.reflect.Type;
 
+/**
+ * The JSON deserializer for general interface {@link InputMedia}.
+ *
+ * @author Pavel Bialiauski
+ */
 public class InputMediaDeserializer implements JsonDeserializer<InputMedia> {
 
   @Override

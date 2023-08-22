@@ -9,6 +9,11 @@ import jarkz.tbot.types.menubutton.DeserializerProxy;
 import jarkz.tbot.types.menubutton.MenuButton;
 import java.lang.reflect.Type;
 
+/**
+ * The JSON deserializer for general interface {@link MenuButton}.
+ *
+ * @author Pavel Bialiauski
+ */
 public class MenuButtonDeserializer implements JsonDeserializer<MenuButton> {
 
   @Override

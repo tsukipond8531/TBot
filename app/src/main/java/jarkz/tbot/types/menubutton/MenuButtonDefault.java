@@ -2,14 +2,28 @@ package jarkz.tbot.types.menubutton;
 
 import java.util.Objects;
 
+/**
+ * Describes that no specific value for the menu button was set.
+ *
+ * @author Pavel Bialiauski
+ */
 public class MenuButtonDefault implements MenuButton {
 
+  /**
+   * Type of {@link MenuButton}. Always "default".
+   */
   protected static final String TYPE = "default";
 
   private final String type = MenuButtonDefault.TYPE;
 
+  /** Default constructor. */
   public MenuButtonDefault() {}
 
+  /**
+   * Type of the button, must be <i>default</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }

@@ -4,8 +4,17 @@ import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
+/**
+ * Represents the <a href="https://core.telegram.org/bots/api#botcommandscope">scope</a> of bot
+ * commands, covering all administrators of a specific group or supergroup chat.
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotCommandScopeChatAdministrators implements BotCommandScope {
 
+  /**
+   * Type of {@link BotCommandScope}. Always "chat_administrators".
+   */
   protected static final String TYPE = "chat_administrators";
 
   private final String type = BotCommandScopeChatAdministrators.TYPE;
@@ -14,16 +23,37 @@ public class BotCommandScopeChatAdministrators implements BotCommandScope {
   @NotNull
   private String chatId;
 
+  /**
+   * Default constructor.
+   */
   public BotCommandScopeChatAdministrators() {}
 
+  /**
+   * Scope type, must be <i>chat_administrators</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   * Unique identifier for the target chat or username of the target supergroup (in the format
+   * <code>@supergroupusername</code>).
+   *
+   * @return chat_id as String.
+   */
   public String getChatId() {
     return chatId;
   }
 
+  /**
+   * Sets the unique identifier for the target chat or username of the target supergroup (in the
+   * format <code>@supergroupusername</code>).
+   *
+   * @param chatId the unique identifier for the target chat or username of the target supergroup
+   *     (in the format <code>@supergroupusername</code>) as String.
+   */
   public void setChatId(String chatId) {
     this.chatId = chatId;
   }

@@ -4,6 +4,11 @@ import jakarta.validation.constraints.NotNull;
 import jarkz.tbot.types.User;
 import java.util.Objects;
 
+/**
+ * This object represents one row of the high scores table for a game.
+ *
+ * @author Pavel Bialiauski
+ */
 public class GameHighScore {
 
   @NotNull private int position;
@@ -12,28 +17,59 @@ public class GameHighScore {
 
   @NotNull private int score;
 
+  /** Default constructor. */
   public GameHighScore() {}
 
+  /**
+   * Position in high score table for the game.
+   *
+   * @return position as int.
+   */
   public int getPosition() {
     return position;
   }
 
+  /**
+   * Sets the position in high score table for the game.
+   *
+   * @param position the position in high score table for the game as int.
+   */
   public void setPosition(int position) {
     this.position = position;
   }
 
+  /**
+   * User.
+   *
+   * @return user as {@link User}.
+   */
   public User getUser() {
     return user;
   }
 
+  /**
+   * Sets the user.
+   *
+   * @param user the user as {@link User}.
+   */
   public void setUser(User user) {
     this.user = user;
   }
 
+  /**
+   * Score.
+   *
+   * @return score as int.
+   */
   public int getScore() {
     return score;
   }
 
+  /**
+   * Sets the score.
+   *
+   * @param score the score as int.
+   */
   public void setScore(int score) {
     this.score = score;
   }

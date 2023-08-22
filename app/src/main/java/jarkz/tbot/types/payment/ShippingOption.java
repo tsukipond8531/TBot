@@ -4,6 +4,11 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This object represents one shipping option.
+ *
+ * @author Pavel Bialiauski
+ */
 public class ShippingOption {
 
   @NotNull private String id;
@@ -12,28 +17,59 @@ public class ShippingOption {
 
   @NotNull private List<LabeledPrice> prices;
 
+  /** Default constructor. */
   public ShippingOption() {}
 
+  /**
+   * Shipping option identifier.
+   *
+   * @return id as String.
+   */
   public String getId() {
     return id;
   }
 
+  /**
+   * Sets the shipping option identifier.
+   *
+   * @param id the shipping option identifier as String.
+   */
   public void setId(String id) {
     this.id = id;
   }
 
+  /**
+   * Option title.
+   *
+   * @return title as String.
+   */
   public String getTitle() {
     return title;
   }
 
+  /**
+   * Sets the option title.
+   *
+   * @param title the option title as String.
+   */
   public void setTitle(String title) {
     this.title = title;
   }
 
+  /**
+   * List of price portions.
+   *
+   * @return prices as {@link List}&lt;{@link LabeledPrice}&gt;.
+   */
   public List<LabeledPrice> getPrices() {
     return prices;
   }
 
+  /**
+   * Sets the list of price portions.
+   *
+   * @param prices the list of price portions as {@link List}&lt;{@link LabeledPrice}&gt;.
+   */
   public void setPrices(List<LabeledPrice> prices) {
     this.prices = prices;
   }

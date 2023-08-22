@@ -28,6 +28,12 @@ import java.util.Set;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
+/**
+ * Special "static" class for verifies any datatype or package, in which can be found the datatypes,
+ * by contract.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class ContractVerifier {
 
@@ -77,6 +83,12 @@ public class ContractVerifier {
 
   private static final String TO_STRING_TEXT_SEPARATOR = ", ";
 
+  /**
+   * Verifies the package, in which can be found a datatype.
+   *
+   * @param packageName the valid package name.
+   * @throws ContractException a list of contract violations.
+   */
   public static void verifyPackage(String packageName) throws ContractException {
     Reflections reflections = new Reflections(packageName);
     StringBuilder errMessage = new StringBuilder();
@@ -95,6 +107,12 @@ public class ContractVerifier {
     if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
   }
 
+  /**
+   * Verifies the class by contract.
+   *
+   * @param clazz the class to verify by contract.
+   * @throws ContractException a list of contract violations.
+   */
   public static void verifyClass(Class<?> clazz) throws ContractException {
     if (clazz.isInterface() || clazz.isAnnotationPresent(TestContainer.class)) return;
     StringBuilder errMessage = new StringBuilder();
@@ -133,6 +151,12 @@ public class ContractVerifier {
     if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
   }
 
+  /**
+   * Verifies the fields from class.
+   *
+   * @param clazz the class to verify.
+   * @throws FieldsContractException a list of fields contract violations.
+   */
   private static void verifyFields(Class<?> clazz) throws FieldsContractException {
     StringBuilder errMessage = new StringBuilder();
     Fields fields = separateFields(clazz.getDeclaredFields(), errMessage);
@@ -152,6 +176,16 @@ public class ContractVerifier {
     if (!errMessage.isEmpty()) throw new FieldsContractException(errMessage.toString());
   }
 
+  /**
+   * Seprarate all declared fields by checking {@link NotNull} annotation, which defines that
+   * specific field is not null. Skips fields with modifier "static".
+   *
+   * <p>Also this method check modifier of each field by privacy.
+   *
+   * @param allFields all declared fields of a instance.
+   * @param errMessage the string builder, in which will be writes any violations.
+   * @return separated fields, which writes into {@link Fields}.
+   */
   private static Fields separateFields(Field[] allFields, StringBuilder errMessage) {
     List<Field> notNullFields = new ArrayList<>();
     List<Field> objectFields = new ArrayList<>();
@@ -180,6 +214,13 @@ public class ContractVerifier {
     return new Fields(notNullFields, objectFields);
   }
 
+  /**
+   * Verifies the fields, which marked by {@link NotNull} annotation, by not-null contract.
+   *
+   * @param sourceClass the class for gets getters and setters for verifies return types.
+   * @param notNullFields the fields, which marked by {@link NotNull} annotation.
+   * @throws NotNullContractException a list of not-null contract violations.
+   */
   private static void verifyNotNullContract(Class<?> sourceClass, List<Field> notNullFields)
       throws NotNullContractException {
     StringBuilder errMessage = new StringBuilder();
@@ -204,6 +245,13 @@ public class ContractVerifier {
     if (!errMessage.isEmpty()) throw new NotNullContractException(errMessage.toString());
   }
 
+  /**
+   * Verifies availability and return type of getter for specific field.
+   *
+   * @param sourceClass the class for get the getter.
+   * @param field the referenced field to class.
+   * @param errMessage the string builder, in which will be writes any violations.
+   */
   private static void verifyGettersForNotNullField(
       Class<?> sourceClass, Field field, StringBuilder errMessage) {
     String getterMethodName = getGetterMethodName(field);
@@ -232,6 +280,13 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * Verifies availability and return type of setter for specific field.
+   *
+   * @param sourceClass the class for get the setter.
+   * @param field the referenced field to class.
+   * @param errMessage the string builder, in which will be writes any violations.
+   */
   private static void verifySettersForNotNullField(
       Class<?> sourceClass, Field field, StringBuilder errMessage) {
     String setterMethodName = getSetterMethodName(field);
@@ -260,6 +315,13 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * Verifies the fields, which marked by {@link NotNull} annotation, by optional type contract.
+   *
+   * @param clazz the source class for get the getter/setter for verifies return type contract.
+   * @param objectFields the list of fields, which marked by {@link NotNull} annotation.
+   * @throws ObjectFieldContractException a list of object fields contract violations.
+   */
   private static void verifyReturnOptionalTypeContract(Class<?> clazz, List<Field> objectFields)
       throws ObjectFieldContractException {
     StringBuilder errMessage = new StringBuilder();
@@ -288,6 +350,13 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * Verifies availability and return type of getter for specific objective field.
+   *
+   * @param sourceClass the class for get the getter.
+   * @param field the referenced field to class.
+   * @param errMessage the string builder, in which will be writes any violations.
+   */
   private static void verifyGettersForObjectiveField(
       Class<?> sourceClass, Field field, StringBuilder errMessage) {
     String getterMethodName = getGetterMethodName(field);
@@ -314,6 +383,13 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * Verifies availability and return type of setter for specific objective field.
+   *
+   * @param sourceClass the class for get the setter.
+   * @param field the referenced field to class.
+   * @param errMessage the string builder, in which will be writes any violations.
+   */
   private static void verifySettersForObjectiveField(
       Class<?> sourceClass, Field field, StringBuilder errMessage) {
     String setterMethodName = getSetterMethodName(field);
@@ -342,6 +418,12 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * Returns the getter method name by general rules.
+   *
+   * @param field the referenced field.
+   * @return the right field name.
+   */
   private static String getGetterMethodName(Field field) {
     String fieldName = field.getName();
     if (field.getType().equals(Boolean.TYPE) && fieldName.startsWith(GETTER_PREFIX_FOR_BOOLEAN)) {
@@ -353,6 +435,12 @@ public class ContractVerifier {
     return prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
   }
 
+  /**
+   * Returns the setter method name by general rules.
+   *
+   * @param field the referenced field.
+   * @return the right field name.
+   */
   private static String getSetterMethodName(Field field) {
     String fieldName = field.getName();
     String prefix = SETTER_PREFIX;
@@ -364,6 +452,14 @@ public class ContractVerifier {
     return prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
   }
 
+  /**
+   * Appends another one error to string builder.
+   *
+   * @param errMessage the string builder, in which will be writes any violations.
+   * @param getter the referenced method.
+   * @param field the referenced field.
+   * @param source the source class, in which found violation.
+   */
   private static void appendErrorOfReturnType(
       StringBuilder errMessage, Method getter, Field field, Class<?> source) {
     errMessage
@@ -378,6 +474,12 @@ public class ContractVerifier {
         .append(NEXT_LINE);
   }
 
+  /**
+   * Verifies all fields by naming contract.
+   *
+   * @param clazz the class to verify.
+   * @throws NamingContractException a list of fields contract violations.
+   */
   private static void verifyNamingContract(Class<?> clazz) throws NamingContractException {
     Field[] allFields = clazz.getDeclaredFields();
     StringBuilder errMessage = new StringBuilder();
@@ -444,6 +546,13 @@ public class ContractVerifier {
     if (!errMessage.isEmpty()) throw new NamingContractException(errMessage.toString());
   }
 
+  /**
+   * Verifies is every character of camelCase name in lower case.
+   *
+   * @param fieldName the field name to verify.
+   * @return true if the field name is camelCase and all characters in lower case, otherwise -
+   *     false.
+   */
   private static boolean isLower(String fieldName) {
     boolean isCamelCase = fieldName.matches(CAMEL_CASE_PATTERN);
     boolean isLower = true;
@@ -456,6 +565,12 @@ public class ContractVerifier {
     return isCamelCase && isLower;
   }
 
+  /**
+   * Verifies all fields by general interface contract.
+   *
+   * @param clazz the class to verify.
+   * @throws GeneralInterfacesContractException a list of fields contract violations.
+   */
   private static void verifyGeneralInterfacesContract(Class<?> clazz)
       throws GeneralInterfacesContractException {
     Field[] allFields = clazz.getDeclaredFields();
@@ -485,6 +600,12 @@ public class ContractVerifier {
     if (!errMessage.isEmpty()) throw new GeneralInterfacesContractException(errMessage.toString());
   }
 
+  /**
+   * Verifies toString method contract.
+   *
+   * @param clazz the class to verify.
+   * @throws ToStringContractException toString contract violations.
+   */
   private static void verifyToStringContract(Class<?> clazz) throws ToStringContractException {
     Method toStringMethod;
     if (clazz.isAnnotationPresent(EmptyClass.class) || clazz.isArray()) {
@@ -537,6 +658,13 @@ public class ContractVerifier {
     verifyToStringText(toStringText, instance);
   }
 
+  /**
+   * Verifies the toString method template, key and values between string and object instance.
+   *
+   * @param text the generated text by toString method by the instance.
+   * @param instance the instance with filled values, used to be compate to the text.
+   * @throws ToStringContractException toString contract violations.
+   */
   private static void verifyToStringText(String text, Object instance)
       throws ToStringContractException {
     String className = instance.getClass().getSimpleName();
@@ -595,6 +723,18 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * If the referenced filed type is primitive, this method define a type, gets from instance and,
+   * after verifying values, cut the remaining text.
+   *
+   * @param remainingTextPart the remaining text, which in begin generated by toString method.
+   * @param referencedField the referenced field.
+   * @param instance the instance, from which gets a value.
+   * @return a cutted text (without verified key and value).
+   * @throws IllegalValueToStringException inconsistence of values between from text and from
+   *     instnace.
+   * @throws ToStringContractException accessing to field value error or doesn't find matched typed.
+   */
   private static String verifyAndCutTextForPrimitive(
       String remainingTextPart, Field referencedField, Object instance)
       throws IllegalValueToStringException, ToStringContractException {
@@ -744,6 +884,15 @@ public class ContractVerifier {
             + instanceClass);
   }
 
+  /**
+   * Creates the {@link ToStringContractException} by template.
+   *
+   * @param primitiveType - the referenced field type.
+   * @param referencedField - the referenced field in the instance.
+   * @param instanceClass - a type of the instance.
+   * @return an exception by template.
+   * @throws ToStringContractException toString method contract violations.
+   */
   private static ToStringContractException generateToStringExceptionForPrimitiveType(
       Class<?> primitiveType, Field referencedField, Class<?> instanceClass) {
     return new ToStringContractException(
@@ -756,6 +905,20 @@ public class ContractVerifier {
             + NEXT_LINE);
   }
 
+  /**
+   * If the referenced filed type is not primitive, this method define is it wrapper or base type,
+   * or complex type like datatype. Gets value from instance and verify it, and after cut the
+   * remaining text, if type is wrapper or base type. Otherwise verifies inner type, and calls its
+   * toString method and verify received value, and after cut the remaining text.
+   *
+   * @param remainingTextPart the remaining text, which in begin generated by toString method.
+   * @param referencedField the referenced field.
+   * @param instance the instance, from which gets a value.
+   * @return a cutted text (without verified key and value).
+   * @throws IllegalValueToStringException inconsistence of values between from text and from
+   *     instnace.
+   * @throws ToStringContractException error of accessing to field value or method toString.
+   */
   private static String verifyAndCutText(
       String remainingTextPart, Field referencedField, Object instance)
       throws IllegalValueToStringException, ToStringContractException {
@@ -775,6 +938,14 @@ public class ContractVerifier {
     }
   }
 
+  /**
+   * Extracts the object value from the instance by the referenced field.
+   *
+   * @param field the referenced field.
+   * @param instance the instance, from which will extract a value.
+   * @return a value from the referenced field.
+   * @throws ToStringContractException error of accessing to field value.
+   */
   private static Object getObjectValue(Field field, Object instance)
       throws ToStringContractException {
     Object value;
@@ -795,6 +966,14 @@ public class ContractVerifier {
     return value;
   }
 
+  /**
+   * Verifies inner type and return a text, generated by toString method.
+   *
+   * @param instance the instance to verify and uses to get a text by toString method.
+   * @param a text, which generated by toString method of the instance.
+   * @throws ToStringContractException errors of accessing to toString method or toString contract
+   *     violations.
+   */
   private static String verifyInnerTypeAndGetToStringText(Object instance)
       throws ToStringContractException {
     Class<?> instanceClass = instance.getClass();
@@ -812,6 +991,14 @@ public class ContractVerifier {
     return objectToStringText;
   }
 
+  /**
+   * If the type is an array, gets toString method from {@link Arrays} class by type of instance.
+   * Calls it and returns result text.
+   *
+   * @param instance the instance as array.
+   * @return a value, which received from {@link Arrays}.toString method.
+   * @throws RuntimeException accessing errors.
+   */
   private static String getArrayAsString(Object instance) {
     Method toStringMethod;
     Class<?> instanceClass = instance.getClass();
@@ -831,6 +1018,14 @@ public class ContractVerifier {
     return objectToStringText;
   }
 
+  /**
+   * Invokes toString method, which get from the instance by method name. And calls it and returns
+   * received result.
+   *
+   * @param instance the instance, which uses to find and call toString method.
+   * @return a text, generated by toString method.
+   * @throws ToStringContractException accessing error.
+   */
   private static String invokeToStringMethodAndGetString(Object instance)
       throws ToStringContractException {
     Method toStringMethod;
@@ -857,6 +1052,14 @@ public class ContractVerifier {
     return objectToStringText;
   }
 
+  /**
+   * Verifies the matched text by chars and after this cuts the text.
+   *
+   * @param remainingTextPart the remaining text, which in begin generated by toString method.
+   * @param value the value as String, uses to verify and cut text.
+   * @return a cutted text.
+   * @throws IllegalValueToStringException inconsistence of values.
+   */
   private static String cutMatchedText(String remainingTextPart, String value)
       throws IllegalValueToStringException {
     for (int i = 0; i < value.length(); i++) {

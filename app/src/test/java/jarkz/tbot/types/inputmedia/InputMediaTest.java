@@ -12,9 +12,19 @@ import org.junit.jupiter.api.Test;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
+/**
+ * This test verifies package {@link jarkz.tbot.types.inputmedia}.
+ *
+ * @author Pavel Bialiauski
+ */
 @TestContainer
 public class InputMediaTest {
 
+  /**
+   * This test verifies package {@link jarkz.tbot.types.inputmedia}.
+   *
+   * @author Pavel Bialiauski
+   */
   @Test
   public void verifyEqualsAndHashCode() {
     EqualsVerifier.forPackage(this.getClass().getPackageName())
@@ -23,11 +33,19 @@ public class InputMediaTest {
         .verify();
   }
 
+  /**
+   * Verifies the datatype contracts for each class, except deserializers, test containers and etc.,
+   * from the packages {@link jarkz.tbot.types.inputmedia}.
+   */
   @Test
   public void verifyDatatypesContract() throws ContractException {
     ContractVerifier.verifyPackage(this.getClass().getPackageName());
   }
 
+  /**
+   * Verifies the JSON serialization for each class, except deserializers, test containers and etc.,
+   * from the package {@link jarkz.tbot.types.inputmedia}.
+   */
   @Test
   public void verifyJsonSerialization() {
     var reflections =
