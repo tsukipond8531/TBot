@@ -12,16 +12,12 @@ import java.util.Objects;
  */
 public class BotCommandScopeDefault implements BotCommandScope {
 
-  /**
-   * Type of {@link BotCommandScope}. Always "default".
-   */
+  /** Type of {@link BotCommandScope}. Always "default". */
   protected static final String TYPE = "default";
 
   private final String type = BotCommandScopeDefault.TYPE;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public BotCommandScopeDefault() {}
 
   /**

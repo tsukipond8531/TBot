@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Marks that class is emply (it doesn't contains any fields, only overriden Object methods.)
  *
- * Uses for exception from classpool for test or runtime application.
+ * <p>Uses for exception from classpool for test or runtime application.
  *
  * @author Pavel Bialiauski
  */

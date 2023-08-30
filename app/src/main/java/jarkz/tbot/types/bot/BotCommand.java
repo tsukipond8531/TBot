@@ -14,9 +14,7 @@ public class BotCommand {
 
   @NotNull private String description;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public BotCommand() {}
 
   /**

@@ -14,9 +14,7 @@ import java.util.Optional;
  */
 public class InputMediaPhoto implements InputMedia {
 
-  /**
-   * Type of {@link InputMedia}. Always "photo".
-   */
+  /** Type of {@link InputMedia}. Always "photo". */
   protected static final String TYPE = "photo";
 
   private final String type = InputMediaPhoto.TYPE;

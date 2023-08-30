@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultPhoto implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "photo".
-   */
+  /** Type of {@link InlineQueryResult}. Always "photo". */
   protected static final String TYPE = "photo";
 
   private final String type = InlineQueryResultPhoto.TYPE;

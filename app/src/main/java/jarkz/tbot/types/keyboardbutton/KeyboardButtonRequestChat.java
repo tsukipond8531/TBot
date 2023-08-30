@@ -165,13 +165,13 @@ public class KeyboardButtonRequestChat {
   }
 
   /**
-   * Sets the object listing the required administrator rights of the user in the
-   * chat. The rights must be a superset of <i>bot_administrator_rights</i>. If not specified, no
-   * additional restrictions are applied.
+   * Sets the object listing the required administrator rights of the user in the chat. The rights
+   * must be a superset of <i>bot_administrator_rights</i>. If not specified, no additional
+   * restrictions are applied.
    *
-   * @param userAdministratorRights the object listing the required administrator
-   *     rights of the user in the chat as {@link ChatAdministratorRights} or null if not additional
-   *     restrictions are applied.
+   * @param userAdministratorRights the object listing the required administrator rights of the user
+   *     in the chat as {@link ChatAdministratorRights} or null if not additional restrictions are
+   *     applied.
    */
   public void setUserAdministratorRights(ChatAdministratorRights userAdministratorRights) {
     this.userAdministratorRights = userAdministratorRights;
@@ -189,13 +189,13 @@ public class KeyboardButtonRequestChat {
   }
 
   /**
-   * Sets the object listing the required administrator rights of the bot in the
-   * chat. The rights must be a subset of <i>user_administrator_rights</i>. If not specified, no
-   * additional restrictions are applied.
+   * Sets the object listing the required administrator rights of the bot in the chat. The rights
+   * must be a subset of <i>user_administrator_rights</i>. If not specified, no additional
+   * restrictions are applied.
    *
-   * @param botAdministratorRights the object listing the required administrator
-   *     rights of the bot in the chat as {@link ChatAdministratorRights} or null if no additional
-   *     restrictions are applied.
+   * @param botAdministratorRights the object listing the required administrator rights of the bot
+   *     in the chat as {@link ChatAdministratorRights} or null if no additional restrictions are
+   *     applied.
    */
   public void setBotAdministratorRights(ChatAdministratorRights botAdministratorRights) {
     this.botAdministratorRights = botAdministratorRights;

@@ -15,9 +15,7 @@ public class ChatLocation {
 
   @NotNull private String address;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatLocation() {}
 
   /**

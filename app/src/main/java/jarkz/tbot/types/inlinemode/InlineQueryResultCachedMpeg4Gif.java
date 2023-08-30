@@ -18,9 +18,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "mpeg4_gif".
-   */
+  /** Type of {@link InlineQueryResult}. Always "mpeg4_gif". */
   protected static final String TYPE = "mpeg4_gif";
 
   /**
@@ -61,11 +59,11 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
   /** Default constructor. */
   public InlineQueryResultCachedMpeg4Gif() {}
 
-/**
-* Type of the result, must be <i>mpeg4_gif</i>.
-*
-* @return type as String.
-*/
+  /**
+   * Type of the result, must be <i>mpeg4_gif</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }
@@ -88,20 +86,20 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
     this.id = id;
   }
 
-/**
-* A valid file identifier for the MPEG4 file.
-*
-* @return mpeg4_file_id as String.
-*/
+  /**
+   * A valid file identifier for the MPEG4 file.
+   *
+   * @return mpeg4_file_id as String.
+   */
   public String getMpeg4FileId() {
     return mpeg4FileId;
   }
 
-/**
-* Sets the valid file identifier for the MPEG4 file.
-*
-* @param mpeg4FileId the valid file identifier for the MPEG4 file as String.
-*/
+  /**
+   * Sets the valid file identifier for the MPEG4 file.
+   *
+   * @param mpeg4FileId the valid file identifier for the MPEG4 file as String.
+   */
   public void setMpeg4FileId(String mpeg4FileId) {
     this.mpeg4FileId = mpeg4FileId;
   }
@@ -115,11 +113,11 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
     return Optional.of(title);
   }
 
-/**
-* Sets the title for the result.
-*
-* @param title the title for the result as String.
-*/
+  /**
+   * Sets the title for the result.
+   *
+   * @param title the title for the result as String.
+   */
   public void setTitle(String title) {
     this.title = title;
   }
@@ -160,8 +158,8 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
    * href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more
    * details.
    *
-   * @param parseMode the mode for parsing entities in the caption as String or null if a
-   *     caption is not provided.
+   * @param parseMode the mode for parsing entities in the caption as String or null if a caption is
+   *     not provided.
    */
   public void setParseMode(String parseMode) {
     this.parseMode = parseMode;
@@ -222,8 +220,8 @@ public class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
   /**
    * Sets the content of the message to be sent instead of the video animation.
    *
-   * @param inputMessageContent the content of the message to be sent instead of the video animation as {@link
-   *     InputMessageContent} or null if it is not reuiqred.
+   * @param inputMessageContent the content of the message to be sent instead of the video animation
+   *     as {@link InputMessageContent} or null if it is not reuiqred.
    */
   public void setInputMessageContent(InputMessageContent inputMessageContent) {
     this.inputMessageContent = inputMessageContent;

@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultContact implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "contact".
-   */
+  /** Type of {@link InlineQueryResult}. Always "contact". */
   protected static final String TYPE = "contact";
 
   private final String type = InlineQueryResultContact.TYPE;

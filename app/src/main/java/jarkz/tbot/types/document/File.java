@@ -7,8 +7,9 @@ import java.util.Optional;
 
 /**
  * This object represents a file ready to be downloaded. The file can be downloaded via the link
- * https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;. It is guaranteed that the link will be
- * valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
+ * https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;. It is guaranteed that the link
+ * will be valid for at least 1 hour. When the link expires, a new one can be requested by calling
+ * getFile.
  *
  * @author Pavel Bialiauski
  */

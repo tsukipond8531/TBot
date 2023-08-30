@@ -18,9 +18,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultCachedSticker implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "sticker".
-   */
+  /** Type of {@link InlineQueryResult}. Always "sticker". */
   protected static final String TYPE = "sticker";
 
   private final String type = InlineQueryResultCachedSticker.TYPE;

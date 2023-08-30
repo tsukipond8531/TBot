@@ -14,9 +14,7 @@ import java.util.Optional;
  */
 public class ChatMemberAdministrator implements ChatMember {
 
-  /**
-   * Status of {@link ChatMember}. Always "administrator".
-   */
+  /** Status of {@link ChatMember}. Always "administrator". */
   protected static final String STATUS = "administrator";
 
   private final String status = ChatMemberAdministrator.STATUS;
@@ -74,9 +72,7 @@ public class ChatMemberAdministrator implements ChatMember {
   @SerializedName("custom_title")
   private String customTitle;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatMemberAdministrator() {}
 
   /**

@@ -19,9 +19,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultCachedAudio implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "audio".
-   */
+  /** Type of {@link InlineQueryResult}. Always "audio". */
   protected static final String TYPE = "audio";
 
   /**

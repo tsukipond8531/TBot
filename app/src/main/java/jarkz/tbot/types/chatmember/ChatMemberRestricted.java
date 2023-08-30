@@ -13,9 +13,7 @@ import java.util.Objects;
  */
 public class ChatMemberRestricted implements ChatMember {
 
-  /**
-   * Status of {@link ChatMember}. Always "restricted".
-   */
+  /** Status of {@link ChatMember}. Always "restricted". */
   protected static final String STATUS = "restricted";
 
   private final String status = ChatMemberRestricted.STATUS;

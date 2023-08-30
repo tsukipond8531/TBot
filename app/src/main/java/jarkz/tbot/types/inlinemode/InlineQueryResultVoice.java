@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultVoice implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "voice".
-   */
+  /** Type of {@link InlineQueryResult}. Always "voice". */
   protected static final String TYPE = "voice";
 
   private final String type = InlineQueryResultVoice.TYPE;

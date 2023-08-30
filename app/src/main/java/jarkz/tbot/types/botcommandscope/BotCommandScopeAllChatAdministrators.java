@@ -10,16 +10,12 @@ import java.util.Objects;
  */
 public class BotCommandScopeAllChatAdministrators implements BotCommandScope {
 
-  /**
-   * Type of {@link BotCommandScope}. Always "all_chat_administrators".
-   */
+  /** Type of {@link BotCommandScope}. Always "all_chat_administrators". */
   protected static final String TYPE = "all_chat_administrators";
 
   private final String type = BotCommandScopeAllChatAdministrators.TYPE;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public BotCommandScopeAllChatAdministrators() {}
 
   /**

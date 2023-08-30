@@ -19,9 +19,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultDocument implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "document".
-   */
+  /** Type of {@link InlineQueryResult}. Always "document". */
   protected static final String TYPE = "document";
 
   private final String type = InlineQueryResultDocument.TYPE;

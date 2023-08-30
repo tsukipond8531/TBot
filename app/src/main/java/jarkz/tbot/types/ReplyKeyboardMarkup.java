@@ -47,7 +47,7 @@ public class ReplyKeyboardMarkup {
   }
 
   /**
-   * Sets the list of button rows, each represented by  a list of <a href=
+   * Sets the list of button rows, each represented by a list of <a href=
    * "https://core.telegram.org/bots/api#keyboardbutton">KeyboardButton</a> objects.
    *
    * @param keyboard the list of button rows, each represented by list of {@link KeyboardButton}.

@@ -89,9 +89,7 @@ public class Chat {
 
   private ChatLocation location;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public Chat() {}
 
   /**

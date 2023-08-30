@@ -13,9 +13,7 @@ import java.util.Objects;
  */
 public class MenuButtonWebApp implements MenuButton {
 
-  /**
-   * Type of {@link MenuButton}. Always "web_app".
-   */
+  /** Type of {@link MenuButton}. Always "web_app". */
   protected static final String TYPE = "web_app";
 
   private final String type = MenuButtonWebApp.TYPE;

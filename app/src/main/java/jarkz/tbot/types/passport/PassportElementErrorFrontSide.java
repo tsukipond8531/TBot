@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class PassportElementErrorFrontSide implements PassportElementError {
 
-  /**
-   * Source of {@link PassportElementError}. Always "front_side".
-   */
+  /** Source of {@link PassportElementError}. Always "front_side". */
   protected static final String SOURCE = "front_side";
 
   private final String source = PassportElementErrorFrontSide.SOURCE;

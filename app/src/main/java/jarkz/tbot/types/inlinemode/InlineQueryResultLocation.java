@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultLocation implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "location".
-   */
+  /** Type of {@link InlineQueryResult}. Always "location". */
   protected static final String TYPE = "location";
 
   private final String type = InlineQueryResultLocation.TYPE;

@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultVideo implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "video".
-   */
+  /** Type of {@link InlineQueryResult}. Always "video". */
   protected static final String TYPE = "video";
 
   private final String type = InlineQueryResultVideo.TYPE;

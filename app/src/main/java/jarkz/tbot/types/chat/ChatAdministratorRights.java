@@ -56,9 +56,7 @@ public class ChatAdministratorRights {
   @SerializedName("can_manage_topics")
   private Boolean canManageTopics;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatAdministratorRights() {}
 
   /**

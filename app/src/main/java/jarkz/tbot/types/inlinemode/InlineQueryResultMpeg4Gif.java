@@ -17,9 +17,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "mpeg4_gif".
-   */
+  /** Type of {@link InlineQueryResult}. Always "mpeg4_gif". */
   protected static final String TYPE = "mpeg4_gif";
 
   private final String type = InlineQueryResultMpeg4Gif.TYPE;
@@ -65,11 +63,11 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
   /** Default constructor. */
   public InlineQueryResultMpeg4Gif() {}
 
-/**
-* Type of the result, must be <i>mpeg4_gif</i>.
-*
-* @return type as String.
-*/
+  /**
+   * Type of the result, must be <i>mpeg4_gif</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }
@@ -92,11 +90,11 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
     this.id = id;
   }
 
-/**
-* A valid URL for the MPEG4 file. File size must not exceed 1MB.
-*
-* @return mpeg4_url as String.
-*/
+  /**
+   * A valid URL for the MPEG4 file. File size must not exceed 1MB.
+   *
+   * @return mpeg4_url as String.
+   */
   public String getMpeg4Url() {
     return mpeg4Url;
   }
@@ -119,11 +117,11 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
     return Optional.of(mpeg4Width);
   }
 
-/**
-* Sets the video width.
-*
-* @param mpeg4Width the video width as Integer or null if it doesn't provided.
-*/
+  /**
+   * Sets the video width.
+   *
+   * @param mpeg4Width the video width as Integer or null if it doesn't provided.
+   */
   public void setMpeg4Width(Integer mpeg4Width) {
     this.mpeg4Width = mpeg4Width;
   }
@@ -137,11 +135,11 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
     return Optional.of(mpeg4Height);
   }
 
-/**
-* Sets the video height.
-*
-* @param mpeg4Height the video height as Integer or null if it doesn't provided.
-*/
+  /**
+   * Sets the video height.
+   *
+   * @param mpeg4Height the video height as Integer or null if it doesn't provided.
+   */
   public void setMpeg4Height(Integer mpeg4Height) {
     this.mpeg4Height = mpeg4Height;
   }
@@ -155,20 +153,20 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
     return Optional.of(mpeg4Duration);
   }
 
-/**
-* Sets the video duration in seconds.
-*
-* @param mpeg4Duration the video duration in seconds as Integer or null if it doesn't provided.
-*/
+  /**
+   * Sets the video duration in seconds.
+   *
+   * @param mpeg4Duration the video duration in seconds as Integer or null if it doesn't provided.
+   */
   public void setMpeg4Duration(Integer mpeg4Duration) {
     this.mpeg4Duration = mpeg4Duration;
   }
 
-/**
-* URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
-*
-* @return thumbnail_url as String.
-*/
+  /**
+   * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
+   *
+   * @return thumbnail_url as String.
+   */
   public String getThumbnailUrl() {
     return thumbnailUrl;
   }
@@ -213,11 +211,11 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
     return Optional.of(title);
   }
 
-/**
-* Sets the title for the result.
-*
-* @param title the title for the result as String.
-*/
+  /**
+   * Sets the title for the result.
+   *
+   * @param title the title for the result as String.
+   */
   public void setTitle(String title) {
     this.title = title;
   }
@@ -258,8 +256,8 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more
    * details.
    *
-   * @param parseMode the mode for parsing entities in the caption as String or null if a
-   *     caption is not provided.
+   * @param parseMode the mode for parsing entities in the caption as String or null if a caption is
+   *     not provided.
    */
   public void setParseMode(String parseMode) {
     this.parseMode = parseMode;
@@ -320,8 +318,8 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
   /**
    * Sets the content of the message to be sent instead of the video animation.
    *
-   * @param inputMessageContent the content of the message to be sent instead of the video animation as {@link
-   *     InputMessageContent} or null if it is not reuiqred.
+   * @param inputMessageContent the content of the message to be sent instead of the video animation
+   *     as {@link InputMessageContent} or null if it is not reuiqred.
    */
   public void setInputMessageContent(InputMessageContent inputMessageContent) {
     this.inputMessageContent = inputMessageContent;

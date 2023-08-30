@@ -27,9 +27,7 @@ public class ChatPhoto {
   @NotNull
   private String bigFileUniqueId;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatPhoto() {}
 
   /**

@@ -67,9 +67,7 @@ public class ChatPermissions {
   @NotNull
   private boolean canManageTopics;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatPermissions() {}
 
   /**

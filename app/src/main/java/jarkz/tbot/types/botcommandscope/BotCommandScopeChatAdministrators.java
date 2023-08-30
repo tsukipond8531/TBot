@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class BotCommandScopeChatAdministrators implements BotCommandScope {
 
-  /**
-   * Type of {@link BotCommandScope}. Always "chat_administrators".
-   */
+  /** Type of {@link BotCommandScope}. Always "chat_administrators". */
   protected static final String TYPE = "chat_administrators";
 
   private final String type = BotCommandScopeChatAdministrators.TYPE;
@@ -23,9 +21,7 @@ public class BotCommandScopeChatAdministrators implements BotCommandScope {
   @NotNull
   private String chatId;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public BotCommandScopeChatAdministrators() {}
 
   /**

@@ -15,9 +15,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultVenue implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "venue".
-   */
+  /** Type of {@link InlineQueryResult}. Always "venue". */
   protected static final String TYPE = "venue";
 
   private final String type = InlineQueryResultVenue.TYPE;

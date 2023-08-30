@@ -12,18 +12,14 @@ import java.util.Objects;
  */
 public class ChatMemberLeft implements ChatMember {
 
-  /**
-   * Status of {@link ChatMember}. Always "left".
-   */
+  /** Status of {@link ChatMember}. Always "left". */
   protected static final String STATUS = "left";
 
   private final String status = ChatMemberLeft.STATUS;
 
   @NotNull private User user;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatMemberLeft() {}
 
   /**

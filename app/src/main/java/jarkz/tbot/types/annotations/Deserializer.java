@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * This annotation marks the class or the package as Desrializer.
  *
- * Uses for exception from classpool for runtime application.
+ * <p>Uses for exception from classpool for runtime application.
  *
  * @author Pavel Bialiauski
  */

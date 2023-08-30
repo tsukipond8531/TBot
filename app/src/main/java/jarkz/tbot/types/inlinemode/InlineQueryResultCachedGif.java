@@ -17,9 +17,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultCachedGif implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "gif".
-   */
+  /** Type of {@link InlineQueryResult}. Always "gif". */
   protected static final String TYPE = "gif";
 
   /**

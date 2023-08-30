@@ -9,9 +9,7 @@ import java.util.Objects;
  */
 public class MenuButtonCommands implements MenuButton {
 
-  /**
-   * Type of {@link MenuButton}. Always "commands".
-   */
+  /** Type of {@link MenuButton}. Always "commands". */
   protected static final String TYPE = "commands";
 
   private final String type = MenuButtonCommands.TYPE;

@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultGif implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "gif".
-   */
+  /** Type of {@link InlineQueryResult}. Always "gif". */
   protected static final String TYPE = "gif";
 
   private final String type = InlineQueryResultGif.TYPE;

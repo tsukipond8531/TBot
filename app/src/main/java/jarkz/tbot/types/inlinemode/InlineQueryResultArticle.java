@@ -12,9 +12,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultArticle implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "article".
-   */
+  /** Type of {@link InlineQueryResult}. Always "article". */
   protected static final String TYPE = "article";
 
   private final String type = InlineQueryResultArticle.TYPE;

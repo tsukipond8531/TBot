@@ -89,7 +89,8 @@ public class ForceReply {
    * 2) if the bot's message is a reply (has <i>reply_to_message_id</i>), sender of the original
    * message.
    *
-   * @param selective true if you want to force reply from specific users only, otherwise - false or null.
+   * @param selective true if you want to force reply from specific users only, otherwise - false or
+   *     null.
    */
   public void setSelective(Boolean selective) {
     this.selective = selective;

@@ -15,9 +15,7 @@ import java.util.Optional;
  */
 public class InputMediaAnimation implements InputMedia {
 
-  /**
-   * Type of {@link InputMedia}. Always "animation".
-   */
+  /** Type of {@link InputMedia}. Always "animation". */
   protected static final String TYPE = "animation";
 
   private final String type = InputMediaAnimation.TYPE;
@@ -46,11 +44,11 @@ public class InputMediaAnimation implements InputMedia {
   /** Default constructor. */
   public InputMediaAnimation() {}
 
-/**
-* Type of the result, must be <i>animation</i>.
-*
-* @return type as String.
-*/
+  /**
+   * Type of the result, must be <i>animation</i>.
+   *
+   * @return type as String.
+   */
   public String getType() {
     return type;
   }
@@ -136,8 +134,8 @@ public class InputMediaAnimation implements InputMedia {
   /**
    * Sets the caption of the animation to be sent, 0-1024 characters after entities parsing.
    *
-   * @param caption the caption of the animation to be sent (0-1024 characters after entities parsing)
-   *     as String or null if it is not required.
+   * @param caption the caption of the animation to be sent (0-1024 characters after entities
+   *     parsing) as String or null if it is not required.
    */
   public void setCaption(String caption) {
     this.caption = caption;
@@ -256,8 +254,8 @@ public class InputMediaAnimation implements InputMedia {
   /**
    * Pass <i>True</i> if the animation needs to be covered with a spoiler animation.
    *
-   * @param hasSpoiler true if the animation needs to be covered with a spoiler animation, otherwise -
-   *     false or null.
+   * @param hasSpoiler true if the animation needs to be covered with a spoiler animation, otherwise
+   *     - false or null.
    */
   public void setHasSpoiler(Boolean hasSpoiler) {
     this.hasSpoiler = hasSpoiler;

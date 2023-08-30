@@ -12,9 +12,7 @@ public class BotName {
 
   @NotNull private String name;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public BotName() {}
 
   /**

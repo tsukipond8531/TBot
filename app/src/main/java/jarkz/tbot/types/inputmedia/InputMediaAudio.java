@@ -15,9 +15,7 @@ import java.util.Optional;
  */
 public class InputMediaAudio implements InputMedia {
 
-  /**
-   * Type of {@link InputMedia}. Always "audio".
-   */
+  /** Type of {@link InputMedia}. Always "audio". */
   protected static final String TYPE = "audio";
 
   private final String type = InputMediaAudio.TYPE;

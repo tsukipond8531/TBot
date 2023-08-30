@@ -16,9 +16,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultAudio implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "audio".
-   */
+  /** Type of {@link InlineQueryResult}. Always "audio". */
   protected static final String TYPE = "audio";
 
   private final String type = InlineQueryResultAudio.TYPE;

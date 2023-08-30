@@ -9,9 +9,7 @@ import java.util.Objects;
  */
 public class MenuButtonDefault implements MenuButton {
 
-  /**
-   * Type of {@link MenuButton}. Always "default".
-   */
+  /** Type of {@link MenuButton}. Always "default". */
   protected static final String TYPE = "default";
 
   private final String type = MenuButtonDefault.TYPE;

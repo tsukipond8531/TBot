@@ -21,9 +21,7 @@ public class ChatShared {
   @NotNull
   private long chatId;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatShared() {}
 
   /**

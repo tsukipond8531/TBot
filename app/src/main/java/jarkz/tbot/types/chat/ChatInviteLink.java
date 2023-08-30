@@ -42,9 +42,7 @@ public class ChatInviteLink {
   @SerializedName("pending_join_request_count")
   private Integer pendingJoinRequestCount;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatInviteLink() {}
 
   /**

@@ -19,8 +19,8 @@ public class PassportData {
   public PassportData() {}
 
   /**
-   * List with information about documents and other Telegram Passport elements that was shared
-   * with the bot.
+   * List with information about documents and other Telegram Passport elements that was shared with
+   * the bot.
    *
    * @return data as {@link List}&lt;{@link EncryptedPassportElement}&gt;.
    */

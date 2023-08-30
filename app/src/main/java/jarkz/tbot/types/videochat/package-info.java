@@ -1,4 +1,3 @@
-
 /**
  * This package present the service messages about video chat.
  *

@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class PassportElementErrorUnspecified implements PassportElementError {
 
-  /**
-   * Source of {@link PassportElementError}. Always "unspecified".
-   */
+  /** Source of {@link PassportElementError}. Always "unspecified". */
   protected static final String SOURCE = "unspecified";
 
   private final String source = PassportElementErrorUnspecified.SOURCE;

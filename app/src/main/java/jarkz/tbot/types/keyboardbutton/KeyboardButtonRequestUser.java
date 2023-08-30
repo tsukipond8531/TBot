@@ -83,8 +83,8 @@ public class KeyboardButtonRequestUser {
   }
 
   /**
-   * Pass <i>True</i> to request a premium user, pass <i>False</i> to request a
-   * non-premium user. If not specified, no additional restrictions are applied.
+   * Pass <i>True</i> to request a premium user, pass <i>False</i> to request a non-premium user. If
+   * not specified, no additional restrictions are applied.
    *
    * @param userIsPremium true if to request a premium user, false if to request a non-premium user,
    *     null if no additional restrictions are applied.

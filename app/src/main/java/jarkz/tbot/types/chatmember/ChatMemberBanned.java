@@ -13,9 +13,7 @@ import java.util.Objects;
  */
 public class ChatMemberBanned implements ChatMember {
 
-  /**
-   * Status of {@link ChatMember}. Always "kicked".
-   */
+  /** Status of {@link ChatMember}. Always "kicked". */
   protected static final String STATUS = "kicked";
 
   private final String status = ChatMemberBanned.STATUS;
@@ -26,9 +24,7 @@ public class ChatMemberBanned implements ChatMember {
   @NotNull
   private long untilDate;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatMemberBanned() {}
 
   /**

@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class PassportElementErrorDataField implements PassportElementError {
 
-  /**
-   * Source of {@link PassportElementError}. Always "data".
-   */
+  /** Source of {@link PassportElementError}. Always "data". */
   protected static final String SOURCE = "data";
 
   private final String source = PassportElementErrorDataField.SOURCE;

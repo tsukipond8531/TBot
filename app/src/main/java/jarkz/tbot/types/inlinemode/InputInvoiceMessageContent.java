@@ -169,8 +169,8 @@ public class InputInvoiceMessageContent implements InputMessageContent {
   }
 
   /**
-   * Price breakdown, a list of components (e.g. product price, tax, discount,
-   * delivery cost, delivery tax, bonus, etc.).
+   * Price breakdown, a list of components (e.g. product price, tax, discount, delivery cost,
+   * delivery tax, bonus, etc.).
    *
    * @return prices as {@link List}&lt;{@link LabeledPrice}&gt;.
    */
@@ -179,8 +179,8 @@ public class InputInvoiceMessageContent implements InputMessageContent {
   }
 
   /**
-   * Sets the price breakdown, a list of components (e.g. product price, tax,
-   * discount, delivery cost, delivery tax, bonus, etc.).
+   * Sets the price breakdown, a list of components (e.g. product price, tax, discount, delivery
+   * cost, delivery tax, bonus, etc.).
    *
    * @param prices the price breakdown as {@link List}&lt;{@link LabeledPrice}&gt;.
    */
@@ -234,10 +234,10 @@ public class InputInvoiceMessageContent implements InputMessageContent {
   }
 
   /**
-   * Sets the list of suggested amounts of tip in the <i>smallest units</i> of the
-   * currency (integer, <strong>not</strong> float/double). At most 4 suggested tip amounts can be
-   * specified. The suggested tip amounts must be positive, passed in a strictly increased order and
-   * must not exceed <i>max_tip_amount</i>.
+   * Sets the list of suggested amounts of tip in the <i>smallest units</i> of the currency
+   * (integer, <strong>not</strong> float/double). At most 4 suggested tip amounts can be specified.
+   * The suggested tip amounts must be positive, passed in a strictly increased order and must not
+   * exceed <i>max_tip_amount</i>.
    *
    * @param suggestedTipAmounts the list of suggested amount of tip in the <i>smallest units</i> of
    *     the currency as {@link List}&lt;Integer&gt; or null if it is not required.
@@ -258,9 +258,8 @@ public class InputInvoiceMessageContent implements InputMessageContent {
   }
 
   /**
-   * Sets the object for data about the invoice, which will be shared with the
-   * payment provider. A detailed description of the required fields should be provided by the
-   * payment provider.
+   * Sets the object for data about the invoice, which will be shared with the payment provider. A
+   * detailed description of the required fields should be provided by the payment provider.
    *
    * @param providerData the data about the invoice, which will be shared with the payment provider,
    *     as String or null if it is not required.

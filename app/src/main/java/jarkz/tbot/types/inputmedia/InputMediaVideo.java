@@ -15,9 +15,7 @@ import java.util.Optional;
  */
 public class InputMediaVideo implements InputMedia {
 
-  /**
-   * Type of {@link InputMedia}. Always "video".
-   */
+  /** Type of {@link InputMedia}. Always "video". */
   protected static final String TYPE = "video";
 
   private final String type = InputMediaVideo.TYPE;

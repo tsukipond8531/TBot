@@ -14,9 +14,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultGame implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "game".
-   */
+  /** Type of {@link InlineQueryResult}. Always "game". */
   protected static final String TYPE = "game";
 
   private final String type = InlineQueryResultGame.TYPE;

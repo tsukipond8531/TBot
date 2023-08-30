@@ -15,9 +15,7 @@ import java.util.Optional;
  */
 public class InputMediaDocument implements InputMedia {
 
-  /**
-   * Type of {@link InputMedia}. Always "document".
-   */
+  /** Type of {@link InputMedia}. Always "document". */
   protected static final String TYPE = "document";
 
   private final String type = InputMediaDocument.TYPE;
@@ -130,8 +128,8 @@ public class InputMediaDocument implements InputMedia {
   /**
    * Sets the caption of the document to be sent, 0-1024 characters after entities parsing.
    *
-   * @param caption the caption of the document to be sent (0-1024 characters after entities parsing)
-   *     as String or null if it is not required.
+   * @param caption the caption of the document to be sent (0-1024 characters after entities
+   *     parsing) as String or null if it is not required.
    */
   public void setCaption(String caption) {
     this.caption = caption;

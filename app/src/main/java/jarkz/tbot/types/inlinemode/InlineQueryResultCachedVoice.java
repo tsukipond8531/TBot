@@ -19,9 +19,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultCachedVoice implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "voice".
-   */
+  /** Type of {@link InlineQueryResult}. Always "voice". */
   protected static final String TYPE = "voice";
 
   /**

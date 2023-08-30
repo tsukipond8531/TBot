@@ -15,9 +15,7 @@ public class BotShortDescription {
   @NotNull
   private String shortDescription;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public BotShortDescription() {}
 
   /**

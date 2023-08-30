@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class PassportElementErrorFile implements PassportElementError {
 
-  /**
-   * Source of {@link PassportElementError}. Always "file".
-   */
+  /** Source of {@link PassportElementError}. Always "file". */
   protected static final String SOURCE = "file";
 
   private final String source = PassportElementErrorFile.SOURCE;

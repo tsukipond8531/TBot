@@ -28,9 +28,7 @@ public class ChatJoinRequest {
   @SerializedName("invite_link")
   private ChatInviteLink inviteLink;
 
-  /**
-   * Default constructor.
-   */
+  /** Default constructor. */
   public ChatJoinRequest() {}
 
   /**

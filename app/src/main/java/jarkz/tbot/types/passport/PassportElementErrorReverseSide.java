@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class PassportElementErrorReverseSide implements PassportElementError {
 
-  /**
-   * Source of {@link PassportElementError}. Always "reverse_side".
-   */
+  /** Source of {@link PassportElementError}. Always "reverse_side". */
   protected static final String SOURCE = "reverse_side";
 
   private final String source = PassportElementErrorReverseSide.SOURCE;

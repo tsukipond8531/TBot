@@ -12,9 +12,7 @@ import java.util.Objects;
  */
 public class ChatMemberMember implements ChatMember {
 
-  /**
-   * Status of {@link ChatMember}. Always "member".
-   */
+  /** Status of {@link ChatMember}. Always "member". */
   protected static final String STATUS = "member";
 
   private final String status = ChatMemberMember.STATUS;

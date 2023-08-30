@@ -19,9 +19,7 @@ import java.util.Optional;
  */
 public class InlineQueryResultCachedDocument implements InlineQueryResult {
 
-  /**
-   * Type of {@link InlineQueryResult}. Always "document".
-   */
+  /** Type of {@link InlineQueryResult}. Always "document". */
   protected static final String TYPE = "document";
 
   /**
