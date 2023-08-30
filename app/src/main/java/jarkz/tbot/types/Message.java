@@ -10,6 +10,7 @@ import jarkz.tbot.types.document.Contact;
 import jarkz.tbot.types.document.Dice;
 import jarkz.tbot.types.document.Document;
 import jarkz.tbot.types.document.PhotoSize;
+import jarkz.tbot.types.document.Story;
 import jarkz.tbot.types.document.Venue;
 import jarkz.tbot.types.document.Video;
 import jarkz.tbot.types.document.VideoNote;
@@ -113,6 +114,8 @@ public class Message {
   private List<PhotoSize> photo;
 
   private Sticker sticker;
+
+  private Story story;
 
   private Video video;
 
@@ -781,6 +784,24 @@ public class Message {
    */
   public void setSticker(Sticker sticker) {
     this.sticker = sticker;
+  }
+
+  /**
+   * <i>Optional</i>. Message is a forwarded story.
+   *
+   * @return an optional value of story as {@link Story}.
+   */
+  public Optional<Story> getStory() {
+    return Optional.of(story);
+  }
+
+  /**
+   * Sets the forwarded story as the message.
+   *
+   * @param story the forwarded story as the message as {@link Story}.
+   */
+  public void setStory(Story story) {
+    this.story = story;
   }
 
   /**
