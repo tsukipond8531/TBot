@@ -19,7 +19,6 @@ import jarkz.tbot.types.inlinemode.InlineQueryResult;
 import jarkz.tbot.types.inputmedia.InputMedia;
 import jarkz.tbot.types.menubutton.MenuButton;
 import jarkz.tbot.types.passport.PassportElementError;
-import java.lang.reflect.InvocationTargetException;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Test;
@@ -35,9 +34,9 @@ import org.reflections.scanners.Scanners;
 @TestContainer
 public class TypesTest {
 
-  private static final int TYPE_DEPTH = 1;
-  private static final float CHANCE_OF_NULLABLE_FIELD = 0.35f;
-  private static final float GENERATE_ALL_FIELDS = 1f;
+  public static final int TYPE_DEPTH = 1;
+  public static final float NULLABLE_FIELD_CHANCE = 0.35f;
+  public static final float GENERATE_ALL_FIELDS = 1f;
 
   /**
    * Verifies a class by JSON serialization.
@@ -46,26 +45,8 @@ public class TypesTest {
    * @param errMessage the string builder that uses for writing any errors
    */
   public static void verifyClassByJsonSerialization(Class<?> clazz, StringBuilder errMessage) {
-    Object instance;
-    try {
-      instance = clazz.getDeclaredConstructor().newInstance();
-    } catch (InvocationTargetException
-        | IllegalAccessException
-        | InstantiationException
-        | NoSuchMethodException e) {
-      errMessage
-          .append("An error occurred in invocation default constructor.\nError message: ")
-          .append(e.getMessage())
-          .append("\nSource object: ")
-          .append(clazz)
-          .append("\n\n");
-      return;
-    }
-
-    TypeFactory<Object> factory =
-        new TypeFactory<>(TypesTest.TYPE_DEPTH, TypesTest.GENERATE_ALL_FIELDS);
-    factory.generate(instance);
-
+    Object instance =
+        TypeFactory.generate(clazz, TypesTest.TYPE_DEPTH, TypesTest.GENERATE_ALL_FIELDS);
     Gson gson = TypesTest.getGson();
     String json = gson.toJson(instance);
 
@@ -185,6 +166,8 @@ public class TypesTest {
             this.getClass().getPackageName(), Scanners.SubTypes.filterResultsBy(s -> true));
     StringBuilder errMessage = new StringBuilder();
 
+    final String wrapLine = "------------------------------------------------------------------";
+    final String skipLine = "\n\n";
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
         .map(c -> c.getPackageName())
         .distinct()
@@ -196,10 +179,10 @@ public class TypesTest {
               } catch (ContractException e) {
                 errMessage
                     .append(e.getMessage())
-                    .append("\n\n")
-                    .append("------------------------------------------------------------------")
-                    .append("------------------------------------------------------------------")
-                    .append("\n\n");
+                    .append(skipLine)
+                    .append(wrapLine)
+                    .append(wrapLine)
+                    .append(skipLine);
               }
             });
 
@@ -213,25 +196,20 @@ public class TypesTest {
    * @param packageName the specific package, from which gets the classes to pass the test.
    */
   private void verifyEqualsAndHashCodeForPackage(String packageName) {
-    var verifier =
-        EqualsVerifier.forPackage(packageName)
-            .withPrefabValues(
-                Message.class,
-                PrefabTypes.getMessageInstance(
-                    TypesTest.TYPE_DEPTH, TypesTest.CHANCE_OF_NULLABLE_FIELD),
-                PrefabTypes.getMessageInstance(
-                    TypesTest.TYPE_DEPTH, TypesTest.CHANCE_OF_NULLABLE_FIELD))
-            .withPrefabValues(
-                Chat.class,
-                PrefabTypes.getChatInstance(
-                    TypesTest.TYPE_DEPTH, TypesTest.CHANCE_OF_NULLABLE_FIELD),
-                PrefabTypes.getChatInstance(
-                    TypesTest.TYPE_DEPTH, TypesTest.CHANCE_OF_NULLABLE_FIELD))
-            .except(
-                c ->
-                    c.isAnnotationPresent(TestContainer.class)
-                        || c.isAnnotationPresent(Deserializer.class));
-
-    verifier.suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS).verify();
+    EqualsVerifier.forPackage(packageName)
+        .withPrefabValues(
+            Message.class,
+            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
+            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
+        .withPrefabValues(
+            Chat.class,
+            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
+            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
+        .except(
+            c ->
+                c.isAnnotationPresent(TestContainer.class)
+                    || c.isAnnotationPresent(Deserializer.class))
+        .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
+        .verify();
   }
 }

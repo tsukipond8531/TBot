@@ -23,9 +23,6 @@ import org.reflections.scanners.Scanners;
 @TestContainer
 public class ChatMemberTest {
 
-  private final int TYPE_DEPTH = 1;
-  private final float CHANCE_OF_NULLABLE_FIELD = 0.35f;
-
   /**
    * Verifies the equals and hashCode for each class, except deserializers, test containers and
    * etc., from the package {@link jarkz.tbot.types.chatmember}.
@@ -35,12 +32,12 @@ public class ChatMemberTest {
     EqualsVerifier.forPackage(this.getClass().getPackageName())
         .withPrefabValues(
             Message.class,
-            PrefabTypes.getMessageInstance(TYPE_DEPTH, CHANCE_OF_NULLABLE_FIELD),
-            PrefabTypes.getMessageInstance(TYPE_DEPTH, CHANCE_OF_NULLABLE_FIELD))
+            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
+            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
         .withPrefabValues(
             Chat.class,
-            PrefabTypes.getChatInstance(TYPE_DEPTH, CHANCE_OF_NULLABLE_FIELD),
-            PrefabTypes.getChatInstance(TYPE_DEPTH, CHANCE_OF_NULLABLE_FIELD))
+            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
+            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
         .except(c -> c.isAnnotationPresent(Deserializer.class))
         .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
         .verify();

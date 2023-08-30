@@ -619,27 +619,13 @@ public class ContractVerifier {
           "Method toString() not found!\nSource: " + clazz + NEXT_LINE);
     }
 
-    Object instance;
-    try {
-      instance = clazz.getDeclaredConstructor().newInstance();
-    } catch (InvocationTargetException
-        | IllegalAccessException
-        | InstantiationException
-        | NoSuchMethodException e) {
-      throw new ToStringContractException(
-          "An error occured in invocation constructor!\nConstructor of "
-              + clazz
-              + " not defined! Check modifiers, parameters. Must be base no arguments"
-              + " constructor.\n");
-    }
-
-    Object result;
     final int depth = 1;
     final float generateAllFields = 1f;
+    Object instance = TypeFactory.generate(clazz, depth, generateAllFields);
+
+    Object toStringResult;
     try {
-      TypeFactory<Object> factory = new TypeFactory<>(depth, generateAllFields);
-      factory.generate(instance);
-      result = toStringMethod.invoke(instance);
+      toStringResult = toStringMethod.invoke(instance);
     } catch (InvocationTargetException | IllegalAccessException e) {
       throw new ToStringContractException(
           "An error occured in invocation toString() method!\nError message: "
@@ -649,7 +635,7 @@ public class ContractVerifier {
               + NEXT_LINE);
     }
 
-    if (!(result instanceof String toStringText)) {
+    if (!(toStringResult instanceof String toStringText)) {
       throw new ToStringContractException(
           "Returned value of toString() method is not String. Must be a Stirng result.\nSource: "
               + clazz);
@@ -999,20 +985,31 @@ public class ContractVerifier {
    * @return a value, which received from {@link Arrays}.toString method.
    * @throws RuntimeException accessing errors.
    */
-  private static String getArrayAsString(Object instance) {
+  private static String getArrayAsString(Object instance) throws ToStringContractException {
     Method toStringMethod;
     Class<?> instanceClass = instance.getClass();
 
     try {
       toStringMethod = Arrays.class.getMethod(TO_STRING_METHOD_NAME, instanceClass);
     } catch (NoSuchMethodException e) {
-      throw new RuntimeException(e);
+      throw new ToStringContractException(
+          "Can't find the toString method in Arrays class for specific source class.\n"
+              + "Source class: "
+              + instanceClass
+              + "\nError message: "
+              + e.getMessage());
     }
     String objectToStringText;
     try {
       objectToStringText = (String) toStringMethod.invoke(null, instance);
     } catch (InvocationTargetException | IllegalAccessException e) {
-      throw new RuntimeException(e);
+      throw new ToStringContractException(
+          "An error occurred while trying to invoke toString method from Arrays class for source"
+              + " instance.\n"
+              + "Source instance: "
+              + instance
+              + "\nError message: "
+              + e.getMessage());
     }
 
     return objectToStringText;

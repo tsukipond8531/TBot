@@ -22,14 +22,12 @@ public class PrefabTypes {
    * </ul>
    *
    * @param depth the depth of fields fills.
-   * @param chanceGenerationNullableFields the chance, which used for defining, does it need to be
-   *     filled fields, which not marked by {@link NotNull} annotation.
+   * @param nullableFieldsChance the chance, which used for defining whether to fill fields, which
+   *     not marked by {@link NotNull} annotation.
    */
-  public static Message getMessageInstance(int depth, float chanceGenerationNullableFields) {
-    TypeFactory<Message> messageFactory = new TypeFactory<>(depth, chanceGenerationNullableFields);
-    Message instance = new Message();
-    messageFactory.generate(instance);
-    return instance;
+  public static Message getMessageInstance(int depth, float nullableFieldsChance) {
+    TypeFactory<Message> messageFactory = new TypeFactory<>(depth, nullableFieldsChance);
+    return messageFactory.generate(Message.class);
   }
 
   /**
@@ -42,13 +40,11 @@ public class PrefabTypes {
    * </ul>
    *
    * @param depth the depth of fields fills.
-   * @param chanceGenerationNullableFields the chance, which used for defining, does it need to be
-   *     filled fields, which not marked by {@link NotNull} annotation.
+   * @param nullableFieldsChance the chance, which used for defining whether to fill fields, which
+   *     not marked by {@link NotNull} annotation.
    */
-  public static Chat getChatInstance(int depth, float chanceGenerationNullableFields) {
-    TypeFactory<Chat> messageFactory = new TypeFactory<>(depth, chanceGenerationNullableFields);
-    Chat instance = new Chat();
-    messageFactory.generate(instance);
-    return instance;
+  public static Chat getChatInstance(int depth, float nullableFieldsChance) {
+    TypeFactory<Chat> messageFactory = new TypeFactory<>(depth, nullableFieldsChance);
+    return messageFactory.generate(Chat.class);
   }
 }
