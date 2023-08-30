@@ -25,6 +25,15 @@ java {
     }
 }
 
+javadoc {
+    options.encoding = "UTF-8"
+    configure(options) {
+        tags(
+            "apiNote:a:API Note:"
+        )
+    }
+}
+
 spotless {
     java {
        googleJavaFormat()
