@@ -14,16 +14,14 @@ public class GetUpdatesParameters {
   @SerializedName("allowed_updates")
   private List<String> allowedUpdates;
 
+  public GetUpdatesParameters() {}
+
   public GetUpdatesParameters(
       Integer offset, Integer limit, Integer timeout, List<String> allowedUpdates) {
     this.offset = offset;
     this.limit = limit;
     this.timeout = timeout;
     this.allowedUpdates = allowedUpdates;
-  }
-
-  public static GetUpdatesParameters getDefault() {
-    return DEFAULT;
   }
 
   public Integer getOffset() {
