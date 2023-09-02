@@ -16,6 +16,26 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
+/**
+ * General implementation of data exchanging between Appication and Telegram API using HTTP
+ * requests.
+ *
+ * <p>This class contains several methods of Telegram API. For passing parameters to method use
+ * specific type, which creates from method name in PascalCase + "Parameters" word (e.g.
+ * "getUpdates" method -> "GetUpdatesParameters"). Theses parameters contains required fields and
+ * optional fields, which can sets by setters. <strong>Note:</strong> exception will be thrown if
+ * one of required fields is not set.
+ *
+ * <p>Usage:
+ *
+ * <pre><code>
+ * String token = "your_token";
+ * BotApi api = new BotApi(token);
+ * {@link Update}[] updates = api.getUpdates(GetUpdatesParameters.DEFAULT);
+ * </code></pre>
+ *
+ * @author Pavel Bialiauski
+ */
 public class BotApi {
 
   private final String botToken;
