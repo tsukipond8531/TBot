@@ -1,9 +1,12 @@
 package jarkz.tbot.core;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
+
+import jarkz.tbot.types.ResponseParameters;
 
 public class Response {
 
@@ -13,6 +16,8 @@ public class Response {
 
   @SerializedName("error_code")
   private Integer errorCode;
+
+  private ResponseParameters parameters;
 
   public Response() {}
 
@@ -24,33 +29,41 @@ public class Response {
     this.ok = ok;
   }
 
-  public String getDescription() {
-    return description;
+  public Optional<String> getDescription() {
+    return Optional.of(description);
   }
 
   public void setDescription(String description) {
     this.description = description;
   }
 
-  public JsonElement getResult() {
-    return result;
+  public Optional<JsonElement> getResult() {
+    return Optional.of(result);
   }
 
   public void setResult(JsonElement result) {
     this.result = result;
   }
 
-  public Integer getErrorCode() {
-    return errorCode;
+  public Optional<Integer> getErrorCode() {
+    return Optional.of(errorCode);
   }
 
   public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
   }
 
+  public Optional<ResponseParameters> getParameters() {
+    return Optional.of(parameters);
+  }
+
+  public void setParameters(ResponseParameters parameters) {
+    this.parameters = parameters;
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(ok, description, result, errorCode);
+    return Objects.hash(ok, description, result, errorCode, parameters);
   }
 
   @Override
@@ -60,7 +73,8 @@ public class Response {
     return ok == other.ok
         && Objects.equals(description, other.description)
         && Objects.equals(result, other.result)
-        && Objects.equals(errorCode, other.errorCode);
+        && Objects.equals(errorCode, other.errorCode)
+        && Objects.equals(parameters, other.parameters);
   }
 
   @Override
@@ -75,6 +89,8 @@ public class Response {
         .append(result)
         .append(", error_code=")
         .append(errorCode)
+        .append(", parameters=")
+        .append(parameters)
         .append("]");
     return builder.toString();
   }

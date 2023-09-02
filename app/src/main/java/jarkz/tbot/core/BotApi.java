@@ -33,11 +33,18 @@ public class BotApi {
 
     Response response = makeRequest(methodName, paramsAsEntity, gson);
     if (!response.isOk()) {
-      throw new RuntimeException(response.getDescription());
+      throw new RuntimeException(
+          response.getDescription().isPresent()
+              ? response.getDescription().orElseThrow()
+              : String.valueOf(response.getErrorCode().orElseThrow()));
     }
 
     List<Update> updates = new LinkedList<>();
-    for (JsonElement element : response.getResult().getAsJsonArray()) {
+    for (JsonElement element :
+        response
+            .getResult()
+            .orElseThrow(() -> new RuntimeException("Invalid result of response."))
+            .getAsJsonArray()) {
       updates.add(gson.fromJson(element, Update.class));
     }
     return updates;
