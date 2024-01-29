@@ -314,7 +314,7 @@ public class Sticker {
    *
    * @return an optional value of needs_repainting as Boolean.
    */
-  public Optional<Boolean> getNeedRepainting() {
+  public Optional<Boolean> getNeedsRepainting() {
     return Optional.ofNullable(needsRepainting);
   }
 

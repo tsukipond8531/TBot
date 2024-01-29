@@ -194,7 +194,7 @@ public class Audio {
    * @return an optional value of thumbnail as {@link PhotoSize}.
    */
   public Optional<PhotoSize> getThumbnail() {
-    return Optional.of(thumbnail);
+    return Optional.ofNullable(thumbnail);
   }
 
   /**

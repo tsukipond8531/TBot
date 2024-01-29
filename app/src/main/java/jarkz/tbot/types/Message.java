@@ -792,7 +792,7 @@ public class Message {
    * @return an optional value of story as {@link Story}.
    */
   public Optional<Story> getStory() {
-    return Optional.of(story);
+    return Optional.ofNullable(story);
   }
 
   /**

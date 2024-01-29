@@ -54,7 +54,7 @@ public class PollAnswer {
    * @return an optional value of voter_chat as {@link Chat}.
    */
   public Optional<Chat> getVoterChat() {
-    return Optional.of(voterChat);
+    return Optional.ofNullable(voterChat);
   }
 
   /**
@@ -73,7 +73,7 @@ public class PollAnswer {
    * @return an optional value of user as {@link User}.
    */
   public Optional<User> getUser() {
-    return Optional.of(user);
+    return Optional.ofNullable(user);
   }
 
   /**
