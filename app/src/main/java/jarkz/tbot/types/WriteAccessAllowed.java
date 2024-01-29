@@ -24,7 +24,7 @@ public class WriteAccessAllowed {
    * @return an optional value of web_app_name as String.
    */
   public Optional<String> getWebAppName() {
-    return Optional.of(webAppName);
+    return Optional.ofNullable(webAppName);
   }
 
   /**

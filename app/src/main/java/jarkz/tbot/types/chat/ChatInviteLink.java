@@ -144,7 +144,7 @@ public class ChatInviteLink {
    * @return an optional value of name as String.
    */
   public Optional<String> getName() {
-    return Optional.of(name);
+    return Optional.ofNullable(name);
   }
 
   /**
@@ -162,7 +162,7 @@ public class ChatInviteLink {
    * @return an optional value of expire_date as Long.
    */
   public Optional<Long> getExpireDate() {
-    return Optional.of(expireDate);
+    return Optional.ofNullable(expireDate);
   }
 
   /**
@@ -182,7 +182,7 @@ public class ChatInviteLink {
    * @return an optional value of member_limit as Integer.
    */
   public Optional<Integer> getMemberLimit() {
-    return Optional.of(memberLimit);
+    return Optional.ofNullable(memberLimit);
   }
 
   /**
@@ -203,7 +203,7 @@ public class ChatInviteLink {
    * @return an optional value of pending_join_request_count as Integer.
    */
   public Optional<Integer> getPendingJoinRequestCount() {
-    return Optional.of(pendingJoinRequestCount);
+    return Optional.ofNullable(pendingJoinRequestCount);
   }
 
   /**

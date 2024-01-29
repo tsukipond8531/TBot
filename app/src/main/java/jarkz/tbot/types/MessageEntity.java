@@ -137,7 +137,7 @@ public class MessageEntity {
    * @return an optional value of url as String.
    */
   public Optional<String> getUrl() {
-    return Optional.of(url);
+    return Optional.ofNullable(url);
   }
 
   /**
@@ -156,7 +156,7 @@ public class MessageEntity {
    * @return an optional value of user as {@link User}.
    */
   public Optional<User> getUser() {
-    return Optional.of(user);
+    return Optional.ofNullable(user);
   }
 
   /**
@@ -174,7 +174,7 @@ public class MessageEntity {
    * @return an optional value of language as String.
    */
   public Optional<String> getLanguage() {
-    return Optional.of(language);
+    return Optional.ofNullable(language);
   }
 
   /**
@@ -197,7 +197,7 @@ public class MessageEntity {
    * @return an optional value of custom_emoji_id as String.
    */
   public Optional<String> getCustomEmojiId() {
-    return Optional.of(customEmojiId);
+    return Optional.ofNullable(customEmojiId);
   }
 
   /**

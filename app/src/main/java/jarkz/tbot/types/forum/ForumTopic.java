@@ -88,7 +88,7 @@ public class ForumTopic {
    * @return an optional value of icon_custom_emoji_id as String.
    */
   public Optional<String> getIconCustomEmojiId() {
-    return Optional.of(iconCustomEmojiId);
+    return Optional.ofNullable(iconCustomEmojiId);
   }
 
   /**

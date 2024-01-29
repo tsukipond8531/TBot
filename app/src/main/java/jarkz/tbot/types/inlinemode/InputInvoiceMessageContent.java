@@ -201,7 +201,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of max_tip_amount as Integer.
    */
   public Optional<Integer> getMaxTipAmount() {
-    return Optional.of(maxTipAmount);
+    return Optional.ofNullable(maxTipAmount);
   }
 
   /**
@@ -230,7 +230,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of suggested_tip_amounts as {@link List}&lt;Integer&gt;.
    */
   public Optional<List<Integer>> getSuggestedTipAmounts() {
-    return Optional.of(suggestedTipAmounts);
+    return Optional.ofNullable(suggestedTipAmounts);
   }
 
   /**
@@ -254,7 +254,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of provider_data as String.
    */
   public Optional<String> getProviderData() {
-    return Optional.of(providerData);
+    return Optional.ofNullable(providerData);
   }
 
   /**
@@ -275,7 +275,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of photo_url as String.
    */
   public Optional<String> getPhotoUrl() {
-    return Optional.of(photoUrl);
+    return Optional.ofNullable(photoUrl);
   }
 
   /**
@@ -295,7 +295,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of photo_size as Integer.
    */
   public Optional<Integer> getPhotoSize() {
-    return Optional.of(photoSize);
+    return Optional.ofNullable(photoSize);
   }
 
   /**
@@ -313,7 +313,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of photo_width as Integer.
    */
   public Optional<Integer> getPhotoWidth() {
-    return Optional.of(photoWidth);
+    return Optional.ofNullable(photoWidth);
   }
 
   /**
@@ -331,7 +331,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of photo_height as Integer.
    */
   public Optional<Integer> getPhotoHeight() {
-    return Optional.of(photoHeight);
+    return Optional.ofNullable(photoHeight);
   }
 
   /**
@@ -349,7 +349,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of need_name as Boolean.
    */
   public Optional<Boolean> getNeedName() {
-    return Optional.of(needName);
+    return Optional.ofNullable(needName);
   }
 
   /**
@@ -368,7 +368,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of need_phone_number as Boolean.
    */
   public Optional<Boolean> getNeedPhoneNumber() {
-    return Optional.of(needPhoneNumber);
+    return Optional.ofNullable(needPhoneNumber);
   }
 
   /**
@@ -387,7 +387,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of need_email as Boolean.
    */
   public Optional<Boolean> getNeedEmail() {
-    return Optional.of(needEmail);
+    return Optional.ofNullable(needEmail);
   }
 
   /**
@@ -406,7 +406,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of need_shipping_address as Boolean.
    */
   public Optional<Boolean> getNeedShippingAddress() {
-    return Optional.of(needShippingAddress);
+    return Optional.ofNullable(needShippingAddress);
   }
 
   /**
@@ -425,7 +425,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of send_phone_number_to_provider as Boolean.
    */
   public Optional<Boolean> getSendPhoneNumberToProvider() {
-    return Optional.of(sendPhoneNumberToProvider);
+    return Optional.ofNullable(sendPhoneNumberToProvider);
   }
 
   /**
@@ -444,7 +444,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of send_email_to_provider as Boolean.
    */
   public Optional<Boolean> getSendEmailToProvider() {
-    return Optional.of(sendEmailToProvider);
+    return Optional.ofNullable(sendEmailToProvider);
   }
 
   /**
@@ -463,7 +463,7 @@ public class InputInvoiceMessageContent implements InputMessageContent {
    * @return an optional value of is_flexible as Boolean.
    */
   public Optional<Boolean> getIsFlexible() {
-    return Optional.of(isFlexible);
+    return Optional.ofNullable(isFlexible);
   }
 
   /**

@@ -114,7 +114,7 @@ public class VideoNote {
    * @return an optional value of thumbnail as {@link PhotoSize}.
    */
   public Optional<PhotoSize> getThumbnail() {
-    return Optional.of(thumbnail);
+    return Optional.ofNullable(thumbnail);
   }
 
   /**
@@ -132,7 +132,7 @@ public class VideoNote {
    * @return an optional value of file_size as Integer.
    */
   public Optional<Integer> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**

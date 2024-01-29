@@ -36,7 +36,7 @@ public class SwitchInlineQueryChosenChat {
    * @return an optional value of query as String.
    */
   public Optional<String> getQuery() {
-    return Optional.of(query);
+    return Optional.ofNullable(query);
   }
 
   /**
@@ -56,7 +56,7 @@ public class SwitchInlineQueryChosenChat {
    * @return an optional value of allow_user_chats as Boolean.
    */
   public Optional<Boolean> getAllowUserChats() {
-    return Optional.of(allowUserChats);
+    return Optional.ofNullable(allowUserChats);
   }
 
   /**
@@ -75,7 +75,7 @@ public class SwitchInlineQueryChosenChat {
    * @return an optional value of allow_bot_chats as Boolean.
    */
   public Optional<Boolean> getAllowBotChats() {
-    return Optional.of(allowBotChats);
+    return Optional.ofNullable(allowBotChats);
   }
 
   /**
@@ -93,7 +93,7 @@ public class SwitchInlineQueryChosenChat {
    * @return an optional value of allow_group_chats as Boolean.
    */
   public Optional<Boolean> getAllowGroupChats() {
-    return Optional.of(allowGroupChats);
+    return Optional.ofNullable(allowGroupChats);
   }
 
   /**
@@ -112,7 +112,7 @@ public class SwitchInlineQueryChosenChat {
    * @return an optional value of allow_channel_chats as Boolean.
    */
   public Optional<Boolean> getAllowChannelChats() {
-    return Optional.of(allowChannelChats);
+    return Optional.ofNullable(allowChannelChats);
   }
 
   /**

@@ -104,7 +104,7 @@ public class Update {
    * @return an optional value of message as {@link Message}.
    */
   public Optional<Message> getMessage() {
-    return Optional.of(message);
+    return Optional.ofNullable(message);
   }
 
   /**
@@ -123,7 +123,7 @@ public class Update {
    * @return an optional value of edited message as {@link Message}.
    */
   public Optional<Message> getEditedMessage() {
-    return Optional.of(editedMessage);
+    return Optional.ofNullable(editedMessage);
   }
 
   /**
@@ -142,7 +142,7 @@ public class Update {
    * @return an optional value of channel_post as {@link Message}.
    */
   public Optional<Message> getChannelPost() {
-    return Optional.of(channelPost);
+    return Optional.ofNullable(channelPost);
   }
 
   /**
@@ -161,7 +161,7 @@ public class Update {
    * @return an optional value of edited_channel_post as {@link Message}.
    */
   public Optional<Message> getEditedChannelPost() {
-    return Optional.of(editedChannelPost);
+    return Optional.ofNullable(editedChannelPost);
   }
 
   /**
@@ -180,7 +180,7 @@ public class Update {
    * @return an optional value of inline_query as {@link InlineQuery}.
    */
   public Optional<InlineQuery> getInlineQuery() {
-    return Optional.of(inlineQuery);
+    return Optional.ofNullable(inlineQuery);
   }
 
   /**
@@ -204,7 +204,7 @@ public class Update {
    * @return an optional value of chosen_inline_query as {@link ChosenInlineResult}.
    */
   public Optional<ChosenInlineResult> getChosenInlineResult() {
-    return Optional.of(chosenInlineResult);
+    return Optional.ofNullable(chosenInlineResult);
   }
 
   /**
@@ -228,7 +228,7 @@ public class Update {
    * @return an optional value of callback_query as {@link CallbackQuery}.
    */
   public Optional<CallbackQuery> getCallbackQuery() {
-    return Optional.of(callbackQuery);
+    return Optional.ofNullable(callbackQuery);
   }
 
   /**
@@ -247,7 +247,7 @@ public class Update {
    * @return an optional value of shipping_query as {@link ShippingQuery}.
    */
   public Optional<ShippingQuery> getShippingQuery() {
-    return Optional.of(shippingQuery);
+    return Optional.ofNullable(shippingQuery);
   }
 
   /**
@@ -266,7 +266,7 @@ public class Update {
    * @return an optional value of pre_checkout_query as {@link PreCheckoutQuery}.
    */
   public Optional<PreCheckoutQuery> getPreCheckoutQuery() {
-    return Optional.of(preCheckoutQuery);
+    return Optional.ofNullable(preCheckoutQuery);
   }
 
   /**
@@ -286,7 +286,7 @@ public class Update {
    * @return an optional value of poll as {@link Poll}.
    */
   public Optional<Poll> getPoll() {
-    return Optional.of(poll);
+    return Optional.ofNullable(poll);
   }
 
   /**
@@ -306,7 +306,7 @@ public class Update {
    * @return an optional value of poll_answer as {@link PollAnswer}.
    */
   public Optional<PollAnswer> getPollAnswer() {
-    return Optional.of(pollAnswer);
+    return Optional.ofNullable(pollAnswer);
   }
 
   /**
@@ -327,7 +327,7 @@ public class Update {
    * @return an optional value of my_chat_member as {@link ChatMemberUpdated}.
    */
   public Optional<ChatMemberUpdated> getMyChatMember() {
-    return Optional.of(myChatMember);
+    return Optional.ofNullable(myChatMember);
   }
 
   /**
@@ -349,7 +349,7 @@ public class Update {
    * @return an optional value of chat_member as {@link ChatMemberUpdated}.
    */
   public Optional<ChatMemberUpdated> getChatMember() {
-    return Optional.of(chatMember);
+    return Optional.ofNullable(chatMember);
   }
 
   /**
@@ -371,7 +371,7 @@ public class Update {
    * @return an optional value of chat_join_request as {@link ChatJoinRequest}.
    */
   public Optional<ChatJoinRequest> getChatJoinRequest() {
-    return Optional.of(chatJoinRequest);
+    return Optional.ofNullable(chatJoinRequest);
   }
 
   /**

@@ -26,7 +26,7 @@ public class ResponseParameters {
    * @return an optional value of migrate_to_chat_id as Long.
    */
   public Optional<Long> getMigrateToChatId() {
-    return Optional.of(migrateToChatId);
+    return Optional.ofNullable(migrateToChatId);
   }
 
   /**
@@ -46,7 +46,7 @@ public class ResponseParameters {
    * @return an optional value of retry_after as Integer.
    */
   public Optional<Integer> getRetryAfter() {
-    return Optional.of(retryAfter);
+    return Optional.ofNullable(retryAfter);
   }
 
   /**

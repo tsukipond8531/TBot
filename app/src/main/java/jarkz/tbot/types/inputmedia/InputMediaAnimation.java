@@ -99,7 +99,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of thumbnail as {@link InputFile}.
    */
   public Optional<InputFile> getThumbnail() {
-    return Optional.of(thumbnail);
+    return Optional.ofNullable(thumbnail);
   }
 
   /**
@@ -128,7 +128,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -150,7 +150,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -173,7 +173,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -194,7 +194,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of width as Integer.
    */
   public Optional<Integer> getWidth() {
-    return Optional.of(width);
+    return Optional.ofNullable(width);
   }
 
   /**
@@ -212,7 +212,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of height as Integer.
    */
   public Optional<Integer> getHeight() {
-    return Optional.of(height);
+    return Optional.ofNullable(height);
   }
 
   /**
@@ -230,7 +230,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of duration as Integer.
    */
   public Optional<Integer> getDuration() {
-    return Optional.of(duration);
+    return Optional.ofNullable(duration);
   }
 
   /**
@@ -248,7 +248,7 @@ public class InputMediaAnimation implements InputMedia {
    * @return an optional value of has_spoiler as Boolean.
    */
   public Optional<Boolean> getHasSpoiler() {
-    return Optional.of(hasSpoiler);
+    return Optional.ofNullable(hasSpoiler);
   }
 
   /**

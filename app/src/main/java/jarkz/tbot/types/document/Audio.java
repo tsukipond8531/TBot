@@ -104,7 +104,7 @@ public class Audio {
    * @return an optional value of performer as String.
    */
   public Optional<String> getPerformer() {
-    return Optional.of(performer);
+    return Optional.ofNullable(performer);
   }
 
   /**
@@ -122,7 +122,7 @@ public class Audio {
    * @return an optional value of title as String.
    */
   public Optional<String> getTitle() {
-    return Optional.of(title);
+    return Optional.ofNullable(title);
   }
 
   /**
@@ -140,7 +140,7 @@ public class Audio {
    * @return an optional value of file_name as String.
    */
   public Optional<String> getFileName() {
-    return Optional.of(fileName);
+    return Optional.ofNullable(fileName);
   }
 
   /**
@@ -158,7 +158,7 @@ public class Audio {
    * @return an optional value of mime_type as String.
    */
   public Optional<String> getMimeType() {
-    return Optional.of(mimeType);
+    return Optional.ofNullable(mimeType);
   }
 
   /**
@@ -176,7 +176,7 @@ public class Audio {
    * @return an optional value of file_size as Long.
    */
   public Optional<Long> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**

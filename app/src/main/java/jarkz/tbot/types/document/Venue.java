@@ -94,7 +94,7 @@ public class Venue {
    * @return an optional value of foursquare_id as String.
    */
   public Optional<String> getFoursquareId() {
-    return Optional.of(foursquareId);
+    return Optional.ofNullable(foursquareId);
   }
 
   /**
@@ -114,7 +114,7 @@ public class Venue {
    * @return an optional value of foursquare_type as String.
    */
   public Optional<String> getFoursquareType() {
-    return Optional.of(foursquareType);
+    return Optional.ofNullable(foursquareType);
   }
 
   /**
@@ -133,7 +133,7 @@ public class Venue {
    * @return an optional value of google_place_id as String.
    */
   public Optional<String> getGooglePlaceId() {
-    return Optional.of(googlePlaceId);
+    return Optional.ofNullable(googlePlaceId);
   }
 
   /**
@@ -153,7 +153,7 @@ public class Venue {
    * @return an optional value of google_place_type as String.
    */
   public Optional<String> getGooglePlaceType() {
-    return Optional.of(googlePlaceType);
+    return Optional.ofNullable(googlePlaceType);
   }
 
   /**

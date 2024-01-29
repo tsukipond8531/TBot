@@ -26,7 +26,7 @@ public class SentWebAppMessage {
    * @return an optional value of inline_message_id as String.
    */
   public Optional<String> getInlineMessageId() {
-    return Optional.of(inlineMessageId);
+    return Optional.ofNullable(inlineMessageId);
   }
 
   /**

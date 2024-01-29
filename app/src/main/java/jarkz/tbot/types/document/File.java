@@ -78,7 +78,7 @@ public class File {
    * @return an optional value of file_size as Long.
    */
   public Optional<Long> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**
@@ -97,7 +97,7 @@ public class File {
    * @return an optional value of file_path as String.
    */
   public Optional<String> getFilePath() {
-    return Optional.of(filePath);
+    return Optional.ofNullable(filePath);
   }
 
   /**

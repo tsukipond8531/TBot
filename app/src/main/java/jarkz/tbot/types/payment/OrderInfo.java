@@ -30,7 +30,7 @@ public class OrderInfo {
    * @return an optional value of name as String.
    */
   public Optional<String> getName() {
-    return Optional.of(name);
+    return Optional.ofNullable(name);
   }
 
   /**
@@ -48,7 +48,7 @@ public class OrderInfo {
    * @return an optional value of phone_number as String.
    */
   public Optional<String> getPhoneNumber() {
-    return Optional.of(phoneNumber);
+    return Optional.ofNullable(phoneNumber);
   }
 
   /**
@@ -67,7 +67,7 @@ public class OrderInfo {
    * @return an optional value of email as String.
    */
   public Optional<String> getEmail() {
-    return Optional.of(email);
+    return Optional.ofNullable(email);
   }
 
   /**
@@ -85,7 +85,7 @@ public class OrderInfo {
    * @return an optional value of shipping_address as {@link ShippingAddress}.
    */
   public Optional<ShippingAddress> getShippingAddress() {
-    return Optional.of(shippingAddress);
+    return Optional.ofNullable(shippingAddress);
   }
 
   /**

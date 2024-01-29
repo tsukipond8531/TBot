@@ -224,7 +224,7 @@ public class ChatAdministratorRights {
    * @return an optional value of can_post_messages as Boolean.
    */
   public Optional<Boolean> getCanPostMessages() {
-    return Optional.of(canPostMessages);
+    return Optional.ofNullable(canPostMessages);
   }
 
   /**
@@ -244,7 +244,7 @@ public class ChatAdministratorRights {
    * @return an optional value of can_edit_messages as Boolean.
    */
   public Optional<Boolean> getCanEditMessages() {
-    return Optional.of(canEditMessages);
+    return Optional.ofNullable(canEditMessages);
   }
 
   /**
@@ -265,7 +265,7 @@ public class ChatAdministratorRights {
    * @return an optional value of can_pin_messages as Boolean.
    */
   public Optional<Boolean> getCanPinMessages() {
-    return Optional.of(canPinMessages);
+    return Optional.ofNullable(canPinMessages);
   }
 
   /**
@@ -285,7 +285,7 @@ public class ChatAdministratorRights {
    * @return an optional value of can_manage_topics as Boolean.
    */
   public Optional<Boolean> getCanManageTopics() {
-    return Optional.of(canManageTopics);
+    return Optional.ofNullable(canManageTopics);
   }
 
   /**

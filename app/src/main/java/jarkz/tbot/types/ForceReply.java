@@ -54,7 +54,7 @@ public class ForceReply {
    * @return an optional value of input_field_placeholder as String.
    */
   public Optional<String> getInputFieldPlaceholder() {
-    return Optional.of(inputFieldPlaceholder);
+    return Optional.ofNullable(inputFieldPlaceholder);
   }
 
   /**
@@ -78,7 +78,7 @@ public class ForceReply {
    * @return an optional value of selective as Boolean.
    */
   public Optional<Boolean> getSelective() {
-    return Optional.of(selective);
+    return Optional.ofNullable(selective);
   }
 
   /**

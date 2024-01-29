@@ -114,7 +114,7 @@ public class ChatJoinRequest {
    * @return an optional value of bio as String.
    */
   public Optional<String> getBio() {
-    return Optional.of(bio);
+    return Optional.ofNullable(bio);
   }
 
   /**
@@ -132,7 +132,7 @@ public class ChatJoinRequest {
    * @return an optional value of invite_link as {@link ChatInviteLink}.
    */
   public Optional<ChatInviteLink> getInviteLink() {
-    return Optional.of(inviteLink);
+    return Optional.ofNullable(inviteLink);
   }
 
   /**

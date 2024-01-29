@@ -207,7 +207,7 @@ public class Poll {
    * @return an optional value of correct_option_id as Integer.
    */
   public Optional<Integer> getCorrectOptionId() {
-    return Optional.of(correctOptionId);
+    return Optional.ofNullable(correctOptionId);
   }
 
   /**
@@ -230,7 +230,7 @@ public class Poll {
    * @return an optional value of explanation as String.
    */
   public Optional<String> getExplanation() {
-    return Optional.of(explanation);
+    return Optional.ofNullable(explanation);
   }
 
   /**
@@ -252,7 +252,7 @@ public class Poll {
    * @return an optional value of explanation_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getExplanationEntities() {
-    return Optional.of(explanationEntities);
+    return Optional.ofNullable(explanationEntities);
   }
 
   /**
@@ -273,7 +273,7 @@ public class Poll {
    * @return an optional value of open_period as Integer.
    */
   public Optional<Integer> getOpenPeriod() {
-    return Optional.of(openPeriod);
+    return Optional.ofNullable(openPeriod);
   }
 
   /**
@@ -292,7 +292,7 @@ public class Poll {
    * @return an optional value of close_date as Long.
    */
   public Optional<Long> getCloseDate() {
-    return Optional.of(closeDate);
+    return Optional.ofNullable(closeDate);
   }
 
   /**

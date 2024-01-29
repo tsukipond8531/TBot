@@ -120,7 +120,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -141,7 +141,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -163,7 +163,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -184,7 +184,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of performer as String.
    */
   public Optional<String> getPerformer() {
-    return Optional.of(performer);
+    return Optional.ofNullable(performer);
   }
 
   /**
@@ -202,7 +202,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of audio_duration as Integer.
    */
   public Optional<Integer> getAudioDuration() {
-    return Optional.of(audioDuration);
+    return Optional.ofNullable(audioDuration);
   }
 
   /**
@@ -221,7 +221,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -241,7 +241,7 @@ public class InlineQueryResultAudio implements InlineQueryResult {
    * @return an optional value of input_message_content as {@link InputMessageContent}.
    */
   public Optional<InputMessageContent> getInputMessageContent() {
-    return Optional.of(inputMessageContent);
+    return Optional.ofNullable(inputMessageContent);
   }
 
   /**

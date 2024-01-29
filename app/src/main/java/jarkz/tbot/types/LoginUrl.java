@@ -74,7 +74,7 @@ public class LoginUrl {
    * @return an optional value of forward_text as String.
    */
   public Optional<String> getForwardText() {
-    return Optional.of(forwardText);
+    return Optional.ofNullable(forwardText);
   }
 
   /**
@@ -100,7 +100,7 @@ public class LoginUrl {
    * @return an optional value of bot_username as String.
    */
   public Optional<String> getBotUsername() {
-    return Optional.of(botUsername);
+    return Optional.ofNullable(botUsername);
   }
 
   /**
@@ -127,7 +127,7 @@ public class LoginUrl {
    * @return an optional value of request_write_access as Boolean.
    */
   public Optional<Boolean> getRequestWriteAccess() {
-    return Optional.of(requestWriteAccess);
+    return Optional.ofNullable(requestWriteAccess);
   }
 
   /**

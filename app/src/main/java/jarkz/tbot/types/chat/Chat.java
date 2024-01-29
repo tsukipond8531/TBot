@@ -134,7 +134,7 @@ public class Chat {
    * @return an optional value of title as String.
    */
   public Optional<String> getTitle() {
-    return Optional.of(title);
+    return Optional.ofNullable(title);
   }
 
   /**
@@ -152,7 +152,7 @@ public class Chat {
    * @return an optional value of username as String.
    */
   public Optional<String> getUsername() {
-    return Optional.of(username);
+    return Optional.ofNullable(username);
   }
 
   /**
@@ -171,7 +171,7 @@ public class Chat {
    * @return an optional value of first_name as String.
    */
   public Optional<String> getFirstName() {
-    return Optional.of(firstName);
+    return Optional.ofNullable(firstName);
   }
 
   /**
@@ -190,7 +190,7 @@ public class Chat {
    * @return an optional value of last_name as String.
    */
   public Optional<String> getLastName() {
-    return Optional.of(lastName);
+    return Optional.ofNullable(lastName);
   }
 
   /**
@@ -211,7 +211,7 @@ public class Chat {
    * @return an optional value of is_forum as Boolean.
    */
   public Optional<Boolean> getIsForum() {
-    return Optional.of(isForum);
+    return Optional.ofNullable(isForum);
   }
 
   /**
@@ -231,7 +231,7 @@ public class Chat {
    * @return an optional value of photo as {@link ChatPhoto}.
    */
   public Optional<ChatPhoto> getPhoto() {
-    return Optional.of(photo);
+    return Optional.ofNullable(photo);
   }
 
   /**
@@ -250,7 +250,7 @@ public class Chat {
    * @return an optional value of active_usernames as {@link List}&lt;String&gt;.
    */
   public Optional<List<String>> getActiveUsernames() {
-    return Optional.of(activeUsernames);
+    return Optional.ofNullable(activeUsernames);
   }
 
   /**
@@ -270,7 +270,7 @@ public class Chat {
    * @return an optional value of emoji_status_custom_emoji_id as String.
    */
   public Optional<String> getEmojiStatusCustomEmojiId() {
-    return Optional.of(emojiStatusCustomEmojiId);
+    return Optional.ofNullable(emojiStatusCustomEmojiId);
   }
 
   /**
@@ -290,7 +290,7 @@ public class Chat {
    * @return an optional value of bio as String.
    */
   public Optional<String> getBio() {
-    return Optional.of(bio);
+    return Optional.ofNullable(bio);
   }
 
   /**
@@ -310,7 +310,7 @@ public class Chat {
    * @return an optional value of has_private_forwards as Boolean.
    */
   public Optional<Boolean> getHasPrivateForwards() {
-    return Optional.of(hasPrivateForwards);
+    return Optional.ofNullable(hasPrivateForwards);
   }
 
   /**
@@ -331,7 +331,7 @@ public class Chat {
    * @return an optional value of has_restricted_voice_and_video_messages as Boolean.
    */
   public Optional<Boolean> getHasRestrictedVoiceAndVideoMessages() {
-    return Optional.of(hasRestrictedVoiceAndVideoMessages);
+    return Optional.ofNullable(hasRestrictedVoiceAndVideoMessages);
   }
 
   /**
@@ -353,7 +353,7 @@ public class Chat {
    * @return an optional value of join_to_send_messages as Boolean.
    */
   public Optional<Boolean> getJoinToSendMessages() {
-    return Optional.of(joinToSendMessages);
+    return Optional.ofNullable(joinToSendMessages);
   }
 
   /**
@@ -373,7 +373,7 @@ public class Chat {
    * @return an optional value of join_by_request as Boolean.
    */
   public Optional<Boolean> getJoinByRequest() {
-    return Optional.of(joinByRequest);
+    return Optional.ofNullable(joinByRequest);
   }
 
   /**
@@ -394,7 +394,7 @@ public class Chat {
    * @return an optional value of description as String.
    */
   public Optional<String> getDescription() {
-    return Optional.of(description);
+    return Optional.ofNullable(description);
   }
 
   /**
@@ -414,7 +414,7 @@ public class Chat {
    * @return an optional value of invite_link as String.
    */
   public Optional<String> getInviteLink() {
-    return Optional.of(inviteLink);
+    return Optional.ofNullable(inviteLink);
   }
 
   /**
@@ -433,7 +433,7 @@ public class Chat {
    * @return an optional value of pinned_message as {@link Message}.
    */
   public Optional<Message> getPinnedMessage() {
-    return Optional.of(pinnedMessage);
+    return Optional.ofNullable(pinnedMessage);
   }
 
   /**
@@ -453,7 +453,7 @@ public class Chat {
    * @return an optional value of permissions as {@link ChatPermissions}.
    */
   public Optional<ChatPermissions> getPermissions() {
-    return Optional.of(permissions);
+    return Optional.ofNullable(permissions);
   }
 
   /**
@@ -473,7 +473,7 @@ public class Chat {
    * @return an optional value of slow_mode_delay as Integer.
    */
   public Optional<Integer> getSlowModeDelay() {
-    return Optional.of(slowModeDelay);
+    return Optional.ofNullable(slowModeDelay);
   }
 
   /**
@@ -496,7 +496,7 @@ public class Chat {
    * @return an optional value of message_auto_delete_time as Integer.
    */
   public Optional<Integer> getMessageAutoDeleteTime() {
-    return Optional.of(messageAutoDeleteTime);
+    return Optional.ofNullable(messageAutoDeleteTime);
   }
 
   /**
@@ -517,7 +517,7 @@ public class Chat {
    * @return an optional value of has_agressive_anti_spam_enabled as Boolean.
    */
   public Optional<Boolean> getHasAggressiveAntiSpamEnabled() {
-    return Optional.of(hasAggressiveAntiSpamEnabled);
+    return Optional.ofNullable(hasAggressiveAntiSpamEnabled);
   }
 
   /**
@@ -538,7 +538,7 @@ public class Chat {
    * @return an optional value of has_hidden_members as Boolean.
    */
   public Optional<Boolean> getHasHiddenMembers() {
-    return Optional.of(hasHiddenMembers);
+    return Optional.ofNullable(hasHiddenMembers);
   }
 
   /**
@@ -558,7 +558,7 @@ public class Chat {
    * @return an optional value of has_protected_content as Boolean.
    */
   public Optional<Boolean> getHasProtectedContent() {
-    return Optional.of(hasProtectedContent);
+    return Optional.ofNullable(hasProtectedContent);
   }
 
   /**
@@ -577,7 +577,7 @@ public class Chat {
    * @return an optional value of sticker_set_name as String.
    */
   public Optional<String> getStickerSetName() {
-    return Optional.of(stickerSetName);
+    return Optional.ofNullable(stickerSetName);
   }
 
   /**
@@ -596,7 +596,7 @@ public class Chat {
    * @return an optional value of can_set_sticker_set as Boolean.
    */
   public Optional<Boolean> getCanSetStickerSet() {
-    return Optional.of(canSetStickerSet);
+    return Optional.ofNullable(canSetStickerSet);
   }
 
   /**
@@ -616,7 +616,7 @@ public class Chat {
    * @return an optional value of linked_chat_id as Long.
    */
   public Optional<Long> getLinkedChatId() {
-    return Optional.of(linkedChatId);
+    return Optional.ofNullable(linkedChatId);
   }
 
   /**
@@ -637,7 +637,7 @@ public class Chat {
    * @return an optional value of location as {@link ChatLocation}.
    */
   public Optional<ChatLocation> getLocation() {
-    return Optional.of(location);
+    return Optional.ofNullable(location);
   }
 
   /**

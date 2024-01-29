@@ -80,7 +80,7 @@ public class InputMediaPhoto implements InputMedia {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -102,7 +102,7 @@ public class InputMediaPhoto implements InputMedia {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -125,7 +125,7 @@ public class InputMediaPhoto implements InputMedia {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -146,7 +146,7 @@ public class InputMediaPhoto implements InputMedia {
    * @return an optional value of has_spoiler as Boolean.
    */
   public Optional<Boolean> getHasSpoiler() {
-    return Optional.of(hasSpoiler);
+    return Optional.ofNullable(hasSpoiler);
   }
 
   /**

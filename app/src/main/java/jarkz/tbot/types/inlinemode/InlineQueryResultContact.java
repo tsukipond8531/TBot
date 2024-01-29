@@ -123,7 +123,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of last_name as String.
    */
   public Optional<String> getLastName() {
-    return Optional.of(lastName);
+    return Optional.ofNullable(lastName);
   }
 
   /**
@@ -142,7 +142,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of vcard as String.
    */
   public Optional<String> getVcard() {
-    return Optional.of(vcard);
+    return Optional.ofNullable(vcard);
   }
 
   /**
@@ -163,7 +163,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -183,7 +183,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of input_message_content as {@link InputMessageContent}.
    */
   public Optional<InputMessageContent> getInputMessageContent() {
-    return Optional.of(inputMessageContent);
+    return Optional.ofNullable(inputMessageContent);
   }
 
   /**
@@ -202,7 +202,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of thumbnail_url as String.
    */
   public Optional<String> getThumbnailUrl() {
-    return Optional.of(thumbnailUrl);
+    return Optional.ofNullable(thumbnailUrl);
   }
 
   /**
@@ -220,7 +220,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of thumbnail_height as Integer.
    */
   public Optional<Integer> getThumbnailWidth() {
-    return Optional.of(thumbnailWidth);
+    return Optional.ofNullable(thumbnailWidth);
   }
 
   /**
@@ -238,7 +238,7 @@ public class InlineQueryResultContact implements InlineQueryResult {
    * @return an optional value of thumbnail_height as Integer.
    */
   public Optional<Integer> getThumbnailHeight() {
-    return Optional.of(thumbnailHeight);
+    return Optional.ofNullable(thumbnailHeight);
   }
 
   /**

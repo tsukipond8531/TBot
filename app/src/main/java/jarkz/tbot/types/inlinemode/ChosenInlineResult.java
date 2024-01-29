@@ -76,7 +76,7 @@ public class ChosenInlineResult {
    * @return an optional value of location as {@link Location}.
    */
   public Optional<Location> getLocation() {
-    return Optional.of(location);
+    return Optional.ofNullable(location);
   }
 
   /**
@@ -98,7 +98,7 @@ public class ChosenInlineResult {
    * @return an optional value of inline_message_id as String.
    */
   public Optional<String> getInlineMessageId() {
-    return Optional.of(inlineMessageId);
+    return Optional.ofNullable(inlineMessageId);
   }
 
   /**

@@ -25,7 +25,7 @@ public class ForumTopicEdited {
    * @return an optional value of name as String.
    */
   public Optional<String> getName() {
-    return Optional.of(name);
+    return Optional.ofNullable(name);
   }
 
   /**
@@ -44,7 +44,7 @@ public class ForumTopicEdited {
    * @return an optional value of icon_custom_emoji_id as String.
    */
   public Optional<String> getIconCustomEmojiId() {
-    return Optional.of(iconCustomEmojiId);
+    return Optional.ofNullable(iconCustomEmojiId);
   }
 
   /**

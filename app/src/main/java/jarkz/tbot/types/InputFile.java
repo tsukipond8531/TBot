@@ -51,7 +51,7 @@ public class InputFile {
    * @return the data of file.
    */
   public Optional<byte[]> getData() {
-    return Optional.of(data);
+    return Optional.ofNullable(data);
   }
 
   /**
@@ -69,7 +69,7 @@ public class InputFile {
    * @return a file attach name.
    */
   public Optional<String> getFileAttachName() {
-    return Optional.of(fileAttachName);
+    return Optional.ofNullable(fileAttachName);
   }
 
   /**

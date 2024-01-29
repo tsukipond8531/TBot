@@ -108,7 +108,7 @@ public class EncryptedPassportElement {
    * @return an optional value of data as String.
    */
   public Optional<String> getData() {
-    return Optional.of(data);
+    return Optional.ofNullable(data);
   }
 
   /**
@@ -140,7 +140,7 @@ public class EncryptedPassportElement {
    * @return an optional value of phone_number as String.
    */
   public Optional<String> getPhoneNumber() {
-    return Optional.of(phoneNumber);
+    return Optional.ofNullable(phoneNumber);
   }
 
   /**
@@ -159,7 +159,7 @@ public class EncryptedPassportElement {
    * @return an optional value of email as String.
    */
   public Optional<String> getEmail() {
-    return Optional.of(email);
+    return Optional.ofNullable(email);
   }
 
   /**
@@ -189,7 +189,7 @@ public class EncryptedPassportElement {
    * @return an optional value of files as {@link List}&lt;{@link PassportFile}&gt;.
    */
   public Optional<List<PassportFile>> getFiles() {
-    return Optional.of(files);
+    return Optional.ofNullable(files);
   }
 
   /**
@@ -230,7 +230,7 @@ public class EncryptedPassportElement {
    * @return an optional value of front_side as {@link PassportFile}.
    */
   public Optional<PassportFile> getFrontSide() {
-    return Optional.of(frontSide);
+    return Optional.ofNullable(frontSide);
   }
 
   /**
@@ -269,7 +269,7 @@ public class EncryptedPassportElement {
    * @return an optional value of reverse_side as {@link PassportFile}.
    */
   public Optional<PassportFile> getReverseSide() {
-    return Optional.of(reverseSide);
+    return Optional.ofNullable(reverseSide);
   }
 
   /**
@@ -308,7 +308,7 @@ public class EncryptedPassportElement {
    * @return an optional value of selfie as {@link PassportFile}.
    */
   public Optional<PassportFile> getSelfie() {
-    return Optional.of(selfie);
+    return Optional.ofNullable(selfie);
   }
 
   /**
@@ -354,7 +354,7 @@ public class EncryptedPassportElement {
    * @return an optional value of translation as {@link List}&lt;{@link PassportFile}&gt;.
    */
   public Optional<List<PassportFile>> getTranslation() {
-    return Optional.of(translation);
+    return Optional.ofNullable(translation);
   }
 
   /**

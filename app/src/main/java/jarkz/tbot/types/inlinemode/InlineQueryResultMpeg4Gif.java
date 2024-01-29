@@ -114,7 +114,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of mpeg4_width as Integer.
    */
   public Optional<Integer> getMpeg4Width() {
-    return Optional.of(mpeg4Width);
+    return Optional.ofNullable(mpeg4Width);
   }
 
   /**
@@ -132,7 +132,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of mpeg4_height as Integer.
    */
   public Optional<Integer> getMpeg4Height() {
-    return Optional.of(mpeg4Height);
+    return Optional.ofNullable(mpeg4Height);
   }
 
   /**
@@ -150,7 +150,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of mpeg4_duration as Integer.
    */
   public Optional<Integer> getMpeg4Duration() {
-    return Optional.of(mpeg4Duration);
+    return Optional.ofNullable(mpeg4Duration);
   }
 
   /**
@@ -188,7 +188,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of thumbnail_mime_type as String.
    */
   public Optional<String> getThumbnailMimeType() {
-    return Optional.of(thumbnailMimeType);
+    return Optional.ofNullable(thumbnailMimeType);
   }
 
   /**
@@ -208,7 +208,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of title as String.
    */
   public Optional<String> getTitle() {
-    return Optional.of(title);
+    return Optional.ofNullable(title);
   }
 
   /**
@@ -227,7 +227,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -248,7 +248,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -270,7 +270,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -292,7 +292,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -312,7 +312,7 @@ public class InlineQueryResultMpeg4Gif implements InlineQueryResult {
    * @return an optional value of input_message_content as {@link InputMessageContent}.
    */
   public Optional<InputMessageContent> getInputMessageContent() {
-    return Optional.of(inputMessageContent);
+    return Optional.ofNullable(inputMessageContent);
   }
 
   /**

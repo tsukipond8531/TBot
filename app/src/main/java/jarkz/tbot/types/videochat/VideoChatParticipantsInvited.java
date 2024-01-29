@@ -23,7 +23,7 @@ public class VideoChatParticipantsInvited {
    * @return users as {@link List}&lt;{@link User}&gt;.
    */
   public Optional<List<User>> getUsers() {
-    return Optional.of(users);
+    return Optional.ofNullable(users);
   }
 
   /**

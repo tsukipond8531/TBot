@@ -129,7 +129,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of photo_width as Integer.
    */
   public Optional<Integer> getPhotoWidth() {
-    return Optional.of(photoWidth);
+    return Optional.ofNullable(photoWidth);
   }
 
   /**
@@ -147,7 +147,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of photo_height as Integer.
    */
   public Optional<Integer> getPhotoHeight() {
-    return Optional.of(photoHeight);
+    return Optional.ofNullable(photoHeight);
   }
 
   /**
@@ -165,7 +165,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of title as String.
    */
   public Optional<String> getTitle() {
-    return Optional.of(title);
+    return Optional.ofNullable(title);
   }
 
   /**
@@ -183,7 +183,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of description as String.
    */
   public Optional<String> getDescription() {
-    return Optional.of(description);
+    return Optional.ofNullable(description);
   }
 
   /**
@@ -201,7 +201,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -222,7 +222,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -244,7 +244,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -266,7 +266,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -286,7 +286,7 @@ public class InlineQueryResultPhoto implements InlineQueryResult {
    * @return an optional value of input_message_content as {@link InputMessageContent}.
    */
   public Optional<InputMessageContent> getInputMessageContent() {
-    return Optional.of(inputMessageContent);
+    return Optional.ofNullable(inputMessageContent);
   }
 
   /**

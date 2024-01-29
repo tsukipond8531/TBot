@@ -83,7 +83,7 @@ public class InlineQueryResultGame implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**

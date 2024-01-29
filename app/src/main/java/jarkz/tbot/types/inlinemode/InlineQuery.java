@@ -112,7 +112,7 @@ public class InlineQuery {
    * @return an optional value of chat_type as String.
    */
   public Optional<String> getChatType() {
-    return Optional.of(chatType);
+    return Optional.ofNullable(chatType);
   }
 
   /**
@@ -134,7 +134,7 @@ public class InlineQuery {
    * @return an optional value of location as {@link Location}.
    */
   public Optional<Location> getLocation() {
-    return Optional.of(location);
+    return Optional.ofNullable(location);
   }
 
   /**

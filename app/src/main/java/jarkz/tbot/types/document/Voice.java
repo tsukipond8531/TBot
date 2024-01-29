@@ -95,7 +95,7 @@ public class Voice {
    * @return an optional value of mime_type as String.
    */
   public Optional<String> getMimeType() {
-    return Optional.of(mimeType);
+    return Optional.ofNullable(mimeType);
   }
 
   /**
@@ -113,7 +113,7 @@ public class Voice {
    * @return an optional value of file_size as Long.
    */
   public Optional<Long> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**

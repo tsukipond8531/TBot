@@ -205,7 +205,7 @@ public class Sticker {
    * @return an optional value of thumbnail as {@link PhotoSize}.
    */
   public Optional<PhotoSize> getThumbnail() {
-    return Optional.of(thumbnail);
+    return Optional.ofNullable(thumbnail);
   }
 
   /**
@@ -223,7 +223,7 @@ public class Sticker {
    * @return an optional value of emoji as String.
    */
   public Optional<String> getEmoji() {
-    return Optional.of(emoji);
+    return Optional.ofNullable(emoji);
   }
 
   /**
@@ -241,7 +241,7 @@ public class Sticker {
    * @return an optional value of set_name as String.
    */
   public Optional<String> getSetName() {
-    return Optional.of(setName);
+    return Optional.ofNullable(setName);
   }
 
   /**
@@ -259,7 +259,7 @@ public class Sticker {
    * @return an optional value of premium_animation as {@link File}.
    */
   public Optional<File> getPremiumAnimation() {
-    return Optional.of(premiumAnimation);
+    return Optional.ofNullable(premiumAnimation);
   }
 
   /**
@@ -277,7 +277,7 @@ public class Sticker {
    * @return an optional value of mask_position as {@link MaskPosition}.
    */
   public Optional<MaskPosition> getMaskPosition() {
-    return Optional.of(maskPosition);
+    return Optional.ofNullable(maskPosition);
   }
 
   /**
@@ -295,7 +295,7 @@ public class Sticker {
    * @return an optional value of custom_emoji_id as String.
    */
   public Optional<String> getCustomEmojiId() {
-    return Optional.of(customEmojiId);
+    return Optional.ofNullable(customEmojiId);
   }
 
   /**
@@ -314,8 +314,8 @@ public class Sticker {
    *
    * @return an optional value of needs_repainting as Boolean.
    */
-  public Optional<Boolean> getNeedsRepainting() {
-    return Optional.of(needsRepainting);
+  public Optional<Boolean> getNeedRepainting() {
+    return Optional.ofNullable(needsRepainting);
   }
 
   /**
@@ -336,7 +336,7 @@ public class Sticker {
    * @return an optional value of file_size as Integer.
    */
   public Optional<Integer> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**

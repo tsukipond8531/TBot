@@ -58,7 +58,7 @@ public class KeyboardButtonRequestUser {
    * @return an optional value of user_is_bot as Boolean.
    */
   public Optional<Boolean> getUserIsBot() {
-    return Optional.of(userIsBot);
+    return Optional.ofNullable(userIsBot);
   }
 
   /**
@@ -79,7 +79,7 @@ public class KeyboardButtonRequestUser {
    * @return an optional value of user_is_premium as Boolean.
    */
   public Optional<Boolean> getUserIsPremium() {
-    return Optional.of(userIsPremium);
+    return Optional.ofNullable(userIsPremium);
   }
 
   /**

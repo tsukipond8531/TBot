@@ -71,7 +71,7 @@ public class InputContactMessageContent implements InputMessageContent {
    * @return an optional value of last_name as String.
    */
   public Optional<String> getLastName() {
-    return Optional.of(lastName);
+    return Optional.ofNullable(lastName);
   }
 
   /**
@@ -90,7 +90,7 @@ public class InputContactMessageContent implements InputMessageContent {
    * @return an optional value of vcard as String.
    */
   public Optional<String> getVcard() {
-    return Optional.of(vcard);
+    return Optional.ofNullable(vcard);
   }
 
   /**

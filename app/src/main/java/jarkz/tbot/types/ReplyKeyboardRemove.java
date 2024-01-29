@@ -71,7 +71,7 @@ public class ReplyKeyboardRemove {
    * @return an optional value of selective as Boolean.
    */
   public Optional<Boolean> getSelective() {
-    return Optional.of(selective);
+    return Optional.ofNullable(selective);
   }
 
   /**

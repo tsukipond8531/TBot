@@ -69,7 +69,7 @@ public class KeyboardButton {
    * @return an optional value of request_user as {@link KeyboardButtonRequestUser}.
    */
   public Optional<KeyboardButtonRequestUser> getRequestUser() {
-    return Optional.of(requestUser);
+    return Optional.ofNullable(requestUser);
   }
 
   /**
@@ -96,7 +96,7 @@ public class KeyboardButton {
    * @return an optional value of request_chat as {@link KeyboardButtonRequestChat}.
    */
   public Optional<KeyboardButtonRequestChat> getRequestChat() {
-    return Optional.of(requestChat);
+    return Optional.ofNullable(requestChat);
   }
 
   /**
@@ -122,7 +122,7 @@ public class KeyboardButton {
    * @return an optional value of request_contact as Boolean.
    */
   public Optional<Boolean> getRequestContact() {
-    return Optional.of(requestContact);
+    return Optional.ofNullable(requestContact);
   }
 
   /**
@@ -147,7 +147,7 @@ public class KeyboardButton {
    * @return an optional value of request_location as Boolean.
    */
   public Optional<Boolean> getRequestLocation() {
-    return Optional.of(requestLocation);
+    return Optional.ofNullable(requestLocation);
   }
 
   /**
@@ -172,7 +172,7 @@ public class KeyboardButton {
    * @return an optional value of request_poll as {@link KeyboardButtonPollType}.
    */
   public Optional<KeyboardButtonPollType> getRequestPoll() {
-    return Optional.of(requestPoll);
+    return Optional.ofNullable(requestPoll);
   }
 
   /**
@@ -199,7 +199,7 @@ public class KeyboardButton {
    * @return an optional value of web_app as {@link WebAppInfo}.
    */
   public Optional<WebAppInfo> getWebApp() {
-    return Optional.of(webApp);
+    return Optional.ofNullable(webApp);
   }
 
   /**

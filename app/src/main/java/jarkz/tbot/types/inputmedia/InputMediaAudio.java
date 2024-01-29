@@ -96,7 +96,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of thumbnail as {@link InputFile}.
    */
   public Optional<InputFile> getThumbnail() {
-    return Optional.of(thumbnail);
+    return Optional.ofNullable(thumbnail);
   }
 
   /**
@@ -125,7 +125,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -147,7 +147,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -170,7 +170,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -191,7 +191,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of duration as Integer.
    */
   public Optional<Integer> getDuration() {
-    return Optional.of(duration);
+    return Optional.ofNullable(duration);
   }
 
   /**
@@ -209,7 +209,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of performer as String.
    */
   public Optional<String> getPerformer() {
-    return Optional.of(performer);
+    return Optional.ofNullable(performer);
   }
 
   /**
@@ -227,7 +227,7 @@ public class InputMediaAudio implements InputMedia {
    * @return an optional value of title as String.
    */
   public Optional<String> getTitle() {
-    return Optional.of(title);
+    return Optional.ofNullable(title);
   }
 
   /**

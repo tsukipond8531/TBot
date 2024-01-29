@@ -64,7 +64,7 @@ public class ReplyKeyboardMarkup {
    * @return an optional value of is_persistent as Boolean.
    */
   public Optional<Boolean> getIsPersistent() {
-    return Optional.of(isPersistent);
+    return Optional.ofNullable(isPersistent);
   }
 
   /**
@@ -86,7 +86,7 @@ public class ReplyKeyboardMarkup {
    * @return an optional value of resize_keyboard as Boolean.
    */
   public Optional<Boolean> getResizeKeyboard() {
-    return Optional.of(resizeKeyboard);
+    return Optional.ofNullable(resizeKeyboard);
   }
 
   /**
@@ -110,7 +110,7 @@ public class ReplyKeyboardMarkup {
    * @return an optional value of one_time_keyboard as Boolean.
    */
   public Optional<Boolean> getOneTimeKeyboard() {
-    return Optional.of(oneTimeKeyboard);
+    return Optional.ofNullable(oneTimeKeyboard);
   }
 
   /**
@@ -133,7 +133,7 @@ public class ReplyKeyboardMarkup {
    * @return an optional value of input_field_placeholder as String.
    */
   public Optional<String> getInputFieldPlaceholder() {
-    return Optional.of(inputFieldPlaceholder);
+    return Optional.ofNullable(inputFieldPlaceholder);
   }
 
   /**
@@ -161,7 +161,7 @@ public class ReplyKeyboardMarkup {
    * @return an optional value of selective as Boolean.
    */
   public Optional<Boolean> getSelective() {
-    return Optional.of(selective);
+    return Optional.ofNullable(selective);
   }
 
   /**

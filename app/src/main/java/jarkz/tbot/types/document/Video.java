@@ -140,7 +140,7 @@ public class Video {
    * @return an optional value of thumbnail as {@link PhotoSize}.
    */
   public Optional<PhotoSize> getThumbnail() {
-    return Optional.of(thumbnail);
+    return Optional.ofNullable(thumbnail);
   }
 
   /**
@@ -158,7 +158,7 @@ public class Video {
    * @return an optional value of file_name as String.
    */
   public Optional<String> getFileName() {
-    return Optional.of(fileName);
+    return Optional.ofNullable(fileName);
   }
 
   /**
@@ -176,7 +176,7 @@ public class Video {
    * @return an optional value of mime_type as String.
    */
   public Optional<String> getMimeType() {
-    return Optional.of(mimeType);
+    return Optional.ofNullable(mimeType);
   }
 
   /**
@@ -194,7 +194,7 @@ public class Video {
    * @return an optional value of file_size as Long.
    */
   public Optional<Long> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**

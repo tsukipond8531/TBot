@@ -98,7 +98,7 @@ public class Game {
    * @return an optional value of text as String.
    */
   public Optional<String> getText() {
-    return Optional.of(text);
+    return Optional.ofNullable(text);
   }
 
   /**
@@ -122,7 +122,7 @@ public class Game {
    * @return an optional value of text_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getTextEntities() {
-    return Optional.of(textEntities);
+    return Optional.ofNullable(textEntities);
   }
 
   /**
@@ -143,7 +143,7 @@ public class Game {
    * @return an optional value of animation as {@link Animation}.
    */
   public Optional<Animation> getAnimation() {
-    return Optional.of(animation);
+    return Optional.ofNullable(animation);
   }
 
   /**

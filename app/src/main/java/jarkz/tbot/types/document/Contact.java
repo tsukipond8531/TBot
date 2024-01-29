@@ -73,7 +73,7 @@ public class Contact {
    * @return an optional value of last_name as String.
    */
   public Optional<String> getLastName() {
-    return Optional.of(lastName);
+    return Optional.ofNullable(lastName);
   }
 
   /**
@@ -91,7 +91,7 @@ public class Contact {
    * @return an optional value of user_id as Long.
    */
   public Optional<Long> getUserId() {
-    return Optional.of(userId);
+    return Optional.ofNullable(userId);
   }
 
   /**
@@ -110,7 +110,7 @@ public class Contact {
    * @return an optional value of vcard as String.
    */
   public Optional<String> getVcard() {
-    return Optional.of(vcard);
+    return Optional.ofNullable(vcard);
   }
 
   /**

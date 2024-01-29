@@ -96,7 +96,7 @@ public class KeyboardButtonRequestChat {
    * @return an optional value of chat_is_forum as Boolean.
    */
   public Optional<Boolean> getChatIsForum() {
-    return Optional.of(chatIsForum);
+    return Optional.ofNullable(chatIsForum);
   }
 
   /**
@@ -118,7 +118,7 @@ public class KeyboardButtonRequestChat {
    * @return an optional value of chat_has_username as Boolean.
    */
   public Optional<Boolean> getChatHasUsername() {
-    return Optional.of(chatHasUsername);
+    return Optional.ofNullable(chatHasUsername);
   }
 
   /**
@@ -139,7 +139,7 @@ public class KeyboardButtonRequestChat {
    * @return an optional value of chat_is_created as Boolean.
    */
   public Optional<Boolean> getChatIsCreated() {
-    return Optional.of(chatIsCreated);
+    return Optional.ofNullable(chatIsCreated);
   }
 
   /**
@@ -161,7 +161,7 @@ public class KeyboardButtonRequestChat {
    * @return an optional value of user_administrator_rights as {@link ChatAdministratorRights}.
    */
   public Optional<ChatAdministratorRights> getUserAdministratorRights() {
-    return Optional.of(userAdministratorRights);
+    return Optional.ofNullable(userAdministratorRights);
   }
 
   /**
@@ -185,7 +185,7 @@ public class KeyboardButtonRequestChat {
    * @return an optional value of bot_administrator_rights as {@link ChatAdministratorRights}.
    */
   public Optional<ChatAdministratorRights> getBotAdministratorRights() {
-    return Optional.of(botAdministratorRights);
+    return Optional.ofNullable(botAdministratorRights);
   }
 
   /**
@@ -208,7 +208,7 @@ public class KeyboardButtonRequestChat {
    * @return an optional value of bot_is_member as Boolean.
    */
   public Optional<Boolean> getBotIsMember() {
-    return Optional.of(botIsMember);
+    return Optional.ofNullable(botIsMember);
   }
 
   /**

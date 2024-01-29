@@ -53,7 +53,7 @@ public class InlineQueryResultsButton {
    * @return an optional value of web_app as {@link WebAppInfo}.
    */
   public Optional<WebAppInfo> getWebApp() {
-    return Optional.of(webApp);
+    return Optional.ofNullable(webApp);
   }
 
   /**
@@ -92,7 +92,7 @@ public class InlineQueryResultsButton {
    * @return an optional value of start_parameter as String.
    */
   public Optional<String> getStartParameter() {
-    return Optional.of(startParameter);
+    return Optional.ofNullable(startParameter);
   }
 
   /**

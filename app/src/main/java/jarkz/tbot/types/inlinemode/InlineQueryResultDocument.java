@@ -115,7 +115,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -136,7 +136,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -158,7 +158,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -216,7 +216,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of description as String.
    */
   public Optional<String> getDescription() {
-    return Optional.of(description);
+    return Optional.ofNullable(description);
   }
 
   /**
@@ -235,7 +235,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -255,7 +255,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of input_message_content as {@link InputMessageContent}.
    */
   public Optional<InputMessageContent> getInputMessageContent() {
-    return Optional.of(inputMessageContent);
+    return Optional.ofNullable(inputMessageContent);
   }
 
   /**
@@ -274,7 +274,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of thumbnail_url as String.
    */
   public Optional<String> getThumbnailUrl() {
-    return Optional.of(thumbnailUrl);
+    return Optional.ofNullable(thumbnailUrl);
   }
 
   /**
@@ -293,7 +293,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of thumbnail_width as Integer.
    */
   public Optional<Integer> getThumbnailWidth() {
-    return Optional.of(thumbnailWidth);
+    return Optional.ofNullable(thumbnailWidth);
   }
 
   /**
@@ -311,7 +311,7 @@ public class InlineQueryResultDocument implements InlineQueryResult {
    * @return an optional value of thumbnail_height as Integer.
    */
   public Optional<Integer> getThumbnailHeight() {
-    return Optional.of(thumbnailHeight);
+    return Optional.ofNullable(thumbnailHeight);
   }
 
   /**

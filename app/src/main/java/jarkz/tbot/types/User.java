@@ -108,7 +108,7 @@ public class User {
    * @return an optional value of last_name String.
    */
   public Optional<String> getLastName() {
-    return Optional.of(lastName);
+    return Optional.ofNullable(lastName);
   }
 
   /**
@@ -127,7 +127,7 @@ public class User {
    * @return an optional value of username String.
    */
   public Optional<String> getUsername() {
-    return Optional.of(username);
+    return Optional.ofNullable(username);
   }
 
   /**
@@ -147,7 +147,7 @@ public class User {
    * @return an optional value of language_code String.
    */
   public Optional<String> getLanguageCode() {
-    return Optional.of(languageCode);
+    return Optional.ofNullable(languageCode);
   }
 
   /**
@@ -167,7 +167,7 @@ public class User {
    * @return an optional value of is_premium as Boolean.
    */
   public Optional<Boolean> getIsPremium() {
-    return Optional.of(isPremium);
+    return Optional.ofNullable(isPremium);
   }
 
   /**
@@ -185,7 +185,7 @@ public class User {
    * @return an optional value of added_to_attachment_menu as Boolean.
    */
   public Optional<Boolean> getAddedToAttachmentMenu() {
-    return Optional.of(addedToAttachmentMenu);
+    return Optional.ofNullable(addedToAttachmentMenu);
   }
 
   /**
@@ -204,7 +204,7 @@ public class User {
    * @return an optional value of can_join_groups as Boolean.
    */
   public Optional<Boolean> getCanJoinGroups() {
-    return Optional.of(canJoinGroups);
+    return Optional.ofNullable(canJoinGroups);
   }
 
   /**
@@ -223,7 +223,7 @@ public class User {
    * @return an optional value of can_read_all_group_messages as Boolean.
    */
   public Optional<Boolean> getCanReadAllGroupMessages() {
-    return Optional.of(canReadAllGroupMessages);
+    return Optional.ofNullable(canReadAllGroupMessages);
   }
 
   /**
@@ -243,7 +243,7 @@ public class User {
    * @return an optional value of support_inline_queries as Boolean.
    */
   public Optional<Boolean> getSupportInlineQueries() {
-    return Optional.of(supportInlineQueries);
+    return Optional.ofNullable(supportInlineQueries);
   }
 
   /**

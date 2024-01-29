@@ -82,7 +82,7 @@ public class CallbackQuery {
    * @return an optional value of message as {@link Message}.
    */
   public Optional<Message> getMessage() {
-    return Optional.of(message);
+    return Optional.ofNullable(message);
   }
 
   /**
@@ -102,7 +102,7 @@ public class CallbackQuery {
    * @return an optional value of inline_message_id as String.
    */
   public Optional<String> getInlineMessageId() {
-    return Optional.of(inlineMessageId);
+    return Optional.ofNullable(inlineMessageId);
   }
 
   /**
@@ -145,7 +145,7 @@ public class CallbackQuery {
    * @return an optional value of data as String.
    */
   public Optional<String> getData() {
-    return Optional.of(data);
+    return Optional.ofNullable(data);
   }
 
   /**
@@ -166,7 +166,7 @@ public class CallbackQuery {
    * @return an optional value of game_short_name as String.
    */
   public Optional<String> getGameShortName() {
-    return Optional.of(gameShortName);
+    return Optional.ofNullable(gameShortName);
   }
 
   /**

@@ -118,7 +118,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -138,7 +138,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of url as String.
    */
   public Optional<String> getUrl() {
-    return Optional.of(url);
+    return Optional.ofNullable(url);
   }
 
   /**
@@ -156,7 +156,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of hide_url as Boolean.
    */
   public Optional<Boolean> getHideUrl() {
-    return Optional.of(hideUrl);
+    return Optional.ofNullable(hideUrl);
   }
 
   /**
@@ -175,7 +175,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of description as String.
    */
   public Optional<String> getDescription() {
-    return Optional.of(description);
+    return Optional.ofNullable(description);
   }
 
   /**
@@ -193,7 +193,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of thumbnail_url as String.
    */
   public Optional<String> getThumbnailUrl() {
-    return Optional.of(thumbnailUrl);
+    return Optional.ofNullable(thumbnailUrl);
   }
 
   /**
@@ -212,7 +212,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of thumbnail_width as Integer.
    */
   public Optional<Integer> getThumbnailWidth() {
-    return Optional.of(thumbnailWidth);
+    return Optional.ofNullable(thumbnailWidth);
   }
 
   /**
@@ -231,7 +231,7 @@ public class InlineQueryResultArticle implements InlineQueryResult {
    * @return an optional value of thumbnail_height as Integer.
    */
   public Optional<Integer> getThumbnailHeight() {
-    return Optional.of(thumbnailHeight);
+    return Optional.ofNullable(thumbnailHeight);
   }
 
   /**

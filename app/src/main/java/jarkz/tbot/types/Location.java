@@ -72,7 +72,7 @@ public class Location {
    * @return an optional value of horizontal_accuracy as Float.
    */
   public Optional<Float> getHorizontalAccuracy() {
-    return Optional.of(horizontalAccuracy);
+    return Optional.ofNullable(horizontalAccuracy);
   }
 
   /**
@@ -92,7 +92,7 @@ public class Location {
    * @return an optional value of live_period as Integer.
    */
   public Optional<Integer> getLivePeriod() {
-    return Optional.of(livePeriod);
+    return Optional.ofNullable(livePeriod);
   }
 
   /**
@@ -113,7 +113,7 @@ public class Location {
    * @return an optional value of heading as Integer.
    */
   public Optional<Integer> getHeading() {
-    return Optional.of(heading);
+    return Optional.ofNullable(heading);
   }
 
   /**
@@ -133,7 +133,7 @@ public class Location {
    * @return an optional value of proximity_alert_radius as Integer.
    */
   public Optional<Integer> getProximityAlertRadius() {
-    return Optional.of(proximityAlertRadius);
+    return Optional.ofNullable(proximityAlertRadius);
   }
 
   /**

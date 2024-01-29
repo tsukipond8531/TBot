@@ -24,7 +24,7 @@ public class KeyboardButtonPollType {
    * @return an optional value of type as String.
    */
   public Optional<String> getType() {
-    return Optional.of(type);
+    return Optional.ofNullable(type);
   }
 
   /**

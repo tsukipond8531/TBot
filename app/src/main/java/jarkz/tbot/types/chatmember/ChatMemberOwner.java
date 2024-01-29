@@ -82,7 +82,7 @@ public class ChatMemberOwner implements ChatMember {
    * @return an optional value of custom_title as String.
    */
   public Optional<String> getCustomTitle() {
-    return Optional.of(customTitle);
+    return Optional.ofNullable(customTitle);
   }
 
   /**

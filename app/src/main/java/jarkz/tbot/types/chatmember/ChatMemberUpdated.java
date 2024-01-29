@@ -135,7 +135,7 @@ public class ChatMemberUpdated {
    * @return an optional value of invite_link as {@link ChatInviteLink}.
    */
   public Optional<ChatInviteLink> getInviteLink() {
-    return Optional.of(inviteLink);
+    return Optional.ofNullable(inviteLink);
   }
 
   /**
@@ -155,7 +155,7 @@ public class ChatMemberUpdated {
    * @return an optional value of via_chat_folder_invite_link as Boolean.
    */
   public Optional<Boolean> getViaChatFolderInviteLink() {
-    return Optional.of(viaChatFolderInviteLink);
+    return Optional.ofNullable(viaChatFolderInviteLink);
   }
 
   /**

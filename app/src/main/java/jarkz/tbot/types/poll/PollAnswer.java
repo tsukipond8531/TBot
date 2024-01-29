@@ -92,7 +92,7 @@ public class PollAnswer {
    * @return option_ids as {@link List}&lt;Integer&gt;.
    */
   public Optional<List<Integer>> getOptionIds() {
-    return Optional.of(optionIds);
+    return Optional.ofNullable(optionIds);
   }
 
   /**

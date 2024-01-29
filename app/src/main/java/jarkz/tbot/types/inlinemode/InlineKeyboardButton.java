@@ -74,7 +74,7 @@ public class InlineKeyboardButton {
    * @return an optional value of url as String.
    */
   public Optional<String> getUrl() {
-    return Optional.of(url);
+    return Optional.ofNullable(url);
   }
 
   /**
@@ -97,7 +97,7 @@ public class InlineKeyboardButton {
    * @return an optional value of callback_data as String.
    */
   public Optional<String> getCallbackData() {
-    return Optional.of(callbackData);
+    return Optional.ofNullable(callbackData);
   }
 
   /**
@@ -122,7 +122,7 @@ public class InlineKeyboardButton {
    * @return an optional value of web_app as {@link WebAppInfo}.
    */
   public Optional<WebAppInfo> getWebApp() {
-    return Optional.of(webApp);
+    return Optional.ofNullable(webApp);
   }
 
   /**
@@ -147,7 +147,7 @@ public class InlineKeyboardButton {
    * @return an optional value of login_url as {@link LoginUrl}.
    */
   public Optional<LoginUrl> getLoginUrl() {
-    return Optional.of(loginUrl);
+    return Optional.ofNullable(loginUrl);
   }
 
   /**
@@ -168,7 +168,7 @@ public class InlineKeyboardButton {
    * @return an optional value of switch_inline_query as String.
    */
   public Optional<String> getSwitchInlineQuery() {
-    return Optional.of(switchInlineQuery);
+    return Optional.ofNullable(switchInlineQuery);
   }
 
   /**
@@ -194,7 +194,7 @@ public class InlineKeyboardButton {
    * @return an optional value of switch_inline_query_current_chat as String.
    */
   public Optional<String> getSwitchInlineQueryCurrentChat() {
-    return Optional.of(switchInlineQueryCurrentChat);
+    return Optional.ofNullable(switchInlineQueryCurrentChat);
   }
 
   /**
@@ -221,7 +221,7 @@ public class InlineKeyboardButton {
    *     SwitchInlineQueryChosenChat}.
    */
   public Optional<SwitchInlineQueryChosenChat> getSwitchInlineQueryChosenChat() {
-    return Optional.of(switchInlineQueryChosenChat);
+    return Optional.ofNullable(switchInlineQueryChosenChat);
   }
 
   /**
@@ -245,7 +245,7 @@ public class InlineKeyboardButton {
    * @return an optional value of callback_game as {@link CallbackGame}.
    */
   public Optional<CallbackGame> getCallbackGame() {
-    return Optional.of(callbackGame);
+    return Optional.ofNullable(callbackGame);
   }
 
   /**
@@ -268,7 +268,7 @@ public class InlineKeyboardButton {
    * @return an optional value of pay as Boolean.
    */
   public Optional<Boolean> getPay() {
-    return Optional.of(pay);
+    return Optional.ofNullable(pay);
   }
 
   /**

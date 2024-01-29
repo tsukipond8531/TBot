@@ -85,7 +85,7 @@ public class InputSticker {
    * @return an optional value of mask_position as {@link MaskPosition}.
    */
   public Optional<MaskPosition> getMaskPosition() {
-    return Optional.of(maskPosition);
+    return Optional.ofNullable(maskPosition);
   }
 
   /**
@@ -105,7 +105,7 @@ public class InputSticker {
    * @return an optional value of keywords as {@link List}&lt;String&gt;.
    */
   public Optional<List<String>> getKeywords() {
-    return Optional.of(keywords);
+    return Optional.ofNullable(keywords);
   }
 
   /**

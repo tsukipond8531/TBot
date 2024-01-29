@@ -113,7 +113,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of gif_width as Integer.
    */
   public Optional<Integer> getGifWidth() {
-    return Optional.of(gifWidth);
+    return Optional.ofNullable(gifWidth);
   }
 
   /**
@@ -131,7 +131,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of gif_height as Integer.
    */
   public Optional<Integer> getGifHeight() {
-    return Optional.of(gifHeight);
+    return Optional.ofNullable(gifHeight);
   }
 
   /**
@@ -149,7 +149,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of gif_duration as integer.
    */
   public Optional<Integer> getGifDuration() {
-    return Optional.of(gifDuration);
+    return Optional.ofNullable(gifDuration);
   }
 
   /**
@@ -188,7 +188,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of thumbnail_mime_type as String.
    */
   public Optional<String> getThumbnailMimeType() {
-    return Optional.of(thumbnailMimeType);
+    return Optional.ofNullable(thumbnailMimeType);
   }
 
   /**
@@ -208,7 +208,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of title as String.
    */
   public Optional<String> getTitle() {
-    return Optional.of(title);
+    return Optional.ofNullable(title);
   }
 
   /**
@@ -226,7 +226,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of caption as String.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -247,7 +247,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -269,7 +269,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -291,7 +291,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**
@@ -311,7 +311,7 @@ public class InlineQueryResultGif implements InlineQueryResult {
    * @return an optional value of input_message_content as {@link InputMessageContent}.
    */
   public Optional<InputMessageContent> getInputMessageContent() {
-    return Optional.of(inputMessageContent);
+    return Optional.ofNullable(inputMessageContent);
   }
 
   /**

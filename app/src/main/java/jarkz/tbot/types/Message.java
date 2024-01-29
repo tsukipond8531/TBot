@@ -267,7 +267,7 @@ public class Message {
    * @return an optional value of message_thread_id as Long.
    */
   public Optional<Long> getMessageThreadId() {
-    return Optional.of(messageThreadId);
+    return Optional.ofNullable(messageThreadId);
   }
 
   /**
@@ -289,7 +289,7 @@ public class Message {
    * @return an optional value of from as {@link User}.
    */
   public Optional<User> getFrom() {
-    return Optional.of(from);
+    return Optional.ofNullable(from);
   }
 
   /**
@@ -314,7 +314,7 @@ public class Message {
    * @return an optional value of sender_chat as {@link Chat}.
    */
   public Optional<Chat> getSenderChat() {
-    return Optional.of(senderChat);
+    return Optional.ofNullable(senderChat);
   }
 
   /**
@@ -374,7 +374,7 @@ public class Message {
    * @return an optional value of forward_from as {@link User}.
    */
   public Optional<User> getForwardFrom() {
-    return Optional.of(forwardFrom);
+    return Optional.ofNullable(forwardFrom);
   }
 
   /**
@@ -394,7 +394,7 @@ public class Message {
    * @return an optional value of forward_from as {@link Chat}.
    */
   public Optional<Chat> getForwardFromChat() {
-    return Optional.of(forwardFromChat);
+    return Optional.ofNullable(forwardFromChat);
   }
 
   /**
@@ -415,7 +415,7 @@ public class Message {
    * @return an optional value of forward_from_message_id as Long.
    */
   public Optional<Long> getForwardFromMessageId() {
-    return Optional.of(forwardFromMessageId);
+    return Optional.ofNullable(forwardFromMessageId);
   }
 
   /**
@@ -435,7 +435,7 @@ public class Message {
    * @return an optional value of forward_signature as String.
    */
   public Optional<String> getForwardSignature() {
-    return Optional.of(forwardSignature);
+    return Optional.ofNullable(forwardSignature);
   }
 
   /**
@@ -456,7 +456,7 @@ public class Message {
    * @return an optional value of forward_sender_name as String.
    */
   public Optional<String> getForwardSenderName() {
-    return Optional.of(forwardSenderName);
+    return Optional.ofNullable(forwardSenderName);
   }
 
   /**
@@ -476,7 +476,7 @@ public class Message {
    * @return an optional value of forward_date as Long.
    */
   public Optional<Long> getForwardDate() {
-    return Optional.of(forwardDate);
+    return Optional.ofNullable(forwardDate);
   }
 
   /**
@@ -495,7 +495,7 @@ public class Message {
    * @return an optional value of is_topic_message as Boolean.
    */
   public Optional<Boolean> getIsTopicMessage() {
-    return Optional.of(isTopicMessage);
+    return Optional.ofNullable(isTopicMessage);
   }
 
   /**
@@ -514,7 +514,7 @@ public class Message {
    * @return an optional value of is_automatic_forward as Boolean.
    */
   public Optional<Boolean> getIsAutomaticForward() {
-    return Optional.of(isAutomaticForward);
+    return Optional.ofNullable(isAutomaticForward);
   }
 
   /**
@@ -537,7 +537,7 @@ public class Message {
    * @return an optional value of reply_to_message as {@link Message}.
    */
   public Optional<Message> getReplyToMessage() {
-    return Optional.of(replyToMessage);
+    return Optional.ofNullable(replyToMessage);
   }
 
   /**
@@ -559,7 +559,7 @@ public class Message {
    * @return an optional value of via_bot as {@link User}.
    */
   public Optional<User> getViaBot() {
-    return Optional.of(viaBot);
+    return Optional.ofNullable(viaBot);
   }
 
   /**
@@ -577,7 +577,7 @@ public class Message {
    * @return an optional value of edit_date as Long.
    */
   public Optional<Long> getEditDate() {
-    return Optional.of(editDate);
+    return Optional.ofNullable(editDate);
   }
 
   /**
@@ -596,7 +596,7 @@ public class Message {
    * @return an optional value of has_protected_content as Boolean.
    */
   public Optional<Boolean> getHasProtectedContent() {
-    return Optional.of(hasProtectedContent);
+    return Optional.ofNullable(hasProtectedContent);
   }
 
   /**
@@ -614,7 +614,7 @@ public class Message {
    * @return an optional value of media_group_id as String.
    */
   public Optional<String> getMediaGroupId() {
-    return Optional.of(mediaGroupId);
+    return Optional.ofNullable(mediaGroupId);
   }
 
   /**
@@ -634,7 +634,7 @@ public class Message {
    * @return an optional value of author_signature as String.
    */
   public Optional<String> getAuthorSignature() {
-    return Optional.of(authorSignature);
+    return Optional.ofNullable(authorSignature);
   }
 
   /**
@@ -655,7 +655,7 @@ public class Message {
    * @return an optional value of text as String.
    */
   public Optional<String> getText() {
-    return Optional.of(text);
+    return Optional.ofNullable(text);
   }
 
   /**
@@ -674,7 +674,7 @@ public class Message {
    * @return an optional value of entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getEntities() {
-    return Optional.of(entities);
+    return Optional.ofNullable(entities);
   }
 
   /**
@@ -696,7 +696,7 @@ public class Message {
    * @return an optional value of animation as {@link Animation}.
    */
   public Optional<Animation> getAnimation() {
-    return Optional.of(animation);
+    return Optional.ofNullable(animation);
   }
 
   /**
@@ -716,7 +716,7 @@ public class Message {
    * @return an optional value of audio as {@link Audio}.
    */
   public Optional<Audio> getAudio() {
-    return Optional.of(audio);
+    return Optional.ofNullable(audio);
   }
 
   /**
@@ -735,7 +735,7 @@ public class Message {
    * @return an optional value of document as {@link Document}.
    */
   public Optional<Document> getDocument() {
-    return Optional.of(document);
+    return Optional.ofNullable(document);
   }
 
   /**
@@ -754,7 +754,7 @@ public class Message {
    * @return an optional value of photo as {@link List}&lt;{@link PhotoSize}&gt;.
    */
   public Optional<List<PhotoSize>> getPhoto() {
-    return Optional.of(photo);
+    return Optional.ofNullable(photo);
   }
 
   /**
@@ -773,7 +773,7 @@ public class Message {
    * @return an optional value of sticker as {@link Sticker}.
    */
   public Optional<Sticker> getSticker() {
-    return Optional.of(sticker);
+    return Optional.ofNullable(sticker);
   }
 
   /**
@@ -810,7 +810,7 @@ public class Message {
    * @return an optional value of video as {@link Video}.
    */
   public Optional<Video> getVideo() {
-    return Optional.of(video);
+    return Optional.ofNullable(video);
   }
 
   /**
@@ -830,7 +830,7 @@ public class Message {
    * @return an optional value of video_note as {@link VideoNote}.
    */
   public Optional<VideoNote> getVideoNote() {
-    return Optional.of(videoNote);
+    return Optional.ofNullable(videoNote);
   }
 
   /**
@@ -849,7 +849,7 @@ public class Message {
    * @return an optional value of voice as {@link Voice}.
    */
   public Optional<Voice> getVoice() {
-    return Optional.of(voice);
+    return Optional.ofNullable(voice);
   }
 
   /**
@@ -867,7 +867,7 @@ public class Message {
    * @return an optional value of caption as {@link String}.
    */
   public Optional<String> getCaption() {
-    return Optional.of(caption);
+    return Optional.ofNullable(caption);
   }
 
   /**
@@ -887,7 +887,7 @@ public class Message {
    * @return an optional value of caption_entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getCaptionEntities() {
-    return Optional.of(captionEntities);
+    return Optional.ofNullable(captionEntities);
   }
 
   /**
@@ -908,7 +908,7 @@ public class Message {
    * @return an optional value of has_media_spoiler as Boolean.
    */
   public Optional<Boolean> getHasMediaSpoiler() {
-    return Optional.of(hasMediaSpoiler);
+    return Optional.ofNullable(hasMediaSpoiler);
   }
 
   /**
@@ -927,7 +927,7 @@ public class Message {
    * @return an optional value of contact as {@link Contact}.
    */
   public Optional<Contact> getContact() {
-    return Optional.of(contact);
+    return Optional.ofNullable(contact);
   }
 
   /**
@@ -946,7 +946,7 @@ public class Message {
    * @return an optional value of dice as {@link Dice}.
    */
   public Optional<Dice> getDice() {
-    return Optional.of(dice);
+    return Optional.ofNullable(dice);
   }
 
   /**
@@ -967,7 +967,7 @@ public class Message {
    * @return an optional value of game as {@link Game}.
    */
   public Optional<Game> getGame() {
-    return Optional.of(game);
+    return Optional.ofNullable(game);
   }
 
   /**
@@ -985,7 +985,7 @@ public class Message {
    * @return an optional value of poll as {@link Poll}.
    */
   public Optional<Poll> getPoll() {
-    return Optional.of(poll);
+    return Optional.ofNullable(poll);
   }
 
   /**
@@ -1005,7 +1005,7 @@ public class Message {
    * @return an optional value of venue as {@link Venue}.
    */
   public Optional<Venue> getVenue() {
-    return Optional.of(venue);
+    return Optional.ofNullable(venue);
   }
 
   /**
@@ -1023,7 +1023,7 @@ public class Message {
    * @return an optional value of location as {@link Location}.
    */
   public Optional<Location> getLocation() {
-    return Optional.of(location);
+    return Optional.ofNullable(location);
   }
 
   /**
@@ -1043,7 +1043,7 @@ public class Message {
    * @return an optional value of new_chat_members as {@link List}&lt;{@link User}&gt;.
    */
   public Optional<List<User>> getNewChatMembers() {
-    return Optional.of(newChatMembers);
+    return Optional.ofNullable(newChatMembers);
   }
 
   /**
@@ -1065,7 +1065,7 @@ public class Message {
    * @return an optional value of left_chat_member as {@link User}.
    */
   public Optional<User> getLeftChatMember() {
-    return Optional.of(leftChatMember);
+    return Optional.ofNullable(leftChatMember);
   }
 
   /**
@@ -1085,7 +1085,7 @@ public class Message {
    * @return an optional value of new_chat_title as String.
    */
   public Optional<String> getNewChatTitle() {
-    return Optional.of(newChatTitle);
+    return Optional.ofNullable(newChatTitle);
   }
 
   /**
@@ -1104,7 +1104,7 @@ public class Message {
    * @return an optional value of new_chat_photo as {@link List}&lt;{@link PhotoSize}&gt;.
    */
   public Optional<List<PhotoSize>> getNewChatPhoto() {
-    return Optional.of(newChatPhoto);
+    return Optional.ofNullable(newChatPhoto);
   }
 
   /**
@@ -1123,7 +1123,7 @@ public class Message {
    * @return an optional value of delete_chat_photo as Boolean.
    */
   public Optional<Boolean> getDeleteChatPhoto() {
-    return Optional.of(deleteChatPhoto);
+    return Optional.ofNullable(deleteChatPhoto);
   }
 
   /**
@@ -1141,7 +1141,7 @@ public class Message {
    * @return an optional value of group_chat_created as Boolean.
    */
   public Optional<Boolean> getGroupChatCreated() {
-    return Optional.of(groupChatCreated);
+    return Optional.ofNullable(groupChatCreated);
   }
 
   /**
@@ -1162,7 +1162,7 @@ public class Message {
    * @return an optional value of supergroup_chat_created as Boolean.
    */
   public Optional<Boolean> getSupergroupChatCreated() {
-    return Optional.of(supergroupChatCreated);
+    return Optional.ofNullable(supergroupChatCreated);
   }
 
   /**
@@ -1184,7 +1184,7 @@ public class Message {
    * @return an optional value of channel_chat_created as Boolean.
    */
   public Optional<Boolean> getChannelChatCreated() {
-    return Optional.of(channelChatCreated);
+    return Optional.ofNullable(channelChatCreated);
   }
 
   /**
@@ -1203,7 +1203,7 @@ public class Message {
    *     MessageAutoDeleteTimerChanged}.
    */
   public Optional<MessageAutoDeleteTimerChanged> getMessageAutoDeleteTimerChanged() {
-    return Optional.of(messageAutoDeleteTimerChanged);
+    return Optional.ofNullable(messageAutoDeleteTimerChanged);
   }
 
   /**
@@ -1223,7 +1223,7 @@ public class Message {
    * @return an optional value of migrate_to_chat_id as Long.
    */
   public Optional<Long> getMigrateToChatId() {
-    return Optional.of(migrateToChatId);
+    return Optional.ofNullable(migrateToChatId);
   }
 
   /**
@@ -1242,7 +1242,7 @@ public class Message {
    * @return an optional value of migrate_from_chat_id as Long.
    */
   public Optional<Long> getMigrateFromChatId() {
-    return Optional.of(migrateFromChatId);
+    return Optional.ofNullable(migrateFromChatId);
   }
 
   /**
@@ -1264,7 +1264,7 @@ public class Message {
    * @return an optional value of pinned_message as {@link Message}.
    */
   public Optional<Message> getPinnedMessage() {
-    return Optional.of(pinnedMessage);
+    return Optional.ofNullable(pinnedMessage);
   }
 
   /**
@@ -1285,7 +1285,7 @@ public class Message {
    * @return an optiona value of invoice as {@link Invoice}.
    */
   public Optional<Invoice> getInvoice() {
-    return Optional.of(invoice);
+    return Optional.ofNullable(invoice);
   }
 
   /**
@@ -1307,7 +1307,7 @@ public class Message {
    * @return an optional value of successful_payment as {@link SuccessfulPayment}.
    */
   public Optional<SuccessfulPayment> getSuccessfulPayment() {
-    return Optional.of(successfulPayment);
+    return Optional.ofNullable(successfulPayment);
   }
 
   /**
@@ -1326,7 +1326,7 @@ public class Message {
    * @return an optional value of user_shared as {@link userShared}.
    */
   public Optional<UserShared> getUserShared() {
-    return Optional.of(userShared);
+    return Optional.ofNullable(userShared);
   }
 
   /**
@@ -1345,7 +1345,7 @@ public class Message {
    * @return an optional value of chat_shared as {@link ChatShared}.
    */
   public Optional<ChatShared> getChatShared() {
-    return Optional.of(chatShared);
+    return Optional.ofNullable(chatShared);
   }
 
   /**
@@ -1366,7 +1366,7 @@ public class Message {
    * @return an optional value of connected_website as String.
    */
   public Optional<String> getConnectedWebsite() {
-    return Optional.of(connectedWebsite);
+    return Optional.ofNullable(connectedWebsite);
   }
 
   /**
@@ -1386,7 +1386,7 @@ public class Message {
    * @return an optional value of write_access_allowed as {@link WriteAccessAllowed}.
    */
   public Optional<WriteAccessAllowed> getWriteAccessAllowed() {
-    return Optional.of(writeAccessAllowed);
+    return Optional.ofNullable(writeAccessAllowed);
   }
 
   /**
@@ -1406,7 +1406,7 @@ public class Message {
    * @return an optional value of passport_data as {@link PassportData}.
    */
   public Optional<PassportData> getPassportData() {
-    return Optional.of(passportData);
+    return Optional.ofNullable(passportData);
   }
 
   /**
@@ -1426,7 +1426,7 @@ public class Message {
    * @return an optional value of proximity_alert_triggered as {@link ProximityAlertTriggered}.
    */
   public Optional<ProximityAlertTriggered> getProximityAlertTriggered() {
-    return Optional.of(proximityAlertTriggered);
+    return Optional.ofNullable(proximityAlertTriggered);
   }
 
   /**
@@ -1447,7 +1447,7 @@ public class Message {
    * @return an optional value of forum_topic_created as {@link ForumTopicCreated}.
    */
   public Optional<ForumTopicCreated> getForumTopicCreated() {
-    return Optional.of(forumTopicCreated);
+    return Optional.ofNullable(forumTopicCreated);
   }
 
   /**
@@ -1466,7 +1466,7 @@ public class Message {
    * @return an optional value of forum_topic_edited as {@link ForumTopicEdited}.
    */
   public Optional<ForumTopicEdited> getForumTopicEdited() {
-    return Optional.of(forumTopicEdited);
+    return Optional.ofNullable(forumTopicEdited);
   }
 
   /**
@@ -1485,7 +1485,7 @@ public class Message {
    * @return an optional value of forum_topic_closed as {@link ForumTopicClosed}.
    */
   public Optional<ForumTopicClosed> getForumTopicClosed() {
-    return Optional.of(forumTopicClosed);
+    return Optional.ofNullable(forumTopicClosed);
   }
 
   /**
@@ -1504,7 +1504,7 @@ public class Message {
    * @return an optional value of forum_topic_reopened as {@link ForumTopicReopened}.
    */
   public Optional<ForumTopicReopened> getForumTopicReopened() {
-    return Optional.of(forumTopicReopened);
+    return Optional.ofNullable(forumTopicReopened);
   }
 
   /**
@@ -1523,7 +1523,7 @@ public class Message {
    * @return an optional value of general_forum_topic_hidden as {@link GeneralForumTopicHidden}.
    */
   public Optional<GeneralForumTopicHidden> getGeneralForumTopicHidden() {
-    return Optional.of(generalForumTopicHidden);
+    return Optional.ofNullable(generalForumTopicHidden);
   }
 
   /**
@@ -1542,7 +1542,7 @@ public class Message {
    * @return an optional value of general_forum_topic_unhidden as {@link GeneralForumTopicUnhidden}.
    */
   public Optional<GeneralForumTopicUnhidden> getGeneralForumTopicUnhidden() {
-    return Optional.of(generalForumTopicUnhidden);
+    return Optional.ofNullable(generalForumTopicUnhidden);
   }
 
   /**
@@ -1561,7 +1561,7 @@ public class Message {
    * @return an optional value of video_chat_scheduled as {@link VideoChatScheduled}.
    */
   public Optional<VideoChatScheduled> getVideoChatScheduled() {
-    return Optional.of(videoChatScheduled);
+    return Optional.ofNullable(videoChatScheduled);
   }
 
   /**
@@ -1580,7 +1580,7 @@ public class Message {
    * @return an optional value of video_chat_started as {@link VideoChatStarted}.
    */
   public Optional<VideoChatStarted> getVideoChatStarted() {
-    return Optional.of(videoChatStarted);
+    return Optional.ofNullable(videoChatStarted);
   }
 
   /**
@@ -1599,7 +1599,7 @@ public class Message {
    * @return an optional value of video_chat_ended as {@link VideoChatEnded}.
    */
   public Optional<VideoChatEnded> getVideoChatEnded() {
-    return Optional.of(videoChatEnded);
+    return Optional.ofNullable(videoChatEnded);
   }
 
   /**
@@ -1619,7 +1619,7 @@ public class Message {
    *     VideoChatParticipantsInvited}.
    */
   public Optional<VideoChatParticipantsInvited> getVideoChatParticipantsInvited() {
-    return Optional.of(videoChatParticipantsInvited);
+    return Optional.ofNullable(videoChatParticipantsInvited);
   }
 
   /**
@@ -1640,7 +1640,7 @@ public class Message {
    * @return an optional value of web_app_data as {@link WebAppData}.
    */
   public Optional<WebAppData> getWebAppData() {
-    return Optional.of(webAppData);
+    return Optional.ofNullable(webAppData);
   }
 
   /**
@@ -1660,7 +1660,7 @@ public class Message {
    * @return an optional value of reply_markup as {@link InlineKeyboardMarkup}.
    */
   public Optional<InlineKeyboardMarkup> getReplyMarkup() {
-    return Optional.of(replyMarkup);
+    return Optional.ofNullable(replyMarkup);
   }
 
   /**

@@ -112,7 +112,7 @@ public class PhotoSize {
    * @return an optional value of file_size as Integer.
    */
   public Optional<Integer> getFileSize() {
-    return Optional.of(fileSize);
+    return Optional.ofNullable(fileSize);
   }
 
   /**

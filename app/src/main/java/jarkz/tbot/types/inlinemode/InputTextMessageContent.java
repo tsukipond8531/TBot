@@ -56,7 +56,7 @@ public class InputTextMessageContent implements InputMessageContent {
    * @return an optional value of parse_mode as String.
    */
   public Optional<String> getParseMode() {
-    return Optional.of(parseMode);
+    return Optional.ofNullable(parseMode);
   }
 
   /**
@@ -78,7 +78,7 @@ public class InputTextMessageContent implements InputMessageContent {
    * @return an optional value of entities as {@link List}&lt;{@link MessageEntity}&gt;.
    */
   public Optional<List<MessageEntity>> getEntities() {
-    return Optional.of(entities);
+    return Optional.ofNullable(entities);
   }
 
   /**
@@ -99,7 +99,7 @@ public class InputTextMessageContent implements InputMessageContent {
    * @return an optional value of disable_web_page_preview as Boolean.
    */
   public Optional<Boolean> getDisableWebPagePreview() {
-    return Optional.of(disableWebPagePreview);
+    return Optional.ofNullable(disableWebPagePreview);
   }
 
   /**

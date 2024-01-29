@@ -115,7 +115,7 @@ public class SuccessfulPayment {
    * @return an optional value of shipping_option_id as String.
    */
   public Optional<String> getShippingOptionId() {
-    return Optional.of(shippingOptionId);
+    return Optional.ofNullable(shippingOptionId);
   }
 
   /**
@@ -134,7 +134,7 @@ public class SuccessfulPayment {
    * @return an optional value of order_info as {@link OrderInfo}.
    */
   public Optional<OrderInfo> getOrderInfo() {
-    return Optional.of(orderInfo);
+    return Optional.ofNullable(orderInfo);
   }
 
   /**
