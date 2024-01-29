@@ -238,8 +238,21 @@ public class ContractVerifier {
         continue;
       }
 
-      verifyGettersForNotNullField(sourceClass, field, errMessage);
-      verifySettersForNotNullField(sourceClass, field, errMessage);
+      Optional<Method> optionalGetter = getGetter(sourceClass, field, errMessage);
+      if (optionalGetter.isEmpty()) {
+        return;
+      }
+
+      Optional<Method> optionalSetter = getSetter(sourceClass, field, errMessage);
+      if (optionalSetter.isEmpty()) {
+        return;
+      }
+
+      Method getter = optionalGetter.get();
+      Method setter = optionalSetter.get();
+
+      verifyGettersForNotNullField(sourceClass, getter, field, errMessage);
+      verifySettersForNotNullField(sourceClass, setter, field, errMessage);
     }
 
     if (!errMessage.isEmpty()) throw new NotNullContractException(errMessage.toString());
@@ -253,20 +266,7 @@ public class ContractVerifier {
    * @param errMessage the string builder, in which will be writes any violations.
    */
   private static void verifyGettersForNotNullField(
-      Class<?> sourceClass, Field field, StringBuilder errMessage) {
-    String getterMethodName = getGetterMethodName(field);
-    Method getter;
-    try {
-      getter = sourceClass.getMethod(getterMethodName);
-    } catch (NoSuchMethodException e) {
-      errMessage
-          .append("Not found getter for field with @NotNull annotation.\nField: ")
-          .append(field)
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
-      return;
-    }
+      Class<?> sourceClass, Method getter, Field field, StringBuilder errMessage) {
 
     if (!getter.getReturnType().equals(field.getType())) {
       errMessage
@@ -288,20 +288,7 @@ public class ContractVerifier {
    * @param errMessage the string builder, in which will be writes any violations.
    */
   private static void verifySettersForNotNullField(
-      Class<?> sourceClass, Field field, StringBuilder errMessage) {
-    String setterMethodName = getSetterMethodName(field);
-    Method setter;
-    try {
-      setter = sourceClass.getMethod(setterMethodName, field.getType());
-    } catch (NoSuchMethodException e) {
-      errMessage
-          .append("Not found setter for field with @NotNull annotation.\nField: ")
-          .append(field)
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
-      return;
-    }
+      Class<?> sourceClass, Method setter, Field field, StringBuilder errMessage) {
 
     if (!setter.getReturnType().equals(void.class)) {
       errMessage
@@ -334,15 +321,29 @@ public class ContractVerifier {
       if (PRIMITIVES.contains(field.getType())) {
         errMessage
             .append(
-                "By contract, fields not marked with the @NotNull annotation must be Objects!\n"
-                    + "Field: ")
+                "By contract, fields not marked with the @NotNull annotation must be Objects!\n")
+            .append("Field: ")
             .append(field)
             .append(NEXT_LINE);
         continue;
       }
 
-      verifyGettersForObjectiveField(clazz, field, errMessage);
-      verifySettersForObjectiveField(clazz, field, errMessage);
+      Optional<Method> optionalGetter = getGetter(clazz, field, errMessage);
+      if (optionalGetter.isEmpty()) {
+        return;
+      }
+
+      Optional<Method> optionalSetter = getSetter(clazz, field, errMessage);
+      if (optionalSetter.isEmpty()) {
+        return;
+      }
+
+      Method getter = optionalGetter.get();
+      Method setter = optionalSetter.get();
+
+      verifyGettersForObjectiveField(clazz, getter, field, errMessage);
+      verifySettersForObjectiveField(clazz, setter, field, errMessage);
+      verifyActualBehaviorGetAndSetMethods(clazz, setter, getter, errMessage);
     }
 
     if (!errMessage.isEmpty()) {
@@ -354,19 +355,12 @@ public class ContractVerifier {
    * Verifies availability and return type of getter for specific objective field.
    *
    * @param sourceClass the class for get the getter.
+   * @param getter the getter for current type.
    * @param field the referenced field to class.
    * @param errMessage the string builder, in which will be writes any violations.
    */
   private static void verifyGettersForObjectiveField(
-      Class<?> sourceClass, Field field, StringBuilder errMessage) {
-    String getterMethodName = getGetterMethodName(field);
-    Method getter;
-    try {
-      getter = sourceClass.getMethod(getterMethodName);
-    } catch (NoSuchMethodException e) {
-      errMessage.append("Getter must be implemented for field: ").append(field).append(NEXT_LINE);
-      return;
-    }
+      Class<?> sourceClass, Method getter, Field field, StringBuilder errMessage) {
 
     Class<?> returnType = getter.getReturnType();
     Type genericReturnType;
@@ -384,27 +378,92 @@ public class ContractVerifier {
   }
 
   /**
-   * Verifies availability and return type of setter for specific objective field.
+   * Verifies actual behavior of setters and getters. Sets null value and gets empty Optional type, otherwise writes errors.
    *
-   * @param sourceClass the class for get the setter.
-   * @param field the referenced field to class.
+   * Also check default constructor and invocation methods.
+   *
+   * @param sourceClass the class for creating new instance.
+   * @param setter the setter for current type.
+   * @param getter the getter for current type.
    * @param errMessage the string builder, in which will be writes any violations.
    */
-  private static void verifySettersForObjectiveField(
-      Class<?> sourceClass, Field field, StringBuilder errMessage) {
-    String setterMethodName = getSetterMethodName(field);
-    Method setter;
+  @SuppressWarnings("rawtypes")
+  private static void verifyActualBehaviorGetAndSetMethods(
+      Class<?> sourceClass, Method setter, Method getter, StringBuilder errMessage) {
+    Object instance;
     try {
-      setter = sourceClass.getMethod(setterMethodName, field.getType());
-    } catch (NoSuchMethodException e) {
+      instance = sourceClass.getDeclaredConstructor().newInstance();
+    } catch (InvocationTargetException
+        | IllegalAccessException
+        | InstantiationException
+        | NoSuchMethodException e) {
       errMessage
-          .append("Not found setter for objective field.\nField: ")
-          .append(field)
-          .append("\nSource: ")
+          .append("An error occured in invocation constructor!\nConstructor of ")
           .append(sourceClass)
+          .append("not defined! Check modifiers, parameters. Mut be base constructor without")
+          .append(" arguments!")
           .append(NEXT_LINE);
       return;
     }
+
+    try {
+      setter.invoke(instance, new Object[] {null});
+    } catch (IllegalAccessException e) {
+      errMessage.append("Cannot invoke setter method: ").append(setter).append(NEXT_LINE);
+      return;
+    } catch (InvocationTargetException e) {
+      errMessage
+          .append("An error occurred while invoking setter method: ")
+          .append(setter)
+          .append(NEXT_LINE);
+      return;
+    }
+
+    Object returnValue;
+    try {
+      returnValue = getter.invoke(instance);
+    } catch (IllegalAccessException e) {
+      errMessage.append("Cannot invoke getter method: ").append(getter).append(NEXT_LINE);
+      return;
+    } catch (InvocationTargetException e) {
+      var cause = e.getCause();
+      if (cause instanceof NullPointerException) {
+        errMessage
+            .append("Catched NullPointerException from getter method: ")
+            .append(getter)
+            .append("\nCheck your implementation! Must be Optional.ofNullable() method!")
+            .append(NEXT_LINE);
+      } else {
+        errMessage
+            .append("An error occurred while invoking getter method: ")
+            .append(getter)
+            .append(NEXT_LINE);
+      }
+      return;
+    }
+
+    if (returnValue instanceof Optional) {
+      var realInstance = (Optional) returnValue;
+      if (realInstance.isEmpty()) {
+        return;
+      }
+
+      errMessage
+          .append("Returned value must be Optional.empty() when passed null value!\n")
+          .append("Returned value: ")
+          .append(realInstance)
+          .append(NEXT_LINE);
+    } else {
+      errMessage
+          .append("Returned value is not Optional<T> type!\n")
+          .append("Returned type is: ")
+          .append(returnValue.getClass())
+          .append(NEXT_LINE);
+    }
+  }
+
+  private static void verifySettersForObjectiveField(
+      Class<?> sourceClass, Method setter, Field field, StringBuilder errMessage) {
 
     if (!setter.getReturnType().equals(void.class)) {
       errMessage
@@ -419,37 +478,72 @@ public class ContractVerifier {
   }
 
   /**
-   * Returns the getter method name by general rules.
+   * Returns the getter method by general rules.
    *
+   * @param sourceClass the class for get the getter.
    * @param field the referenced field.
-   * @return the right field name.
+   * @param errMessage the string builder, in which will be writes any violations.
+   * @return the getter method.
    */
-  private static String getGetterMethodName(Field field) {
+  private static Optional<Method> getGetter(
+      Class<?> sourceClass, Field field, StringBuilder errMessage) {
     String fieldName = field.getName();
+    String getterMethodName;
     if (field.getType().equals(Boolean.TYPE) && fieldName.startsWith(GETTER_PREFIX_FOR_BOOLEAN)) {
-      return fieldName;
+      getterMethodName = fieldName;
+    } else {
+      String prefix =
+          field.getType().equals(Boolean.TYPE) ? GETTER_PREFIX_FOR_BOOLEAN : GETTER_PREFIX;
+      getterMethodName = prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
     }
 
-    String prefix =
-        field.getType().equals(Boolean.TYPE) ? GETTER_PREFIX_FOR_BOOLEAN : GETTER_PREFIX;
-    return prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+    Method getter = null;
+    try {
+      getter = sourceClass.getMethod(getterMethodName);
+    } catch (NoSuchMethodException e) {
+      errMessage
+          .append("Not found getter for objective field.\nField: ")
+          .append(field)
+          .append("\nSource: ")
+          .append(sourceClass)
+          .append(NEXT_LINE);
+    }
+
+    return Optional.ofNullable(getter);
   }
 
   /**
-   * Returns the setter method name by general rules.
+   * Returns the setter method by general rules.
    *
+   * @param sourceClass the class for get the setter.
    * @param field the referenced field.
-   * @return the right field name.
+   * @param errMessage the string builder, in which will be writes any violations.
+   * @return the setter method.
    */
-  private static String getSetterMethodName(Field field) {
+  private static Optional<Method> getSetter(
+      Class<?> sourceClass, Field field, StringBuilder errMessage) {
     String fieldName = field.getName();
+    String setterMethodName;
     String prefix = SETTER_PREFIX;
-
     if (field.getType().equals(Boolean.TYPE) && fieldName.startsWith(GETTER_PREFIX_FOR_BOOLEAN)) {
-      return prefix + fieldName.substring(GETTER_PREFIX_FOR_BOOLEAN.length());
+      setterMethodName = prefix + fieldName.substring(GETTER_PREFIX_FOR_BOOLEAN.length());
+    } else {
+      setterMethodName = prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
     }
 
-    return prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+    Method setter = null;
+    try {
+      setter = sourceClass.getMethod(setterMethodName, field.getType());
+    } catch (NoSuchMethodException e) {
+      errMessage
+          .append("Not found setter for objective field.\nField: ")
+          .append(field)
+          .append("\nSource: ")
+          .append(sourceClass)
+          .append(NEXT_LINE);
+    }
+
+    return Optional.ofNullable(setter);
   }
 
   /**
@@ -463,9 +557,8 @@ public class ContractVerifier {
   private static void appendErrorOfReturnType(
       StringBuilder errMessage, Method getter, Field field, Class<?> source) {
     errMessage
-        .append(
-            "The returned type must be an Optional with a generic type equal to fields type!\n"
-                + "The actual return type: ")
+        .append("The returned type must be an Optional with a generic type equal to fields type!\n")
+        .append("The actual return type: ")
         .append(getter.getGenericReturnType())
         .append("\nThe field type: ")
         .append(field.getType())
