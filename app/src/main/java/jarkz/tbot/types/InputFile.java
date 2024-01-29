@@ -79,6 +79,11 @@ public class InputFile {
    * @param fileAttachName the file attach name, with or without the prefix "attach://", as String.
    */
   public void setFileAttachName(String fileAttachName) {
+    if (fileAttachName == null) {
+      this.fileAttachName = fileAttachName;
+      return;
+    }
+
     String prefix = "attach://";
     if (!fileAttachName.startsWith(prefix)) {
       fileAttachName = prefix + fileAttachName;
