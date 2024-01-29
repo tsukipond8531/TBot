@@ -378,9 +378,10 @@ public class ContractVerifier {
   }
 
   /**
-   * Verifies actual behavior of setters and getters. Sets null value and gets empty Optional type, otherwise writes errors.
+   * Verifies actual behavior of setters and getters. Sets null value and gets empty Optional type,
+   * otherwise writes errors.
    *
-   * Also check default constructor and invocation methods.
+   * <p>Also check default constructor and invocation methods.
    *
    * @param sourceClass the class for creating new instance.
    * @param setter the setter for current type.
