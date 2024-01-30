@@ -134,7 +134,9 @@ public class ContractVerifier {
   }
 
   private void verify(Class<?> sourceClass) {
-    if (sourceClass.isInterface() || sourceClass.isAnnotationPresent(TestContainer.class)) {
+    if (sourceClass.isInterface()
+        || sourceClass.isAnnotationPresent(TestContainer.class)
+        || sourceClass.isAnnotationPresent(Deserializer.class)) {
       return;
     }
     verifyFields(sourceClass);
