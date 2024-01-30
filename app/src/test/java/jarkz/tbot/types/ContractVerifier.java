@@ -4,16 +4,13 @@ import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
 import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
-import jarkz.tbot.exceptions.types.FieldsContractException;
-import jarkz.tbot.exceptions.types.GeneralInterfacesContractException;
 import jarkz.tbot.exceptions.types.IllegalValueToStringException;
-import jarkz.tbot.exceptions.types.NamingContractException;
-import jarkz.tbot.exceptions.types.NotNullContractException;
-import jarkz.tbot.exceptions.types.ObjectFieldContractException;
 import jarkz.tbot.exceptions.types.ToStringContractException;
 import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.annotations.EmptyClass;
 import jarkz.tbot.types.annotations.GeneralInterface;
+import jarkz.tbot.violations.Violation;
+import jarkz.tbot.violations.ViolationList;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BooleanSupplier;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
@@ -40,10 +38,6 @@ public class ContractVerifier {
   private record Fields(List<Field> notNullFields, List<Field> objectFields) {}
 
   private static final String NEXT_LINE = "\n";
-  private static final String SKIP_LINE = "\n\n";
-
-  private static final String WRAP_LINE =
-      "------------------------------------------------------------------------------";
 
   private static final Set<Class<?>> WRAPPERS =
       Set.of(
@@ -83,6 +77,30 @@ public class ContractVerifier {
 
   private static final String TO_STRING_TEXT_SEPARATOR = ", ";
 
+  private enum Groups {
+    FIELDS("Fields"),
+    METHODS("Methods"),
+    NAMING("Naming"),
+    GENERAL_INTERFACE("General Interface"),
+    TO_STRING("To String");
+
+    private String groupName;
+
+    private Groups(String name) {
+      groupName = name;
+    }
+
+    public String groupName() {
+      return groupName;
+    }
+  }
+
+  private ViolationList violations;
+
+  private ContractVerifier() {
+    this.violations = new ViolationList();
+  }
+
   /**
    * Verifies the package, in which can be found a datatype.
    *
@@ -91,89 +109,55 @@ public class ContractVerifier {
    */
   public static void verifyPackage(String packageName) throws ContractException {
     Reflections reflections = new Reflections(packageName);
-    StringBuilder errMessage = new StringBuilder();
+    var verifier = new ContractVerifier();
 
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
         .filter(c -> !c.getPackage().isAnnotationPresent(Deserializer.class))
         .forEach(
             clazz -> {
-              try {
-                verifyClass(clazz);
-              } catch (ContractException e) {
-                errMessage.append(e.getMessage()).append(WRAP_LINE).append(SKIP_LINE);
-              }
+              verifier.verify(clazz);
             });
 
-    if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
+    if (!verifier.violations.isEmpty()) throw new ContractException(verifier.violations);
   }
 
   /**
    * Verifies the class by contract.
    *
-   * @param clazz the class to verify by contract.
+   * @param sourceClass the class to verify by contract.
    * @throws ContractException a list of contract violations.
    */
-  public static void verifyClass(Class<?> clazz) throws ContractException {
-    if (clazz.isInterface() || clazz.isAnnotationPresent(TestContainer.class)) return;
-    StringBuilder errMessage = new StringBuilder();
+  public static void verifyClass(Class<?> sourceClass) throws ContractException {
+    var verifier = new ContractVerifier();
+    verifier.verify(sourceClass);
+    if (!verifier.violations.isEmpty()) throw new ContractException(verifier.violations);
+  }
 
-    try {
-      verifyFields(clazz);
-    } catch (FieldsContractException e) {
-      errMessage.append(e.getMessage()).append(SKIP_LINE);
+  private void verify(Class<?> sourceClass) {
+    if (sourceClass.isInterface() || sourceClass.isAnnotationPresent(TestContainer.class)) {
+      return;
+    }
+    verifyFields(sourceClass);
+    verifyNamingContract(sourceClass);
+    verifyGeneralInterfacesContract(sourceClass);
+    if (!violations.isEmpty()) {
+      return;
     }
 
-    try {
-      verifyNamingContract(clazz);
-    } catch (NamingContractException e) {
-      errMessage.append(e.getMessage()).append(SKIP_LINE);
-    }
-
-    try {
-      verifyGeneralInterfacesContract(clazz);
-    } catch (GeneralInterfacesContractException e) {
-      errMessage.append(e.getMessage()).append(SKIP_LINE);
-    }
-
-    if (!errMessage.isEmpty()) {
-      throw new ContractException(errMessage.toString());
-    }
-
-    if (clazz.isAnnotationPresent(EmptyClass.class)
-        || clazz.isAnnotationPresent(Deserializer.class)) return;
-
-    try {
-      verifyToStringContract(clazz);
-    } catch (ToStringContractException e) {
-      errMessage.append(e.getMessage()).append(SKIP_LINE);
-    }
-
-    if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
+    verifyToStringContract(sourceClass);
   }
 
   /**
    * Verifies the fields from class.
    *
-   * @param clazz the class to verify.
+   * @param sourceClass the class to verify.
    * @throws FieldsContractException a list of fields contract violations.
    */
-  private static void verifyFields(Class<?> clazz) throws FieldsContractException {
-    StringBuilder errMessage = new StringBuilder();
-    Fields fields = separateFields(clazz.getDeclaredFields(), errMessage);
+  private void verifyFields(Class<?> sourceClass) {
+    Fields fields = separateFields(sourceClass.getDeclaredFields());
 
-    try {
-      verifyNotNullContract(clazz, fields.notNullFields());
-    } catch (NotNullContractException e) {
-      errMessage.append(e.getMessage()).append(SKIP_LINE);
-    }
-
-    try {
-      verifyReturnOptionalTypeContract(clazz, fields.objectFields());
-    } catch (ObjectFieldContractException e) {
-      errMessage.append(e.getMessage()).append(SKIP_LINE);
-    }
-
-    if (!errMessage.isEmpty()) throw new FieldsContractException(errMessage.toString());
+    verifyNotNullContract(sourceClass, fields.notNullFields());
+    verifyReturnOptionalTypeContract(sourceClass, fields.objectFields());
   }
 
   /**
@@ -186,7 +170,7 @@ public class ContractVerifier {
    * @param errMessage the string builder, in which will be writes any violations.
    * @return separated fields, which writes into {@link Fields}.
    */
-  private static Fields separateFields(Field[] allFields, StringBuilder errMessage) {
+  private Fields separateFields(Field[] allFields) {
     List<Field> notNullFields = new ArrayList<>();
     List<Field> objectFields = new ArrayList<>();
 
@@ -196,10 +180,10 @@ public class ContractVerifier {
       }
 
       if (Modifier.isPublic(field.getModifiers())) {
-        errMessage
-            .append("Field must be private or protected!\nField: ")
-            .append(field)
-            .append(NEXT_LINE);
+        violations.addTo(
+            Groups.FIELDS.groupName(),
+            Violation.create(
+                "Private or protected field", "Field is not private", field.toString()));
         continue;
       }
 
@@ -210,7 +194,6 @@ public class ContractVerifier {
       }
     }
 
-    if (!errMessage.isEmpty()) errMessage.append(NEXT_LINE);
     return new Fields(notNullFields, objectFields);
   }
 
@@ -221,29 +204,25 @@ public class ContractVerifier {
    * @param notNullFields the fields, which marked by {@link NotNull} annotation.
    * @throws NotNullContractException a list of not-null contract violations.
    */
-  private static void verifyNotNullContract(Class<?> sourceClass, List<Field> notNullFields)
-      throws NotNullContractException {
-    StringBuilder errMessage = new StringBuilder();
+  private void verifyNotNullContract(Class<?> sourceClass, List<Field> notNullFields) {
 
     for (Field field : notNullFields) {
       if (WRAPPERS.contains(field.getType())) {
-        errMessage
-            .append(
-                "By contract, fields marked with the @NotNull annotation must be primitive if"
-                    + " possible!\nField: ")
-            .append(field)
-            .append("\nSource: ")
-            .append(sourceClass)
-            .append(NEXT_LINE);
+        violations.addTo(
+            Groups.FIELDS.groupName(),
+            Violation.create(
+                "Field with @NotNull annotation is primitive type if possible",
+                "Field is not primitive",
+                field.toString()));
         continue;
       }
 
-      Optional<Method> optionalGetter = getGetter(sourceClass, field, errMessage);
+      Optional<Method> optionalGetter = getGetter(sourceClass, field);
       if (optionalGetter.isEmpty()) {
         return;
       }
 
-      Optional<Method> optionalSetter = getSetter(sourceClass, field, errMessage);
+      Optional<Method> optionalSetter = getSetter(sourceClass, field);
       if (optionalSetter.isEmpty()) {
         return;
       }
@@ -251,11 +230,9 @@ public class ContractVerifier {
       Method getter = optionalGetter.get();
       Method setter = optionalSetter.get();
 
-      verifyGettersForNotNullField(sourceClass, getter, field, errMessage);
-      verifySettersForNotNullField(sourceClass, setter, field, errMessage);
+      verifyGettersForNotNullField(sourceClass, getter, field);
+      verifySettersForNotNullField(sourceClass, setter, field);
     }
-
-    if (!errMessage.isEmpty()) throw new NotNullContractException(errMessage.toString());
   }
 
   /**
@@ -265,18 +242,15 @@ public class ContractVerifier {
    * @param field the referenced field to class.
    * @param errMessage the string builder, in which will be writes any violations.
    */
-  private static void verifyGettersForNotNullField(
-      Class<?> sourceClass, Method getter, Field field, StringBuilder errMessage) {
+  private void verifyGettersForNotNullField(Class<?> sourceClass, Method getter, Field field) {
 
     if (!getter.getReturnType().equals(field.getType())) {
-      errMessage
-          .append("Field type and his getter return type not equals.\nField: ")
-          .append(field)
-          .append("\nGetter return type: ")
-          .append(getter.getReturnType())
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.FIELDS.groupName(),
+          Violation.create(
+              "Field type and its getter return type are euqals",
+              "They are not",
+              field.toString() + NEXT_LINE + getter.toString()));
     }
   }
 
@@ -287,18 +261,12 @@ public class ContractVerifier {
    * @param field the referenced field to class.
    * @param errMessage the string builder, in which will be writes any violations.
    */
-  private static void verifySettersForNotNullField(
-      Class<?> sourceClass, Method setter, Field field, StringBuilder errMessage) {
+  private void verifySettersForNotNullField(Class<?> sourceClass, Method setter, Field field) {
 
     if (!setter.getReturnType().equals(void.class)) {
-      errMessage
-          .append("Setter return type is not void.\nField: ")
-          .append(field)
-          .append("\nSetter return type: ")
-          .append(setter.getReturnType())
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create("Setter return type is void", "Its not", setter.toString()));
     }
   }
 
@@ -309,9 +277,7 @@ public class ContractVerifier {
    * @param objectFields the list of fields, which marked by {@link NotNull} annotation.
    * @throws ObjectFieldContractException a list of object fields contract violations.
    */
-  private static void verifyReturnOptionalTypeContract(Class<?> clazz, List<Field> objectFields)
-      throws ObjectFieldContractException {
-    StringBuilder errMessage = new StringBuilder();
+  private void verifyReturnOptionalTypeContract(Class<?> clazz, List<Field> objectFields) {
 
     for (Field field : objectFields) {
       if (Modifier.isFinal(field.getModifiers()) || Modifier.isStatic(field.getModifiers())) {
@@ -319,21 +285,21 @@ public class ContractVerifier {
       }
 
       if (PRIMITIVES.contains(field.getType())) {
-        errMessage
-            .append(
-                "By contract, fields not marked with the @NotNull annotation must be Objects!\n")
-            .append("Field: ")
-            .append(field)
-            .append(NEXT_LINE);
+        violations.addTo(
+            Groups.FIELDS.groupName(),
+            Violation.create(
+                "Field with @NotNull annotation is Object type",
+                "Field is not Object type",
+                field.toString()));
         continue;
       }
 
-      Optional<Method> optionalGetter = getGetter(clazz, field, errMessage);
+      Optional<Method> optionalGetter = getGetter(clazz, field);
       if (optionalGetter.isEmpty()) {
         return;
       }
 
-      Optional<Method> optionalSetter = getSetter(clazz, field, errMessage);
+      Optional<Method> optionalSetter = getSetter(clazz, field);
       if (optionalSetter.isEmpty()) {
         return;
       }
@@ -341,13 +307,9 @@ public class ContractVerifier {
       Method getter = optionalGetter.get();
       Method setter = optionalSetter.get();
 
-      verifyGettersForObjectiveField(clazz, getter, field, errMessage);
-      verifySettersForObjectiveField(clazz, setter, field, errMessage);
-      verifyActualBehaviorGetAndSetMethods(clazz, setter, getter, errMessage);
-    }
-
-    if (!errMessage.isEmpty()) {
-      throw new ObjectFieldContractException(errMessage.toString());
+      verifyGettersForObjectiveField(clazz, getter, field);
+      verifySettersForObjectiveField(clazz, setter, field);
+      verifyActualBehaviorGetAndSetMethods(clazz, setter, getter);
     }
   }
 
@@ -359,8 +321,17 @@ public class ContractVerifier {
    * @param field the referenced field to class.
    * @param errMessage the string builder, in which will be writes any violations.
    */
-  private static void verifyGettersForObjectiveField(
-      Class<?> sourceClass, Method getter, Field field, StringBuilder errMessage) {
+  private void verifyGettersForObjectiveField(Class<?> sourceClass, Method getter, Field field) {
+    BooleanSupplier appendError =
+        () -> {
+          violations.addTo(
+              Groups.METHODS.groupName(),
+              Violation.create(
+                  "The return type of getter is equal to " + field.getType(),
+                  "The return type is " + getter.getGenericReturnType(),
+                  "Source class is " + sourceClass.toString()));
+          return true;
+        };
 
     Class<?> returnType = getter.getReturnType();
     Type genericReturnType;
@@ -368,12 +339,12 @@ public class ContractVerifier {
       genericReturnType =
           ((ParameterizedType) getter.getGenericReturnType()).getActualTypeArguments()[0];
     } else {
-      appendErrorOfReturnType(errMessage, getter, field, sourceClass);
+      appendError.getAsBoolean();
       return;
     }
 
     if (!returnType.equals(Optional.class) || !genericReturnType.equals(field.getGenericType())) {
-      appendErrorOfReturnType(errMessage, getter, field, sourceClass);
+      appendError.getAsBoolean();
     }
   }
 
@@ -389,8 +360,8 @@ public class ContractVerifier {
    * @param errMessage the string builder, in which will be writes any violations.
    */
   @SuppressWarnings("rawtypes")
-  private static void verifyActualBehaviorGetAndSetMethods(
-      Class<?> sourceClass, Method setter, Method getter, StringBuilder errMessage) {
+  private void verifyActualBehaviorGetAndSetMethods(
+      Class<?> sourceClass, Method setter, Method getter) {
     Object instance;
     try {
       instance = sourceClass.getDeclaredConstructor().newInstance();
@@ -398,25 +369,29 @@ public class ContractVerifier {
         | IllegalAccessException
         | InstantiationException
         | NoSuchMethodException e) {
-      errMessage
-          .append("An error occured in invocation constructor!\nConstructor of ")
-          .append(sourceClass)
-          .append("not defined! Check modifiers, parameters. Mut be base constructor without")
-          .append(" arguments!")
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.FIELDS.groupName(),
+          Violation.create(
+              "The type " + sourceClass.toString() + " successful created",
+              "It not creates",
+              "Check modifiers, parameters. Must be base constructor without arguments"));
       return;
     }
 
     try {
       setter.invoke(instance, new Object[] {null});
     } catch (IllegalAccessException e) {
-      errMessage.append("Cannot invoke setter method: ").append(setter).append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create("Setter successfully invokes", "It's not", setter.toString()));
       return;
     } catch (InvocationTargetException e) {
-      errMessage
-          .append("An error occurred while invoking setter method: ")
-          .append(setter)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create(
+              "Setter successfully invokes",
+              "An error occured while invoking setter method",
+              setter.toString()));
       return;
     }
 
@@ -424,21 +399,26 @@ public class ContractVerifier {
     try {
       returnValue = getter.invoke(instance);
     } catch (IllegalAccessException e) {
-      errMessage.append("Cannot invoke getter method: ").append(getter).append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create("Getter successfully invokes", "It's not", getter.toString()));
       return;
     } catch (InvocationTargetException e) {
       var cause = e.getCause();
       if (cause instanceof NullPointerException) {
-        errMessage
-            .append("Catched NullPointerException from getter method: ")
-            .append(getter)
-            .append("\nCheck your implementation! Must be Optional.ofNullable() method!")
-            .append(NEXT_LINE);
+        violations.addTo(
+            Groups.METHODS.groupName(),
+            Violation.create(
+                "Returns Optional<T> type",
+                "Catched NullPointerException from " + getter.toString(),
+                "Check your implementation. Must be Optional.ofNullable() method."));
       } else {
-        errMessage
-            .append("An error occurred while invoking getter method: ")
-            .append(getter)
-            .append(NEXT_LINE);
+        violations.addTo(
+            Groups.METHODS.groupName(),
+            Violation.create(
+                "Getter successfully invokes",
+                "An error occured while invoking getter method",
+                getter.toString()));
       }
       return;
     }
@@ -449,32 +429,28 @@ public class ContractVerifier {
         return;
       }
 
-      errMessage
-          .append("Returned value must be Optional.empty() when passed null value!\n")
-          .append("Returned value: ")
-          .append(realInstance)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create(
+              "Return value is equal to Optional.emtpy()",
+              "Something contains in Optional<T>, the value is " + realInstance.toString(),
+              "Check your implementation."));
     } else {
-      errMessage
-          .append("Returned value is not Optional<T> type!\n")
-          .append("Returned type is: ")
-          .append(returnValue.getClass())
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create(
+              "Returns Optional<T> type",
+              "Returned something else from " + getter.toString(),
+              returnValue.getClass().toString()));
     }
   }
 
-  private static void verifySettersForObjectiveField(
-      Class<?> sourceClass, Method setter, Field field, StringBuilder errMessage) {
+  private void verifySettersForObjectiveField(Class<?> sourceClass, Method setter, Field field) {
 
     if (!setter.getReturnType().equals(void.class)) {
-      errMessage
-          .append("Setter for objective field returns non-void type.\nField: ")
-          .append(field)
-          .append("\nSetter return type: ")
-          .append(setter.getReturnType())
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create("Setter return type is void", "Its not", setter.toString()));
     }
   }
 
@@ -486,8 +462,7 @@ public class ContractVerifier {
    * @param errMessage the string builder, in which will be writes any violations.
    * @return the getter method.
    */
-  private static Optional<Method> getGetter(
-      Class<?> sourceClass, Field field, StringBuilder errMessage) {
+  private Optional<Method> getGetter(Class<?> sourceClass, Field field) {
     String fieldName = field.getName();
     String getterMethodName;
     if (field.getType().equals(Boolean.TYPE) && fieldName.startsWith(GETTER_PREFIX_FOR_BOOLEAN)) {
@@ -502,12 +477,12 @@ public class ContractVerifier {
     try {
       getter = sourceClass.getMethod(getterMethodName);
     } catch (NoSuchMethodException e) {
-      errMessage
-          .append("Not found getter for objective field.\nField: ")
-          .append(field)
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create(
+              "Founds getter for " + field.toString(),
+              "Missing getter",
+              "Source class " + sourceClass.toString()));
     }
 
     return Optional.ofNullable(getter);
@@ -521,8 +496,7 @@ public class ContractVerifier {
    * @param errMessage the string builder, in which will be writes any violations.
    * @return the setter method.
    */
-  private static Optional<Method> getSetter(
-      Class<?> sourceClass, Field field, StringBuilder errMessage) {
+  private Optional<Method> getSetter(Class<?> sourceClass, Field field) {
     String fieldName = field.getName();
     String setterMethodName;
     String prefix = SETTER_PREFIX;
@@ -536,36 +510,15 @@ public class ContractVerifier {
     try {
       setter = sourceClass.getMethod(setterMethodName, field.getType());
     } catch (NoSuchMethodException e) {
-      errMessage
-          .append("Not found setter for objective field.\nField: ")
-          .append(field)
-          .append("\nSource: ")
-          .append(sourceClass)
-          .append(NEXT_LINE);
+      violations.addTo(
+          Groups.METHODS.groupName(),
+          Violation.create(
+              "Founds setter for " + field.toString(),
+              "Missing setter",
+              "Source class " + sourceClass.toString()));
     }
 
     return Optional.ofNullable(setter);
-  }
-
-  /**
-   * Appends another one error to string builder.
-   *
-   * @param errMessage the string builder, in which will be writes any violations.
-   * @param getter the referenced method.
-   * @param field the referenced field.
-   * @param source the source class, in which found violation.
-   */
-  private static void appendErrorOfReturnType(
-      StringBuilder errMessage, Method getter, Field field, Class<?> source) {
-    errMessage
-        .append("The returned type must be an Optional with a generic type equal to fields type!\n")
-        .append("The actual return type: ")
-        .append(getter.getGenericReturnType())
-        .append("\nThe field type: ")
-        .append(field.getType())
-        .append("\nSource: ")
-        .append(source)
-        .append(NEXT_LINE);
   }
 
   /**
@@ -574,9 +527,8 @@ public class ContractVerifier {
    * @param clazz the class to verify.
    * @throws NamingContractException a list of fields contract violations.
    */
-  private static void verifyNamingContract(Class<?> clazz) throws NamingContractException {
+  private void verifyNamingContract(Class<?> clazz) {
     Field[] allFields = clazz.getDeclaredFields();
-    StringBuilder errMessage = new StringBuilder();
 
     for (Field field : allFields) {
       if (Modifier.isStatic(field.getModifiers())) {
@@ -591,24 +543,22 @@ public class ContractVerifier {
 
       if ((isLower && haveSerializedNameAnnotation)
           || (!isLower && !haveSerializedNameAnnotation)) {
-        errMessage
-            .append("Naming conflictions!\nField name: ")
-            .append(fieldName)
-            .append("\nName in annotation: ")
-            .append(nameInAnnotation)
-            .append("\nSource: ")
-            .append(clazz)
-            .append(SKIP_LINE);
+        violations.addTo(
+            Groups.NAMING.groupName(),
+            Violation.create(
+                "Field name and name in annotation in right formats",
+                "They're not",
+                "Field name is " + fieldName + "\nAnnotation name is " + nameInAnnotation));
         continue;
       }
 
       if (haveSerializedNameAnnotation && !nameInAnnotation.matches(SNAKE_CASE_PATTERN)) {
-        errMessage
-            .append("Invalid format of snake_case!\nValue: ")
-            .append(nameInAnnotation)
-            .append("\nSource: ")
-            .append(clazz)
-            .append(SKIP_LINE);
+        violations.addTo(
+            Groups.NAMING.groupName(),
+            Violation.create(
+                "Valid format of snake case",
+                nameInAnnotation,
+                "Snake case is walid when all words in lowercase and spacing only by underscore"));
         continue;
       }
 
@@ -623,21 +573,20 @@ public class ContractVerifier {
         }
 
         if (!nameInAnnotationInCamelCase.toString().equals(fieldName)) {
-          errMessage
-              .append("Names is not equals by logic!\nField name in camelCase: ")
-              .append(fieldName)
-              .append("\nValue in annotation in snake_case: ")
-              .append(nameInAnnotation)
-              .append("\nValue in annotation in camelCase: ")
-              .append(nameInAnnotationInCamelCase.toString())
-              .append("\nSource: ")
-              .append(clazz)
-              .append(SKIP_LINE);
+          violations.addTo(
+              Groups.NAMING.groupName(),
+              Violation.create(
+                  "Field name and name in annotation are conventionally equals",
+                  "They're not",
+                  "Field name is "
+                      + fieldName
+                      + "\nAnnotation name is "
+                      + nameInAnnotation
+                      + "\ncamelCased annotation name id "
+                      + nameInAnnotationInCamelCase.toString()));
         }
       }
     }
-
-    if (!errMessage.isEmpty()) throw new NamingContractException(errMessage.toString());
   }
 
   /**
@@ -647,7 +596,7 @@ public class ContractVerifier {
    * @return true if the field name is camelCase and all characters in lower case, otherwise -
    *     false.
    */
-  private static boolean isLower(String fieldName) {
+  private boolean isLower(String fieldName) {
     boolean isCamelCase = fieldName.matches(CAMEL_CASE_PATTERN);
     boolean isLower = true;
     for (char symbol : fieldName.toCharArray()) {
@@ -662,13 +611,11 @@ public class ContractVerifier {
   /**
    * Verifies all fields by general interface contract.
    *
-   * @param clazz the class to verify.
+   * @param sourceClass the class to verify.
    * @throws GeneralInterfacesContractException a list of fields contract violations.
    */
-  private static void verifyGeneralInterfacesContract(Class<?> clazz)
-      throws GeneralInterfacesContractException {
-    Field[] allFields = clazz.getDeclaredFields();
-    StringBuilder errMessage = new StringBuilder();
+  private void verifyGeneralInterfacesContract(Class<?> sourceClass) {
+    Field[] allFields = sourceClass.getDeclaredFields();
 
     for (Field field : allFields) {
       Class<?> fieldType = field.getType();
@@ -681,58 +628,62 @@ public class ContractVerifier {
       Class<?>[] interfaces = fieldType.getInterfaces();
       for (Class<?> type : interfaces) {
         if (type.isAnnotationPresent(GeneralInterface.class)) {
-          errMessage
-              .append("Field must use general interface!\nExpected type:")
-              .append(type)
-              .append("\nUsed type: ")
-              .append(fieldType)
-              .append(NEXT_LINE);
+          violations.addTo(
+              Groups.GENERAL_INTERFACE.groupName(),
+              Violation.create(
+                  type.toString(), fieldType.toString(), "Field must use general interface!"));
         }
       }
     }
-
-    if (!errMessage.isEmpty()) throw new GeneralInterfacesContractException(errMessage.toString());
   }
 
   /**
    * Verifies toString method contract.
    *
-   * @param clazz the class to verify.
+   * @param sourceClass the class to verify.
    * @throws ToStringContractException toString contract violations.
    */
-  private static void verifyToStringContract(Class<?> clazz) throws ToStringContractException {
+  private void verifyToStringContract(Class<?> sourceClass) {
     Method toStringMethod;
-    if (clazz.isAnnotationPresent(EmptyClass.class) || clazz.isArray()) {
+    if (sourceClass.isAnnotationPresent(EmptyClass.class) || sourceClass.isArray()) {
       return;
     }
 
     try {
-      toStringMethod = clazz.getMethod(TO_STRING_METHOD_NAME);
+      toStringMethod = sourceClass.getMethod(TO_STRING_METHOD_NAME);
     } catch (NoSuchMethodException e) {
-      throw new ToStringContractException(
-          "Method toString() not found!\nSource: " + clazz + NEXT_LINE);
+      violations.addTo(
+          Groups.TO_STRING.groupName(),
+          Violation.create(
+              "Method toString() is present",
+              "This method is not found",
+              "Source class is " + sourceClass.toString()));
+      return;
     }
 
     final int depth = 1;
     final float generateAllFields = 1f;
-    Object instance = TypeFactory.generate(clazz, depth, generateAllFields);
+    Object instance = TypeFactory.generate(sourceClass, depth, generateAllFields);
 
     Object toStringResult;
     try {
       toStringResult = toStringMethod.invoke(instance);
     } catch (InvocationTargetException | IllegalAccessException e) {
-      throw new ToStringContractException(
-          "An error occured in invocation toString() method!\nError message: "
-              + e
-              + "\nSource: "
-              + clazz
-              + NEXT_LINE);
+      violations.addTo(
+          Groups.TO_STRING.groupName(),
+          Violation.create(
+              "Method toString() successfully invocates",
+              e.getMessage(),
+              "Source class is " + sourceClass.toString()));
+      return;
     }
 
     if (!(toStringResult instanceof String toStringText)) {
-      throw new ToStringContractException(
-          "Returned value of toString() method is not String. Must be a Stirng result.\nSource: "
-              + clazz);
+      violations.addTo(
+          Groups.TO_STRING.groupName(),
+          Violation.create(
+              "Returned value is String", "It's not", "Source class is " + sourceClass.toString()));
+      return;
     }
 
     verifyToStringText(toStringText, instance);
@@ -745,21 +696,18 @@ public class ContractVerifier {
    * @param instance the instance with filled values, used to be compate to the text.
    * @throws ToStringContractException toString contract violations.
    */
-  private static void verifyToStringText(String text, Object instance)
-      throws ToStringContractException {
+  private void verifyToStringText(String text, Object instance) {
     String className = instance.getClass().getSimpleName();
     Class<?> instanceClass = instance.getClass();
 
     if (!(text.startsWith(className + "[") && text.endsWith("]"))) {
-      throw new ToStringContractException(
-          "Text of toString() method not starts with \""
-              + className
-              + "[\"  and ends with "
-              + "\"]\".\nActual: "
-              + text
-              + "\nSource: "
-              + instanceClass
-              + NEXT_LINE);
+      violations.addTo(
+          Groups.TO_STRING.groupName(),
+          Violation.create(
+              "Returned value in pattern ClassName[key=value]",
+              "It's not",
+              "Source object is " + instance));
+      return;
     }
 
     final int bracketsWidth = 1;
@@ -775,12 +723,13 @@ public class ContractVerifier {
       try {
         referencedField = instanceClass.getDeclaredField(key);
       } catch (NoSuchFieldException e) {
-        e.printStackTrace();
-        throw new ToStringContractException(
-            "Not found the referenced field in generated toString() method with name: "
-                + key
-                + "\nSource: "
-                + instanceClass);
+        violations.addTo(
+            Groups.TO_STRING.groupName(),
+            Violation.create(
+                "Returned text contains field name",
+                "It don't",
+                "Source object is " + instance + "and its referenced field " + key));
+        return;
       }
 
       try {
@@ -791,14 +740,16 @@ public class ContractVerifier {
         }
       } catch (IllegalValueToStringException e) {
         String expectedValue = e.getMessage();
-        throw new ToStringContractException(
-            "Invalid value in generated text by toString() method.\nField: "
-                + referencedField.getName()
-                + "\nExpected value: "
-                + expectedValue
-                + "\nActual text: "
-                + text
-                + NEXT_LINE);
+        violations.addTo(
+            Groups.TO_STRING.groupName(),
+            Violation.create(
+                expectedValue,
+                text,
+                "Invalid value in generated text by toString() method. Note: the actual"
+                    + " text is the right remaining part after cutting the text by '='"
+                    + " char."));
+      } catch (ToStringContractException e) {
+        violations.extendFrom(e.getViolations());
       }
     }
   }
@@ -815,7 +766,7 @@ public class ContractVerifier {
    *     instnace.
    * @throws ToStringContractException accessing to field value error or doesn't find matched typed.
    */
-  private static String verifyAndCutTextForPrimitive(
+  private String verifyAndCutTextForPrimitive(
       String remainingTextPart, Field referencedField, Object instance)
       throws IllegalValueToStringException, ToStringContractException {
     Class<?> primitiveType = referencedField.getType();
@@ -827,9 +778,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getInt(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -844,9 +793,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getLong(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -861,9 +808,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getShort(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -878,9 +823,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getDouble(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -895,9 +838,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getFloat(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -912,9 +853,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getBoolean(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -929,9 +868,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getByte(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -946,9 +883,7 @@ public class ContractVerifier {
       try {
         value = referencedField.getChar(instance);
       } catch (IllegalAccessException e) {
-        var exception =
-            generateToStringExceptionForPrimitiveType(
-                primitiveType, referencedField, instanceClass);
+        var exception = generateAccessingException(primitiveType, referencedField, instanceClass);
         throw exception;
       }
       referencedField.setAccessible(false);
@@ -973,16 +908,16 @@ public class ContractVerifier {
    * @return an exception by template.
    * @throws ToStringContractException toString method contract violations.
    */
-  private static ToStringContractException generateToStringExceptionForPrimitiveType(
+  private static ToStringContractException generateAccessingException(
       Class<?> primitiveType, Field referencedField, Class<?> instanceClass) {
     return new ToStringContractException(
-        "An error occurred in accessing to primitive field with type "
-            + primitiveType
-            + ".\nField: "
-            + referencedField
-            + "\nSource: "
-            + instanceClass
-            + NEXT_LINE);
+        new ViolationList()
+            .addTo(
+                Groups.TO_STRING.groupName(),
+                Violation.create(
+                    referencedField.toString() + " is accessible",
+                    "An error occured while accesing to this field",
+                    "Source type is " + instanceClass)));
   }
 
   /**
@@ -999,8 +934,7 @@ public class ContractVerifier {
    *     instnace.
    * @throws ToStringContractException error of accessing to field value or method toString.
    */
-  private static String verifyAndCutText(
-      String remainingTextPart, Field referencedField, Object instance)
+  private String verifyAndCutText(String remainingTextPart, Field referencedField, Object instance)
       throws IllegalValueToStringException, ToStringContractException {
     Class<?> type = referencedField.getType();
 
@@ -1033,14 +967,7 @@ public class ContractVerifier {
     try {
       value = field.get(instance);
     } catch (IllegalAccessException e) {
-      throw new ToStringContractException(
-          "An error occurred in accessing to field with type "
-              + field.getType()
-              + ".\nField: "
-              + field
-              + "\nSource: "
-              + instance.getClass()
-              + NEXT_LINE);
+      return generateAccessingException(field.getType(), field, instance.getClass());
     }
     field.setAccessible(false);
     return value;
@@ -1054,7 +981,7 @@ public class ContractVerifier {
    * @throws ToStringContractException errors of accessing to toString method or toString contract
    *     violations.
    */
-  private static String verifyInnerTypeAndGetToStringText(Object instance)
+  private String verifyInnerTypeAndGetToStringText(Object instance)
       throws ToStringContractException {
     Class<?> instanceClass = instance.getClass();
 
@@ -1087,23 +1014,28 @@ public class ContractVerifier {
       toStringMethod = Arrays.class.getMethod(TO_STRING_METHOD_NAME, instanceClass);
     } catch (NoSuchMethodException e) {
       throw new ToStringContractException(
-          "Can't find the toString method in Arrays class for specific source class.\n"
-              + "Source class: "
-              + instanceClass
-              + "\nError message: "
-              + e.getMessage());
+          new ViolationList()
+              .addTo(
+                  Groups.TO_STRING.groupName(),
+                  Violation.create(
+                      "Method Arrays.toString(T) is present for the T type " + instanceClass,
+                      "This method is not found",
+                      "Be sure that Arrays class may don't contain method for very different"
+                          + " types")));
     }
     String objectToStringText;
     try {
       objectToStringText = (String) toStringMethod.invoke(null, instance);
     } catch (InvocationTargetException | IllegalAccessException e) {
       throw new ToStringContractException(
-          "An error occurred while trying to invoke toString method from Arrays class for source"
-              + " instance.\n"
-              + "Source instance: "
-              + instance
-              + "\nError message: "
-              + e.getMessage());
+          new ViolationList()
+              .addTo(
+                  Groups.TO_STRING.groupName(),
+                  Violation.create(
+                      "Method Arrays.toString(T) successfully invocates for the T type "
+                          + instanceClass,
+                      e.getMessage(),
+                      "Source class is " + instanceClass)));
     }
 
     return objectToStringText;
@@ -1125,7 +1057,13 @@ public class ContractVerifier {
       toStringMethod = instance.getClass().getMethod(TO_STRING_METHOD_NAME);
     } catch (NoSuchMethodException e) {
       throw new ToStringContractException(
-          "Method toString() not found!\nSource: " + instanceClass + NEXT_LINE);
+          new ViolationList()
+              .addTo(
+                  Groups.TO_STRING.groupName(),
+                  Violation.create(
+                      "Method toString() is present",
+                      "This method is not found",
+                      "Source class is " + instanceClass.toString())));
     }
 
     String objectToStringText;
@@ -1133,11 +1071,13 @@ public class ContractVerifier {
       objectToStringText = (String) toStringMethod.invoke(instance);
     } catch (InvocationTargetException | IllegalAccessException e) {
       throw new ToStringContractException(
-          "An error occured in invocation toString() method!\nError message: "
-              + e
-              + "\nSource: "
-              + instanceClass
-              + NEXT_LINE);
+          new ViolationList()
+              .addTo(
+                  Groups.TO_STRING.groupName(),
+                  Violation.create(
+                      "Method toString() successfully invocates",
+                      e.getMessage(),
+                      "Source class is " + instanceClass)));
     }
 
     return objectToStringText;

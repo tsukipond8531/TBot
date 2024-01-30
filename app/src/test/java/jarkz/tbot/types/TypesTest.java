@@ -19,6 +19,7 @@ import jarkz.tbot.types.inlinemode.InlineQueryResult;
 import jarkz.tbot.types.inputmedia.InputMedia;
 import jarkz.tbot.types.menubutton.MenuButton;
 import jarkz.tbot.types.passport.PassportElementError;
+import jarkz.tbot.violations.ViolationList;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Test;
@@ -164,10 +165,11 @@ public class TypesTest {
     Reflections reflections =
         new Reflections(
             this.getClass().getPackageName(), Scanners.SubTypes.filterResultsBy(s -> true));
-    StringBuilder errMessage = new StringBuilder();
-
-    final String wrapLine = "------------------------------------------------------------------";
-    final String skipLine = "\n\n";
+    var violations = new ViolationList();
+    // StringBuilder errMessage = new StringBuilder();
+    //
+    // final String wrapLine = "------------------------------------------------------------------";
+    // final String skipLine = "\n\n";
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
         .map(c -> c.getPackageName())
         .distinct()
@@ -177,16 +179,18 @@ public class TypesTest {
               try {
                 ContractVerifier.verifyPackage(p);
               } catch (ContractException e) {
-                errMessage
-                    .append(e.getMessage())
-                    .append(skipLine)
-                    .append(wrapLine)
-                    .append(wrapLine)
-                    .append(skipLine);
+                violations.extendFrom(e.getViolations());
+                // errMessage
+                //     .append(e.getMessage())
+                //     .append(skipLine)
+                //     .append(wrapLine)
+                //     .append(wrapLine)
+                //     .append(skipLine);
               }
             });
 
-    if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
+    // if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
+    if (!violations.isEmpty()) throw new ContractException(violations.toString());
   }
 
   /**
