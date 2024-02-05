@@ -121,6 +121,12 @@ public class BotApi {
     return updates;
   }
 
+  /**
+   * A simple method for testing your bot's authentication token. Requires no parameters. Returns
+   * basic information about the bot in form of a User object.
+   *
+   * @return the bot as {@link User}
+   */
   public User getMe() {
     final String methodName = "getMe";
 
