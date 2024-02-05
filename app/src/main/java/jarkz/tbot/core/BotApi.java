@@ -107,10 +107,7 @@ public class BotApi {
 
     Response response = makeRequest(methodName, paramsAsEntity);
     if (!response.isOk()) {
-      throw new RuntimeException(
-          response.getDescription().isPresent()
-              ? response.getDescription().orElseThrow()
-              : String.valueOf(response.getErrorCode().orElseThrow()));
+      raiseRuntimeException(response);
     }
 
     List<Update> updates = new LinkedList<>();
@@ -122,6 +119,22 @@ public class BotApi {
       updates.add(gson.fromJson(element, Update.class));
     }
     return updates;
+  }
+
+  public User getMe() {
+    final String methodName = "getMe";
+
+    var response = makeRequest(methodName, new StringEntity("", Charset.forName("UTF-8")));
+    if (!response.isOk()) {
+      raiseRuntimeException(response);
+    }
+
+    var jsonElement =
+        response
+            .getResult()
+            .orElseThrow(() -> new RuntimeException("Invalid result of response."))
+            .getAsJsonObject();
+    return gson.fromJson(jsonElement, User.class);
   }
 
   private Response makeRequest(String methodName, StringEntity paramsAsEntity) {
@@ -139,22 +152,11 @@ public class BotApi {
     }
   }
 
-  public User getMe() {
-    final String methodName = "getMe";
-
-    var response = makeRequest(methodName, new StringEntity("", Charset.forName("UTF-8")));
-    if (!response.isOk()) {
-      throw new RuntimeException(
-          response.getDescription().isPresent()
-              ? response.getDescription().orElseThrow()
-              : String.valueOf(response.getErrorCode().orElseThrow()));
-    }
-
-    var jsonElement = response
-        .getResult()
-        .orElseThrow(() -> new RuntimeException("Invalid result of response."))
-        .getAsJsonObject();
-    return gson.fromJson(jsonElement, User.class);
+  private void raiseRuntimeException(Response response) {
+    throw new RuntimeException(
+        response.getDescription().isPresent()
+            ? response.getDescription().orElseThrow()
+            : String.valueOf(response.getErrorCode().orElseThrow()));
   }
 
   private URI getUri(String methodName) {
