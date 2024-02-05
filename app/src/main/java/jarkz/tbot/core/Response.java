@@ -28,7 +28,7 @@ public class Response {
   }
 
   public Optional<String> getDescription() {
-    return Optional.of(description);
+    return Optional.ofNullable(description);
   }
 
   public void setDescription(String description) {
@@ -36,7 +36,7 @@ public class Response {
   }
 
   public Optional<JsonElement> getResult() {
-    return Optional.of(result);
+    return Optional.ofNullable(result);
   }
 
   public void setResult(JsonElement result) {
@@ -44,7 +44,7 @@ public class Response {
   }
 
   public Optional<Integer> getErrorCode() {
-    return Optional.of(errorCode);
+    return Optional.ofNullable(errorCode);
   }
 
   public void setErrorCode(Integer errorCode) {
@@ -52,7 +52,7 @@ public class Response {
   }
 
   public Optional<ResponseParameters> getParameters() {
-    return Optional.of(parameters);
+    return Optional.ofNullable(parameters);
   }
 
   public void setParameters(ResponseParameters parameters) {
