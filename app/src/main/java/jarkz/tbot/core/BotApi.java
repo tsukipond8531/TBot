@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import jarkz.tbot.core.parameters.GetUpdatesParameters;
 import jarkz.tbot.types.Update;
+import jarkz.tbot.types.User;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
@@ -136,6 +137,24 @@ public class BotApi {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public User getMe() {
+    final String methodName = "getMe";
+
+    var response = makeRequest(methodName, new StringEntity("", Charset.forName("UTF-8")));
+    if (!response.isOk()) {
+      throw new RuntimeException(
+          response.getDescription().isPresent()
+              ? response.getDescription().orElseThrow()
+              : String.valueOf(response.getErrorCode().orElseThrow()));
+    }
+
+    var jsonElement = response
+        .getResult()
+        .orElseThrow(() -> new RuntimeException("Invalid result of response."))
+        .getAsJsonObject();
+    return gson.fromJson(jsonElement, User.class);
   }
 
   private URI getUri(String methodName) {
