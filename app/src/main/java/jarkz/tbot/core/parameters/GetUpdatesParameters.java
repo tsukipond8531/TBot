@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jarkz.tbot.core.BotApi;
+import jarkz.tbot.types.Update;
 import java.util.List;
 
 /**
@@ -28,7 +29,18 @@ public class GetUpdatesParameters {
   /** Default constaructor */
   public GetUpdatesParameters() {}
 
-  /** The constructor with all arguments. */
+  /**
+   * The constructor with all arguments.
+   *
+   * @param offset the offset as Integer (description in {@link
+   *     GetUpdatesParameters#setOffset(Integer)}).
+   * @param limit the limit as Integer (description in {@link
+   *     GetUpdatesParameters#setLimit(Integer)}).
+   * @param timeout the timeout as Integer (description in {@link
+   *     GetUpdatesParameters#setTimeout(Integer)}).
+   * @param allowedUpdates the allowed updates as {@link List}&lt;String&gt; (description in {@link
+   *     GetUpdatesParameters#setAllowedUpdates(List)}).
+   */
   public GetUpdatesParameters(
       Integer offset, Integer limit, Integer timeout, List<String> allowedUpdates) {
     this.offset = offset;
@@ -48,9 +60,9 @@ public class GetUpdatesParameters {
    * updates. By default, updates starting with the earliest unconfirmed update are returned. An
    * update is considered confirmed as soon as <a
    * href="https://core.telgeram.org/bots/api#getUpdates">getUpdates</a> is called with an
-   * <i>offset<i> higher than its <i>update_id</i>. The negative offset can be specified to retrieve
-   * updates starting from -<i>offset</i> update from the end of the updates queue. All previous
-   * updates will be forgotten.
+   * <i>offset</i> higher than its <i>update_id</i>. The negative offset can be specified to
+   * retrieve updates starting from -<i>offset</i> update from the end of the updates queue. All
+   * previous updates will be forgotten.
    *
    * @return offset as Integer.
    */
@@ -65,9 +77,9 @@ public class GetUpdatesParameters {
    * updates. By default, updates starting with the earliest unconfirmed update are returned. An
    * update is considered confirmed as soon as <a
    * href="https://core.telgeram.org/bots/api#getUpdates">getUpdates</a> is called with an
-   * <i>offset<i> higher than its <i>update_id</i>. The negative offset can be specified to retrieve
-   * updates starting from -<i>offset</i> update from the end of the updates queue. All previous
-   * updates will be forgotten.
+   * <i>offset</i> higher than its <i>update_id</i>. The negative offset can be specified to
+   * retrieve updates starting from -<i>offset</i> update from the end of the updates queue. All
+   * previous updates will be forgotten.
    *
    * @param offset the identifier of the first update to be returned as Integer or null if the
    *     offset is not required.
@@ -144,9 +156,9 @@ public class GetUpdatesParameters {
    * <p>Specify an empty list to receive all update types except chat_member (default). If not
    * specified, the previous setting will be used.
    *
-   * @return allowed_updates the JSON-serialized list of the update types you want your bot to
-   *     receive as {@link List}&lt;String&gt; or null if you want to receive all update types
-   *     except "chat_member" as default.
+   * @param allowedUpdates the JSON-serialized list of the update types you want your bot to receive
+   *     as {@link List}&lt;String&gt; or null if you want to receive all update types except
+   *     "chat_member" as default.
    */
   public void setAllowedUpdates(List<String> allowedUpdates) {
     this.allowedUpdates = allowedUpdates;

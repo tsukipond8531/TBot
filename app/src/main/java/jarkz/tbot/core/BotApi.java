@@ -45,6 +45,24 @@ public class BotApi {
     this.botToken = botToken;
   }
 
+  /**
+   * Use this method to receive incoming updates using long polling (<a
+   * href="https://en.wikipedia.org/wiki/Push_technology#Long_polling">wiki</a>). Returns an list of
+   * Update objects.
+   *
+   * <p><strong>Notes:</strong>
+   *
+   * <ol>
+   *   <li>This method will not work if an outgoing webhook is set up.
+   *   <li>In order to avoid getting duplicate updates, recalculate <i>offset</i> after each server
+   *       response.
+   * </ol>
+   *
+   * @param parameters the parameters of method <a
+   *     href="https://core.telegram.org/bots/api#getUpdates">getUpdates</a> as {@link
+   *     GetUpdatesParameters}.
+   * @return a list of Updates.
+   */
   public List<Update> getUpdates(GetUpdatesParameters parameters) {
     final String methodName = "getUpdates";
     Gson gson = getGson();

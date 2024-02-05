@@ -1,12 +1,10 @@
 package jarkz.tbot.core;
 
-import java.util.Objects;
-import java.util.Optional;
-
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
-
 import jarkz.tbot.types.ResponseParameters;
+import java.util.Objects;
+import java.util.Optional;
 
 public class Response {
 
