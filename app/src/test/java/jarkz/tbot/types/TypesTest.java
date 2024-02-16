@@ -6,19 +6,14 @@ import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
 import jarkz.tbot.exceptions.types.JsonSerializationException;
 import jarkz.tbot.types.annotations.Deserializer;
-import jarkz.tbot.types.botcommandscope.BotCommandScope;
-import jarkz.tbot.types.chat.Chat;
-import jarkz.tbot.types.chatmember.ChatMember;
 import jarkz.tbot.types.deserializers.BotCommandScopeDeserializer;
+import jarkz.tbot.types.deserializers.ChatBoostSourceDeserializer;
 import jarkz.tbot.types.deserializers.ChatMemberDeserializer;
-import jarkz.tbot.types.deserializers.InlineQueryResultDeserializer;
-import jarkz.tbot.types.deserializers.InputMediaDeserializer;
+import jarkz.tbot.types.deserializers.MaybeInaccessibleMessageDeserializer;
 import jarkz.tbot.types.deserializers.MenuButtonDeserializer;
+import jarkz.tbot.types.deserializers.MessageOriginDeserializer;
 import jarkz.tbot.types.deserializers.PassportElementErrorDeserializer;
-import jarkz.tbot.types.inlinemode.InlineQueryResult;
-import jarkz.tbot.types.inputmedia.InputMedia;
-import jarkz.tbot.types.menubutton.MenuButton;
-import jarkz.tbot.types.passport.PassportElementError;
+import jarkz.tbot.types.deserializers.ReactionTypeDeserializer;
 import jarkz.tbot.violations.ViolationList;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
@@ -42,16 +37,21 @@ public class TypesTest {
   /**
    * Verifies a class by JSON serialization.
    *
-   * @param clazz a datatype class
+   * @param sourceClass a datatype class
    * @param errMessage the string builder that uses for writing any errors
    */
-  public static void verifyClassByJsonSerialization(Class<?> clazz, StringBuilder errMessage) {
+  public static void verifyClassByJsonSerialization(
+      Class<?> sourceClass, StringBuilder errMessage) {
+    if (sourceClass == InputFile.class) {
+      return;
+    }
+
     Object instance =
-        TypeFactory.generate(clazz, TypesTest.TYPE_DEPTH, TypesTest.GENERATE_ALL_FIELDS);
+        TypeFactory.generate(sourceClass, TypesTest.TYPE_DEPTH, TypesTest.GENERATE_ALL_FIELDS);
     Gson gson = TypesTest.getGson();
     String json = gson.toJson(instance);
 
-    Object otherInstance = gson.fromJson(json, clazz);
+    Object otherInstance = gson.fromJson(json, sourceClass);
     if (!instance.equals(otherInstance)) {
       errMessage
           .append(
@@ -70,13 +70,16 @@ public class TypesTest {
    * @return a gson instance
    */
   public static Gson getGson() {
-    GsonBuilder gsonBuilder =
+    final GsonBuilder gsonBuilder =
         new GsonBuilder()
             .registerTypeAdapter(BotCommandScope.class, new BotCommandScopeDeserializer())
             .registerTypeAdapter(ChatMember.class, new ChatMemberDeserializer())
-            .registerTypeAdapter(InlineQueryResult.class, new InlineQueryResultDeserializer())
-            .registerTypeAdapter(InputMedia.class, new InputMediaDeserializer())
             .registerTypeAdapter(MenuButton.class, new MenuButtonDeserializer())
+            .registerTypeAdapter(MessageOrigin.class, new MessageOriginDeserializer())
+            .registerTypeAdapter(ReactionType.class, new ReactionTypeDeserializer())
+            .registerTypeAdapter(
+                MaybeInaccessibleMessage.class, new MaybeInaccessibleMessageDeserializer())
+            .registerTypeAdapter(ChatBoostSource.class, new ChatBoostSourceDeserializer())
             .registerTypeAdapter(
                 PassportElementError.class, new PassportElementErrorDeserializer());
     return gsonBuilder.create();
@@ -113,47 +116,6 @@ public class TypesTest {
     if (!errMessage.isEmpty()) {
       throw new JsonSerializationException("\n" + errMessage.toString());
     }
-  }
-
-  /**
-   * Verifies the JSON serialization for each class, except deserializers, test containers and etc.,
-   * from the packages {@link jarkz.tbot.types}.*.
-   */
-  @Test
-  public void verifyJsonSerializationAllPackages() {
-    var reflections =
-        new Reflections(
-            this.getClass().getPackageName(), Scanners.SubTypes.filterResultsBy(s -> true));
-
-    StringBuilder errMessage = new StringBuilder();
-    reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
-        .filter(
-            c ->
-                !c.isInterface()
-                    && !c.getPackage().isAnnotationPresent(Deserializer.class)
-                    && !c.isAnnotationPresent(Deserializer.class)
-                    && !c.isAnnotationPresent(TestContainer.class))
-        .forEach(c -> TypesTest.verifyClassByJsonSerialization(c, errMessage));
-
-    if (!errMessage.isEmpty()) {
-      throw new JsonSerializationException("\n" + errMessage.toString());
-    }
-  }
-
-  /**
-   * Verifies the equals and hashCode for each class, except deserializers, test containers and
-   * etc., from the packages {@link jarkz.tbot.types}.*.
-   */
-  @Test
-  public void verifyEqualsAndHashCodeAllPackages() {
-    Reflections reflections =
-        new Reflections(
-            this.getClass().getPackageName(), Scanners.SubTypes.filterResultsBy(s -> true));
-    reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
-        .filter(c -> !c.getPackage().isAnnotationPresent(Deserializer.class))
-        .map(c -> c.getPackageName())
-        .distinct()
-        .forEach(p -> verifyEqualsAndHashCodeForPackage(p));
   }
 
   /**

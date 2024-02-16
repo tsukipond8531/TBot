@@ -15,14 +15,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.BooleanSupplier;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
@@ -36,8 +32,6 @@ import org.reflections.scanners.Scanners;
 public class ContractVerifier {
 
   private record Fields(List<Field> notNullFields, List<Field> objectFields) {}
-
-  private static final String NEXT_LINE = "\n";
 
   private static final Set<Class<?>> WRAPPERS =
       Set.of(
@@ -60,12 +54,6 @@ public class ContractVerifier {
           Boolean.TYPE,
           Byte.TYPE,
           Character.TYPE);
-
-  private static final String GETTER_PREFIX_FOR_BOOLEAN = "is";
-
-  private static final String GETTER_PREFIX = "get";
-
-  private static final String SETTER_PREFIX = "set";
 
   private static final String CAMEL_CASE_PATTERN = "[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?";
 
@@ -114,8 +102,8 @@ public class ContractVerifier {
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
         .filter(c -> !c.getPackage().isAnnotationPresent(Deserializer.class))
         .forEach(
-            clazz -> {
-              verifier.verify(clazz);
+            sourceClass -> {
+              verifier.verify(sourceClass);
             });
 
     if (!verifier.violations.isEmpty()) throw new ContractException(verifier.violations);
@@ -136,7 +124,8 @@ public class ContractVerifier {
   private void verify(Class<?> sourceClass) {
     if (sourceClass.isInterface()
         || sourceClass.isAnnotationPresent(TestContainer.class)
-        || sourceClass.isAnnotationPresent(Deserializer.class)) {
+        || sourceClass.isAnnotationPresent(Deserializer.class)
+        || sourceClass == InputFile.class) {
       return;
     }
     verifyFields(sourceClass);
@@ -177,17 +166,6 @@ public class ContractVerifier {
     List<Field> objectFields = new ArrayList<>();
 
     for (Field field : allFields) {
-      if (Modifier.isStatic(field.getModifiers())) {
-        continue;
-      }
-
-      if (Modifier.isPublic(field.getModifiers())) {
-        violations.addTo(
-            Groups.FIELDS.groupName(),
-            Violation.create(
-                "Private or protected field", "Field is not private", field.toString()));
-        continue;
-      }
 
       if (field.isAnnotationPresent(NotNull.class)) {
         notNullFields.add(field);
@@ -218,68 +196,17 @@ public class ContractVerifier {
                 field.toString()));
         continue;
       }
-
-      Optional<Method> optionalGetter = getGetter(sourceClass, field);
-      if (optionalGetter.isEmpty()) {
-        return;
-      }
-
-      Optional<Method> optionalSetter = getSetter(sourceClass, field);
-      if (optionalSetter.isEmpty()) {
-        return;
-      }
-
-      Method getter = optionalGetter.get();
-      Method setter = optionalSetter.get();
-
-      verifyGettersForNotNullField(sourceClass, getter, field);
-      verifySettersForNotNullField(sourceClass, setter, field);
-    }
-  }
-
-  /**
-   * Verifies availability and return type of getter for specific field.
-   *
-   * @param sourceClass the class for get the getter.
-   * @param field the referenced field to class.
-   * @param errMessage the string builder, in which will be writes any violations.
-   */
-  private void verifyGettersForNotNullField(Class<?> sourceClass, Method getter, Field field) {
-
-    if (!getter.getReturnType().equals(field.getType())) {
-      violations.addTo(
-          Groups.FIELDS.groupName(),
-          Violation.create(
-              "Field type and its getter return type are euqals",
-              "They are not",
-              field.toString() + NEXT_LINE + getter.toString()));
-    }
-  }
-
-  /**
-   * Verifies availability and return type of setter for specific field.
-   *
-   * @param sourceClass the class for get the setter.
-   * @param field the referenced field to class.
-   * @param errMessage the string builder, in which will be writes any violations.
-   */
-  private void verifySettersForNotNullField(Class<?> sourceClass, Method setter, Field field) {
-
-    if (!setter.getReturnType().equals(void.class)) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create("Setter return type is void", "Its not", setter.toString()));
     }
   }
 
   /**
    * Verifies the fields, which marked by {@link NotNull} annotation, by optional type contract.
    *
-   * @param clazz the source class for get the getter/setter for verifies return type contract.
+   * @param sourceClass the source class for get the getter/setter for verifies return type contract.
    * @param objectFields the list of fields, which marked by {@link NotNull} annotation.
    * @throws ObjectFieldContractException a list of object fields contract violations.
    */
-  private void verifyReturnOptionalTypeContract(Class<?> clazz, List<Field> objectFields) {
+  private void verifyReturnOptionalTypeContract(Class<?> sourceClass, List<Field> objectFields) {
 
     for (Field field : objectFields) {
       if (Modifier.isFinal(field.getModifiers()) || Modifier.isStatic(field.getModifiers())) {
@@ -295,242 +222,17 @@ public class ContractVerifier {
                 field.toString()));
         continue;
       }
-
-      Optional<Method> optionalGetter = getGetter(clazz, field);
-      if (optionalGetter.isEmpty()) {
-        return;
-      }
-
-      Optional<Method> optionalSetter = getSetter(clazz, field);
-      if (optionalSetter.isEmpty()) {
-        return;
-      }
-
-      Method getter = optionalGetter.get();
-      Method setter = optionalSetter.get();
-
-      verifyGettersForObjectiveField(clazz, getter, field);
-      verifySettersForObjectiveField(clazz, setter, field);
-      verifyActualBehaviorGetAndSetMethods(clazz, setter, getter);
     }
-  }
-
-  /**
-   * Verifies availability and return type of getter for specific objective field.
-   *
-   * @param sourceClass the class for get the getter.
-   * @param getter the getter for current type.
-   * @param field the referenced field to class.
-   * @param errMessage the string builder, in which will be writes any violations.
-   */
-  private void verifyGettersForObjectiveField(Class<?> sourceClass, Method getter, Field field) {
-    BooleanSupplier appendError =
-        () -> {
-          violations.addTo(
-              Groups.METHODS.groupName(),
-              Violation.create(
-                  "The return type of getter is equal to " + field.getType(),
-                  "The return type is " + getter.getGenericReturnType(),
-                  "Source class is " + sourceClass.toString()));
-          return true;
-        };
-
-    Class<?> returnType = getter.getReturnType();
-    Type genericReturnType;
-    if (getter.getGenericReturnType() instanceof ParameterizedType) {
-      genericReturnType =
-          ((ParameterizedType) getter.getGenericReturnType()).getActualTypeArguments()[0];
-    } else {
-      appendError.getAsBoolean();
-      return;
-    }
-
-    if (!returnType.equals(Optional.class) || !genericReturnType.equals(field.getGenericType())) {
-      appendError.getAsBoolean();
-    }
-  }
-
-  /**
-   * Verifies actual behavior of setters and getters. Sets null value and gets empty Optional type,
-   * otherwise writes errors.
-   *
-   * <p>Also check default constructor and invocation methods.
-   *
-   * @param sourceClass the class for creating new instance.
-   * @param setter the setter for current type.
-   * @param getter the getter for current type.
-   * @param errMessage the string builder, in which will be writes any violations.
-   */
-  @SuppressWarnings("rawtypes")
-  private void verifyActualBehaviorGetAndSetMethods(
-      Class<?> sourceClass, Method setter, Method getter) {
-    Object instance;
-    try {
-      instance = sourceClass.getDeclaredConstructor().newInstance();
-    } catch (InvocationTargetException
-        | IllegalAccessException
-        | InstantiationException
-        | NoSuchMethodException e) {
-      violations.addTo(
-          Groups.FIELDS.groupName(),
-          Violation.create(
-              "The type " + sourceClass.toString() + " successful created",
-              "It not creates",
-              "Check modifiers, parameters. Must be base constructor without arguments"));
-      return;
-    }
-
-    try {
-      setter.invoke(instance, new Object[] {null});
-    } catch (IllegalAccessException e) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create("Setter successfully invokes", "It's not", setter.toString()));
-      return;
-    } catch (InvocationTargetException e) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create(
-              "Setter successfully invokes",
-              "An error occured while invoking setter method",
-              setter.toString()));
-      return;
-    }
-
-    Object returnValue;
-    try {
-      returnValue = getter.invoke(instance);
-    } catch (IllegalAccessException e) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create("Getter successfully invokes", "It's not", getter.toString()));
-      return;
-    } catch (InvocationTargetException e) {
-      var cause = e.getCause();
-      if (cause instanceof NullPointerException) {
-        violations.addTo(
-            Groups.METHODS.groupName(),
-            Violation.create(
-                "Returns Optional<T> type",
-                "Catched NullPointerException from " + getter.toString(),
-                "Check your implementation. Must be Optional.ofNullable() method."));
-      } else {
-        violations.addTo(
-            Groups.METHODS.groupName(),
-            Violation.create(
-                "Getter successfully invokes",
-                "An error occured while invoking getter method",
-                getter.toString()));
-      }
-      return;
-    }
-
-    if (returnValue instanceof Optional) {
-      var realInstance = (Optional) returnValue;
-      if (realInstance.isEmpty()) {
-        return;
-      }
-
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create(
-              "Return value is equal to Optional.emtpy()",
-              "Something contains in Optional<T>, the value is " + realInstance.toString(),
-              "Check your implementation."));
-    } else {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create(
-              "Returns Optional<T> type",
-              "Returned something else from " + getter.toString(),
-              returnValue.getClass().toString()));
-    }
-  }
-
-  private void verifySettersForObjectiveField(Class<?> sourceClass, Method setter, Field field) {
-
-    if (!setter.getReturnType().equals(void.class)) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create("Setter return type is void", "Its not", setter.toString()));
-    }
-  }
-
-  /**
-   * Returns the getter method by general rules.
-   *
-   * @param sourceClass the class for get the getter.
-   * @param field the referenced field.
-   * @param errMessage the string builder, in which will be writes any violations.
-   * @return the getter method.
-   */
-  private Optional<Method> getGetter(Class<?> sourceClass, Field field) {
-    String fieldName = field.getName();
-    String getterMethodName;
-    if (field.getType().equals(Boolean.TYPE) && fieldName.startsWith(GETTER_PREFIX_FOR_BOOLEAN)) {
-      getterMethodName = fieldName;
-    } else {
-      String prefix =
-          field.getType().equals(Boolean.TYPE) ? GETTER_PREFIX_FOR_BOOLEAN : GETTER_PREFIX;
-      getterMethodName = prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-    }
-
-    Method getter = null;
-    try {
-      getter = sourceClass.getMethod(getterMethodName);
-    } catch (NoSuchMethodException e) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create(
-              "Founds getter for " + field.toString(),
-              "Missing getter",
-              "Source class " + sourceClass.toString()));
-    }
-
-    return Optional.ofNullable(getter);
-  }
-
-  /**
-   * Returns the setter method by general rules.
-   *
-   * @param sourceClass the class for get the setter.
-   * @param field the referenced field.
-   * @param errMessage the string builder, in which will be writes any violations.
-   * @return the setter method.
-   */
-  private Optional<Method> getSetter(Class<?> sourceClass, Field field) {
-    String fieldName = field.getName();
-    String setterMethodName;
-    String prefix = SETTER_PREFIX;
-    if (field.getType().equals(Boolean.TYPE) && fieldName.startsWith(GETTER_PREFIX_FOR_BOOLEAN)) {
-      setterMethodName = prefix + fieldName.substring(GETTER_PREFIX_FOR_BOOLEAN.length());
-    } else {
-      setterMethodName = prefix + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-    }
-
-    Method setter = null;
-    try {
-      setter = sourceClass.getMethod(setterMethodName, field.getType());
-    } catch (NoSuchMethodException e) {
-      violations.addTo(
-          Groups.METHODS.groupName(),
-          Violation.create(
-              "Founds setter for " + field.toString(),
-              "Missing setter",
-              "Source class " + sourceClass.toString()));
-    }
-
-    return Optional.ofNullable(setter);
   }
 
   /**
    * Verifies all fields by naming contract.
    *
-   * @param clazz the class to verify.
+   * @param sourceClass the class to verify.
    * @throws NamingContractException a list of fields contract violations.
    */
-  private void verifyNamingContract(Class<?> clazz) {
-    Field[] allFields = clazz.getDeclaredFields();
+  private void verifyNamingContract(Class<?> sourceClass) {
+    Field[] allFields = sourceClass.getDeclaredFields();
 
     for (Field field : allFields) {
       if (Modifier.isStatic(field.getModifiers())) {

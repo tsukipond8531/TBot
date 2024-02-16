@@ -1,7 +1,6 @@
 package jarkz.tbot.types;
 
 import jarkz.tbot.TestContainer;
-import jarkz.tbot.types.chat.Chat;
 
 /**
  * The specific "static" class for test equals and hashCode when required different instances for

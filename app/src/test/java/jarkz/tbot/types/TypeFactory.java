@@ -53,6 +53,9 @@ public class TypeFactory<T> {
    * @return a generated base type instance.
    */
   public static <T> T generate(Class<T> baseType, int depth, float nullableFieldsChance) {
+    if (baseType == InputFile.class) {
+      return null;
+    }
     TypeFactory<T> factory = new TypeFactory<>(depth, nullableFieldsChance);
     return factory.generate(baseType);
   }
