@@ -7,7 +7,7 @@ repositories { mavenCentral() }
 
 dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
-  testImplementation("nl.jqno.equalsverifier:equalsverifier:3.15")
+  testImplementation("nl.jqno.equalsverifier:equalsverifier:3.15.6")
   testImplementation("org.reflections:reflections:0.10.2")
   testImplementation("org.slf4j:slf4j-api:2.0.7")
   testImplementation("org.slf4j:slf4j-log4j12:2.0.7")
@@ -19,14 +19,7 @@ dependencies {
 
 java { toolchain { languageVersion.set(JavaLanguageVersion.of(17)) } }
 
-tasks.withType<Javadoc> {
-  options.encoding = "UTF-8"
-  // configure(options) {
-  //     tags(
-  //         "apiNote:a:API Note:"
-  //     )
-  // }
-}
+tasks.withType<Javadoc> { options.encoding = "UTF-8" }
 
 spotless { java { googleJavaFormat() } }
 
@@ -55,8 +48,3 @@ tasks.register("genTypes") {
     exec { commandLine("rm", "-r", "output") }
   }
 }
-
-// task.create(name: genTypes, type: Exec) {
-//   commandLine "git", "clone", "https://github.com/JarKz/tbot_type_generator"
-//   // commandLine "python" "-m",
-// }
