@@ -3,42 +3,14 @@ package jarkz.tbot.types;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
-/**
- * Describes a Web App.
- *
- * @author Pavel Bialiauski
- */
-public class WebAppInfo {
-
-  @NotNull private String url;
-
-  /** Default constructor. */
-  public WebAppInfo() {}
+/** Describes a Web App. */
+public final class WebAppInfo {
 
   /**
-   * An HTTPS URL of a Web App to be opened with additional data as specified in <a href=
-   * "https://core.telegram.org/bots/webapps#initializing-web-apps">Initializing Web Apps</a>.
-   *
-   * @return url as String.
+   * An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web
+   * Apps
    */
-  public String getUrl() {
-    return url;
-  }
-
-  /**
-   * Sets the HTTPS URL of a Web App to be opened with additional data as specified in <a href=
-   * "https://core.telegram.org/bots/webapps#initializing-web-apps">Initializing Web Apps</a>.
-   *
-   * @param url the HTTPS URL of a Web App to be opened with additional data as String.
-   */
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  @Override
-  public final int hashCode() {
-    return Objects.hash(url);
-  }
+  @NotNull public String url;
 
   @Override
   public final boolean equals(Object obj) {
@@ -48,8 +20,13 @@ public class WebAppInfo {
   }
 
   @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
+  public final int hashCode() {
+    return Objects.hash(url);
+  }
+
+  @Override
+  public final String toString() {
+    var builder = new StringBuilder();
     builder.append("WebAppInfo[url=").append(url).append("]");
     return builder.toString();
   }

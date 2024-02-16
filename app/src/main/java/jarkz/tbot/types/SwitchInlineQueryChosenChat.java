@@ -2,132 +2,34 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * This object represents an inline button that switches the current user to inline mode in a chosen
  * chat, with an optional default inline query.
- *
- * @author Pavel Bialiauski
  */
-public class SwitchInlineQueryChosenChat {
+public final class SwitchInlineQueryChosenChat {
 
-  private String query;
+  /**
+   * Optional. The default inline query to be inserted in the input field. If left empty, only the
+   * bot's username will be inserted
+   */
+  public String query;
 
+  /** Optional. True, if private chats with users can be chosen */
   @SerializedName("allow_user_chats")
-  private Boolean allowUserChats;
+  public Boolean allowUserChats;
 
+  /** Optional. True, if private chats with bots can be chosen */
   @SerializedName("allow_bot_chats")
-  private Boolean allowBotChats;
+  public Boolean allowBotChats;
 
+  /** Optional. True, if group and supergroup chats can be chosen */
   @SerializedName("allow_group_chats")
-  private Boolean allowGroupChats;
+  public Boolean allowGroupChats;
 
+  /** Optional. True, if channel chats can be chosen */
   @SerializedName("allow_channel_chats")
-  private Boolean allowChannelChats;
-
-  /** Default constructor. */
-  public SwitchInlineQueryChosenChat() {}
-
-  /**
-   * <i>Optional.</i> The default inline query to be inserted in the input field. If left empty,
-   * only the bot's username will be inserted.
-   *
-   * @return an optional value of query as String.
-   */
-  public Optional<String> getQuery() {
-    return Optional.ofNullable(query);
-  }
-
-  /**
-   * Sets the default inline query to be inserted in the input field. If left empty, only the bot's
-   * username will be inserted.
-   *
-   * @param query the default inline query to be inserted in the input field as String or null if it
-   *     is not required.
-   */
-  public void setQuery(String query) {
-    this.query = query;
-  }
-
-  /**
-   * <i>Optional.</i> True, if private chats with users can be chosen.
-   *
-   * @return an optional value of allow_user_chats as Boolean.
-   */
-  public Optional<Boolean> getAllowUserChats() {
-    return Optional.ofNullable(allowUserChats);
-  }
-
-  /**
-   * True, if private chats with users can be chosen.
-   *
-   * @param allowUserChats true if private chats with users can be chosen, otherwise - false or
-   *     null.
-   */
-  public void setAllowUserChats(Boolean allowUserChats) {
-    this.allowUserChats = allowUserChats;
-  }
-
-  /**
-   * <i>Optional.</i> True, if private chats with bots can be chosen.
-   *
-   * @return an optional value of allow_bot_chats as Boolean.
-   */
-  public Optional<Boolean> getAllowBotChats() {
-    return Optional.ofNullable(allowBotChats);
-  }
-
-  /**
-   * True, if private chats with bots can be chosen.
-   *
-   * @param allowBotChats true if private chats with bots can be chosen, otherwise - false or null.
-   */
-  public void setAllowBotChats(Boolean allowBotChats) {
-    this.allowBotChats = allowBotChats;
-  }
-
-  /**
-   * <i>Optional.</i> True, if group and supergroup chats can be chosen.
-   *
-   * @return an optional value of allow_group_chats as Boolean.
-   */
-  public Optional<Boolean> getAllowGroupChats() {
-    return Optional.ofNullable(allowGroupChats);
-  }
-
-  /**
-   * True, if group and supergroup chats can be chosen.
-   *
-   * @param allowGroupChats true if group and supergroup chats can be chosen, otherwise - false or
-   *     null.
-   */
-  public void setAllowGroupChats(Boolean allowGroupChats) {
-    this.allowGroupChats = allowGroupChats;
-  }
-
-  /**
-   * <i>Optional.</i> True, if channel chats can be chosen.
-   *
-   * @return an optional value of allow_channel_chats as Boolean.
-   */
-  public Optional<Boolean> getAllowChannelChats() {
-    return Optional.ofNullable(allowChannelChats);
-  }
-
-  /**
-   * True, if channel chats can be chosen.
-   *
-   * @param allowChannelChats true if channel chats can be chosen, otherwise - false or null.
-   */
-  public void setAllowChannelChats(Boolean allowChannelChats) {
-    this.allowChannelChats = allowChannelChats;
-  }
-
-  @Override
-  public final int hashCode() {
-    return Objects.hash(query, allowUserChats, allowBotChats, allowGroupChats, allowChannelChats);
-  }
+  public Boolean allowChannelChats;
 
   @Override
   public final boolean equals(Object obj) {
@@ -141,8 +43,13 @@ public class SwitchInlineQueryChosenChat {
   }
 
   @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
+  public final int hashCode() {
+    return Objects.hash(query, allowUserChats, allowBotChats, allowGroupChats, allowChannelChats);
+  }
+
+  @Override
+  public final String toString() {
+    var builder = new StringBuilder();
     builder
         .append("SwitchInlineQueryChosenChat[query=")
         .append(query)

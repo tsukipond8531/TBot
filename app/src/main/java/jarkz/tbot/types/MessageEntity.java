@@ -3,221 +3,45 @@ package jarkz.tbot.types;
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames,
  * URLs, etc.
- *
- * @author Pavel Bialiauski
  */
-public class MessageEntity {
+public final class MessageEntity {
 
-  @NotNull private String type;
+  /**
+   * Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag"
+   * ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email"
+   * (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic"
+   * (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler"
+   * (spoiler message), "blockquote" (block quotation), "code" (monowidth string), "pre" (monowidth
+   * block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames),
+   * "custom_emoji" (for inline custom emoji stickers)
+   */
+  @NotNull public String type;
 
-  @NotNull private int offset;
+  /** Offset in UTF-16 code units to the start of the entity */
+  @NotNull public int offset;
 
-  @NotNull private int length;
+  /** Length of the entity in UTF-16 code units */
+  @NotNull public int length;
 
-  private String url;
+  /** Optional. For "text_link" only, URL that will be opened after user taps on the text */
+  public String url;
 
-  private User user;
+  /** Optional. For "text_mention" only, the mentioned user */
+  public User user;
 
-  private String language;
+  /** Optional. For "pre" only, the programming language of the entity text */
+  public String language;
 
+  /**
+   * Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use
+   * getCustomEmojiStickers to get full information about the sticker
+   */
   @SerializedName("custom_emoji_id")
-  private String customEmojiId;
-
-  /** Default constructor. */
-  public MessageEntity() {}
-
-  /**
-   * Type of the entity. Currently, can be
-   *
-   * <ul>
-   *   <li>“mention” (<code>@username</code>);
-   *   <li>“hashtag” (<code>#hashtag</code>);
-   *   <li>“cashtag” (<code>$USD</code>);
-   *   <li>“bot_command” (<code>/start@jobs_bot</code>);
-   *   <li>“url” (<code>https://telegram.org</code>);
-   *   <li>“email” (<code>do-not-reply@telegram.org</code>);
-   *   <li>“phone_number” (<code>+1-212-555-0123</code>);
-   *   <li>“bold” (<strong>bold text</strong>);
-   *   <li>“italic” (<em>italic text</em>);
-   *   <li>“underline” (underlined text);
-   *   <li>“strikethrough” (strikethrough text);
-   *   <li>“spoiler” (spoiler message);
-   *   <li>“code” (monowidth string);
-   *   <li>“pre” (monowidth block);
-   *   <li>“text_link” (for clickable text URLs);
-   *   <li>“text_mention” (for users <a href="https://telegram.org/blog/edit#new-mentions">without
-   *       usernames</a>);
-   *   <li>“custom_emoji” (for inline custom emoji stickers).
-   * </ul>
-   *
-   * @return type as String.
-   */
-  public String getType() {
-    return type;
-  }
-
-  /**
-   * Sets the type of the entity. Currently, can be
-   *
-   * <ul>
-   *   <li>“mention” (<code>@username</code>);
-   *   <li>“hashtag” (<code>#hashtag</code>);
-   *   <li>“cashtag” (<code>$USD</code>);
-   *   <li>“bot_command” (<code>/start@jobs_bot</code>);
-   *   <li>“url” (<code>https://telegram.org</code>);
-   *   <li>“email” (<code>do-not-reply@telegram.org</code>);
-   *   <li>“phone_number” (<code>+1-212-555-0123</code>);
-   *   <li>“bold” (<strong>bold text</strong>);
-   *   <li>“italic” (<em>italic text</em>);
-   *   <li>“underline” (underlined text);
-   *   <li>“strikethrough” (strikethrough text);
-   *   <li>“spoiler” (spoiler message);
-   *   <li>“code” (monowidth string);
-   *   <li>“pre” (monowidth block);
-   *   <li>“text_link” (for clickable text URLs);
-   *   <li>“text_mention” (for users <a href="https://telegram.org/blog/edit#new-mentions">without
-   *       usernames</a>);
-   *   <li>“custom_emoji” (for inline custom emoji stickers).
-   * </ul>
-   *
-   * @param type the type of the entity as String.
-   */
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  /**
-   * Offset in <a href="https://core.telegram.org/api/entities#entity-length">UTF-16 code units</a>
-   * to the start of the entity.
-   *
-   * @return offset as int.
-   */
-  public int getOffset() {
-    return offset;
-  }
-
-  /**
-   * Sets the offset in <a href="https://core.telegram.org/api/entities#entity-length">UTF-16 code
-   * units</a> to the start of the entity.
-   *
-   * @param offset the offset in UTF-16 code units tot he start of the entity as int.
-   */
-  public void setOffset(int offset) {
-    this.offset = offset;
-  }
-
-  /**
-   * Length of the entity in <a href="https://core.telegram.org/api/entities#entity-length">UTF-16
-   * code units</a>.
-   *
-   * @return length as int.
-   */
-  public int getLength() {
-    return length;
-  }
-
-  /**
-   * Sets the length of the entity in <a
-   * href="https://core.telegram.org/api/entities#entity-length">UTF-16 code units</a>.
-   *
-   * @param length the length of the entity in UTF-16 code units as int.
-   */
-  public void setLength(int length) {
-    this.length = length;
-  }
-
-  /**
-   * <i>Optional.</i> For “text_link” only, URL that will be opened after user taps on the text.
-   *
-   * @return an optional value of url as String.
-   */
-  public Optional<String> getUrl() {
-    return Optional.ofNullable(url);
-  }
-
-  /**
-   * Sets the url that will be opened after user taps on the text; for "text_link" only.
-   *
-   * @param url the url that will be opened after user taps on the text as String or null if the
-   *     type is not "text_link".
-   */
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  /**
-   * <i>Optional.</i> For “text_mention” only, the mentioned user.
-   *
-   * @return an optional value of user as {@link User}.
-   */
-  public Optional<User> getUser() {
-    return Optional.ofNullable(user);
-  }
-
-  /**
-   * Sets the mentioned user; for "text_mention" only.
-   *
-   * @param user the mentioned user as {@link User} or null if the type is not "text_mention".
-   */
-  public void setUser(User user) {
-    this.user = user;
-  }
-
-  /**
-   * <i>Optional.</i> For “pre” only, the programming language of the entity text.
-   *
-   * @return an optional value of language as String.
-   */
-  public Optional<String> getLanguage() {
-    return Optional.ofNullable(language);
-  }
-
-  /**
-   * Sets the programming language of the entity text; for "pre" only.
-   *
-   * @param language the programming language of the entity text as String or null if the type is
-   *     not "pre".
-   */
-  public void setLanguage(String language) {
-    this.language = language;
-  }
-
-  /**
-   * <i>Optional.</i> For “custom_emoji” only, unique identifier of the custom emoji.
-   *
-   * <p>Use <a href=
-   * "https://core.telegram.org/bots/api#getcustomemojistickers">getCustomEmojiStickers</a> to get
-   * full information about the sticker.
-   *
-   * @return an optional value of custom_emoji_id as String.
-   */
-  public Optional<String> getCustomEmojiId() {
-    return Optional.ofNullable(customEmojiId);
-  }
-
-  /**
-   * Sets the unique identifier of the custom emoji; for "custom_emoji" only.
-   *
-   * <p>Use <a href=
-   * "https://core.telegram.org/bots/api#getcustomemojistickers">getCustomEmojiStickers</a> to get
-   * full information about the sticker.
-   *
-   * @param customEmojiId the unique identifier of the custom emoji as String or null if the type is
-   *     not "custom_emoji".
-   */
-  public void setCustomEmojiId(String customEmojiId) {
-    this.customEmojiId = customEmojiId;
-  }
-
-  @Override
-  public final int hashCode() {
-    return Objects.hash(type, offset, length, url, user, language, customEmojiId);
-  }
+  public String customEmojiId;
 
   @Override
   public final boolean equals(Object obj) {
@@ -233,8 +57,13 @@ public class MessageEntity {
   }
 
   @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
+  public final int hashCode() {
+    return Objects.hash(type, offset, length, url, user, language, customEmojiId);
+  }
+
+  @Override
+  public final String toString() {
+    var builder = new StringBuilder();
     builder
         .append("MessageEntity[type=")
         .append(type)

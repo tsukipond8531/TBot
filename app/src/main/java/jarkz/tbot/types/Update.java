@@ -2,408 +2,138 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
-import jarkz.tbot.types.chat.ChatJoinRequest;
-import jarkz.tbot.types.chatmember.ChatMemberUpdated;
-import jarkz.tbot.types.inlinemode.ChosenInlineResult;
-import jarkz.tbot.types.inlinemode.InlineQuery;
-import jarkz.tbot.types.payment.PreCheckoutQuery;
-import jarkz.tbot.types.payment.ShippingQuery;
-import jarkz.tbot.types.poll.Poll;
-import jarkz.tbot.types.poll.PollAnswer;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
- * This object represents an incoming update in Telegram API. This <a
- * href="https://core.telegram.org/bots/api#available-types">object</a> represents an incoming
- * update.
+ * This object represents an incoming update.
  *
- * <p>At most <strong>one</strong> of the optional parameters can be present in any given update.
- *
- * @author Pavel Bialiauski
+ * <p>At most one of the optional parameters can be present in any given update.
  */
-public class Update {
-
-  @SerializedName("update_id")
-  @NotNull
-  private long updateId;
-
-  private Message message;
-
-  @SerializedName("edited_message")
-  private Message editedMessage;
-
-  @SerializedName("channel_post")
-  private Message channelPost;
-
-  @SerializedName("edited_channel_post")
-  private Message editedChannelPost;
-
-  @SerializedName("inline_query")
-  private InlineQuery inlineQuery;
-
-  @SerializedName("chosen_inline_result")
-  private ChosenInlineResult chosenInlineResult;
-
-  @SerializedName("callback_query")
-  private CallbackQuery callbackQuery;
-
-  @SerializedName("shipping_query")
-  private ShippingQuery shippingQuery;
-
-  @SerializedName("pre_checkout_query")
-  private PreCheckoutQuery preCheckoutQuery;
-
-  private Poll poll;
-
-  @SerializedName("poll_answer")
-  private PollAnswer pollAnswer;
-
-  @SerializedName("my_chat_member")
-  private ChatMemberUpdated myChatMember;
-
-  @SerializedName("chat_member")
-  private ChatMemberUpdated chatMember;
-
-  @SerializedName("chat_join_request")
-  private ChatJoinRequest chatJoinRequest;
-
-  /** Default constructor. */
-  public Update() {}
+public final class Update {
 
   /**
    * The update's unique identifier. Update identifiers start from a certain positive number and
-   * increase sequentially.
-   *
-   * <p>This ID becomes especially handy if you're using <a
-   * href="https://core.telegram.org/bots/api#setwebhook">webhooks</a>, since it allows you to
-   * ignore repeated updates or to restore the correct update sequence, should they get out of
-   * order.
-   *
-   * <p>If there are no new updates for at least a week, then identifier of the next update will be
-   * chosen randomly instead of sequentially.
-   *
-   * @return update unique identifier.
+   * increase sequentially. This identifier becomes especially handy if you're using webhooks, since
+   * it allows you to ignore repeated updates or to restore the correct update sequence, should they
+   * get out of order. If there are no new updates for at least a week, then identifier of the next
+   * update will be chosen randomly instead of sequentially.
    */
-  public long getUpdateId() {
-    return updateId;
-  }
+  @NotNull
+  @SerializedName("update_id")
+  public int updateId;
+
+  /** Optional. New incoming message of any kind - text, photo, sticker, etc. */
+  public Message message;
 
   /**
-   * Sets the update unique identifier.
-   *
-   * @param updateId the update unique identifier as long value.
+   * Optional. New version of a message that is known to the bot and was edited. This update may at
+   * times be triggered by changes to message fields that are either unavailable or not actively
+   * used by your bot.
    */
-  public void setUpdateId(long updateId) {
-    this.updateId = updateId;
-  }
+  @SerializedName("edited_message")
+  public Message editedMessage;
+
+  /** Optional. New incoming channel post of any kind - text, photo, sticker, etc. */
+  @SerializedName("channel_post")
+  public Message channelPost;
 
   /**
-   * <i>Optional.</i> New incoming message of any kind - text, photo, sticker, etc.
-   *
-   * @return an optional value of message as {@link Message}.
+   * Optional. New version of a channel post that is known to the bot and was edited. This update
+   * may at times be triggered by changes to message fields that are either unavailable or not
+   * actively used by your bot.
    */
-  public Optional<Message> getMessage() {
-    return Optional.ofNullable(message);
-  }
+  @SerializedName("edited_channel_post")
+  public Message editedChannelPost;
 
   /**
-   * <i>Optional.</i> New incoming message of any kind - text, photo, sticker, etc.
-   *
-   * @param message the new incoming message as {@link Message} or null if the update present
-   *     another parameter.
+   * Optional. A reaction to a message was changed by a user. The bot must be an administrator in
+   * the chat and must explicitly specify "message_reaction" in the list of allowed_updates to
+   * receive these updates. The update isn't received for reactions set by bots.
    */
-  public void setMessage(Message message) {
-    this.message = message;
-  }
+  @SerializedName("message_reaction")
+  public MessageReactionUpdated messageReaction;
 
   /**
-   * <i>Optional.</i> New version of a message that is known to the bot and was edited.
-   *
-   * @return an optional value of edited message as {@link Message}.
+   * Optional. Reactions to a message with anonymous reactions were changed. The bot must be an
+   * administrator in the chat and must explicitly specify "message_reaction_count" in the list of
+   * allowed_updates to receive these updates. The updates are grouped and can be sent with delay up
+   * to a few minutes.
    */
-  public Optional<Message> getEditedMessage() {
-    return Optional.ofNullable(editedMessage);
-  }
+  @SerializedName("message_reaction_count")
+  public MessageReactionCountUpdated messageReactionCount;
+
+  /** Optional. New incoming inline query */
+  @SerializedName("inline_query")
+  public InlineQuery inlineQuery;
 
   /**
-   * Sets the new version of a message that is known to the bot and was edited.
-   *
-   * @param editedMessage the new version of a message that is known to the bot and was edited as
-   *     {@link Message} or null if the update present another parameter.
+   * Optional. The result of an inline query that was chosen by a user and sent to their chat
+   * partner. Please see our documentation on the feedback collecting for details on how to enable
+   * these updates for your bot.
    */
-  public void setEditedMessage(Message editedMessage) {
-    this.editedMessage = editedMessage;
-  }
+  @SerializedName("chosen_inline_result")
+  public ChosenInlineResult chosenInlineResult;
+
+  /** Optional. New incoming callback query */
+  @SerializedName("callback_query")
+  public CallbackQuery callbackQuery;
+
+  /** Optional. New incoming shipping query. Only for invoices with flexible price */
+  @SerializedName("shipping_query")
+  public ShippingQuery shippingQuery;
+
+  /** Optional. New incoming pre-checkout query. Contains full information about checkout */
+  @SerializedName("pre_checkout_query")
+  public PreCheckoutQuery preCheckoutQuery;
 
   /**
-   * <i>Optional.</i> New incoming channel post of any kind - text, photo, sticker, etc.
-   *
-   * @return an optional value of channel_post as {@link Message}.
+   * Optional. New poll state. Bots receive only updates about manually stopped polls and polls,
+   * which are sent by the bot
    */
-  public Optional<Message> getChannelPost() {
-    return Optional.ofNullable(channelPost);
-  }
+  public Poll poll;
 
   /**
-   * Sets the new incoming channel post of any kind - text, photo, sticker, etc.
-   *
-   * @param channelPost the new incoming channel post as {@link Message} or null if the update
-   *     present another parameter.
-   */
-  public void setChannelPost(Message channelPost) {
-    this.channelPost = channelPost;
-  }
-
-  /**
-   * <i>Optional.</i> New version of a channel post that is known to the bot and was edited.
-   *
-   * @return an optional value of edited_channel_post as {@link Message}.
-   */
-  public Optional<Message> getEditedChannelPost() {
-    return Optional.ofNullable(editedChannelPost);
-  }
-
-  /**
-   * Sets the new version of a channel post that is known to the bot and was edited.
-   *
-   * @param editedChannelPost the new version of a channel post that is known to the bot and was
-   *     edited as {@link Message} or null if the update present another parameter.
-   */
-  public void setEditedChannelPost(Message editedChannelPost) {
-    this.editedChannelPost = editedChannelPost;
-  }
-
-  /**
-   * <i>Optional.</i> New incoming inline query.
-   *
-   * @return an optional value of inline_query as {@link InlineQuery}.
-   */
-  public Optional<InlineQuery> getInlineQuery() {
-    return Optional.ofNullable(inlineQuery);
-  }
-
-  /**
-   * Sets the new incoming inline query.
-   *
-   * @param inlineQuery the new incoming inline query as {@link InlineQuery} or null if the update
-   *     present another parameter.
-   */
-  public void setInlineQuery(InlineQuery inlineQuery) {
-    this.inlineQuery = inlineQuery;
-  }
-
-  /**
-   * <i>Optional.</i> The result of an inline query that was chosen by a user and sent to their chat
-   * partner.
-   *
-   * <p>Please see our documentation on the <a
-   * href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</a> for
-   * details on how to enable these updates for your bot.
-   *
-   * @return an optional value of chosen_inline_query as {@link ChosenInlineResult}.
-   */
-  public Optional<ChosenInlineResult> getChosenInlineResult() {
-    return Optional.ofNullable(chosenInlineResult);
-  }
-
-  /**
-   * Sets the result of an inline query that was chosen by a user and sent to their chat partner.
-   *
-   * <p>Please see our documentation on the <a
-   * href="https://core.telegram.org/bots/inline#collecting-feedback">feedback collecting</a> for
-   * details on how to enable these updates for your bot.
-   *
-   * @param chosenInlineResult the result of an inline query that was chosen by a user and sent to
-   *     their chat partner as {@link ChosenInlineResult} or null if the update present another
-   *     parameter.
-   */
-  public void setChosenInlineResult(ChosenInlineResult chosenInlineResult) {
-    this.chosenInlineResult = chosenInlineResult;
-  }
-
-  /**
-   * <i>Optional.</i> New incoming callback query.
-   *
-   * @return an optional value of callback_query as {@link CallbackQuery}.
-   */
-  public Optional<CallbackQuery> getCallbackQuery() {
-    return Optional.ofNullable(callbackQuery);
-  }
-
-  /**
-   * Sets the new incoming callback query.
-   *
-   * @param callbackQuery the new incoming callback query as {@link CallbackQuery} or null if the
-   *     update present another parameter.
-   */
-  public void setCallbackQuery(CallbackQuery callbackQuery) {
-    this.callbackQuery = callbackQuery;
-  }
-
-  /**
-   * <i>Optional.</i> New incoming shipping query. Only for invoices with flexible price.
-   *
-   * @return an optional value of shipping_query as {@link ShippingQuery}.
-   */
-  public Optional<ShippingQuery> getShippingQuery() {
-    return Optional.ofNullable(shippingQuery);
-  }
-
-  /**
-   * Sets the new incoming shipping query. Only for invoices with flexible price.
-   *
-   * @param shippingQuery the new incoming shipping query as {@link ShippingQuery} or null if the
-   *     update present another parameter.
-   */
-  public void setShippingQuery(ShippingQuery shippingQuery) {
-    this.shippingQuery = shippingQuery;
-  }
-
-  /**
-   * <i>Optional.</i> New incoming pre-checkout query. Contains full information about checkout.
-   *
-   * @return an optional value of pre_checkout_query as {@link PreCheckoutQuery}.
-   */
-  public Optional<PreCheckoutQuery> getPreCheckoutQuery() {
-    return Optional.ofNullable(preCheckoutQuery);
-  }
-
-  /**
-   * Sets the new incoming pre-checkout query. Contains full information about checkout.
-   *
-   * @param preCheckoutQuery the new incoming pre-checkout query as {@link PreCheckoutQuery} or null
-   *     if the update present another parameter.
-   */
-  public void setPreCheckoutQuery(PreCheckoutQuery preCheckoutQuery) {
-    this.preCheckoutQuery = preCheckoutQuery;
-  }
-
-  /**
-   * <i>Optional.</i> New poll state. Bots receive only updates about stopped polls and polls, which
-   * are sent by the bot
-   *
-   * @return an optional value of poll as {@link Poll}.
-   */
-  public Optional<Poll> getPoll() {
-    return Optional.ofNullable(poll);
-  }
-
-  /**
-   * Sets the new poll state. Bots receive only updates about stopped polls and polls, which are
-   * sent by the bot
-   *
-   * @param poll the new poll state as {@link Poll} or null if the update present another parameter.
-   */
-  public void setPoll(Poll poll) {
-    this.poll = poll;
-  }
-
-  /**
-   * <i>Optional.</i> A user changed their answer in a non-anonymous poll. Bots receive new votes
-   * only in polls that were sent by the bot itself.
-   *
-   * @return an optional value of poll_answer as {@link PollAnswer}.
-   */
-  public Optional<PollAnswer> getPollAnswer() {
-    return Optional.ofNullable(pollAnswer);
-  }
-
-  /**
-   * Sets the user changed their answer in a non-anonymous poll. Bots receive new votes only in
+   * Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in
    * polls that were sent by the bot itself.
-   *
-   * @param pollAnswer the user changed their answer in a non-anonymous poll as {@link PollAnswer}
-   *     or null if the update present another parameter.
    */
-  public void setPollAnswer(PollAnswer pollAnswer) {
-    this.pollAnswer = pollAnswer;
-  }
+  @SerializedName("poll_answer")
+  public PollAnswer pollAnswer;
 
   /**
-   * <i>Optional.</i> The bot's chat member status was updated in a chat. For private chats, this
-   * update is received only when the bot is blocked or unblocked by the user.
-   *
-   * @return an optional value of my_chat_member as {@link ChatMemberUpdated}.
-   */
-  public Optional<ChatMemberUpdated> getMyChatMember() {
-    return Optional.ofNullable(myChatMember);
-  }
-
-  /**
-   * Sets the bot's chat member status was updated in a chat. For private chats, this update is
+   * Optional. The bot's chat member status was updated in a chat. For private chats, this update is
    * received only when the bot is blocked or unblocked by the user.
-   *
-   * @param myChatMember the bot's chat member status was updated in a chat as {@link
-   *     ChatMemberUpdated} or null if the update present another parameter.
    */
-  public void setMyChatMember(ChatMemberUpdated myChatMember) {
-    this.myChatMember = myChatMember;
-  }
+  @SerializedName("my_chat_member")
+  public ChatMemberUpdated myChatMember;
 
   /**
-   * <i>Optional.</i> A chat member's status was updated in a chat. The bot must be an administrator
-   * in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive
-   * these updates.
-   *
-   * @return an optional value of chat_member as {@link ChatMemberUpdated}.
-   */
-  public Optional<ChatMemberUpdated> getChatMember() {
-    return Optional.ofNullable(chatMember);
-  }
-
-  /**
-   * Sets the chat member's status was updated in a chat. The bot must be an administrator in the
-   * chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these
+   * Optional. A chat member's status was updated in a chat. The bot must be an administrator in the
+   * chat and must explicitly specify "chat_member" in the list of allowed_updates to receive these
    * updates.
-   *
-   * @param chatMember chat member's status was updated in a chat as {@link ChatMemberUpdated} or
-   *     null if the update present another parameter.
    */
-  public void setChatMember(ChatMemberUpdated chatMember) {
-    this.chatMember = chatMember;
-  }
+  @SerializedName("chat_member")
+  public ChatMemberUpdated chatMember;
 
   /**
-   * <i>Optional.</i> A request to join the chat has been sent. The bot must have the
-   * can_invite_users administrator right in the chat to receive these updates.
-   *
-   * @return an optional value of chat_join_request as {@link ChatJoinRequest}.
-   */
-  public Optional<ChatJoinRequest> getChatJoinRequest() {
-    return Optional.ofNullable(chatJoinRequest);
-  }
-
-  /**
-   * Sets the request to join the chat has been sent. The bot must have the can_invite_users
+   * Optional. A request to join the chat has been sent. The bot must have the can_invite_users
    * administrator right in the chat to receive these updates.
-   *
-   * @param chatJoinRequest the request to join the chat has been sent as {@link ChatJoinRequest} or
-   *     null if the update present another parameter.
    */
-  public void setChatJoinRequest(ChatJoinRequest chatJoinRequest) {
-    this.chatJoinRequest = chatJoinRequest;
-  }
+  @SerializedName("chat_join_request")
+  public ChatJoinRequest chatJoinRequest;
 
-  @Override
-  public final int hashCode() {
-    return Objects.hash(
-        updateId,
-        message,
-        editedMessage,
-        channelPost,
-        editedChannelPost,
-        inlineQuery,
-        chosenInlineResult,
-        callbackQuery,
-        shippingQuery,
-        preCheckoutQuery,
-        poll,
-        pollAnswer,
-        myChatMember,
-        chatMember,
-        chatJoinRequest);
-  }
+  /**
+   * Optional. A chat boost was added or changed. The bot must be an administrator in the chat to
+   * receive these updates.
+   */
+  @SerializedName("chat_boost")
+  public ChatBoostUpdated chatBoost;
+
+  /**
+   * Optional. A boost was removed from a chat. The bot must be an administrator in the chat to
+   * receive these updates.
+   */
+  @SerializedName("removed_chat_boost")
+  public ChatBoostRemoved removedChatBoost;
 
   @Override
   public final boolean equals(Object obj) {
@@ -414,6 +144,8 @@ public class Update {
         && Objects.equals(editedMessage, other.editedMessage)
         && Objects.equals(channelPost, other.channelPost)
         && Objects.equals(editedChannelPost, other.editedChannelPost)
+        && Objects.equals(messageReaction, other.messageReaction)
+        && Objects.equals(messageReactionCount, other.messageReactionCount)
         && Objects.equals(inlineQuery, other.inlineQuery)
         && Objects.equals(chosenInlineResult, other.chosenInlineResult)
         && Objects.equals(callbackQuery, other.callbackQuery)
@@ -423,12 +155,38 @@ public class Update {
         && Objects.equals(pollAnswer, other.pollAnswer)
         && Objects.equals(myChatMember, other.myChatMember)
         && Objects.equals(chatMember, other.chatMember)
-        && Objects.equals(chatJoinRequest, other.chatJoinRequest);
+        && Objects.equals(chatJoinRequest, other.chatJoinRequest)
+        && Objects.equals(chatBoost, other.chatBoost)
+        && Objects.equals(removedChatBoost, other.removedChatBoost);
   }
 
   @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
+  public final int hashCode() {
+    return Objects.hash(
+        updateId,
+        message,
+        editedMessage,
+        channelPost,
+        editedChannelPost,
+        messageReaction,
+        messageReactionCount,
+        inlineQuery,
+        chosenInlineResult,
+        callbackQuery,
+        shippingQuery,
+        preCheckoutQuery,
+        poll,
+        pollAnswer,
+        myChatMember,
+        chatMember,
+        chatJoinRequest,
+        chatBoost,
+        removedChatBoost);
+  }
+
+  @Override
+  public final String toString() {
+    var builder = new StringBuilder();
     builder
         .append("Update[updateId=")
         .append(updateId)
@@ -440,6 +198,10 @@ public class Update {
         .append(channelPost)
         .append(", editedChannelPost=")
         .append(editedChannelPost)
+        .append(", messageReaction=")
+        .append(messageReaction)
+        .append(", messageReactionCount=")
+        .append(messageReactionCount)
         .append(", inlineQuery=")
         .append(inlineQuery)
         .append(", chosenInlineResult=")
@@ -460,6 +222,10 @@ public class Update {
         .append(chatMember)
         .append(", chatJoinRequest=")
         .append(chatJoinRequest)
+        .append(", chatBoost=")
+        .append(chatBoost)
+        .append(", removedChatBoost=")
+        .append(removedChatBoost)
         .append("]");
     return builder.toString();
   }

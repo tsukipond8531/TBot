@@ -2,57 +2,59 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * This object represents a service message about a user allowing a bot to write messages after
- * adding the bot to the attachment menu or launching a Web App from a link.
- *
- * @author Pavel Bialiauski
+ * adding it to the attachment menu, launching a Web App from a link, or accepting an explicit
+ * request from a Web App sent by the method requestWriteAccess.
  */
-public class WriteAccessAllowed {
+public final class WriteAccessAllowed {
 
+  /**
+   * Optional. True, if the access was granted after the user accepted an explicit request from a
+   * Web App sent by the method requestWriteAccess
+   */
+  @SerializedName("from_request")
+  public Boolean fromRequest;
+
+  /**
+   * Optional. Name of the Web App, if the access was granted when the Web App was launched from a
+   * link
+   */
   @SerializedName("web_app_name")
-  private String webAppName;
-
-  /** Default constructor. */
-  public WriteAccessAllowed() {}
+  public String webAppName;
 
   /**
-   * <i>Optional.</i> Name of the Web App which was launched from a link.
-   *
-   * @return an optional value of web_app_name as String.
+   * Optional. True, if the access was granted when the bot was added to the attachment or side menu
    */
-  public Optional<String> getWebAppName() {
-    return Optional.ofNullable(webAppName);
-  }
-
-  /**
-   * Sets the name of the Web App which was launched from a link.
-   *
-   * @param webAppName the name of the Web App which was launched from a link as String or null if
-   *     it doesn't contains.
-   */
-  public void setWebAppName(String webAppName) {
-    this.webAppName = webAppName;
-  }
-
-  @Override
-  public final int hashCode() {
-    return Objects.hash(webAppName);
-  }
+  @SerializedName("from_attachment_menu")
+  public Boolean fromAttachmentMenu;
 
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof WriteAccessAllowed other)) return false;
-    return Objects.equals(webAppName, other.webAppName);
+    return Objects.equals(fromRequest, other.fromRequest)
+        && Objects.equals(webAppName, other.webAppName)
+        && Objects.equals(fromAttachmentMenu, other.fromAttachmentMenu);
   }
 
   @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
-    builder.append("WriteAccessAllowed[webAppName=").append(webAppName).append("]");
+  public final int hashCode() {
+    return Objects.hash(fromRequest, webAppName, fromAttachmentMenu);
+  }
+
+  @Override
+  public final String toString() {
+    var builder = new StringBuilder();
+    builder
+        .append("WriteAccessAllowed[fromRequest=")
+        .append(fromRequest)
+        .append(", webAppName=")
+        .append(webAppName)
+        .append(", fromAttachmentMenu=")
+        .append(fromAttachmentMenu)
+        .append("]");
     return builder.toString();
   }
 }
