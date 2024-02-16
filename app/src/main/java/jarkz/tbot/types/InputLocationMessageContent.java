@@ -41,8 +41,8 @@ public final class InputLocationMessageContent implements InputMessageContent {
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof InputLocationMessageContent other)) return false;
-    return latitude == other.latitude
-        && longitude == other.longitude
+    return Float.floatToIntBits(latitude) == Float.floatToIntBits(other.latitude)
+        && Float.floatToIntBits(longitude) == Float.floatToIntBits(other.longitude)
         && Objects.equals(horizontalAccuracy, other.horizontalAccuracy)
         && Objects.equals(livePeriod, other.livePeriod)
         && Objects.equals(heading, other.heading)

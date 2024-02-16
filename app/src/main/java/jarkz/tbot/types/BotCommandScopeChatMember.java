@@ -16,8 +16,8 @@ public final class BotCommandScopeChatMember implements BotCommandScope {
    * Unique identifier for the target chat or username of the target supergroup (in the
    * format @supergroupusername)
    */
-  @SerializedName("chat_id")
   @NotNull
+  @SerializedName("chat_id")
   public String chatId;
 
   /** Unique identifier of the target user */

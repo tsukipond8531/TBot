@@ -24,8 +24,8 @@ public final class ChatInviteLink {
   public boolean createsJoinRequest;
 
   /** True, if the link is primary */
-  @SerializedName("is_primary")
   @NotNull
+  @SerializedName("is_primary")
   public boolean isPrimary;
 
   /** True, if the link is revoked */

@@ -14,8 +14,8 @@ public final class ChatMemberAdministrator implements ChatMember {
   @NotNull public User user;
 
   /** True, if the bot is allowed to edit administrator privileges of that user */
-  @SerializedName("can_be_edited")
   @NotNull
+  @SerializedName("can_be_edited")
   public boolean canBeEdited;
 
   /** True, if the user's presence in the chat is hidden */
@@ -55,13 +55,13 @@ public final class ChatMemberAdministrator implements ChatMember {
    * demote administrators that they have promoted, directly or indirectly (promoted by
    * administrators that were appointed by the user)
    */
-  @SerializedName("can_promote_members")
   @NotNull
+  @SerializedName("can_promote_members")
   public boolean canPromoteMembers;
 
   /** True, if the user is allowed to change the chat title, photo and other settings */
-  @SerializedName("can_change_info")
   @NotNull
+  @SerializedName("can_change_info")
   public boolean canChangeInfo;
 
   /** True, if the user is allowed to invite new users to the chat */

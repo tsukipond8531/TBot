@@ -12,8 +12,8 @@ public final class Giveaway {
   @NotNull public List<Chat> chats;
 
   /** Point in time (Unix timestamp) when winners of the giveaway will be selected */
-  @SerializedName("winners_selection_date")
   @NotNull
+  @SerializedName("winners_selection_date")
   public int winnersSelectionDate;
 
   /** The number of users which are supposed to be selected as winners of the giveaway */

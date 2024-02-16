@@ -17,8 +17,8 @@ public final class GiveawayWinners {
   public int giveawayMessageId;
 
   /** Point in time (Unix timestamp) when winners of the giveaway were selected */
-  @SerializedName("winners_selection_date")
   @NotNull
+  @SerializedName("winners_selection_date")
   public int winnersSelectionDate;
 
   /** Total number of winners in the giveaway */

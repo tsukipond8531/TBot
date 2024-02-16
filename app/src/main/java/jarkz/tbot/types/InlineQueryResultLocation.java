@@ -76,8 +76,8 @@ public final class InlineQueryResultLocation implements InlineQueryResult {
     if (!(obj instanceof InlineQueryResultLocation other)) return false;
     return Objects.equals(type, other.type)
         && Objects.equals(id, other.id)
-        && latitude == other.latitude
-        && longitude == other.longitude
+        && Float.floatToIntBits(latitude) == Float.floatToIntBits(other.latitude)
+        && Float.floatToIntBits(longitude) == Float.floatToIntBits(other.longitude)
         && Objects.equals(title, other.title)
         && Objects.equals(horizontalAccuracy, other.horizontalAccuracy)
         && Objects.equals(livePeriod, other.livePeriod)

@@ -21,8 +21,8 @@ public final class ChatJoinRequest {
    * identifier for 5 minutes to send messages until the join request is processed, assuming no
    * other administrator contacted the user.
    */
-  @SerializedName("user_chat_id")
   @NotNull
+  @SerializedName("user_chat_id")
   public int userChatId;
 
   /** Date the request was sent in Unix time */

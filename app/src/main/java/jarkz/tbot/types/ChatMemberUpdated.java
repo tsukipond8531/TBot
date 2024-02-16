@@ -22,8 +22,8 @@ public final class ChatMemberUpdated {
   public ChatMember oldChatMember;
 
   /** New information about the chat member */
-  @SerializedName("new_chat_member")
   @NotNull
+  @SerializedName("new_chat_member")
   public ChatMember newChatMember;
 
   /**

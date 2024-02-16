@@ -17,8 +17,8 @@ public final class MaskPosition {
    * Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For
    * example, choosing -1.0 will place mask just to the left of the default mask position.
    */
-  @SerializedName("x_shift")
   @NotNull
+  @SerializedName("x_shift")
   public float xShift;
 
   /**
@@ -37,9 +37,9 @@ public final class MaskPosition {
     if (this == obj) return true;
     if (!(obj instanceof MaskPosition other)) return false;
     return Objects.equals(point, other.point)
-        && xShift == other.xShift
-        && yShift == other.yShift
-        && scale == other.scale;
+        && Float.floatToIntBits(xShift) == Float.floatToIntBits(other.xShift)
+        && Float.floatToIntBits(yShift) == Float.floatToIntBits(other.yShift)
+        && Float.floatToIntBits(scale) == Float.floatToIntBits(other.scale);
   }
 
   @Override

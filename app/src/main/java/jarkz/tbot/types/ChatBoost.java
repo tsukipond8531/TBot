@@ -21,8 +21,8 @@ public final class ChatBoost {
    * Point in time (Unix timestamp) when the boost will automatically expire, unless the booster's
    * Telegram Premium subscription is prolonged
    */
-  @SerializedName("expiration_date")
   @NotNull
+  @SerializedName("expiration_date")
   public int expirationDate;
 
   /** Source of the added boost */

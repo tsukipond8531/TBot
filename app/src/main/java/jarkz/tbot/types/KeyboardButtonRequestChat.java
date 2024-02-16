@@ -20,8 +20,8 @@ public final class KeyboardButtonRequestChat {
   public int requestId;
 
   /** Pass True to request a channel chat, pass False to request a group or a supergroup chat. */
-  @SerializedName("chat_is_channel")
   @NotNull
+  @SerializedName("chat_is_channel")
   public boolean chatIsChannel;
 
   /**

@@ -42,8 +42,8 @@ public final class InputVenueMessageContent implements InputMessageContent {
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof InputVenueMessageContent other)) return false;
-    return latitude == other.latitude
-        && longitude == other.longitude
+    return Float.floatToIntBits(latitude) == Float.floatToIntBits(other.latitude)
+        && Float.floatToIntBits(longitude) == Float.floatToIntBits(other.longitude)
         && Objects.equals(title, other.title)
         && Objects.equals(address, other.address)
         && Objects.equals(foursquareId, other.foursquareId)

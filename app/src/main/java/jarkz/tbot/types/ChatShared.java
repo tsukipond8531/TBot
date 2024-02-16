@@ -22,8 +22,8 @@ public final class ChatShared {
    * this identifier. The bot may not have access to the chat and could be unable to use this
    * identifier, unless the chat is already known to the bot by some other means.
    */
-  @SerializedName("chat_id")
   @NotNull
+  @SerializedName("chat_id")
   public int chatId;
 
   @Override

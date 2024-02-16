@@ -44,13 +44,13 @@ public final class ChatAdministratorRights {
    * demote administrators that they have promoted, directly or indirectly (promoted by
    * administrators that were appointed by the user)
    */
-  @SerializedName("can_promote_members")
   @NotNull
+  @SerializedName("can_promote_members")
   public boolean canPromoteMembers;
 
   /** True, if the user is allowed to change the chat title, photo and other settings */
-  @SerializedName("can_change_info")
   @NotNull
+  @SerializedName("can_change_info")
   public boolean canChangeInfo;
 
   /** True, if the user is allowed to invite new users to the chat */

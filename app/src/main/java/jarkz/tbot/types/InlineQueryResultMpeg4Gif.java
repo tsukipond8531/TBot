@@ -19,8 +19,8 @@ public final class InlineQueryResultMpeg4Gif implements InlineQueryResult {
   @NotNull public String id;
 
   /** A valid URL for the MPEG4 file. File size must not exceed 1MB */
-  @SerializedName("mpeg4_url")
   @NotNull
+  @SerializedName("mpeg4_url")
   public String mpeg4Url;
 
   /** Optional. Video width */

@@ -19,8 +19,8 @@ public final class InlineQueryResultCachedVideo implements InlineQueryResult {
   @NotNull public String id;
 
   /** A valid file identifier for the video file */
-  @SerializedName("video_file_id")
   @NotNull
+  @SerializedName("video_file_id")
   public String videoFileId;
 
   /** Title for the result */

@@ -41,8 +41,8 @@ public final class Location {
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof Location other)) return false;
-    return longitude == other.longitude
-        && latitude == other.latitude
+    return Float.floatToIntBits(longitude) == Float.floatToIntBits(other.longitude)
+        && Float.floatToIntBits(latitude) == Float.floatToIntBits(other.latitude)
         && Objects.equals(horizontalAccuracy, other.horizontalAccuracy)
         && Objects.equals(livePeriod, other.livePeriod)
         && Objects.equals(heading, other.heading)

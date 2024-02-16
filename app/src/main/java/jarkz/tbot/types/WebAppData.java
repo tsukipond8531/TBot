@@ -14,8 +14,8 @@ public final class WebAppData {
    * Text of the web_app keyboard button from which the Web App was opened. Be aware that a bad
    * client can send arbitrary data in this field.
    */
-  @SerializedName("button_text")
   @NotNull
+  @SerializedName("button_text")
   public String buttonText;
 
   @Override

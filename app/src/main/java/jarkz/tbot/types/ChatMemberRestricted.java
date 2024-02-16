@@ -14,8 +14,8 @@ public final class ChatMemberRestricted implements ChatMember {
   @NotNull public User user;
 
   /** True, if the user is a member of the chat at the moment of the request */
-  @SerializedName("is_member")
   @NotNull
+  @SerializedName("is_member")
   public boolean isMember;
 
   /**
@@ -37,8 +37,8 @@ public final class ChatMemberRestricted implements ChatMember {
   public boolean canSendDocuments;
 
   /** True, if the user is allowed to send photos */
-  @SerializedName("can_send_photos")
   @NotNull
+  @SerializedName("can_send_photos")
   public boolean canSendPhotos;
 
   /** True, if the user is allowed to send videos */
@@ -52,8 +52,8 @@ public final class ChatMemberRestricted implements ChatMember {
   public boolean canSendVideoNotes;
 
   /** True, if the user is allowed to send voice notes */
-  @SerializedName("can_send_voice_notes")
   @NotNull
+  @SerializedName("can_send_voice_notes")
   public boolean canSendVoiceNotes;
 
   /** True, if the user is allowed to send polls */
@@ -72,8 +72,8 @@ public final class ChatMemberRestricted implements ChatMember {
   public boolean canAddWebPagePreviews;
 
   /** True, if the user is allowed to change the chat title, photo and other settings */
-  @SerializedName("can_change_info")
   @NotNull
+  @SerializedName("can_change_info")
   public boolean canChangeInfo;
 
   /** True, if the user is allowed to invite new users to the chat */
