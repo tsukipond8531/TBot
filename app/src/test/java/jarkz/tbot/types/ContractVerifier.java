@@ -202,7 +202,8 @@ public class ContractVerifier {
   /**
    * Verifies the fields, which marked by {@link NotNull} annotation, by optional type contract.
    *
-   * @param sourceClass the source class for get the getter/setter for verifies return type contract.
+   * @param sourceClass the source class for get the getter/setter for verifies return type
+   *     contract.
    * @param objectFields the list of fields, which marked by {@link NotNull} annotation.
    * @throws ObjectFieldContractException a list of object fields contract violations.
    */

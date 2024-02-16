@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import jarkz.tbot.TestContainer;
 import jarkz.tbot.exceptions.types.ContractException;
 import jarkz.tbot.exceptions.types.JsonSerializationException;
-import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.deserializers.BotCommandScopeDeserializer;
 import jarkz.tbot.types.deserializers.ChatBoostSourceDeserializer;
 import jarkz.tbot.types.deserializers.ChatMemberDeserializer;
@@ -91,7 +90,18 @@ public class TypesTest {
    */
   @Test
   public void verifyEqualsAndHashCode() {
-    verifyEqualsAndHashCodeForPackage(this.getClass().getPackageName());
+    EqualsVerifier.forPackage(this.getClass().getPackageName())
+        .withPrefabValues(
+            Message.class,
+            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
+            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
+        .withPrefabValues(
+            Chat.class,
+            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
+            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
+        .except(c -> c.isAnnotationPresent(TestContainer.class))
+        .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
+        .verify();
   }
 
   /**
@@ -128,10 +138,6 @@ public class TypesTest {
         new Reflections(
             this.getClass().getPackageName(), Scanners.SubTypes.filterResultsBy(s -> true));
     var violations = new ViolationList();
-    // StringBuilder errMessage = new StringBuilder();
-    //
-    // final String wrapLine = "------------------------------------------------------------------";
-    // final String skipLine = "\n\n";
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
         .map(c -> c.getPackageName())
         .distinct()
@@ -142,40 +148,9 @@ public class TypesTest {
                 ContractVerifier.verifyPackage(p);
               } catch (ContractException e) {
                 violations.extendFrom(e.getViolations());
-                // errMessage
-                //     .append(e.getMessage())
-                //     .append(skipLine)
-                //     .append(wrapLine)
-                //     .append(wrapLine)
-                //     .append(skipLine);
               }
             });
 
-    // if (!errMessage.isEmpty()) throw new ContractException(errMessage.toString());
     if (!violations.isEmpty()) throw new ContractException(violations.toString());
-  }
-
-  /**
-   * Verifies the equals and hashCode for each class, except deserializers, test containers and
-   * etc., from the specific package.
-   *
-   * @param packageName the specific package, from which gets the classes to pass the test.
-   */
-  private void verifyEqualsAndHashCodeForPackage(String packageName) {
-    EqualsVerifier.forPackage(packageName)
-        .withPrefabValues(
-            Message.class,
-            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
-            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
-        .withPrefabValues(
-            Chat.class,
-            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
-            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
-        .except(
-            c ->
-                c.isAnnotationPresent(TestContainer.class)
-                    || c.isAnnotationPresent(Deserializer.class))
-        .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
-        .verify();
   }
 }

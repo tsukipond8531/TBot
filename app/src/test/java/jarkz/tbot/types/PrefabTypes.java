@@ -43,7 +43,7 @@ public class PrefabTypes {
    *     not marked by {@link NotNull} annotation.
    */
   public static Chat getChatInstance(int depth, float nullableFieldsChance) {
-    TypeFactory<Chat> messageFactory = new TypeFactory<>(depth, nullableFieldsChance);
-    return messageFactory.generate(Chat.class);
+    TypeFactory<Chat> chatFactory = new TypeFactory<>(depth, nullableFieldsChance);
+    return chatFactory.generate(Chat.class);
   }
 }
