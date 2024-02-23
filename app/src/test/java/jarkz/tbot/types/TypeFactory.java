@@ -21,27 +21,8 @@ public class TypeFactory<T> {
 
   private record Fields(List<Field> nonnullFields, List<Field> nullableFields) {}
 
-  private final int BASE_DETPH = 1;
-  private int depth = BASE_DETPH;
-
-  private final float BASE_CHANCE = 0.35f;
-  private float nullableFieldsChance = BASE_CHANCE;
-
-  private final int STRING_WIDTH = 15;
-
-  private final int DEFAULT_ARRAY_SIZE = 20;
-
-  /**
-   * Creates the instance of {@link TypeFactory}.
-   *
-   * @param depth the depth of the fields which fill.
-   * @param nullableFieldsChance the chance, which used for defining whether to fill fields, which
-   *     not marked by {@link NotNull} annotation.
-   */
-  public TypeFactory(int depth, float nullableFieldsChance) {
-    this.depth = depth;
-    this.nullableFieldsChance = nullableFieldsChance;
-  }
+  private static final int BASE_DETPH = 1;
+  private static final float BASE_CHANCE = 0.35f;
 
   /**
    * Generates a base type instance and fills all fields for a datatype.
@@ -57,7 +38,46 @@ public class TypeFactory<T> {
       return null;
     }
     TypeFactory<T> factory = new TypeFactory<>(depth, nullableFieldsChance);
-    return factory.generate(baseType);
+    return factory.generateInstance(baseType);
+  }
+
+  /**
+   * Generates a base type instance and fills all fields for a datatype. With default depth and
+   * nullable field chance.
+   *
+   * <p>DEFAULT VALUES: Base depth - 1 Nullable fields chance - 0.35f
+   *
+   * @param baseType the base type, which will be created and its fields will be filled.
+   * @return a generated base type instance.
+   */
+  public static <T> T generate(Class<T> baseType) {
+    if (baseType == InputFile.class) {
+      return null;
+    }
+    TypeFactory<T> factory = new TypeFactory<>(BASE_DETPH, BASE_CHANCE);
+    return factory.generateInstance(baseType);
+  }
+
+  private int depth = BASE_DETPH;
+
+  private float nullableFieldsChance = BASE_CHANCE;
+
+  private final int STRING_WIDTH = 15;
+
+  private final int DEFAULT_ARRAY_SIZE = 20;
+
+  private TypeFactory() {}
+
+  /**
+   * Creates the instance of {@link TypeFactory}.
+   *
+   * @param depth the depth of the fields which fill.
+   * @param nullableFieldsChance the chance, which used for defining whether to fill fields, which
+   *     not marked by {@link NotNull} annotation.
+   */
+  private TypeFactory(int depth, float nullableFieldsChance) {
+    this.depth = depth;
+    this.nullableFieldsChance = nullableFieldsChance;
   }
 
   /**
@@ -68,7 +88,7 @@ public class TypeFactory<T> {
    * @param baseType the base type, which will be created and its fields will be filled.
    * @return a generated base type instance.
    */
-  public T generate(Class<T> baseType) {
+  private T generateInstance(Class<T> baseType) {
     T baseInstance = invokeBaseConstructor(baseType);
     Field[] allFields = baseType.getDeclaredFields();
 

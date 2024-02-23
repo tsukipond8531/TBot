@@ -93,12 +93,16 @@ public class TypesTest {
     EqualsVerifier.forPackage(this.getClass().getPackageName())
         .withPrefabValues(
             Message.class,
-            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
-            PrefabTypes.getMessageInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
+            TypeFactory.generate(Message.class, TYPE_DEPTH, NULLABLE_FIELD_CHANCE),
+            TypeFactory.generate(Message.class, TYPE_DEPTH, NULLABLE_FIELD_CHANCE))
         .withPrefabValues(
             Chat.class,
-            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE),
-            PrefabTypes.getChatInstance(TypesTest.TYPE_DEPTH, TypesTest.NULLABLE_FIELD_CHANCE))
+            TypeFactory.generate(Chat.class, TYPE_DEPTH, NULLABLE_FIELD_CHANCE),
+            TypeFactory.generate(Chat.class, TYPE_DEPTH, NULLABLE_FIELD_CHANCE))
+        .withPrefabValues(
+            MaybeInaccessibleMessage.class,
+            TypeFactory.generate(Message.class, 0, 0),
+            TypeFactory.generate(InaccessibleMessage.class, 0, 0))
         .except(c -> c.isAnnotationPresent(TestContainer.class))
         .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
         .verify();
