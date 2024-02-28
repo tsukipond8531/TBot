@@ -2,6 +2,7 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.ReplyMarkup;
 import java.util.Objects;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Objects;
  * until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are
  * hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
  */
-public final class ReplyKeyboardRemove {
+public final class ReplyKeyboardRemove implements ReplyMarkup {
 
   /**
    * Requests clients to remove the custom keyboard (user will not be able to summon this keyboard;

@@ -1,26 +1,33 @@
 package jarkz.tbot.types;
 
-/**
- * This object represents a message about a forwarded story in the chat. Currently holds no
- * information.
- */
+import jakarta.validation.constraints.NotNull;
+import java.util.Objects;
+
+/** This object represents a story. */
 public final class Story {
+
+  /** Chat that posted the story */
+  @NotNull public Chat chat;
+
+  /** Unique identifier for the story in the chat */
+  @NotNull public int id;
 
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof Story other)) return false;
-    return true;
+    return Objects.equals(chat, other.chat) && id == other.id;
   }
 
   @Override
   public final int hashCode() {
-    int prime = 31;
-    return prime;
+    return Objects.hash(chat, id);
   }
 
   @Override
   public final String toString() {
-    return "Story[]";
+    var builder = new StringBuilder();
+    builder.append("Story[chat=").append(chat).append(", id=").append(id).append("]");
+    return builder.toString();
   }
 }

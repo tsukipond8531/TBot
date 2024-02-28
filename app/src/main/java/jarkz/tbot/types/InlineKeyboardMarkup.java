@@ -2,13 +2,14 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.ReplyMarkup;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  */
-public final class InlineKeyboardMarkup {
+public final class InlineKeyboardMarkup implements ReplyMarkup {
 
   /** Array of button rows, each represented by an Array of InlineKeyboardButton objects */
   @NotNull

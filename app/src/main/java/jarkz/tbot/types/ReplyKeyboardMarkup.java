@@ -2,6 +2,7 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.ReplyMarkup;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ import java.util.Objects;
  * This object represents a custom keyboard with reply options (see Introduction to bots for details
  * and examples).
  */
-public final class ReplyKeyboardMarkup {
+public final class ReplyKeyboardMarkup implements ReplyMarkup {
 
   /** Array of button rows, each represented by an Array of KeyboardButton objects */
   @NotNull public List<List<KeyboardButton>> keyboard;

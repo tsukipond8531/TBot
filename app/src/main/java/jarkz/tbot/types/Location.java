@@ -7,11 +7,11 @@ import java.util.Objects;
 /** This object represents a point on the map. */
 public final class Location {
 
-  /** Longitude as defined by sender */
-  @NotNull public float longitude;
-
   /** Latitude as defined by sender */
   @NotNull public float latitude;
+
+  /** Longitude as defined by sender */
+  @NotNull public float longitude;
 
   /** Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
   @SerializedName("horizontal_accuracy")
@@ -41,8 +41,8 @@ public final class Location {
   public final boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof Location other)) return false;
-    return Float.floatToIntBits(longitude) == Float.floatToIntBits(other.longitude)
-        && Float.floatToIntBits(latitude) == Float.floatToIntBits(other.latitude)
+    return Float.floatToIntBits(latitude) == Float.floatToIntBits(other.latitude)
+        && Float.floatToIntBits(longitude) == Float.floatToIntBits(other.longitude)
         && Objects.equals(horizontalAccuracy, other.horizontalAccuracy)
         && Objects.equals(livePeriod, other.livePeriod)
         && Objects.equals(heading, other.heading)
@@ -52,17 +52,17 @@ public final class Location {
   @Override
   public final int hashCode() {
     return Objects.hash(
-        longitude, latitude, horizontalAccuracy, livePeriod, heading, proximityAlertRadius);
+        latitude, longitude, horizontalAccuracy, livePeriod, heading, proximityAlertRadius);
   }
 
   @Override
   public final String toString() {
     var builder = new StringBuilder();
     builder
-        .append("Location[longitude=")
-        .append(longitude)
-        .append(", latitude=")
+        .append("Location[latitude=")
         .append(latitude)
+        .append(", longitude=")
+        .append(longitude)
         .append(", horizontalAccuracy=")
         .append(horizontalAccuracy)
         .append(", livePeriod=")

@@ -2,11 +2,12 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.Media;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents a general file to be sent. */
-public final class InputMediaDocument implements InputMedia {
+public final class InputMediaDocument implements InputMedia, Media {
 
   /** Type of the result, must be document */
   @NotNull public String type;

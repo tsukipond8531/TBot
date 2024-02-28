@@ -2,11 +2,12 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.Media;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents a photo to be sent. */
-public final class InputMediaPhoto implements InputMedia {
+public final class InputMediaPhoto implements InputMedia, Media {
 
   /** Type of the result, must be photo */
   @NotNull public String type;

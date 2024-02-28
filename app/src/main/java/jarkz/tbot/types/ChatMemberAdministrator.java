@@ -24,9 +24,9 @@ public final class ChatMemberAdministrator implements ChatMember {
   public boolean isAnonymous;
 
   /**
-   * True, if the administrator can access the chat event log, boost list in channels, see channel
-   * members, report spam messages, see anonymous administrators in supergroups and ignore slow
-   * mode. Implied by any other administrator privilege
+   * True, if the administrator can access the chat event log, get boost list, see hidden supergroup
+   * and channel members, report spam messages and ignore slow mode. Implied by any other
+   * administrator privilege.
    */
   @NotNull
   @SerializedName("can_manage_chat")
@@ -69,6 +69,21 @@ public final class ChatMemberAdministrator implements ChatMember {
   @SerializedName("can_invite_users")
   public boolean canInviteUsers;
 
+  /** True, if the administrator can post stories to the chat */
+  @NotNull
+  @SerializedName("can_post_stories")
+  public boolean canPostStories;
+
+  /** True, if the administrator can edit stories posted by other users */
+  @NotNull
+  @SerializedName("can_edit_stories")
+  public boolean canEditStories;
+
+  /** True, if the administrator can delete stories posted by other users */
+  @NotNull
+  @SerializedName("can_delete_stories")
+  public boolean canDeleteStories;
+
   /**
    * Optional. True, if the administrator can post messages in the channel, or access channel
    * statistics; channels only
@@ -86,20 +101,6 @@ public final class ChatMemberAdministrator implements ChatMember {
   /** Optional. True, if the user is allowed to pin messages; groups and supergroups only */
   @SerializedName("can_pin_messages")
   public Boolean canPinMessages;
-
-  /** Optional. True, if the administrator can post stories in the channel; channels only */
-  @SerializedName("can_post_stories")
-  public Boolean canPostStories;
-
-  /** Optional. True, if the administrator can edit stories posted by other users; channels only */
-  @SerializedName("can_edit_stories")
-  public Boolean canEditStories;
-
-  /**
-   * Optional. True, if the administrator can delete stories posted by other users; channels only
-   */
-  @SerializedName("can_delete_stories")
-  public Boolean canDeleteStories;
 
   /**
    * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics;
@@ -127,12 +128,12 @@ public final class ChatMemberAdministrator implements ChatMember {
         && canPromoteMembers == other.canPromoteMembers
         && canChangeInfo == other.canChangeInfo
         && canInviteUsers == other.canInviteUsers
+        && canPostStories == other.canPostStories
+        && canEditStories == other.canEditStories
+        && canDeleteStories == other.canDeleteStories
         && Objects.equals(canPostMessages, other.canPostMessages)
         && Objects.equals(canEditMessages, other.canEditMessages)
         && Objects.equals(canPinMessages, other.canPinMessages)
-        && Objects.equals(canPostStories, other.canPostStories)
-        && Objects.equals(canEditStories, other.canEditStories)
-        && Objects.equals(canDeleteStories, other.canDeleteStories)
         && Objects.equals(canManageTopics, other.canManageTopics)
         && Objects.equals(customTitle, other.customTitle);
   }
@@ -151,12 +152,12 @@ public final class ChatMemberAdministrator implements ChatMember {
         canPromoteMembers,
         canChangeInfo,
         canInviteUsers,
-        canPostMessages,
-        canEditMessages,
-        canPinMessages,
         canPostStories,
         canEditStories,
         canDeleteStories,
+        canPostMessages,
+        canEditMessages,
+        canPinMessages,
         canManageTopics,
         customTitle);
   }
@@ -187,18 +188,18 @@ public final class ChatMemberAdministrator implements ChatMember {
         .append(canChangeInfo)
         .append(", canInviteUsers=")
         .append(canInviteUsers)
-        .append(", canPostMessages=")
-        .append(canPostMessages)
-        .append(", canEditMessages=")
-        .append(canEditMessages)
-        .append(", canPinMessages=")
-        .append(canPinMessages)
         .append(", canPostStories=")
         .append(canPostStories)
         .append(", canEditStories=")
         .append(canEditStories)
         .append(", canDeleteStories=")
         .append(canDeleteStories)
+        .append(", canPostMessages=")
+        .append(canPostMessages)
+        .append(", canEditMessages=")
+        .append(canEditMessages)
+        .append(", canPinMessages=")
+        .append(canPinMessages)
         .append(", canManageTopics=")
         .append(canManageTopics)
         .append(", customTitle=")

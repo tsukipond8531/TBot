@@ -2,6 +2,7 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.ReplyMarkup;
 import java.util.Objects;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Objects;
  * extremely useful if you want to create user-friendly step-by-step interfaces without having to
  * sacrifice privacy mode.
  */
-public final class ForceReply {
+public final class ForceReply implements ReplyMarkup {
 
   /**
    * Shows reply interface to the user, as if they manually selected the bot's message and tapped

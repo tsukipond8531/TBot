@@ -38,6 +38,12 @@ public final class Message implements MaybeInaccessibleMessage {
   public Chat senderChat;
 
   /**
+   * Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+   */
+  @SerializedName("sender_boost_count")
+  public Integer senderBoostCount;
+
+  /**
    * Date the message was sent in Unix time. It is always a positive number, representing a valid
    * date.
    */
@@ -80,6 +86,10 @@ public final class Message implements MaybeInaccessibleMessage {
    * Optional. For replies that quote part of the original message, the quoted part of the message
    */
   public TextQuote quote;
+
+  /** Optional. For replies to a story, the original story */
+  @SerializedName("reply_to_story")
+  public Story replyToStory;
 
   /** Optional. Bot through which the message was sent */
   @SerializedName("via_bot")
@@ -313,6 +323,10 @@ public final class Message implements MaybeInaccessibleMessage {
   @SerializedName("proximity_alert_triggered")
   public ProximityAlertTriggered proximityAlertTriggered;
 
+  /** Optional. Service message: user boosted the chat */
+  @SerializedName("boost_added")
+  public ChatBoostAdded boostAdded;
+
   /** Optional. Service message: forum topic created */
   @SerializedName("forum_topic_created")
   public ForumTopicCreated forumTopicCreated;
@@ -387,6 +401,7 @@ public final class Message implements MaybeInaccessibleMessage {
         && Objects.equals(messageThreadId, other.messageThreadId)
         && Objects.equals(from, other.from)
         && Objects.equals(senderChat, other.senderChat)
+        && Objects.equals(senderBoostCount, other.senderBoostCount)
         && date == other.date
         && Objects.equals(chat, other.chat)
         && Objects.equals(forwardOrigin, other.forwardOrigin)
@@ -395,6 +410,7 @@ public final class Message implements MaybeInaccessibleMessage {
         && Objects.equals(replyToMessage, other.replyToMessage)
         && Objects.equals(externalReply, other.externalReply)
         && Objects.equals(quote, other.quote)
+        && Objects.equals(replyToStory, other.replyToStory)
         && Objects.equals(viaBot, other.viaBot)
         && Objects.equals(editDate, other.editDate)
         && Objects.equals(hasProtectedContent, other.hasProtectedContent)
@@ -441,6 +457,7 @@ public final class Message implements MaybeInaccessibleMessage {
         && Objects.equals(writeAccessAllowed, other.writeAccessAllowed)
         && Objects.equals(passportData, other.passportData)
         && Objects.equals(proximityAlertTriggered, other.proximityAlertTriggered)
+        && Objects.equals(boostAdded, other.boostAdded)
         && Objects.equals(forumTopicCreated, other.forumTopicCreated)
         && Objects.equals(forumTopicEdited, other.forumTopicEdited)
         && Objects.equals(forumTopicClosed, other.forumTopicClosed)
@@ -466,6 +483,7 @@ public final class Message implements MaybeInaccessibleMessage {
         messageThreadId,
         from,
         senderChat,
+        senderBoostCount,
         date,
         chat,
         forwardOrigin,
@@ -474,6 +492,7 @@ public final class Message implements MaybeInaccessibleMessage {
         replyToMessage,
         externalReply,
         quote,
+        replyToStory,
         viaBot,
         editDate,
         hasProtectedContent,
@@ -520,6 +539,7 @@ public final class Message implements MaybeInaccessibleMessage {
         writeAccessAllowed,
         passportData,
         proximityAlertTriggered,
+        boostAdded,
         forumTopicCreated,
         forumTopicEdited,
         forumTopicClosed,
@@ -550,6 +570,8 @@ public final class Message implements MaybeInaccessibleMessage {
         .append(from)
         .append(", senderChat=")
         .append(senderChat)
+        .append(", senderBoostCount=")
+        .append(senderBoostCount)
         .append(", date=")
         .append(date)
         .append(", chat=")
@@ -566,6 +588,8 @@ public final class Message implements MaybeInaccessibleMessage {
         .append(externalReply)
         .append(", quote=")
         .append(quote)
+        .append(", replyToStory=")
+        .append(replyToStory)
         .append(", viaBot=")
         .append(viaBot)
         .append(", editDate=")
@@ -658,6 +682,8 @@ public final class Message implements MaybeInaccessibleMessage {
         .append(passportData)
         .append(", proximityAlertTriggered=")
         .append(proximityAlertTriggered)
+        .append(", boostAdded=")
+        .append(boostAdded)
         .append(", forumTopicCreated=")
         .append(forumTopicCreated)
         .append(", forumTopicEdited=")

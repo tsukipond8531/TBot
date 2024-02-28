@@ -2,11 +2,12 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.Media;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents an audio file to be treated as music to be sent. */
-public final class InputMediaAudio implements InputMedia {
+public final class InputMediaAudio implements InputMedia, Media {
 
   /** Type of the result, must be audio */
   @NotNull public String type;

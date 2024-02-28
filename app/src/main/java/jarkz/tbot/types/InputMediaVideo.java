@@ -2,11 +2,12 @@ package jarkz.tbot.types;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.core.parameters.Media;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents a video to be sent. */
-public final class InputMediaVideo implements InputMedia {
+public final class InputMediaVideo implements InputMedia, Media {
 
   /** Type of the result, must be video */
   @NotNull public String type;

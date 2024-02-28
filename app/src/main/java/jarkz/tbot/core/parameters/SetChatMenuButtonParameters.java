@@ -1,0 +1,46 @@
+package jarkz.tbot.core.parameters;
+
+import com.google.gson.annotations.SerializedName;
+import java.util.Objects;
+
+/**
+ * Use this method to change the bot's menu button in a private chat, or the default menu button.
+ * Returns True on success.
+ */
+public final class SetChatMenuButtonParameters {
+
+  /**
+   * Unique identifier for the target private chat. If not specified, default bot's menu button will
+   * be changed
+   */
+  @SerializedName("chat_id")
+  public Integer chatId;
+
+  /** A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault */
+  @SerializedName("menu_button")
+  public MenuButton menuButton;
+
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof SetChatMenuButtonParameters other)) return false;
+    return Objects.equals(chatId, other.chatId) && Objects.equals(menuButton, other.menuButton);
+  }
+
+  @Override
+  public final int hashCode() {
+    return Objects.hash(chatId, menuButton);
+  }
+
+  @Override
+  public final String toString() {
+    var builder = new StringBuilder();
+    builder
+        .append("SetChatMenuButtonParameters[chatId=")
+        .append(chatId)
+        .append(", menuButton=")
+        .append(menuButton)
+        .append("]");
+    return builder.toString();
+  }
+}
