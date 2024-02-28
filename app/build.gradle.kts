@@ -30,22 +30,58 @@ tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
 
 tasks.named<Test>("test") { useJUnitPlatform() }
 
+fun exec_command(command: Array<String>) {
+  val process =
+      ProcessBuilder(*command)
+          .directory(rootProject.projectDir)
+          .redirectOutput(ProcessBuilder.Redirect.PIPE)
+          .redirectError(ProcessBuilder.Redirect.PIPE)
+          .redirectErrorStream(true)
+          .start()
+  process.waitFor(60, TimeUnit.SECONDS)
+  val result = process.inputStream.bufferedReader().readText()
+  if (!result.isBlank()) {
+    println(result)
+  }
+}
+
+fun clone_git(from: String) {
+  val command = arrayOf("git", "clone", from)
+  exec_command(command)
+}
+
+fun run_python_process(directory: String) {
+  val createVenv = arrayOf("python3", "-m", "venv", directory + "/venv")
+  exec_command(createVenv)
+
+  val installRequirements =
+      arrayOf("./" + directory + "/venv/bin/pip", "install", "-r", directory + "/requirements.txt")
+  exec_command(installRequirements)
+
+  val runScript = arrayOf("./" + directory + "/venv/bin/python", directory + "/main.py")
+  exec_command(runScript)
+}
+
+fun copy(from: String, to: String) {
+  val copyCommand = arrayOf("cp", "-r", from, to)
+  exec_command(copyCommand)
+}
+
+fun remove(path: String) {
+  val removeCommand = arrayOf("rm", "-r", path)
+  exec_command(removeCommand)
+}
+
+fun removeAll(vararg paths: String) {
+  paths.forEach { path -> remove(path) }
+}
+
 tasks.register("genTypes") {
   doLast {
-    exec { commandLine("git", "clone", "https://github.com/JarKz/tbot_type_generator") }
-    exec { commandLine("python3", "-m", "venv", "tbot_type_generator/venv") }
-    exec {
-      commandLine(
-          "./tbot_type_generator/venv/bin/pip",
-          "install",
-          "-r",
-          "tbot_type_generator/requirements.txt"
-      )
-    }
-    exec { commandLine("./tbot_type_generator/venv/bin/python", "tbot_type_generator/main.py") }
-    exec { commandLine("rm", "-r", "tbot_type_generator") }
-    exec { commandLine("rm", "api.json") }
-    exec { commandLine("cp", "-r", "output/types", "src/main/java/jarkz/tbot/") }
-    exec { commandLine("rm", "-r", "output") }
+    clone_git("https://github.com/JarKz/tbot_type_generator")
+    run_python_process("tbot_type_generator")
+    copy("output/types", "app/src/main/java/jarkz/tbot/")
+    copy("output/core", "app/src/main/java/jarkz/tbot/")
+    removeAll("api.json", "tbot_type_generator", "output")
   }
 }
