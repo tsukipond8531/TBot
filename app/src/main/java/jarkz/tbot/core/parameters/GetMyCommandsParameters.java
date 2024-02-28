@@ -1,6 +1,7 @@
 package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
+import jarkz.tbot.types.BotCommandScope;
 import java.util.Objects;
 
 /**

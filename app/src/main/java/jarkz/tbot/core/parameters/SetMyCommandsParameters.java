@@ -2,6 +2,8 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.BotCommand;
+import jarkz.tbot.types.BotCommandScope;
 import java.util.List;
 import java.util.Objects;
 

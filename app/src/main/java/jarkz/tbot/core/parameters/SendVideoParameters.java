@@ -2,6 +2,9 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.InputFile;
+import jarkz.tbot.types.MessageEntity;
+import jarkz.tbot.types.ReplyParameters;
 import java.util.List;
 import java.util.Objects;
 

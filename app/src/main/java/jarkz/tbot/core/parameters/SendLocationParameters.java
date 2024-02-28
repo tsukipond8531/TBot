@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.ReplyParameters;
 import java.util.Objects;
 
 /** Use this method to send point on the map. On success, the sent Message is returned. */

@@ -2,6 +2,8 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.InlineKeyboardMarkup;
+import jarkz.tbot.types.InputMedia;
 import java.util.Objects;
 
 /**
