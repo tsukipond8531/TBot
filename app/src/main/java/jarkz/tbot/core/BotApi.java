@@ -1,15 +1,14 @@
 package jarkz.tbot.core;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 import jarkz.tbot.core.parameters.GetUpdatesParameters;
 import jarkz.tbot.types.Update;
 import jarkz.tbot.types.User;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
-import java.util.LinkedList;
 import java.util.List;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -110,15 +109,10 @@ public class BotApi {
       raiseRuntimeException(response);
     }
 
-    List<Update> updates = new LinkedList<>();
-    for (JsonElement element :
-        response
-            .getResult()
-            .orElseThrow(() -> new RuntimeException("Invalid result of response."))
-            .getAsJsonArray()) {
-      updates.add(gson.fromJson(element, Update.class));
-    }
-    return updates;
+    var type = new TypeToken<List<Update>>() {}.getType();
+    var jsonElement =
+        response.getResult().orElseThrow(() -> new RuntimeException("Invalid result of response."));
+    return gson.fromJson(jsonElement, type);
   }
 
   /**
@@ -136,10 +130,7 @@ public class BotApi {
     }
 
     var jsonElement =
-        response
-            .getResult()
-            .orElseThrow(() -> new RuntimeException("Invalid result of response."))
-            .getAsJsonObject();
+        response.getResult().orElseThrow(() -> new RuntimeException("Invalid result of response."));
     return gson.fromJson(jsonElement, User.class);
   }
 
