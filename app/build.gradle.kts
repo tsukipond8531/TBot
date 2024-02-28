@@ -84,4 +84,5 @@ tasks.register("genTypes") {
     copy("output/core", "app/src/main/java/jarkz/tbot/")
     removeAll("api.json", "tbot_type_generator", "output")
   }
+  finalizedBy("spotlessApply")
 }
