@@ -47,31 +47,31 @@ public class BotApi {
 
   private static Gson registerAllAdapters() {
     return new GsonBuilder()
-          .registerTypeAdapter(
-              jarkz.tbot.types.BotCommandScope.class,
-              new jarkz.tbot.types.deserializers.BotCommandScopeDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.ChatMember.class,
-              new jarkz.tbot.types.deserializers.ChatMemberDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.MenuButton.class,
-              new jarkz.tbot.types.deserializers.MenuButtonDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.MessageOrigin.class,
-              new jarkz.tbot.types.deserializers.MessageOriginDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.ReactionType.class,
-              new jarkz.tbot.types.deserializers.ReactionTypeDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.MaybeInaccessibleMessage.class,
-              new jarkz.tbot.types.deserializers.MaybeInaccessibleMessageDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.ChatBoostSource.class,
-              new jarkz.tbot.types.deserializers.ChatBoostSourceDeserializer())
-          .registerTypeAdapter(
-              jarkz.tbot.types.PassportElementError.class,
-              new jarkz.tbot.types.deserializers.PassportElementErrorDeserializer())
-          .create();
+        .registerTypeAdapter(
+            jarkz.tbot.types.BotCommandScope.class,
+            new jarkz.tbot.types.deserializers.BotCommandScopeDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.ChatMember.class,
+            new jarkz.tbot.types.deserializers.ChatMemberDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.MenuButton.class,
+            new jarkz.tbot.types.deserializers.MenuButtonDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.MessageOrigin.class,
+            new jarkz.tbot.types.deserializers.MessageOriginDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.ReactionType.class,
+            new jarkz.tbot.types.deserializers.ReactionTypeDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.MaybeInaccessibleMessage.class,
+            new jarkz.tbot.types.deserializers.MaybeInaccessibleMessageDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.ChatBoostSource.class,
+            new jarkz.tbot.types.deserializers.ChatBoostSourceDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.PassportElementError.class,
+            new jarkz.tbot.types.deserializers.PassportElementErrorDeserializer())
+        .create();
   }
 
   private final String botToken;
