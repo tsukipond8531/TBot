@@ -1,5 +1,5 @@
 /**
- * This package conatains adapters for the different datatypes, which grouped by general interface.
+ * This package contains adapters for the different datatypes, which grouped by general interface.
  * Also it contains logic runtime exceptions.
  *
  * <p>Uses for JSON-deserializing for Gson libraray.
