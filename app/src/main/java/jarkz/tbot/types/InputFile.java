@@ -1,8 +1,8 @@
 package jarkz.tbot.types;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Objects;
-import java.io.File;
 
 /**
  * This object represents the contents of a file to be uploaded. Must be posted using
@@ -65,7 +65,7 @@ public final class InputFile {
   /**
    * The attachment name, which uses to puth attach://<attachmentName>.
    *
-   * DO NOT USE "attach://", SERIALIZER AUTHOMATICALLY PUTS IT!
+   * <p>DO NOT USE "attach://", SERIALIZER AUTHOMATICALLY PUTS IT!
    */
   public void setAttachmentName(String attachmentName) {
     this.attachmentName = attachmentName;

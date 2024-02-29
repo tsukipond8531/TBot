@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class ChatMemberBanned implements ChatMember {
 
+  public static final String STATUS = "kicked";
+
   /** The member's status in the chat, always "kicked" */
-  @NotNull public String status;
+  @NotNull public final String status = STATUS;
 
   /** Information about the user */
   @NotNull public User user;

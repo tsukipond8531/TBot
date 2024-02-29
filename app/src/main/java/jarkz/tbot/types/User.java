@@ -13,7 +13,7 @@ public final class User {
    * most 52 significant bits, so a 64-bit integer or double-precision float type are safe for
    * storing this identifier.
    */
-  @NotNull public int id;
+  @NotNull public long id;
 
   /** True, if this user is a bot */
   @NotNull

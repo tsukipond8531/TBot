@@ -6,8 +6,10 @@ import java.util.Objects;
 /** The reaction is based on an emoji. */
 public final class ReactionTypeEmoji implements ReactionType {
 
+  public static final String TYPE = "emoji";
+
   /** Type of the reaction, always "emoji" */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /**
    * Reaction emoji. Currently, it can be one of "👍", "👎", "❤", "🔥", "🥰", "👏", "😁", "🤔",

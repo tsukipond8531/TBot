@@ -258,7 +258,7 @@ public final class Message implements MaybeInaccessibleMessage {
    * signed 64-bit integer or double-precision float type are safe for storing this identifier.
    */
   @SerializedName("migrate_to_chat_id")
-  public Integer migrateToChatId;
+  public Long migrateToChatId;
 
   /**
    * Optional. The supergroup has been migrated from a group with the specified identifier. This
@@ -267,7 +267,7 @@ public final class Message implements MaybeInaccessibleMessage {
    * signed 64-bit integer or double-precision float type are safe for storing this identifier.
    */
   @SerializedName("migrate_from_chat_id")
-  public Integer migrateFromChatId;
+  public Long migrateFromChatId;
 
   /**
    * Optional. Specified message was pinned. Note that the Message object in this field will not

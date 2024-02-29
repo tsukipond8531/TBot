@@ -7,8 +7,10 @@ import java.util.Objects;
 /** The message was originally sent by a known user. */
 public final class MessageOriginUser implements MessageOrigin {
 
+  public static final String TYPE = "user";
+
   /** Type of the message origin, always "user" */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Date the message was sent originally in Unix time */
   @NotNull public int date;

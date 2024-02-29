@@ -30,7 +30,7 @@ public final class File {
    * signed 64-bit integer or double-precision float type are safe for storing this value.
    */
   @SerializedName("file_size")
-  public Integer fileSize;
+  public Long fileSize;
 
   /**
    * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.

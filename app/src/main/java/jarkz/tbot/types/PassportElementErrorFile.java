@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorFile implements PassportElementError {
 
+  public static final String SOURCE = "file";
+
   /** Error source, must be file */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * The section of the user's Telegram Passport which has the issue, one of "utility_bill",

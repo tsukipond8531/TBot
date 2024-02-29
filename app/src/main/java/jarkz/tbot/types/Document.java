@@ -37,7 +37,7 @@ public final class Document {
    * signed 64-bit integer or double-precision float type are safe for storing this value.
    */
   @SerializedName("file_size")
-  public Integer fileSize;
+  public Long fileSize;
 
   @Override
   public final boolean equals(Object obj) {

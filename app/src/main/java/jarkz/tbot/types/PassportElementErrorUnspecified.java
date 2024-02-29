@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorUnspecified implements PassportElementError {
 
+  public static final String SOURCE = "unspecified";
+
   /** Error source, must be unspecified */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /** Type of element of the user's Telegram Passport which has the issue */
   @NotNull public String type;

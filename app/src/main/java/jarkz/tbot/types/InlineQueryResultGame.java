@@ -7,8 +7,10 @@ import java.util.Objects;
 /** Represents a Game. */
 public final class InlineQueryResultGame implements InlineQueryResult {
 
+  public static final String TYPE = "game";
+
   /** Type of the result, must be game */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 bytes */
   @NotNull public String id;

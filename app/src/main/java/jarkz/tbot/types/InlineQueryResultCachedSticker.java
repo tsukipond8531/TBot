@@ -11,8 +11,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedSticker implements InlineQueryResult {
 
+  public static final String TYPE = "sticker";
+
   /** Type of the result, must be sticker */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 bytes */
   @NotNull public String id;

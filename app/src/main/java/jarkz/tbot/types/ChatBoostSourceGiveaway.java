@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class ChatBoostSourceGiveaway implements ChatBoostSource {
 
+  public static final String SOURCE = "giveaway";
+
   /** Source of the boost, always "giveaway" */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * Identifier of a message in the chat with the giveaway; the message could have been deleted

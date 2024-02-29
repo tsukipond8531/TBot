@@ -7,8 +7,10 @@ import java.util.Objects;
 /** Represents a chat member that is under certain restrictions in the chat. Supergroups only. */
 public final class ChatMemberRestricted implements ChatMember {
 
+  public static final String STATUS = "restricted";
+
   /** The member's status in the chat, always "restricted" */
-  @NotNull public String status;
+  @NotNull public final String status = STATUS;
 
   /** Information about the user */
   @NotNull public User user;

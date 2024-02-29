@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorSelfie implements PassportElementError {
 
+  public static final String SOURCE = "selfie";
+
   /** Error source, must be selfie */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * The section of the user's Telegram Passport which has the issue, one of "passport",

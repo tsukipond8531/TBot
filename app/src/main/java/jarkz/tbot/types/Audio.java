@@ -43,7 +43,7 @@ public final class Audio {
    * signed 64-bit integer or double-precision float type are safe for storing this value.
    */
   @SerializedName("file_size")
-  public Integer fileSize;
+  public Long fileSize;
 
   /** Optional. Thumbnail of the album cover to which the music file belongs */
   public PhotoSize thumbnail;

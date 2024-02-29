@@ -24,7 +24,7 @@ public final class ChatShared {
    */
   @NotNull
   @SerializedName("chat_id")
-  public int chatId;
+  public long chatId;
 
   @Override
   public final boolean equals(Object obj) {

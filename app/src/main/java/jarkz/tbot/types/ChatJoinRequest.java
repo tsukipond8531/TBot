@@ -23,7 +23,7 @@ public final class ChatJoinRequest {
    */
   @NotNull
   @SerializedName("user_chat_id")
-  public int userChatId;
+  public long userChatId;
 
   /** Date the request was sent in Unix time */
   @NotNull public int date;

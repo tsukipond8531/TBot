@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorTranslationFile implements PassportElementError {
 
+  public static final String SOURCE = "translation_file";
+
   /** Error source, must be translation_file */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * Type of element of the user's Telegram Passport which has the issue, one of "passport",

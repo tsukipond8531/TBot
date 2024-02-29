@@ -7,8 +7,10 @@ import java.util.Objects;
 /** Represents a chat member that owns the chat and has all administrator privileges. */
 public final class ChatMemberOwner implements ChatMember {
 
+  public static final String STATUS = "creator";
+
   /** The member's status in the chat, always "creator" */
-  @NotNull public String status;
+  @NotNull public final String status = STATUS;
 
   /** Information about the user */
   @NotNull public User user;

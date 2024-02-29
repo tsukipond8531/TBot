@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class BotCommandScopeChatAdministrators implements BotCommandScope {
 
+  public static final String TYPE = "chat_administrators";
+
   /** Scope type, must be chat_administrators */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
@@ -19,7 +21,7 @@ public final class BotCommandScopeChatAdministrators implements BotCommandScope 
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   @Override
   public final boolean equals(Object obj) {

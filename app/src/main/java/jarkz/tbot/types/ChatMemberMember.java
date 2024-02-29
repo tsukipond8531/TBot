@@ -6,8 +6,10 @@ import java.util.Objects;
 /** Represents a chat member that has no additional privileges or restrictions. */
 public final class ChatMemberMember implements ChatMember {
 
+  public static final String STATUS = "member";
+
   /** The member's status in the chat, always "member" */
-  @NotNull public String status;
+  @NotNull public final String status = STATUS;
 
   /** Information about the user */
   @NotNull public User user;

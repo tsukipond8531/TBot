@@ -6,8 +6,10 @@ import java.util.Objects;
 /** Represents a menu button, which opens the bot's list of commands. */
 public final class MenuButtonCommands implements MenuButton {
 
+  public static final String TYPE = "commands";
+
   /** Type of the button, must be commands */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   @Override
   public final boolean equals(Object obj) {

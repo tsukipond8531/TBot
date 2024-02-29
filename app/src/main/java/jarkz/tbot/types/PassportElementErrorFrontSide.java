@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorFrontSide implements PassportElementError {
 
+  public static final String SOURCE = "front_side";
+
   /** Error source, must be front_side */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * The section of the user's Telegram Passport which has the issue, one of "passport",

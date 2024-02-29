@@ -6,8 +6,10 @@ import java.util.Objects;
 /** Represents the scope of bot commands, covering all private chats. */
 public final class BotCommandScopeAllPrivateChats implements BotCommandScope {
 
+  public static final String TYPE = "all_private_chats";
+
   /** Scope type, must be all_private_chats */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   @Override
   public final boolean equals(Object obj) {

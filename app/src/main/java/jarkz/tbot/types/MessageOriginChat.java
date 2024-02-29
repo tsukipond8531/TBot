@@ -7,8 +7,10 @@ import java.util.Objects;
 /** The message was originally sent on behalf of a chat to a group chat. */
 public final class MessageOriginChat implements MessageOrigin {
 
+  public static final String TYPE = "chat";
+
   /** Type of the message origin, always "chat" */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Date the message was sent originally in Unix time */
   @NotNull public int date;

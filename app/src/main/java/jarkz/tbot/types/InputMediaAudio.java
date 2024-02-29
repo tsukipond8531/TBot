@@ -8,8 +8,10 @@ import java.util.Objects;
 /** Represents an audio file to be treated as music to be sent. */
 public final class InputMediaAudio implements InputMedia, Media {
 
+  public static final String TYPE = "audio";
+
   /** Type of the result, must be audio */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /**
    * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -18,7 +20,7 @@ public final class InputMediaAudio implements InputMedia, Media {
    * <file_attach_name> name. More information on Sending Files:
    * https://core.telegram.org/bots/api#sending-files
    */
-  @NotNull public String media;
+  @NotNull public InputFile media;
 
   /**
    * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is

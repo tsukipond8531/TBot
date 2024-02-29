@@ -9,8 +9,10 @@ import java.util.Objects;
  */
 public final class BotCommandScopeChatMember implements BotCommandScope {
 
+  public static final String TYPE = "chat_member";
+
   /** Scope type, must be chat_member */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
@@ -18,7 +20,7 @@ public final class BotCommandScopeChatMember implements BotCommandScope {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /** Unique identifier of the target user */
   @NotNull

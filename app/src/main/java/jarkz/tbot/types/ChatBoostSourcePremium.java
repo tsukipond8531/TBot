@@ -9,8 +9,10 @@ import java.util.Objects;
  */
 public final class ChatBoostSourcePremium implements ChatBoostSource {
 
+  public static final String SOURCE = "premium";
+
   /** Source of the boost, always "premium" */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /** User that boosted the chat */
   @NotNull public User user;

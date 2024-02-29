@@ -7,8 +7,10 @@ import java.util.Objects;
 /** Represents the scope of bot commands, covering a specific chat. */
 public final class BotCommandScopeChat implements BotCommandScope {
 
+  public static final String TYPE = "chat";
+
   /** Scope type, must be chat */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
@@ -16,7 +18,7 @@ public final class BotCommandScopeChat implements BotCommandScope {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   @Override
   public final boolean equals(Object obj) {

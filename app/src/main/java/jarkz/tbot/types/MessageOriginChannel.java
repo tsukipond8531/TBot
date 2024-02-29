@@ -7,8 +7,10 @@ import java.util.Objects;
 /** The message was originally sent to a channel chat. */
 public final class MessageOriginChannel implements MessageOrigin {
 
+  public static final String TYPE = "channel";
+
   /** Type of the message origin, always "channel" */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Date the message was sent originally in Unix time */
   @NotNull public int date;

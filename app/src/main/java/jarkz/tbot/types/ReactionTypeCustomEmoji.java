@@ -7,8 +7,10 @@ import java.util.Objects;
 /** The reaction is based on a custom emoji. */
 public final class ReactionTypeCustomEmoji implements ReactionType {
 
+  public static final String TYPE = "custom_emoji";
+
   /** Type of the reaction, always "custom_emoji" */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Custom emoji identifier */
   @NotNull

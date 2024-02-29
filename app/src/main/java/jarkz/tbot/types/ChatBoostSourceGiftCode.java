@@ -9,8 +9,10 @@ import java.util.Objects;
  */
 public final class ChatBoostSourceGiftCode implements ChatBoostSource {
 
+  public static final String SOURCE = "gift_code";
+
   /** Source of the boost, always "gift_code" */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /** User for which the gift code was created */
   @NotNull public User user;

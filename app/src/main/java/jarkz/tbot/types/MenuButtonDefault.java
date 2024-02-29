@@ -6,8 +6,10 @@ import java.util.Objects;
 /** Describes that no specific value for the menu button was set. */
 public final class MenuButtonDefault implements MenuButton {
 
+  public static final String TYPE = "default";
+
   /** Type of the button, must be default */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   @Override
   public final boolean equals(Object obj) {

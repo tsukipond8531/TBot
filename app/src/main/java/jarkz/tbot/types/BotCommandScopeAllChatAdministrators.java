@@ -6,8 +6,10 @@ import java.util.Objects;
 /** Represents the scope of bot commands, covering all group and supergroup chat administrators. */
 public final class BotCommandScopeAllChatAdministrators implements BotCommandScope {
 
+  public static final String TYPE = "all_chat_administrators";
+
   /** Scope type, must be all_chat_administrators */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   @Override
   public final boolean equals(Object obj) {

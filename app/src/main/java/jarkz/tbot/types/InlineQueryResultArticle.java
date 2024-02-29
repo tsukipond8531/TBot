@@ -7,8 +7,10 @@ import java.util.Objects;
 /** Represents a link to an article or web page. */
 public final class InlineQueryResultArticle implements InlineQueryResult {
 
+  public static final String TYPE = "article";
+
   /** Type of the result, must be article */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 Bytes */
   @NotNull public String id;

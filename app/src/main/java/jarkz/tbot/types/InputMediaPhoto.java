@@ -8,8 +8,10 @@ import java.util.Objects;
 /** Represents a photo to be sent. */
 public final class InputMediaPhoto implements InputMedia, Media {
 
+  public static final String TYPE = "photo";
+
   /** Type of the result, must be photo */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /**
    * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -18,7 +20,7 @@ public final class InputMediaPhoto implements InputMedia, Media {
    * <file_attach_name> name. More information on Sending Files:
    * https://core.telegram.org/bots/api#sending-files
    */
-  @NotNull public String media;
+  @NotNull public InputFile media;
 
   /** Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing */
   public String caption;

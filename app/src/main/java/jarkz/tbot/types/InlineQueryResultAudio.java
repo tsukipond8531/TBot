@@ -12,8 +12,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultAudio implements InlineQueryResult {
 
+  public static final String TYPE = "audio";
+
   /** Type of the result, must be audio */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 bytes */
   @NotNull public String id;

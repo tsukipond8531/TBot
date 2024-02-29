@@ -28,7 +28,7 @@ public final class Contact {
    * for storing this identifier.
    */
   @SerializedName("user_id")
-  public Integer userId;
+  public Long userId;
 
   /** Optional. Additional data about the contact in the form of a vCard */
   public String vcard;

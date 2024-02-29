@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultVenue implements InlineQueryResult {
 
+  public static final String TYPE = "venue";
+
   /** Type of the result, must be venue */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 Bytes */
   @NotNull public String id;

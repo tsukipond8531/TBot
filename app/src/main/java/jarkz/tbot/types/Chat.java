@@ -14,7 +14,7 @@ public final class Chat {
    * 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for
    * storing this identifier.
    */
-  @NotNull public int id;
+  @NotNull public long id;
 
   /** Type of chat, can be either "private", "group", "supergroup" or "channel" */
   @NotNull public String type;
@@ -220,7 +220,7 @@ public final class Chat {
    * safe for storing this identifier. Returned only in getChat.
    */
   @SerializedName("linked_chat_id")
-  public Integer linkedChatId;
+  public Long linkedChatId;
 
   /**
    * Optional. For supergroups, the location to which the supergroup is connected. Returned only in

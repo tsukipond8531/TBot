@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorReverseSide implements PassportElementError {
 
+  public static final String SOURCE = "reverse_side";
+
   /** Error source, must be reverse_side */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * The section of the user's Telegram Passport which has the issue, one of "driver_license",

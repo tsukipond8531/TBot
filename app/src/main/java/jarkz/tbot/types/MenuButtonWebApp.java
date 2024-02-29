@@ -7,8 +7,10 @@ import java.util.Objects;
 /** Represents a menu button, which launches a Web App. */
 public final class MenuButtonWebApp implements MenuButton {
 
+  public static final String TYPE = "web_app";
+
   /** Type of the button, must be web_app */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Text on the button */
   @NotNull public String text;

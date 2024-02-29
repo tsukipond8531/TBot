@@ -9,8 +9,10 @@ import java.util.Objects;
  */
 public final class BotCommandScopeDefault implements BotCommandScope {
 
+  public static final String TYPE = "default";
+
   /** Scope type, must be default */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   @Override
   public final boolean equals(Object obj) {

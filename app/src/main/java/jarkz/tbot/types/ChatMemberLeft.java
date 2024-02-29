@@ -8,8 +8,10 @@ import java.util.Objects;
  */
 public final class ChatMemberLeft implements ChatMember {
 
+  public static final String STATUS = "left";
+
   /** The member's status in the chat, always "left" */
-  @NotNull public String status;
+  @NotNull public final String status = STATUS;
 
   /** Information about the user */
   @NotNull public User user;

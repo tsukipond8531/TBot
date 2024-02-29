@@ -12,8 +12,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultDocument implements InlineQueryResult {
 
+  public static final String TYPE = "document";
+
   /** Type of the result, must be document */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 bytes */
   @NotNull public String id;

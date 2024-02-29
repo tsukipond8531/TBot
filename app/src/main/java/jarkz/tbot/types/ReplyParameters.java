@@ -21,7 +21,7 @@ public final class ReplyParameters {
    * chat or username of the channel (in the format @channelusername)
    */
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Optional. Pass True if the message should be sent even if the specified message to be replied

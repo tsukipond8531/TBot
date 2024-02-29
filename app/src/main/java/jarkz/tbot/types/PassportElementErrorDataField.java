@@ -10,8 +10,10 @@ import java.util.Objects;
  */
 public final class PassportElementErrorDataField implements PassportElementError {
 
+  public static final String SOURCE = "data";
+
   /** Error source, must be data */
-  @NotNull public String source;
+  @NotNull public final String source = SOURCE;
 
   /**
    * The section of the user's Telegram Passport which has the error, one of "personal_details",

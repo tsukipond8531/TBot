@@ -11,8 +11,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultLocation implements InlineQueryResult {
 
+  public static final String TYPE = "location";
+
   /** Type of the result, must be location */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 Bytes */
   @NotNull public String id;

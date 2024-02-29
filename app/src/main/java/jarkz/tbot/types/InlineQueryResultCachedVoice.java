@@ -12,8 +12,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedVoice implements InlineQueryResult {
 
+  public static final String TYPE = "voice";
+
   /** Type of the result, must be voice */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 bytes */
   @NotNull public String id;

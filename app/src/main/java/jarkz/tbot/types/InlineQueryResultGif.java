@@ -12,8 +12,10 @@ import java.util.Objects;
  */
 public final class InlineQueryResultGif implements InlineQueryResult {
 
+  public static final String TYPE = "gif";
+
   /** Type of the result, must be gif */
-  @NotNull public String type;
+  @NotNull public final String type = TYPE;
 
   /** Unique identifier for this result, 1-64 bytes */
   @NotNull public String id;

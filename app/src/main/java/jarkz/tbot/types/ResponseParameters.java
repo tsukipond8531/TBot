@@ -13,7 +13,7 @@ public final class ResponseParameters {
    * signed 64-bit integer or double-precision float type are safe for storing this identifier.
    */
   @SerializedName("migrate_to_chat_id")
-  public Integer migrateToChatId;
+  public Long migrateToChatId;
 
   /**
    * Optional. In case of exceeding flood control, the number of seconds left to wait before the
