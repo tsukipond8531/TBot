@@ -3,16 +3,27 @@ package jarkz.tbot.core;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 import jarkz.tbot.core.parameters.GetUpdatesParameters;
+import jarkz.tbot.core.parameters.SendMediaGroupParameters;
+import jarkz.tbot.types.InputFile;
+import jarkz.tbot.types.Message;
 import jarkz.tbot.types.Update;
 import jarkz.tbot.types.User;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
@@ -70,6 +81,9 @@ public class BotApi {
         .registerTypeAdapter(
             jarkz.tbot.types.PassportElementError.class,
             new jarkz.tbot.types.deserializers.PassportElementErrorDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.InputFile.class,
+            new jarkz.tbot.types.serializers.InputFileSerializer())
         .create();
   }
 
@@ -134,6 +148,20 @@ public class BotApi {
     return gson.fromJson(jsonElement, User.class);
   }
 
+  public List<Message> sendMediaGroup(SendMediaGroupParameters params) {
+    final String methodName = "sendMediaGroup";
+
+    var response = makeMultipartFormRequest(methodName, buildExtendedMultipartEntity(params));
+    if (!response.isOk()) {
+      raiseRuntimeException(response);
+    }
+
+    var type = new TypeToken<List<Message>>() {}.getType();
+    var jsonElement =
+        response.getResult().orElseThrow(() -> new RuntimeException("Invalid result of response."));
+    return gson.fromJson(jsonElement, type);
+  }
+
   private Response makeRequest(String methodName, StringEntity paramsAsEntity) {
     HttpPost request = new HttpPost(getUri(methodName));
     request.setEntity(paramsAsEntity);
@@ -147,6 +175,148 @@ public class BotApi {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  private Response makeMultipartFormRequest(String methodName, HttpEntity paramsAsEntity) {
+    HttpPost request = new HttpPost(getUri(methodName));
+    request.setEntity(paramsAsEntity);
+
+    try (CloseableHttpClient client = HttpClients.createDefault()) {
+      HttpResponse httpResponse = client.execute(request);
+      return gson.fromJson(
+          new String(httpResponse.getEntity().getContent().readAllBytes()), Response.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  private HttpEntity buildMultipartEntity(Object params) {
+    final var type = params.getClass();
+    final var fields = type.getDeclaredFields();
+    final var form = MultipartEntityBuilder.create();
+
+    for (final var field : fields) {
+      var name = field.getName();
+      if (field.isAnnotationPresent(SerializedName.class)) {
+        var annotation = field.getAnnotation(SerializedName.class);
+        name = annotation.value();
+      }
+
+      Object data = null;
+      try {
+        data = field.get(params);
+      } catch (IllegalAccessException e) {
+        throw new RuntimeException("Fields in Parameters type must be public!");
+      }
+
+      if (data instanceof InputFile inputFile) {
+        switch (inputFile.type()) {
+          case FILE_ID -> form.addTextBody(name, inputFile.fileId());
+          case BYTES -> form.addBinaryBody(name, inputFile.bytes());
+          case FILE -> form.addBinaryBody(name, inputFile.file());
+        }
+      } else {
+        form.addTextBody(name, gson.toJson(data), ContentType.APPLICATION_JSON);
+      }
+    }
+
+    return form.build();
+  }
+
+  private HttpEntity buildExtendedMultipartEntity(Object params) {
+    final var type = params.getClass();
+    final var fields = type.getDeclaredFields();
+    final var form = MultipartEntityBuilder.create();
+    final var inputFiles = new LinkedList<InputFile>();
+
+    for (final var field : fields) {
+      var name = field.getName();
+      if (field.isAnnotationPresent(SerializedName.class)) {
+        var annotation = field.getAnnotation(SerializedName.class);
+        name = annotation.value();
+      }
+
+      Object data = null;
+      try {
+        data = field.get(params);
+      } catch (IllegalAccessException e) {
+        throw new RuntimeException("Fields in Parameters type must be public!");
+      }
+
+      // This code is valid, even when type contains InputFile type, because serializer puts file
+      // attachment name or file_id and I can get it, when needs.
+      form.addTextBody(name, gson.toJson(data), ContentType.APPLICATION_JSON);
+      getAllInputFiles(field, params, inputFiles);
+    }
+
+    for (var inputFile : inputFiles) {
+      switch (inputFile.type()) {
+        case FILE_ID -> {
+          /* Do nothing */
+        }
+        case BYTES -> form.addBinaryBody(inputFile.attachmentName(), inputFile.bytes());
+        case FILE -> form.addBinaryBody(inputFile.attachmentName(), inputFile.file());
+      }
+    }
+
+    return form.build();
+  }
+
+  private static final Set<Class<?>> DEFAULT_TYPES =
+      Set.of(
+          String.class,
+          Short.class,
+          Integer.class,
+          Long.class,
+          Float.class,
+          Double.class,
+          Character.class,
+          Boolean.class,
+          Byte.class,
+          Short.TYPE,
+          Integer.TYPE,
+          Long.TYPE,
+          Float.TYPE,
+          Double.TYPE,
+          Character.TYPE,
+          Boolean.TYPE,
+          Byte.TYPE);
+
+  private void getAllInputFiles(Field field, Object object, List<InputFile> inputFiles) {
+    final var type = field.getType();
+    if (DEFAULT_TYPES.contains(type)) {
+      return;
+    }
+    Consumer<Object> findRecursive =
+        (otherObject) -> {
+          for (var otherField : otherObject.getClass().getDeclaredFields()) {
+            getAllInputFiles(otherField, otherObject, inputFiles);
+          }
+        };
+
+    Object data = null;
+    try {
+      data = field.get(object);
+    } catch (IllegalAccessException e) {
+      throw new RuntimeException("Fields in Parameters type must be public!");
+    }
+    if (data == null) {
+      return;
+    }
+
+    if (data instanceof List list) {
+      for (var otherObject : list) {
+        findRecursive.accept(otherObject);
+      }
+      return;
+    }
+
+    if (data instanceof InputFile inputFile) {
+      inputFiles.add(inputFile);
+      return;
+    }
+
+    findRecursive.accept(data);
   }
 
   private void raiseRuntimeException(Response response) {
