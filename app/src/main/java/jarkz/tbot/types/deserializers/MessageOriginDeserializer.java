@@ -37,10 +37,10 @@ public class MessageOriginDeserializer implements JsonDeserializer<MessageOrigin
 
     Class<? extends MessageOrigin> clazz = null;
     switch (value) {
-      case "user" -> clazz = MessageOriginUser.class;
-      case "hidden_user" -> clazz = MessageOriginHiddenUser.class;
-      case "chat" -> clazz = MessageOriginChat.class;
-      case "channel" -> clazz = MessageOriginChannel.class;
+      case MessageOriginUser.TYPE -> clazz = MessageOriginUser.class;
+      case MessageOriginHiddenUser.TYPE -> clazz = MessageOriginHiddenUser.class;
+      case MessageOriginChat.TYPE -> clazz = MessageOriginChat.class;
+      case MessageOriginChannel.TYPE -> clazz = MessageOriginChannel.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.",

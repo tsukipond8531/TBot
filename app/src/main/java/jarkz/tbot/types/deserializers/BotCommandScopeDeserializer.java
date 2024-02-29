@@ -40,13 +40,15 @@ public class BotCommandScopeDeserializer implements JsonDeserializer<BotCommandS
 
     Class<? extends BotCommandScope> clazz = null;
     switch (value) {
-      case "all_chat_administrators" -> clazz = BotCommandScopeAllChatAdministrators.class;
-      case "all_group_chats" -> clazz = BotCommandScopeAllGroupChats.class;
-      case "all_private_chats" -> clazz = BotCommandScopeAllPrivateChats.class;
-      case "chat" -> clazz = BotCommandScopeChat.class;
-      case "chat_administrators" -> clazz = BotCommandScopeChatAdministrators.class;
-      case "chat_member" -> clazz = BotCommandScopeChatMember.class;
-      case "default" -> clazz = BotCommandScopeDefault.class;
+      case BotCommandScopeAllChatAdministrators.TYPE -> clazz =
+          BotCommandScopeAllChatAdministrators.class;
+      case BotCommandScopeAllGroupChats.TYPE -> clazz = BotCommandScopeAllGroupChats.class;
+      case BotCommandScopeAllPrivateChats.TYPE -> clazz = BotCommandScopeAllPrivateChats.class;
+      case BotCommandScopeChat.TYPE -> clazz = BotCommandScopeChat.class;
+      case BotCommandScopeChatAdministrators.TYPE -> clazz =
+          BotCommandScopeChatAdministrators.class;
+      case BotCommandScopeChatMember.TYPE -> clazz = BotCommandScopeChatMember.class;
+      case BotCommandScopeDefault.TYPE -> clazz = BotCommandScopeDefault.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.",

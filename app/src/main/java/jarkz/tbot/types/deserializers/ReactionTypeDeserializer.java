@@ -34,8 +34,8 @@ public class ReactionTypeDeserializer implements JsonDeserializer<ReactionType> 
 
     Class<? extends ReactionType> clazz = null;
     switch (value) {
-      case "emoji" -> clazz = ReactionTypeEmoji.class;
-      case "custom_emoji" -> clazz = ReactionTypeCustomEmoji.class;
+      case ReactionTypeEmoji.TYPE -> clazz = ReactionTypeEmoji.class;
+      case ReactionTypeCustomEmoji.TYPE -> clazz = ReactionTypeCustomEmoji.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.",

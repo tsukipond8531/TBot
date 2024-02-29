@@ -36,9 +36,9 @@ public class ChatBoostSourceDeserializer implements JsonDeserializer<ChatBoostSo
 
     Class<? extends ChatBoostSource> clazz = null;
     switch (value) {
-      case "premium" -> clazz = ChatBoostSourcePremium.class;
-      case "gift_code" -> clazz = ChatBoostSourceGiftCode.class;
-      case "giveaway" -> clazz = ChatBoostSourceGiveaway.class;
+      case ChatBoostSourcePremium.SOURCE -> clazz = ChatBoostSourcePremium.class;
+      case ChatBoostSourceGiftCode.SOURCE -> clazz = ChatBoostSourceGiftCode.class;
+      case ChatBoostSourceGiveaway.SOURCE -> clazz = ChatBoostSourceGiveaway.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.",

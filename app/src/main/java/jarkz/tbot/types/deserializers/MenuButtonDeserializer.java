@@ -35,9 +35,9 @@ public class MenuButtonDeserializer implements JsonDeserializer<MenuButton> {
 
     Class<? extends MenuButton> clazz = null;
     switch (value) {
-      case "commands" -> clazz = MenuButtonCommands.class;
-      case "web_app" -> clazz = MenuButtonWebApp.class;
-      case "default" -> clazz = MenuButtonDefault.class;
+      case MenuButtonCommands.TYPE -> clazz = MenuButtonCommands.class;
+      case MenuButtonWebApp.TYPE -> clazz = MenuButtonWebApp.class;
+      case MenuButtonDefault.TYPE -> clazz = MenuButtonDefault.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.", MENU_BUTTON_KEY, MenuButton.class.getName()));

@@ -43,15 +43,17 @@ public class PassportElementErrorDeserializer implements JsonDeserializer<Passpo
 
     Class<? extends PassportElementError> clazz = null;
     switch (value) {
-      case "data" -> clazz = PassportElementErrorDataField.class;
-      case "file" -> clazz = PassportElementErrorFile.class;
-      case "files" -> clazz = PassportElementErrorFiles.class;
-      case "front_side" -> clazz = PassportElementErrorFrontSide.class;
-      case "reverse_side" -> clazz = PassportElementErrorReverseSide.class;
-      case "selfie" -> clazz = PassportElementErrorSelfie.class;
-      case "translation_file" -> clazz = PassportElementErrorTranslationFile.class;
-      case "translation_files" -> clazz = PassportElementErrorTranslationFiles.class;
-      case "unspecified" -> clazz = PassportElementErrorUnspecified.class;
+      case PassportElementErrorDataField.SOURCE -> clazz = PassportElementErrorDataField.class;
+      case PassportElementErrorFile.SOURCE -> clazz = PassportElementErrorFile.class;
+      case PassportElementErrorFiles.SOURCE -> clazz = PassportElementErrorFiles.class;
+      case PassportElementErrorFrontSide.SOURCE -> clazz = PassportElementErrorFrontSide.class;
+      case PassportElementErrorReverseSide.SOURCE -> clazz = PassportElementErrorReverseSide.class;
+      case PassportElementErrorSelfie.SOURCE -> clazz = PassportElementErrorSelfie.class;
+      case PassportElementErrorTranslationFile.SOURCE -> clazz =
+          PassportElementErrorTranslationFile.class;
+      case PassportElementErrorTranslationFiles.SOURCE -> clazz =
+          PassportElementErrorTranslationFiles.class;
+      case PassportElementErrorUnspecified.SOURCE -> clazz = PassportElementErrorUnspecified.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.",

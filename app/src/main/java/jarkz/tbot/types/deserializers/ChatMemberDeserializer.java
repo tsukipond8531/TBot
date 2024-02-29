@@ -37,12 +37,12 @@ public class ChatMemberDeserializer implements JsonDeserializer<ChatMember> {
 
     Class<? extends ChatMember> clazz = null;
     switch (value) {
-      case "administrator" -> clazz = ChatMemberAdministrator.class;
-      case "kicked" -> clazz = ChatMemberBanned.class;
-      case "left" -> clazz = ChatMemberLeft.class;
-      case "member" -> clazz = ChatMemberMember.class;
-      case "creator" -> clazz = ChatMemberOwner.class;
-      case "restricte" -> clazz = ChatMemberRestricted.class;
+      case ChatMemberAdministrator.STATUS -> clazz = ChatMemberAdministrator.class;
+      case ChatMemberBanned.STATUS -> clazz = ChatMemberBanned.class;
+      case ChatMemberLeft.STATUS -> clazz = ChatMemberLeft.class;
+      case ChatMemberMember.STATUS -> clazz = ChatMemberMember.class;
+      case ChatMemberOwner.STATUS -> clazz = ChatMemberOwner.class;
+      case ChatMemberRestricted.STATUS -> clazz = ChatMemberRestricted.class;
       default -> throw new JsonTypeNotDefined(
           String.format(
               "Given \"%s\" in %s is not defined.", CHAT_MEMBER_KEY, ChatMember.class.getName()));
