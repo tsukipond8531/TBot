@@ -34,7 +34,7 @@ public class TypeFactory<T> {
    * @return a generated base type instance.
    */
   public static <T> T generate(Class<T> baseType, int depth, float nullableFieldsChance) {
-    if (baseType == InputFile.class) {
+    if (TypesTest.SKIP_TYPES.contains(baseType)) {
       return null;
     }
     TypeFactory<T> factory = new TypeFactory<>(depth, nullableFieldsChance);
@@ -51,7 +51,7 @@ public class TypeFactory<T> {
    * @return a generated base type instance.
    */
   public static <T> T generate(Class<T> baseType) {
-    if (baseType == InputFile.class) {
+    if (TypesTest.SKIP_TYPES.contains(baseType)) {
       return null;
     }
     TypeFactory<T> factory = new TypeFactory<>(BASE_DETPH, BASE_CHANCE);

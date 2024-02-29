@@ -9,6 +9,7 @@ import jarkz.tbot.exceptions.types.ToStringContractException;
 import jarkz.tbot.types.annotations.Deserializer;
 import jarkz.tbot.types.annotations.EmptyClass;
 import jarkz.tbot.types.annotations.GeneralInterface;
+import jarkz.tbot.types.annotations.Serializer;
 import jarkz.tbot.violations.Violation;
 import jarkz.tbot.violations.ViolationList;
 import java.lang.reflect.Field;
@@ -100,7 +101,10 @@ public class ContractVerifier {
     var verifier = new ContractVerifier();
 
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
-        .filter(c -> !c.getPackage().isAnnotationPresent(Deserializer.class))
+        .filter(
+            c ->
+                !c.getPackage().isAnnotationPresent(Deserializer.class)
+                    && !c.getPackage().isAnnotationPresent(Serializer.class))
         .forEach(
             sourceClass -> {
               verifier.verify(sourceClass);
@@ -125,7 +129,8 @@ public class ContractVerifier {
     if (sourceClass.isInterface()
         || sourceClass.isAnnotationPresent(TestContainer.class)
         || sourceClass.isAnnotationPresent(Deserializer.class)
-        || sourceClass == InputFile.class) {
+        || sourceClass.isAnnotationPresent(Serializer.class)
+        || TypesTest.SKIP_TYPES.contains(sourceClass)) {
       return;
     }
     verifyFields(sourceClass);

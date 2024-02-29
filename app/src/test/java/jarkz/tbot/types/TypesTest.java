@@ -13,7 +13,10 @@ import jarkz.tbot.types.deserializers.MenuButtonDeserializer;
 import jarkz.tbot.types.deserializers.MessageOriginDeserializer;
 import jarkz.tbot.types.deserializers.PassportElementErrorDeserializer;
 import jarkz.tbot.types.deserializers.ReactionTypeDeserializer;
+import jarkz.tbot.types.serializers.IdSerializer;
+import jarkz.tbot.types.serializers.InputFileSerializer;
 import jarkz.tbot.violations.ViolationList;
+import java.util.Set;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Test;
@@ -32,6 +35,7 @@ public class TypesTest {
   public static final int TYPE_DEPTH = 1;
   public static final float NULLABLE_FIELD_CHANCE = 0.35f;
   public static final float GENERATE_ALL_FIELDS = 1f;
+  public static final Set<Class<?>> SKIP_TYPES = Set.of(InputFile.class, Id.class);
 
   /**
    * Verifies a class by JSON serialization.
@@ -41,7 +45,7 @@ public class TypesTest {
    */
   public static void verifyClassByJsonSerialization(
       Class<?> sourceClass, StringBuilder errMessage) {
-    if (sourceClass == InputFile.class) {
+    if (SKIP_TYPES.contains(sourceClass)) {
       return;
     }
 
@@ -79,8 +83,9 @@ public class TypesTest {
             .registerTypeAdapter(
                 MaybeInaccessibleMessage.class, new MaybeInaccessibleMessageDeserializer())
             .registerTypeAdapter(ChatBoostSource.class, new ChatBoostSourceDeserializer())
-            .registerTypeAdapter(
-                PassportElementError.class, new PassportElementErrorDeserializer());
+            .registerTypeAdapter(PassportElementError.class, new PassportElementErrorDeserializer())
+            .registerTypeAdapter(InputFile.class, new InputFileSerializer())
+            .registerTypeAdapter(Id.class, new IdSerializer());
     return gsonBuilder.create();
   }
 
