@@ -13,6 +13,7 @@ dependencies {
   testImplementation("org.slf4j:slf4j-log4j12:2.0.7")
 
   implementation("org.apache.httpcomponents:httpclient:4.5.14")
+  implementation("org.apache.httpcomponents:httpmime:4.5.14")
   implementation("com.google.guava:guava:31.1-jre")
   implementation("com.google.code.gson:gson:2.10.1")
   implementation("jakarta.validation:jakarta.validation-api:3.0.2")
