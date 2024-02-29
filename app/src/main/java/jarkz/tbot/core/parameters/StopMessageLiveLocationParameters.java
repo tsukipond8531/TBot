@@ -1,6 +1,7 @@
 package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.InlineKeyboardMarkup;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public final class StopMessageLiveLocationParameters {
    * username of the target channel (in the format @channelusername)
    */
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Required if inline_message_id is not specified. Identifier of the message with live location to

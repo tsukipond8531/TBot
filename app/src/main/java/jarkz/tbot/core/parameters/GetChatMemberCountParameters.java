@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import java.util.Objects;
 
 /** Use this method to get the number of members in a chat. Returns Int on success. */
@@ -13,7 +14,7 @@ public final class GetChatMemberCountParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   @Override
   public final boolean equals(Object obj) {

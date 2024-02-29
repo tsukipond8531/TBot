@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.ReplyMarkup;
 import jarkz.tbot.types.ReplyParameters;
 import java.util.Objects;
@@ -15,7 +16,7 @@ public final class SendLocationParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Unique identifier for the target message thread (topic) of the forum; for forum supergroups

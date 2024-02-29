@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import java.util.Objects;
 
 /**
@@ -18,7 +19,7 @@ public final class CreateChatInviteLinkParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /** Invite link name; 0-32 characters */
   public String name;

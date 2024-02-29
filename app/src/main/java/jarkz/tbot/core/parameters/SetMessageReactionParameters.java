@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.ReactionType;
 import java.util.List;
 import java.util.Objects;
@@ -19,7 +20,7 @@ public final class SetMessageReactionParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Identifier of the target message. If the message belongs to a media group, the reaction is set

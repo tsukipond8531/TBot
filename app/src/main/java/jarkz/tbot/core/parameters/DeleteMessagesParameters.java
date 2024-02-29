@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ public final class DeleteMessagesParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Identifiers of 1-100 messages to delete. See deleteMessage for limitations on which messages

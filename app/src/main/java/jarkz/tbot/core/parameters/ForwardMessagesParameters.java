@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ public final class ForwardMessagesParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Unique identifier for the target message thread (topic) of the forum; for forum supergroups
@@ -34,7 +35,7 @@ public final class ForwardMessagesParameters {
    */
   @NotNull
   @SerializedName("from_chat_id")
-  public String fromChatId;
+  public Id fromChatId;
 
   /**
    * Identifiers of 1-100 messages in the chat from_chat_id to forward. The identifiers must be

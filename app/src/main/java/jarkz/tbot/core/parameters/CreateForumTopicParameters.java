@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import java.util.Objects;
 
 /**
@@ -17,7 +18,7 @@ public final class CreateForumTopicParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /** Topic name, 1-128 characters */
   @NotNull public String name;

@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.InlineKeyboardMarkup;
 import jarkz.tbot.types.LinkPreviewOptions;
 import jarkz.tbot.types.MessageEntity;
@@ -19,7 +20,7 @@ public final class EditMessageTextParameters {
    * username of the target channel (in the format @channelusername)
    */
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /** Required if inline_message_id is not specified. Identifier of the message to edit */
   @SerializedName("message_id")

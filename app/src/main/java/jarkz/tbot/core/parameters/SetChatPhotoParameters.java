@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.InputFile;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public final class SetChatPhotoParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /** New chat photo, uploaded using multipart/form-data */
   @NotNull public InputFile photo;

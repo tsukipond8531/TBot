@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.InlineKeyboardMarkup;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ public final class StopPollParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /** Identifier of the original message with the poll */
   @NotNull

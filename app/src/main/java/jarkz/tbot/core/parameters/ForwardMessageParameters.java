@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import java.util.Objects;
 
 /**
@@ -16,7 +17,7 @@ public final class ForwardMessageParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Unique identifier for the target message thread (topic) of the forum; for forum supergroups
@@ -31,7 +32,7 @@ public final class ForwardMessageParameters {
    */
   @NotNull
   @SerializedName("from_chat_id")
-  public String fromChatId;
+  public Id fromChatId;
 
   /** Sends the message silently. Users will receive a notification with no sound. */
   @SerializedName("disable_notification")

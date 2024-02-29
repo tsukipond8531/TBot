@@ -2,6 +2,7 @@ package jarkz.tbot.core.parameters;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.InputFile;
 import jarkz.tbot.types.MessageEntity;
 import jarkz.tbot.types.ReplyMarkup;
@@ -25,7 +26,7 @@ public final class SendAudioParameters {
    */
   @NotNull
   @SerializedName("chat_id")
-  public String chatId;
+  public Id chatId;
 
   /**
    * Unique identifier for the target message thread (topic) of the forum; for forum supergroups
