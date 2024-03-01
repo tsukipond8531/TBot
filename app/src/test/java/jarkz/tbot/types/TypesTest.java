@@ -10,6 +10,7 @@ import jarkz.tbot.types.deserializers.ChatBoostSourceDeserializer;
 import jarkz.tbot.types.deserializers.ChatMemberDeserializer;
 import jarkz.tbot.types.deserializers.MaybeInaccessibleMessageDeserializer;
 import jarkz.tbot.types.deserializers.MenuButtonDeserializer;
+import jarkz.tbot.types.deserializers.MessageOrBooleanDeserializer;
 import jarkz.tbot.types.deserializers.MessageOriginDeserializer;
 import jarkz.tbot.types.deserializers.PassportElementErrorDeserializer;
 import jarkz.tbot.types.deserializers.ReactionTypeDeserializer;
@@ -35,7 +36,8 @@ public class TypesTest {
   public static final int TYPE_DEPTH = 1;
   public static final float NULLABLE_FIELD_CHANCE = 0.35f;
   public static final float GENERATE_ALL_FIELDS = 1f;
-  public static final Set<Class<?>> SKIP_TYPES = Set.of(InputFile.class, Id.class);
+  public static final Set<Class<?>> SKIP_TYPES =
+      Set.of(InputFile.class, Id.class, MessageOrBoolean.class);
 
   /**
    * Verifies a class by JSON serialization.
@@ -84,6 +86,7 @@ public class TypesTest {
                 MaybeInaccessibleMessage.class, new MaybeInaccessibleMessageDeserializer())
             .registerTypeAdapter(ChatBoostSource.class, new ChatBoostSourceDeserializer())
             .registerTypeAdapter(PassportElementError.class, new PassportElementErrorDeserializer())
+            .registerTypeAdapter(MessageOrBoolean.class, new MessageOrBooleanDeserializer())
             .registerTypeAdapter(InputFile.class, new InputFileSerializer())
             .registerTypeAdapter(Id.class, new IdSerializer());
     return gsonBuilder.create();
