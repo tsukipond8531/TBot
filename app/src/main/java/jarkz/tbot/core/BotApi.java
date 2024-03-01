@@ -6,8 +6,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import jarkz.tbot.core.parameters.GetUpdatesParameters;
 import jarkz.tbot.core.parameters.SendMediaGroupParameters;
+import jarkz.tbot.types.Id;
 import jarkz.tbot.types.InputFile;
 import jarkz.tbot.types.Message;
+import jarkz.tbot.types.MessageOrBoolean;
 import jarkz.tbot.types.Update;
 import jarkz.tbot.types.User;
 import java.io.IOException;
@@ -75,6 +77,8 @@ public class BotApi {
           Boolean.TYPE,
           Byte.TYPE);
 
+  private static final Set<Class<?>> SPECIFIC_TYPES = Set.of(Id.class, MessageOrBoolean.class);
+
   private static Gson registerAllAdapters() {
     return new GsonBuilder()
         .registerTypeAdapter(
@@ -101,6 +105,11 @@ public class BotApi {
         .registerTypeAdapter(
             jarkz.tbot.types.PassportElementError.class,
             new jarkz.tbot.types.deserializers.PassportElementErrorDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.MessageOrBoolean.class,
+            new jarkz.tbot.types.deserializers.MessageOrBooleanDeserializer())
+        .registerTypeAdapter(
+            jarkz.tbot.types.Id.class, new jarkz.tbot.types.serializers.IdSerializer())
         .registerTypeAdapter(
             jarkz.tbot.types.InputFile.class,
             new jarkz.tbot.types.serializers.InputFileSerializer())
@@ -284,7 +293,7 @@ public class BotApi {
 
   private void getAllInputFiles(Field field, Object object, List<InputFile> inputFiles) {
     final var type = field.getType();
-    if (DEFAULT_TYPES.contains(type)) {
+    if (DEFAULT_TYPES.contains(type) || SPECIFIC_TYPES.contains(type)) {
       return;
     }
     Consumer<Object> findRecursive =
