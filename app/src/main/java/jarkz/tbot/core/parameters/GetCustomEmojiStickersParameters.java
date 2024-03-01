@@ -11,7 +11,10 @@ import java.util.Objects;
  */
 public final class GetCustomEmojiStickersParameters {
 
-  /** List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified. */
+  /**
+   * A JSON-serialized list of custom emoji identifiers. At most 200 custom emoji identifiers can be
+   * specified.
+   */
   @NotNull
   @SerializedName("custom_emoji_ids")
   public List<String> customEmojiIds;

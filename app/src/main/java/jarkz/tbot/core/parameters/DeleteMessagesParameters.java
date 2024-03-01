@@ -21,8 +21,8 @@ public final class DeleteMessagesParameters {
   public Id chatId;
 
   /**
-   * Identifiers of 1-100 messages to delete. See deleteMessage for limitations on which messages
-   * can be deleted
+   * A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for
+   * limitations on which messages can be deleted
    */
   @NotNull
   @SerializedName("message_ids")

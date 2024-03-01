@@ -23,7 +23,7 @@ public final class SendChatActionParameters {
   @SerializedName("chat_id")
   public Id chatId;
 
-  /** Unique identifier for the target message thread; supergroups only */
+  /** Unique identifier for the target message thread; for supergroups only */
   @SerializedName("message_thread_id")
   public Integer messageThreadId;
 

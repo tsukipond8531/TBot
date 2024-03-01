@@ -82,25 +82,25 @@ public final class PromoteChatMemberParameters {
 
   /**
    * Pass True if the administrator can post messages in the channel, or access channel statistics;
-   * channels only
+   * for channels only
    */
   @SerializedName("can_post_messages")
   public Boolean canPostMessages;
 
   /**
-   * Pass True if the administrator can edit messages of other users and can pin messages; channels
-   * only
+   * Pass True if the administrator can edit messages of other users and can pin messages; for
+   * channels only
    */
   @SerializedName("can_edit_messages")
   public Boolean canEditMessages;
 
-  /** Pass True if the administrator can pin messages, supergroups only */
+  /** Pass True if the administrator can pin messages; for supergroups only */
   @SerializedName("can_pin_messages")
   public Boolean canPinMessages;
 
   /**
-   * Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups
-   * only
+   * Pass True if the user is allowed to create, rename, close, and reopen forum topics; for
+   * supergroups only
    */
   @SerializedName("can_manage_topics")
   public Boolean canManageTopics;

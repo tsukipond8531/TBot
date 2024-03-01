@@ -40,8 +40,8 @@ public final class CopyMessagesParameters {
   public Id fromChatId;
 
   /**
-   * Identifiers of 1-100 messages in the chat from_chat_id to copy. The identifiers must be
-   * specified in a strictly increasing order.
+   * A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The
+   * identifiers must be specified in a strictly increasing order.
    */
   @NotNull
   @SerializedName("message_ids")
