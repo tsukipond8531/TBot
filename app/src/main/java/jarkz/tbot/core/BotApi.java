@@ -55,6 +55,26 @@ public class BotApi {
     gson = registerAllAdapters();
   }
 
+  private static final Set<Class<?>> DEFAULT_TYPES =
+      Set.of(
+          String.class,
+          Short.class,
+          Integer.class,
+          Long.class,
+          Float.class,
+          Double.class,
+          Character.class,
+          Boolean.class,
+          Byte.class,
+          Short.TYPE,
+          Integer.TYPE,
+          Long.TYPE,
+          Float.TYPE,
+          Double.TYPE,
+          Character.TYPE,
+          Boolean.TYPE,
+          Byte.TYPE);
+
   private static Gson registerAllAdapters() {
     return new GsonBuilder()
         .registerTypeAdapter(
@@ -261,26 +281,6 @@ public class BotApi {
 
     return form.build();
   }
-
-  private static final Set<Class<?>> DEFAULT_TYPES =
-      Set.of(
-          String.class,
-          Short.class,
-          Integer.class,
-          Long.class,
-          Float.class,
-          Double.class,
-          Character.class,
-          Boolean.class,
-          Byte.class,
-          Short.TYPE,
-          Integer.TYPE,
-          Long.TYPE,
-          Float.TYPE,
-          Double.TYPE,
-          Character.TYPE,
-          Boolean.TYPE,
-          Byte.TYPE);
 
   private void getAllInputFiles(Field field, Object object, List<InputFile> inputFiles) {
     final var type = field.getType();
