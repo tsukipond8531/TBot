@@ -9,7 +9,7 @@ public final class ForumTopicReopened {
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;
-    if (!(obj instanceof ForumTopicReopened other)) return false;
+    if (!(obj instanceof ForumTopicReopened)) return false;
     return true;
   }
 

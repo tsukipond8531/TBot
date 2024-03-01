@@ -9,7 +9,7 @@ public final class GiveawayCreated {
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;
-    if (!(obj instanceof GiveawayCreated other)) return false;
+    if (!(obj instanceof GiveawayCreated)) return false;
     return true;
   }
 

@@ -9,7 +9,7 @@ public final class VideoChatStarted {
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;
-    if (!(obj instanceof VideoChatStarted other)) return false;
+    if (!(obj instanceof VideoChatStarted)) return false;
     return true;
   }
 

@@ -6,7 +6,7 @@ public final class CallbackGame {
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;
-    if (!(obj instanceof CallbackGame other)) return false;
+    if (!(obj instanceof CallbackGame)) return false;
     return true;
   }
 
