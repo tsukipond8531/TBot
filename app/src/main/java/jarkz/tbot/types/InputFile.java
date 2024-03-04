@@ -86,7 +86,7 @@ public final class InputFile {
             default -> throw new RuntimeException(
                 "Invalid state while generating random attachment name!");
           };
-      builder.append(nextChar);
+      builder.append((char) nextChar);
       state = random.nextInt(3);
     }
     attachmentName = builder.toString();
