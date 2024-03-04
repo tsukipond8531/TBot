@@ -17,7 +17,7 @@ public class InputFileTest {
 
   @Test
   public void checkFirstLetter() {
-    var file = new InputFile(new byte[10], "Name", "Type");
+    var file = new InputFile(new byte[10]);
     for (var i = 0; i < 1_000; i++) {
       var attachmentName = file.randomAttachmentName();
       var ch = attachmentName.charAt(0);
@@ -30,7 +30,7 @@ public class InputFileTest {
     var set = new HashSet<String>();
     var repeatCount = 0;
 
-    var file = new InputFile(new byte[10], "Name", "Type");
+    var file = new InputFile(new byte[10]);
     for (var i = 0; i < 1_000; i++) {
       var attachmentName = file.randomAttachmentName();
       if (!set.add(attachmentName)) {
@@ -47,7 +47,7 @@ public class InputFileTest {
 
   @Test
   public void onlyNumbersAndLetters() {
-    var file = new InputFile(new byte[10], "Name", "Type");
+    var file = new InputFile(new byte[10]);
 
     for (var i = 0; i < 1_000; i++) {
       var attachmentName = file.randomAttachmentName();
