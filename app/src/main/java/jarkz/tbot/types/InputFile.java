@@ -27,18 +27,18 @@ public final class InputFile {
   private String mimeType;
   private Type type;
 
-  private record Range(int start, int end) {}
+  private record Range(int start, int end) {
+    public char random(ThreadLocalRandom rng) {
+      return (char) rng.nextInt(this.start, this.end + 1);
+    }
+  }
 
   private static final int MAX_NAME_LENGTH = 20;
-
-  private static final int NUMBER = 0;
-  private static final Range NUMBER_RANGE = new Range((int) '0', (int) ('9' + 1));
-
-  private static final int UPPERCASE_LETTER = 1;
-  private static final Range UPPERCASE_LETTER_RANGE = new Range((int) 'A', (int) ('Z' + 1));
-
-  private static final int LOWERCASE_LETTER = 2;
-  private static final Range LOWERCASE_LETTER_RANGE = new Range((int) 'a', (int) ('z' + 1));
+  private static final Range[] RANGES = {
+    new Range((int) 'a', (int) 'z'),
+    new Range((int) 'A', (int) 'Z'),
+    new Range((int) '0', (int) '9'),
+  };
 
   public InputFile(File file, String name, String contentType) {
     this.file = file;
@@ -73,22 +73,17 @@ public final class InputFile {
 
   public String randomAttachmentName() {
     final var builder = new StringBuilder();
-    final var random = ThreadLocalRandom.current();
-    var state = LOWERCASE_LETTER;
+    final var rng = ThreadLocalRandom.current();
+    final int lowercaseLetterRange = 0;
+
+    var index = lowercaseLetterRange;
+
     while (builder.length() <= MAX_NAME_LENGTH) {
-      var nextChar =
-          switch (state) {
-            case NUMBER -> random.nextInt(NUMBER_RANGE.start, NUMBER_RANGE.end);
-            case UPPERCASE_LETTER -> random.nextInt(
-                UPPERCASE_LETTER_RANGE.start, UPPERCASE_LETTER_RANGE.end);
-            case LOWERCASE_LETTER -> random.nextInt(
-                LOWERCASE_LETTER_RANGE.start, LOWERCASE_LETTER_RANGE.end);
-            default -> throw new RuntimeException(
-                "Invalid state while generating random attachment name!");
-          };
-      builder.append((char) nextChar);
-      state = random.nextInt(3);
+      var nextChar = RANGES[index].random(rng);
+      builder.append(nextChar);
+      index = rng.nextInt(RANGES.length);
     }
+
     attachmentName = builder.toString();
     return attachmentName;
   }
