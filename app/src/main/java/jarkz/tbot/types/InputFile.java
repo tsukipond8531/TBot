@@ -23,8 +23,6 @@ public final class InputFile {
 
   private String fileId;
 
-  private String name;
-  private String mimeType;
   private Type type;
 
   private record Range(int start, int end) {
@@ -40,17 +38,13 @@ public final class InputFile {
     new Range((int) '0', (int) '9'),
   };
 
-  public InputFile(File file, String name, String contentType) {
+  public InputFile(File file) {
     this.file = file;
-    this.name = name;
-    this.mimeType = contentType;
     type = Type.FILE;
   }
 
-  public InputFile(byte[] bytes, String name, String contentType) {
+  public InputFile(byte[] bytes) {
     this.bytes = bytes;
-    this.name = name;
-    this.mimeType = contentType;
     type = Type.BYTES;
   }
 
@@ -105,28 +99,12 @@ public final class InputFile {
     return type;
   }
 
-  public String contentType() {
-    return mimeType;
-  }
-
-  public void setMimeType(String contentType) {
-    this.mimeType = contentType;
-  }
-
-  public String name() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
     result = prime * result + Arrays.hashCode(bytes);
-    result = prime * result + Objects.hash(file, name, mimeType);
+    result = prime * result + Objects.hash(file, attachmentName, fileId, type);
     return result;
   }
 
@@ -137,8 +115,9 @@ public final class InputFile {
     InputFile other = (InputFile) obj;
     return Objects.equals(file, other.file)
         && Arrays.equals(bytes, other.bytes)
-        && Objects.equals(name, other.name)
-        && Objects.equals(mimeType, other.mimeType);
+        && Objects.equals(attachmentName, other.attachmentName)
+        && Objects.equals(fileId, other.fileId)
+        && type == other.type;
   }
 
   @Override
@@ -149,10 +128,12 @@ public final class InputFile {
         .append(file)
         .append(", bytes=")
         .append(Arrays.toString(bytes))
-        .append(", name=")
-        .append(name)
-        .append(", contentType=")
-        .append(mimeType)
+        .append(", attachmentName=")
+        .append(attachmentName)
+        .append(", fileId=")
+        .append(fileId)
+        .append(", type=")
+        .append(type)
         .append("]");
     return builder.toString();
   }
