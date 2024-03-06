@@ -12,6 +12,8 @@ public class EventExecutor {
   private ExecutorService service;
   private BotApi api;
 
+  private int offset = 0;
+
   public EventExecutor(BotApi api) {
     service = Executors.newSingleThreadExecutor();
     this.api = api;
@@ -25,9 +27,12 @@ public class EventExecutor {
   public void runPolling() throws InterruptedException {
     while (true) {
       var params = new GetUpdatesParameters();
+      params.offset = offset;
       var updates = api.getUpdates(params);
 
       for (var event : updates) {
+        offset = Math.max(offset, event.updateId + 1);
+
         var handler = new HandlerTask(event);
         service.execute(handler);
       }
