@@ -10,6 +10,7 @@ public class TBotApplication {
     }
 
     var scanner = new PackageScanner();
-    scanner.scanUserPackages(this.getClass());
+    var classInfos = scanner.scanUserPackages(this.getClass());
+    classInfos.stream().forEach(ci -> ci.registerIntoPool());
   }
 }
