@@ -3,6 +3,7 @@ package jarkz.tbot.core;
 import jarkz.tbot.types.Update;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 public class RuleHandler {
 
@@ -29,5 +30,19 @@ public class RuleHandler {
     } catch (InvocationTargetException | IllegalAccessException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(instance, callableMethod);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof RuleHandler)) return false;
+    RuleHandler other = (RuleHandler) obj;
+    return Objects.equals(instance, other.instance)
+        && Objects.equals(callableMethod, other.callableMethod);
   }
 }
