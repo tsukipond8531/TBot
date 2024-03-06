@@ -1,9 +1,9 @@
 package jarkz.tbot.core;
 
+import jarkz.tbot.types.Update;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Optional;
-
-import jarkz.tbot.types.Update;
 
 public class HandlerTask implements Runnable {
 
@@ -25,7 +25,27 @@ public class HandlerTask implements Runnable {
 
   @Override
   public void run() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'run'");
+
+    var maybeMethod = pickMethod();
+    if (maybeMethod.isEmpty()) {
+      return;
+    }
+
+    var method = maybeMethod.get();
+    var parameters = method.getParameters();
+    var args = new Object[parameters.length];
+    for (var i = 0; i < parameters.length; i++) {
+      var argType = parameters[i].getType();
+      args[i] = BotCore.objectPool.get(argType);
+    }
+
+    var declClass = method.getDeclaringClass();
+    var instance = BotCore.objectPool.get(declClass);
+
+    try {
+      method.invoke(instance, args);
+    } catch (IllegalAccessException | InvocationTargetException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
