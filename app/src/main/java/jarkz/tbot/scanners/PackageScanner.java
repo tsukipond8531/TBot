@@ -11,7 +11,6 @@ public class PackageScanner {
 
   public List<ClassInfo> scanUserPackages(Class<?> baseClass) {
     var packageName = baseClass.getPackageName();
-    packageName = packageName.substring(0, packageName.length() - baseClass.getName().length() - 1);
 
     var reflections = new Reflections(packageName, Scanners.SubTypes.filterResultsBy(s -> true));
 
