@@ -18,6 +18,9 @@ public class RuleHandler {
     }
 
     instance = BotCore.objectPool.get(mentionedClass);
+    if (instance == null) {
+      throw new RuntimeException("Class is unregistered!");
+    }
   }
 
   public boolean test(Update event) {
