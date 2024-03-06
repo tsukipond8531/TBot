@@ -36,6 +36,10 @@ public class HandlerTask implements Runnable {
     var args = new Object[parameters.length];
     for (var i = 0; i < parameters.length; i++) {
       var argType = parameters[i].getType();
+      if (argType == Update.class) {
+        args[i] = event;
+        continue;
+      }
       args[i] = BotCore.objectPool.get(argType);
     }
 
