@@ -23,7 +23,7 @@ public class RuleHandler {
     }
   }
 
-  public boolean test(Update event) {
+  public boolean check(Update event) {
     try {
       return (Boolean) callableMethod.invoke(instance, event);
     } catch (InvocationTargetException | IllegalAccessException e) {

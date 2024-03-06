@@ -15,7 +15,7 @@ public class HandlerTask implements Runnable {
 
   private Optional<Method> pickMethod() {
     for (var entry : BotCore.ruleToHandler.entrySet()) {
-      if (entry.getKey().test(this.event)) {
+      if (entry.getKey().check(this.event)) {
         return Optional.of(entry.getValue());
       }
     }
