@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class BotCore {
 
-  protected static Map<Rule, Method> ruleToHandler = new HashMap<>();
+  protected static Map<RuleHandler, Method> ruleToHandler = new HashMap<>();
   protected static Map<Class<?>, Object> objectPool = new HashMap<>();
 
 
   public static void registerHandler(Rule rule, Method method) {
-    ruleToHandler.put(rule, method);
+    ruleToHandler.put(new RuleHandler(rule), method);
   }
 
   public static void registerObject(Class<?> type, Object instance) {
