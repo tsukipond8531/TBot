@@ -1,9 +1,8 @@
 package jarkz.tbot.core;
 
+import jarkz.tbot.core.parameters.GetUpdatesParameters;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import jarkz.tbot.core.parameters.GetUpdatesParameters;
 
 public class EventExecutor {
 
