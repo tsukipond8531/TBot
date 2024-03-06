@@ -5,19 +5,19 @@ import java.util.concurrent.Executors;
 
 import jarkz.tbot.core.parameters.GetUpdatesParameters;
 
-public class Executor {
+public class EventExecutor {
 
   private final int WAIT_TIME = 300;
 
   private ExecutorService service;
   private BotApi api;
 
-  public Executor(BotApi api) {
+  public EventExecutor(BotApi api) {
     service = Executors.newSingleThreadExecutor();
     this.api = api;
   }
 
-  public Executor(BotApi api, int threadCount) {
+  public EventExecutor(BotApi api, int threadCount) {
     service = Executors.newFixedThreadPool(threadCount);
     this.api = api;
   }
