@@ -8,10 +8,10 @@ repositories { mavenCentral() }
 dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
   testImplementation("nl.jqno.equalsverifier:equalsverifier:3.15.7")
-  testImplementation("org.reflections:reflections:0.10.2")
   testImplementation("org.slf4j:slf4j-api:2.0.7")
   testImplementation("org.slf4j:slf4j-log4j12:2.0.7")
 
+  implementation("org.reflections:reflections:0.10.2")
   implementation("org.apache.httpcomponents:httpclient:4.5.14")
   implementation("org.apache.httpcomponents:httpmime:4.5.14")
   implementation("com.google.guava:guava:31.1-jre")
