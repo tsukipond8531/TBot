@@ -1,5 +1,5 @@
 package jarkz.tbot.scanners;
 
-public  class ClassInformation {
+public class ClassInfo {
 
 }
