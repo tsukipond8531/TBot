@@ -1,5 +1,7 @@
 package jarkz.tbot;
 
+import jarkz.tbot.core.BotApi;
+import jarkz.tbot.core.BotCore;
 import jarkz.tbot.scanners.PackageScanner;
 
 public class TBotApplication {
@@ -8,6 +10,10 @@ public class TBotApplication {
     if (this.getClass() == TBotApplication.class) {
       throw new RuntimeException("Don't call method from TBotApplication instance, except extended by it classes!");
     }
+
+    var botToken = System.getenv("BOT_TOKEN");
+    var botApi = new BotApi(botToken);
+    BotCore.registerObject(BotApi.class, botApi);
 
     var scanner = new PackageScanner();
     var classInfos = scanner.scanUserPackages(this.getClass());
