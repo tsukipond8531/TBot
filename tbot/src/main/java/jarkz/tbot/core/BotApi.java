@@ -262,6 +262,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getupdates>Source</a>
    */
   public List<Update> getUpdates(GetUpdatesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getUpdates";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -291,6 +293,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setwebhook>Source</a>
    */
   public Boolean setWebhook(SetWebhookParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setWebhook";
 
     final var entity = buildMultipartEntity(params);
@@ -314,6 +318,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletewebhook>Source</a>
    */
   public Boolean deleteWebhook(DeleteWebhookParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteWebhook";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -434,6 +440,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendmessage>Source</a>
    */
   public Message sendMessage(SendMessageParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendMessage";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -457,6 +465,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#forwardmessage>Source</a>
    */
   public Message forwardMessage(ForwardMessageParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "forwardMessage";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -482,6 +492,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#forwardmessages>Source</a>
    */
   public List<MessageId> forwardMessages(ForwardMessagesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "forwardMessages";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -508,6 +520,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#copymessage>Source</a>
    */
   public MessageId copyMessage(CopyMessageParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "copyMessage";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -535,6 +549,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#copymessages>Source</a>
    */
   public List<MessageId> copyMessages(CopyMessagesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "copyMessages";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -557,6 +573,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendphoto>Source</a>
    */
   public Message sendPhoto(SendPhotoParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendPhoto";
 
     final var entity = buildMultipartEntity(params);
@@ -584,6 +602,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendaudio>Source</a>
    */
   public Message sendAudio(SendAudioParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendAudio";
 
     final var entity = buildMultipartEntity(params);
@@ -608,6 +628,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#senddocument>Source</a>
    */
   public Message sendDocument(SendDocumentParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendDocument";
 
     final var entity = buildMultipartEntity(params);
@@ -632,6 +654,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendvideo>Source</a>
    */
   public Message sendVideo(SendVideoParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendVideo";
 
     final var entity = buildMultipartEntity(params);
@@ -656,6 +680,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendanimation>Source</a>
    */
   public Message sendAnimation(SendAnimationParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendAnimation";
 
     final var entity = buildMultipartEntity(params);
@@ -682,6 +708,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendvoice>Source</a>
    */
   public Message sendVoice(SendVoiceParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendVoice";
 
     final var entity = buildMultipartEntity(params);
@@ -705,6 +733,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendvideonote>Source</a>
    */
   public Message sendVideoNote(SendVideoNoteParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendVideoNote";
 
     final var entity = buildMultipartEntity(params);
@@ -729,6 +759,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendmediagroup>Source</a>
    */
   public List<Message> sendMediaGroup(SendMediaGroupParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendMediaGroup";
 
     final var entity = buildExtendedMultipartEntity(params);
@@ -751,6 +783,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendlocation>Source</a>
    */
   public Message sendLocation(SendLocationParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendLocation";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -773,6 +807,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendvenue>Source</a>
    */
   public Message sendVenue(SendVenueParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendVenue";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -795,6 +831,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendcontact>Source</a>
    */
   public Message sendContact(SendContactParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendContact";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -817,6 +855,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendpoll>Source</a>
    */
   public Message sendPoll(SendPollParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendPoll";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -840,6 +880,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#senddice>Source</a>
    */
   public Message sendDice(SendDiceParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendDice";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -867,6 +909,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendchataction>Source</a>
    */
   public Boolean sendChatAction(SendChatActionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendChatAction";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -891,6 +935,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setmessagereaction>Source</a>
    */
   public Boolean setMessageReaction(SetMessageReactionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setMessageReaction";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -914,6 +960,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getuserprofilephotos>Source</a>
    */
   public UserProfilePhotos getUserProfilePhotos(GetUserProfilePhotosParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getUserProfilePhotos";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -944,6 +992,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getfile>Source</a>
    */
   public File getFile(GetFileParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getFile";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -969,6 +1019,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#banchatmember>Source</a>
    */
   public Boolean banChatMember(BanChatMemberParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "banChatMember";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -996,6 +1048,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#unbanchatmember>Source</a>
    */
   public Boolean unbanChatMember(UnbanChatMemberParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unbanChatMember";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1020,6 +1074,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#restrictchatmember>Source</a>
    */
   public Boolean restrictChatMember(RestrictChatMemberParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "restrictChatMember";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1044,6 +1100,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#promotechatmember>Source</a>
    */
   public Boolean promoteChatMember(PromoteChatMemberParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "promoteChatMember";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1067,6 +1125,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchatadministratorcustomtitle>Source</a>
    */
   public Boolean setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatAdministratorCustomTitle";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1092,6 +1152,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#banchatsenderchat>Source</a>
    */
   public Boolean banChatSenderChat(BanChatSenderChatParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "banChatSenderChat";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1116,6 +1178,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#unbanchatsenderchat>Source</a>
    */
   public Boolean unbanChatSenderChat(UnbanChatSenderChatParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unbanChatSenderChat";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1140,6 +1204,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchatpermissions>Source</a>
    */
   public Boolean setChatPermissions(SetChatPermissionsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatPermissions";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1164,6 +1230,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#exportchatinvitelink>Source</a>
    */
   public String exportChatInviteLink(ExportChatInviteLinkParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "exportChatInviteLink";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1189,6 +1257,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#createchatinvitelink>Source</a>
    */
   public ChatInviteLink createChatInviteLink(CreateChatInviteLinkParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "createChatInviteLink";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1213,6 +1283,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editchatinvitelink>Source</a>
    */
   public ChatInviteLink editChatInviteLink(EditChatInviteLinkParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editChatInviteLink";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1238,6 +1310,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#revokechatinvitelink>Source</a>
    */
   public ChatInviteLink revokeChatInviteLink(RevokeChatInviteLinkParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "revokeChatInviteLink";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1262,6 +1336,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#approvechatjoinrequest>Source</a>
    */
   public Boolean approveChatJoinRequest(ApproveChatJoinRequestParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "approveChatJoinRequest";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1286,6 +1362,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#declinechatjoinrequest>Source</a>
    */
   public Boolean declineChatJoinRequest(DeclineChatJoinRequestParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "declineChatJoinRequest";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1310,6 +1388,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchatphoto>Source</a>
    */
   public Boolean setChatPhoto(SetChatPhotoParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatPhoto";
 
     final var entity = buildMultipartEntity(params);
@@ -1334,6 +1414,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletechatphoto>Source</a>
    */
   public Boolean deleteChatPhoto(DeleteChatPhotoParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteChatPhoto";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1358,6 +1440,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchattitle>Source</a>
    */
   public Boolean setChatTitle(SetChatTitleParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatTitle";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1382,6 +1466,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchatdescription>Source</a>
    */
   public Boolean setChatDescription(SetChatDescriptionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatDescription";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1407,6 +1493,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#pinchatmessage>Source</a>
    */
   public Boolean pinChatMessage(PinChatMessageParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "pinChatMessage";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1432,6 +1520,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#unpinchatmessage>Source</a>
    */
   public Boolean unpinChatMessage(UnpinChatMessageParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unpinChatMessage";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1457,6 +1547,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#unpinallchatmessages>Source</a>
    */
   public Boolean unpinAllChatMessages(UnpinAllChatMessagesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unpinAllChatMessages";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1479,6 +1571,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#leavechat>Source</a>
    */
   public Boolean leaveChat(LeaveChatParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "leaveChat";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1501,6 +1595,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getchat>Source</a>
    */
   public Chat getChat(GetChatParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getChat";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1524,6 +1620,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getchatadministrators>Source</a>
    */
   public List<ChatMember> getChatAdministrators(GetChatAdministratorsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getChatAdministrators";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1546,6 +1644,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getchatmembercount>Source</a>
    */
   public Integer getChatMemberCount(GetChatMemberCountParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getChatMemberCount";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1570,6 +1670,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getchatmember>Source</a>
    */
   public ChatMember getChatMember(GetChatMemberParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getChatMember";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1595,6 +1697,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchatstickerset>Source</a>
    */
   public Boolean setChatStickerSet(SetChatStickerSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatStickerSet";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1620,6 +1724,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletechatstickerset>Source</a>
    */
   public Boolean deleteChatStickerSet(DeleteChatStickerSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteChatStickerSet";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1667,6 +1773,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#createforumtopic>Source</a>
    */
   public ForumTopic createForumTopic(CreateForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "createForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1691,6 +1799,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editforumtopic>Source</a>
    */
   public Boolean editForumTopic(EditForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1715,6 +1825,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#closeforumtopic>Source</a>
    */
   public Boolean closeForumTopic(CloseForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "closeForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1739,6 +1851,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#reopenforumtopic>Source</a>
    */
   public Boolean reopenForumTopic(ReopenForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "reopenForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1763,6 +1877,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deleteforumtopic>Source</a>
    */
   public Boolean deleteForumTopic(DeleteForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1787,6 +1903,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#unpinallforumtopicmessages>Source</a>
    */
   public Boolean unpinAllForumTopicMessages(UnpinAllForumTopicMessagesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unpinAllForumTopicMessages";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1811,6 +1929,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editgeneralforumtopic>Source</a>
    */
   public Boolean editGeneralForumTopic(EditGeneralForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editGeneralForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1835,6 +1955,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#closegeneralforumtopic>Source</a>
    */
   public Boolean closeGeneralForumTopic(CloseGeneralForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "closeGeneralForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1859,6 +1981,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#reopengeneralforumtopic>Source</a>
    */
   public Boolean reopenGeneralForumTopic(ReopenGeneralForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "reopenGeneralForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1883,6 +2007,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#hidegeneralforumtopic>Source</a>
    */
   public Boolean hideGeneralForumTopic(HideGeneralForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "hideGeneralForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1907,6 +2033,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#unhidegeneralforumtopic>Source</a>
    */
   public Boolean unhideGeneralForumTopic(UnhideGeneralForumTopicParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unhideGeneralForumTopic";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1932,6 +2060,8 @@ public final class BotApi {
    */
   public Boolean unpinAllGeneralForumTopicMessages(
       UnpinAllGeneralForumTopicMessagesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "unpinAllGeneralForumTopicMessages";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1956,6 +2086,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#answercallbackquery>Source</a>
    */
   public Boolean answerCallbackQuery(AnswerCallbackQueryParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "answerCallbackQuery";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -1979,6 +2111,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getuserchatboosts>Source</a>
    */
   public UserChatBoosts getUserChatBoosts(GetUserChatBoostsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getUserChatBoosts";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2002,6 +2136,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setmycommands>Source</a>
    */
   public Boolean setMyCommands(SetMyCommandsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setMyCommands";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2025,6 +2161,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletemycommands>Source</a>
    */
   public Boolean deleteMyCommands(DeleteMyCommandsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteMyCommands";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2049,6 +2187,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getmycommands>Source</a>
    */
   public List<BotCommand> getMyCommands(GetMyCommandsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getMyCommands";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2071,6 +2211,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setmyname>Source</a>
    */
   public Boolean setMyName(SetMyNameParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setMyName";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2094,6 +2236,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getmyname>Source</a>
    */
   public BotName getMyName(GetMyNameParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getMyName";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2117,6 +2261,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setmydescription>Source</a>
    */
   public Boolean setMyDescription(SetMyDescriptionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setMyDescription";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2140,6 +2286,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getmydescription>Source</a>
    */
   public BotDescription getMyDescription(GetMyDescriptionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getMyDescription";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2163,6 +2311,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setmyshortdescription>Source</a>
    */
   public Boolean setMyShortDescription(SetMyShortDescriptionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setMyShortDescription";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2186,6 +2336,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getmyshortdescription>Source</a>
    */
   public BotShortDescription getMyShortDescription(GetMyShortDescriptionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getMyShortDescription";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2209,6 +2361,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setchatmenubutton>Source</a>
    */
   public Boolean setChatMenuButton(SetChatMenuButtonParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setChatMenuButton";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2232,6 +2386,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getchatmenubutton>Source</a>
    */
   public MenuButton getChatMenuButton(GetChatMenuButtonParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getChatMenuButton";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2256,6 +2412,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setmydefaultadministratorrights>Source</a>
    */
   public Boolean setMyDefaultAdministratorRights(SetMyDefaultAdministratorRightsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setMyDefaultAdministratorRights";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2280,6 +2438,8 @@ public final class BotApi {
    */
   public ChatAdministratorRights getMyDefaultAdministratorRights(
       GetMyDefaultAdministratorRightsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getMyDefaultAdministratorRights";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2303,6 +2463,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editmessagetext>Source</a>
    */
   public MessageOrBoolean editMessageText(EditMessageTextParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editMessageText";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2326,6 +2488,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editmessagecaption>Source</a>
    */
   public MessageOrBoolean editMessageCaption(EditMessageCaptionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editMessageCaption";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2353,6 +2517,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editmessagemedia>Source</a>
    */
   public MessageOrBoolean editMessageMedia(EditMessageMediaParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editMessageMedia";
 
     final var entity = buildExtendedMultipartEntity(params);
@@ -2378,6 +2544,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editmessagelivelocation>Source</a>
    */
   public MessageOrBoolean editMessageLiveLocation(EditMessageLiveLocationParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editMessageLiveLocation";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2402,6 +2570,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#stopmessagelivelocation>Source</a>
    */
   public MessageOrBoolean stopMessageLiveLocation(StopMessageLiveLocationParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "stopMessageLiveLocation";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2425,6 +2595,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#editmessagereplymarkup>Source</a>
    */
   public MessageOrBoolean editMessageReplyMarkup(EditMessageReplyMarkupParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "editMessageReplyMarkup";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2448,6 +2620,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#stoppoll>Source</a>
    */
   public Poll stopPoll(StopPollParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "stopPoll";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2491,6 +2665,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletemessage>Source</a>
    */
   public Boolean deleteMessage(DeleteMessageParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteMessage";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2514,6 +2690,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletemessages>Source</a>
    */
   public Boolean deleteMessages(DeleteMessagesParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteMessages";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2537,6 +2715,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendsticker>Source</a>
    */
   public Message sendSticker(SendStickerParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendSticker";
 
     final var entity = buildMultipartEntity(params);
@@ -2559,6 +2739,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getstickerset>Source</a>
    */
   public StickerSet getStickerSet(GetStickerSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getStickerSet";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2582,6 +2764,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getcustomemojistickers>Source</a>
    */
   public List<Sticker> getCustomEmojiStickers(GetCustomEmojiStickersParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getCustomEmojiStickers";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2606,6 +2790,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#uploadstickerfile>Source</a>
    */
   public File uploadStickerFile(UploadStickerFileParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "uploadStickerFile";
 
     final var entity = buildMultipartEntity(params);
@@ -2629,6 +2815,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#createnewstickerset>Source</a>
    */
   public Boolean createNewStickerSet(CreateNewStickerSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "createNewStickerSet";
 
     final var entity = buildExtendedMultipartEntity(params);
@@ -2654,6 +2842,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#addstickertoset>Source</a>
    */
   public Boolean addStickerToSet(AddStickerToSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "addStickerToSet";
 
     final var entity = buildExtendedMultipartEntity(params);
@@ -2677,6 +2867,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setstickerpositioninset>Source</a>
    */
   public Boolean setStickerPositionInSet(SetStickerPositionInSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setStickerPositionInSet";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2699,6 +2891,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletestickerfromset>Source</a>
    */
   public Boolean deleteStickerFromSet(DeleteStickerFromSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteStickerFromSet";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2722,6 +2916,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setstickeremojilist>Source</a>
    */
   public Boolean setStickerEmojiList(SetStickerEmojiListParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setStickerEmojiList";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2745,6 +2941,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setstickerkeywords>Source</a>
    */
   public Boolean setStickerKeywords(SetStickerKeywordsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setStickerKeywords";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2768,6 +2966,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setstickermaskposition>Source</a>
    */
   public Boolean setStickerMaskPosition(SetStickerMaskPositionParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setStickerMaskPosition";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2790,6 +2990,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setstickersettitle>Source</a>
    */
   public Boolean setStickerSetTitle(SetStickerSetTitleParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setStickerSetTitle";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2813,6 +3015,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setstickersetthumbnail>Source</a>
    */
   public Boolean setStickerSetThumbnail(SetStickerSetThumbnailParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setStickerSetThumbnail";
 
     final var entity = buildMultipartEntity(params);
@@ -2836,6 +3040,8 @@ public final class BotApi {
    */
   public Boolean setCustomEmojiStickerSetThumbnail(
       SetCustomEmojiStickerSetThumbnailParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setCustomEmojiStickerSetThumbnail";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2858,6 +3064,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#deletestickerset>Source</a>
    */
   public Boolean deleteStickerSet(DeleteStickerSetParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "deleteStickerSet";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2882,6 +3090,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#answerinlinequery>Source</a>
    */
   public Boolean answerInlineQuery(AnswerInlineQueryParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "answerInlineQuery";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2906,6 +3116,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#answerwebappquery>Source</a>
    */
   public SentWebAppMessage answerWebAppQuery(AnswerWebAppQueryParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "answerWebAppQuery";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2928,6 +3140,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendinvoice>Source</a>
    */
   public Message sendInvoice(SendInvoiceParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendInvoice";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2951,6 +3165,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#createinvoicelink>Source</a>
    */
   public String createInvoiceLink(CreateInvoiceLinkParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "createInvoiceLink";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -2975,6 +3191,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#answershippingquery>Source</a>
    */
   public Boolean answerShippingQuery(AnswerShippingQueryParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "answerShippingQuery";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -3000,6 +3218,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#answerprecheckoutquery>Source</a>
    */
   public Boolean answerPreCheckoutQuery(AnswerPreCheckoutQueryParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "answerPreCheckoutQuery";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -3029,6 +3249,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setpassportdataerrors>Source</a>
    */
   public Boolean setPassportDataErrors(SetPassportDataErrorsParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setPassportDataErrors";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -3051,6 +3273,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#sendgame>Source</a>
    */
   public Message sendGame(SendGameParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "sendGame";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -3076,6 +3300,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#setgamescore>Source</a>
    */
   public MessageOrBoolean setGameScore(SetGameScoreParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "setGameScore";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
@@ -3099,6 +3325,8 @@ public final class BotApi {
    * <p><a href=https://core.telegram.org/bots/api#getgamehighscores>Source</a>
    */
   public List<GameHighScore> getGameHighScores(GetGameHighScoresParameters params) {
+    TypeVerifier.verify(params);
+
     final var methodName = "getGameHighScores";
 
     final var entity = new StringEntity(gson.toJson(params), Charset.forName("UTF-8"));
