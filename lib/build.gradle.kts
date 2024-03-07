@@ -1,5 +1,5 @@
 plugins {
-  id("application")
+  `java-library`
   id("com.diffplug.spotless") version "6.20.0"
 }
 
@@ -24,8 +24,6 @@ java { toolchain { languageVersion.set(JavaLanguageVersion.of(17)) } }
 tasks.withType<Javadoc> { options.encoding = "UTF-8" }
 
 spotless { java { googleJavaFormat() } }
-
-application { mainClass.set("jarkz.tbot.App") }
 
 tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
 
