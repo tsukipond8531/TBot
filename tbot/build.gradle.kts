@@ -4,6 +4,8 @@ plugins {
   id("com.diffplug.spotless") version "6.20.0"
 }
 
+project.version = "0.0.1-alpha"
+
 publishing {
     repositories {
         maven {
