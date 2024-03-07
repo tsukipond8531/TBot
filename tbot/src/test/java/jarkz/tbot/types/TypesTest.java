@@ -111,7 +111,7 @@ public class TypesTest {
             MaybeInaccessibleMessage.class,
             TypeFactory.generate(Message.class, 0, 0),
             TypeFactory.generate(InaccessibleMessage.class, 0, 0))
-        .except(c -> c.isAnnotationPresent(TestContainer.class))
+        .except(c -> c.getName().endsWith("Builder") || c.isAnnotationPresent(TestContainer.class))
         .suppress(Warning.ALL_FIELDS_SHOULD_BE_USED, Warning.NONFINAL_FIELDS)
         .verify();
   }
@@ -131,6 +131,7 @@ public class TypesTest {
         .filter(
             c ->
                 !c.isInterface()
+                    && !c.getName().endsWith("Builder")
                     && c.getPackageName().equals(currentPackageName)
                     && !c.isAnnotationPresent(TestContainer.class))
         .forEach(c -> TypesTest.verifyClassByJsonSerialization(c, errMessage));

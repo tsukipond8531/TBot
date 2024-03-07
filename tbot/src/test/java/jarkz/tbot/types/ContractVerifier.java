@@ -103,7 +103,8 @@ public class ContractVerifier {
     reflections.get(Scanners.SubTypes.of(Object.class).asClass()).stream()
         .filter(
             c ->
-                !c.getPackage().isAnnotationPresent(Deserializer.class)
+                !c.getName().endsWith("Builder")
+                    && !c.getPackage().isAnnotationPresent(Deserializer.class)
                     && !c.getPackage().isAnnotationPresent(Serializer.class))
         .forEach(
             sourceClass -> {
