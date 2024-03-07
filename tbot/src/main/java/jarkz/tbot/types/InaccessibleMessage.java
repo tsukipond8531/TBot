@@ -7,6 +7,34 @@ import java.util.Objects;
 /** This object describes a message that was deleted or is otherwise inaccessible to the bot. */
 public final class InaccessibleMessage implements MaybeInaccessibleMessage {
 
+  public static final class Builder {
+
+    private InaccessibleMessage buildingType;
+
+    public Builder() {
+      buildingType = new InaccessibleMessage();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public InaccessibleMessage build() {
+      return buildingType;
+    }
+  }
+
   /** Chat the message belonged to */
   @NotNull public Chat chat;
 

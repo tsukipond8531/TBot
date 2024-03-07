@@ -11,6 +11,69 @@ import java.util.Objects;
  */
 public final class InlineQueryResultContact implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultContact buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultContact();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setPhoneNumber(String phoneNumber) {
+      buildingType.phoneNumber = phoneNumber;
+      return this;
+    }
+
+    public Builder setFirstName(String firstName) {
+      buildingType.firstName = firstName;
+      return this;
+    }
+
+    public Builder setLastName(String lastName) {
+      buildingType.lastName = lastName;
+      return this;
+    }
+
+    public Builder setVcard(String vcard) {
+      buildingType.vcard = vcard;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public Builder setThumbnailUrl(String thumbnailUrl) {
+      buildingType.thumbnailUrl = thumbnailUrl;
+      return this;
+    }
+
+    public Builder setThumbnailWidth(Integer thumbnailWidth) {
+      buildingType.thumbnailWidth = thumbnailWidth;
+      return this;
+    }
+
+    public Builder setThumbnailHeight(Integer thumbnailHeight) {
+      buildingType.thumbnailHeight = thumbnailHeight;
+      return this;
+    }
+
+    public InlineQueryResultContact build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "contact";
 
   /** Type of the result, must be contact */

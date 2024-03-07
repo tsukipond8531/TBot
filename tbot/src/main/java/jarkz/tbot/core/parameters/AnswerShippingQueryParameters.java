@@ -13,6 +13,39 @@ import java.util.Objects;
  */
 public final class AnswerShippingQueryParameters {
 
+  public static final class Builder {
+
+    private AnswerShippingQueryParameters buildingType;
+
+    public Builder() {
+      buildingType = new AnswerShippingQueryParameters();
+    }
+
+    public Builder setShippingQueryId(String shippingQueryId) {
+      buildingType.shippingQueryId = shippingQueryId;
+      return this;
+    }
+
+    public Builder setOk(boolean ok) {
+      buildingType.ok = ok;
+      return this;
+    }
+
+    public Builder setShippingOptions(List<ShippingOption> shippingOptions) {
+      buildingType.shippingOptions = shippingOptions;
+      return this;
+    }
+
+    public Builder setErrorMessage(String errorMessage) {
+      buildingType.errorMessage = errorMessage;
+      return this;
+    }
+
+    public AnswerShippingQueryParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the query to be answered */
   @NotNull
   @SerializedName("shipping_query_id")

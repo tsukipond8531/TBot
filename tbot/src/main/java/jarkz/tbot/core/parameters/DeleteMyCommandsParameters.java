@@ -10,6 +10,29 @@ import java.util.Objects;
  */
 public final class DeleteMyCommandsParameters {
 
+  public static final class Builder {
+
+    private DeleteMyCommandsParameters buildingType;
+
+    public Builder() {
+      buildingType = new DeleteMyCommandsParameters();
+    }
+
+    public Builder setScope(BotCommandScope scope) {
+      buildingType.scope = scope;
+      return this;
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public DeleteMyCommandsParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * A JSON-serialized object, describing scope of users for which the commands are relevant.
    * Defaults to BotCommandScopeDefault.

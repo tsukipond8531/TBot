@@ -9,6 +9,19 @@ import java.util.Objects;
  */
 public final class BotCommandScopeDefault implements BotCommandScope {
 
+  public static final class Builder {
+
+    private BotCommandScopeDefault buildingType;
+
+    public Builder() {
+      buildingType = new BotCommandScopeDefault();
+    }
+
+    public BotCommandScopeDefault build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "default";
 
   /** Scope type, must be default */

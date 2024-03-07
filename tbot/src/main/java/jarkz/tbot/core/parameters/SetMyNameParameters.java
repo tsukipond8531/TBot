@@ -6,6 +6,29 @@ import java.util.Objects;
 /** Use this method to change the bot's name. Returns True on success. */
 public final class SetMyNameParameters {
 
+  public static final class Builder {
+
+    private SetMyNameParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetMyNameParameters();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public SetMyNameParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given
    * language.

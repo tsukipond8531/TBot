@@ -14,6 +14,64 @@ import java.util.Objects;
  */
 public final class EditMessageLiveLocationParameters {
 
+  public static final class Builder {
+
+    private EditMessageLiveLocationParameters buildingType;
+
+    public Builder() {
+      buildingType = new EditMessageLiveLocationParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setHorizontalAccuracy(Float horizontalAccuracy) {
+      buildingType.horizontalAccuracy = horizontalAccuracy;
+      return this;
+    }
+
+    public Builder setHeading(Integer heading) {
+      buildingType.heading = heading;
+      return this;
+    }
+
+    public Builder setProximityAlertRadius(Integer proximityAlertRadius) {
+      buildingType.proximityAlertRadius = proximityAlertRadius;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public EditMessageLiveLocationParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Required if inline_message_id is not specified. Unique identifier for the target chat or
    * username of the target channel (in the format @channelusername)

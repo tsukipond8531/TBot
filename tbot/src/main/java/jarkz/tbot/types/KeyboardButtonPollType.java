@@ -8,6 +8,24 @@ import java.util.Objects;
  */
 public final class KeyboardButtonPollType {
 
+  public static final class Builder {
+
+    private KeyboardButtonPollType buildingType;
+
+    public Builder() {
+      buildingType = new KeyboardButtonPollType();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public KeyboardButtonPollType build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode. If
    * regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to

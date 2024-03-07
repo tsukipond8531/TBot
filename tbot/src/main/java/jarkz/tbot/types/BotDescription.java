@@ -6,6 +6,24 @@ import java.util.Objects;
 /** This object represents the bot's description. */
 public final class BotDescription {
 
+  public static final class Builder {
+
+    private BotDescription buildingType;
+
+    public Builder() {
+      buildingType = new BotDescription();
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public BotDescription build() {
+      return buildingType;
+    }
+  }
+
   /** The bot's description */
   @NotNull public String description;
 

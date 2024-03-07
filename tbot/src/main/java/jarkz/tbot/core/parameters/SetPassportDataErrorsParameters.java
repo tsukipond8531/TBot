@@ -18,6 +18,29 @@ import java.util.Objects;
  */
 public final class SetPassportDataErrorsParameters {
 
+  public static final class Builder {
+
+    private SetPassportDataErrorsParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetPassportDataErrorsParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setErrors(List<PassportElementError> errors) {
+      buildingType.errors = errors;
+      return this;
+    }
+
+    public SetPassportDataErrorsParameters build() {
+      return buildingType;
+    }
+  }
+
   /** User identifier */
   @NotNull
   @SerializedName("user_id")

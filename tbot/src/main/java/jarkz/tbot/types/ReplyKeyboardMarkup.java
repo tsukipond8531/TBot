@@ -11,6 +11,49 @@ import java.util.Objects;
  */
 public final class ReplyKeyboardMarkup implements ReplyMarkup {
 
+  public static final class Builder {
+
+    private ReplyKeyboardMarkup buildingType;
+
+    public Builder() {
+      buildingType = new ReplyKeyboardMarkup();
+    }
+
+    public Builder setKeyboard(List<List<KeyboardButton>> keyboard) {
+      buildingType.keyboard = keyboard;
+      return this;
+    }
+
+    public Builder setIsPersistent(Boolean isPersistent) {
+      buildingType.isPersistent = isPersistent;
+      return this;
+    }
+
+    public Builder setResizeKeyboard(Boolean resizeKeyboard) {
+      buildingType.resizeKeyboard = resizeKeyboard;
+      return this;
+    }
+
+    public Builder setOneTimeKeyboard(Boolean oneTimeKeyboard) {
+      buildingType.oneTimeKeyboard = oneTimeKeyboard;
+      return this;
+    }
+
+    public Builder setInputFieldPlaceholder(String inputFieldPlaceholder) {
+      buildingType.inputFieldPlaceholder = inputFieldPlaceholder;
+      return this;
+    }
+
+    public Builder setSelective(Boolean selective) {
+      buildingType.selective = selective;
+      return this;
+    }
+
+    public ReplyKeyboardMarkup build() {
+      return buildingType;
+    }
+  }
+
   /** Array of button rows, each represented by an Array of KeyboardButton objects */
   @NotNull public List<List<KeyboardButton>> keyboard;
 

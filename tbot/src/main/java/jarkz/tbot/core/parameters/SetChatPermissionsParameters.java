@@ -13,6 +13,34 @@ import java.util.Objects;
  */
 public final class SetChatPermissionsParameters {
 
+  public static final class Builder {
+
+    private SetChatPermissionsParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetChatPermissionsParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setPermissions(ChatPermissions permissions) {
+      buildingType.permissions = permissions;
+      return this;
+    }
+
+    public Builder setUseIndependentChatPermissions(Boolean useIndependentChatPermissions) {
+      buildingType.useIndependentChatPermissions = useIndependentChatPermissions;
+      return this;
+    }
+
+    public SetChatPermissionsParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
    * format @supergroupusername)

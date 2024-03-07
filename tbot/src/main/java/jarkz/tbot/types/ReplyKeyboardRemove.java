@@ -12,6 +12,29 @@ import java.util.Objects;
  */
 public final class ReplyKeyboardRemove implements ReplyMarkup {
 
+  public static final class Builder {
+
+    private ReplyKeyboardRemove buildingType;
+
+    public Builder() {
+      buildingType = new ReplyKeyboardRemove();
+    }
+
+    public Builder setRemoveKeyboard(boolean removeKeyboard) {
+      buildingType.removeKeyboard = removeKeyboard;
+      return this;
+    }
+
+    public Builder setSelective(Boolean selective) {
+      buildingType.selective = selective;
+      return this;
+    }
+
+    public ReplyKeyboardRemove build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Requests clients to remove the custom keyboard (user will not be able to summon this keyboard;
    * if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in

@@ -8,6 +8,54 @@ import java.util.Objects;
 /** This object represents a change of a reaction on a message performed by a user. */
 public final class MessageReactionUpdated {
 
+  public static final class Builder {
+
+    private MessageReactionUpdated buildingType;
+
+    public Builder() {
+      buildingType = new MessageReactionUpdated();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setActorChat(Chat actorChat) {
+      buildingType.actorChat = actorChat;
+      return this;
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setOldReaction(List<ReactionType> oldReaction) {
+      buildingType.oldReaction = oldReaction;
+      return this;
+    }
+
+    public Builder setNewReaction(List<ReactionType> newReaction) {
+      buildingType.newReaction = newReaction;
+      return this;
+    }
+
+    public MessageReactionUpdated build() {
+      return buildingType;
+    }
+  }
+
   /** The chat containing the message the user reacted to */
   @NotNull public Chat chat;
 

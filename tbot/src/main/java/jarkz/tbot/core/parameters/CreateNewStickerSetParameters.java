@@ -12,6 +12,54 @@ import java.util.Objects;
  */
 public final class CreateNewStickerSetParameters {
 
+  public static final class Builder {
+
+    private CreateNewStickerSetParameters buildingType;
+
+    public Builder() {
+      buildingType = new CreateNewStickerSetParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setStickers(List<InputSticker> stickers) {
+      buildingType.stickers = stickers;
+      return this;
+    }
+
+    public Builder setStickerFormat(String stickerFormat) {
+      buildingType.stickerFormat = stickerFormat;
+      return this;
+    }
+
+    public Builder setStickerType(String stickerType) {
+      buildingType.stickerType = stickerType;
+      return this;
+    }
+
+    public Builder setNeedsRepainting(Boolean needsRepainting) {
+      buildingType.needsRepainting = needsRepainting;
+      return this;
+    }
+
+    public CreateNewStickerSetParameters build() {
+      return buildingType;
+    }
+  }
+
   /** User identifier of created sticker set owner */
   @NotNull
   @SerializedName("user_id")

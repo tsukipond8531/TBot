@@ -6,6 +6,19 @@ import java.util.Objects;
 /** Represents the scope of bot commands, covering all group and supergroup chat administrators. */
 public final class BotCommandScopeAllChatAdministrators implements BotCommandScope {
 
+  public static final class Builder {
+
+    private BotCommandScopeAllChatAdministrators buildingType;
+
+    public Builder() {
+      buildingType = new BotCommandScopeAllChatAdministrators();
+    }
+
+    public BotCommandScopeAllChatAdministrators build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "all_chat_administrators";
 
   /** Scope type, must be all_chat_administrators */

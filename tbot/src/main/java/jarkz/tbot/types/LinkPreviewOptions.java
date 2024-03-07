@@ -6,6 +6,44 @@ import java.util.Objects;
 /** Describes the options used for link preview generation. */
 public final class LinkPreviewOptions {
 
+  public static final class Builder {
+
+    private LinkPreviewOptions buildingType;
+
+    public Builder() {
+      buildingType = new LinkPreviewOptions();
+    }
+
+    public Builder setIsDisabled(Boolean isDisabled) {
+      buildingType.isDisabled = isDisabled;
+      return this;
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setPreferSmallMedia(Boolean preferSmallMedia) {
+      buildingType.preferSmallMedia = preferSmallMedia;
+      return this;
+    }
+
+    public Builder setPreferLargeMedia(Boolean preferLargeMedia) {
+      buildingType.preferLargeMedia = preferLargeMedia;
+      return this;
+    }
+
+    public Builder setShowAboveText(Boolean showAboveText) {
+      buildingType.showAboveText = showAboveText;
+      return this;
+    }
+
+    public LinkPreviewOptions build() {
+      return buildingType;
+    }
+  }
+
   /** Optional. True, if the link preview is disabled */
   @SerializedName("is_disabled")
   public Boolean isDisabled;

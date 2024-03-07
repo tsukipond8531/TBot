@@ -10,6 +10,29 @@ import java.util.Objects;
  */
 public final class SetStickerKeywordsParameters {
 
+  public static final class Builder {
+
+    private SetStickerKeywordsParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetStickerKeywordsParameters();
+    }
+
+    public Builder setSticker(String sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setKeywords(List<String> keywords) {
+      buildingType.keywords = keywords;
+      return this;
+    }
+
+    public SetStickerKeywordsParameters build() {
+      return buildingType;
+    }
+  }
+
   /** File identifier of the sticker */
   @NotNull public String sticker;
 

@@ -7,6 +7,49 @@ import java.util.Objects;
 /** This object represents a video message (available in Telegram apps as of v.4.0). */
 public final class VideoNote {
 
+  public static final class Builder {
+
+    private VideoNote buildingType;
+
+    public Builder() {
+      buildingType = new VideoNote();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public Builder setFileUniqueId(String fileUniqueId) {
+      buildingType.fileUniqueId = fileUniqueId;
+      return this;
+    }
+
+    public Builder setLength(int length) {
+      buildingType.length = length;
+      return this;
+    }
+
+    public Builder setDuration(int duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setThumbnail(PhotoSize thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setFileSize(Integer fileSize) {
+      buildingType.fileSize = fileSize;
+      return this;
+    }
+
+    public VideoNote build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier for this file, which can be used to download or reuse the file */
   @NotNull
   @SerializedName("file_id")

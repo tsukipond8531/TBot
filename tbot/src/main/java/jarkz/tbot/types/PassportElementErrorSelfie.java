@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class PassportElementErrorSelfie implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorSelfie buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorSelfie();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setFileHash(String fileHash) {
+      buildingType.fileHash = fileHash;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorSelfie build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "selfie";
 
   /** Error source, must be selfie */

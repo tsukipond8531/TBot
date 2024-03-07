@@ -9,6 +9,34 @@ import java.util.Objects;
  */
 public final class ProximityAlertTriggered {
 
+  public static final class Builder {
+
+    private ProximityAlertTriggered buildingType;
+
+    public Builder() {
+      buildingType = new ProximityAlertTriggered();
+    }
+
+    public Builder setTraveler(User traveler) {
+      buildingType.traveler = traveler;
+      return this;
+    }
+
+    public Builder setWatcher(User watcher) {
+      buildingType.watcher = watcher;
+      return this;
+    }
+
+    public Builder setDistance(int distance) {
+      buildingType.distance = distance;
+      return this;
+    }
+
+    public ProximityAlertTriggered build() {
+      return buildingType;
+    }
+  }
+
   /** User that triggered the alert */
   @NotNull public User traveler;
 

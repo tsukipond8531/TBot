@@ -12,6 +12,64 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedDocument implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultCachedDocument buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultCachedDocument();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setDocumentFileId(String documentFileId) {
+      buildingType.documentFileId = documentFileId;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultCachedDocument build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "document";
 
   /** Type of the result, must be document */

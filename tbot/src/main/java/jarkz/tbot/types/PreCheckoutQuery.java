@@ -7,6 +7,54 @@ import java.util.Objects;
 /** This object contains information about an incoming pre-checkout query. */
 public final class PreCheckoutQuery {
 
+  public static final class Builder {
+
+    private PreCheckoutQuery buildingType;
+
+    public Builder() {
+      buildingType = new PreCheckoutQuery();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setCurrency(String currency) {
+      buildingType.currency = currency;
+      return this;
+    }
+
+    public Builder setTotalAmount(int totalAmount) {
+      buildingType.totalAmount = totalAmount;
+      return this;
+    }
+
+    public Builder setInvoicePayload(String invoicePayload) {
+      buildingType.invoicePayload = invoicePayload;
+      return this;
+    }
+
+    public Builder setShippingOptionId(String shippingOptionId) {
+      buildingType.shippingOptionId = shippingOptionId;
+      return this;
+    }
+
+    public Builder setOrderInfo(OrderInfo orderInfo) {
+      buildingType.orderInfo = orderInfo;
+      return this;
+    }
+
+    public PreCheckoutQuery build() {
+      return buildingType;
+    }
+  }
+
   /** Unique query identifier */
   @NotNull public String id;
 

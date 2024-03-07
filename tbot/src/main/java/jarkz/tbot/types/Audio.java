@@ -7,6 +7,64 @@ import java.util.Objects;
 /** This object represents an audio file to be treated as music by the Telegram clients. */
 public final class Audio {
 
+  public static final class Builder {
+
+    private Audio buildingType;
+
+    public Builder() {
+      buildingType = new Audio();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public Builder setFileUniqueId(String fileUniqueId) {
+      buildingType.fileUniqueId = fileUniqueId;
+      return this;
+    }
+
+    public Builder setDuration(int duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setPerformer(String performer) {
+      buildingType.performer = performer;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setFileName(String fileName) {
+      buildingType.fileName = fileName;
+      return this;
+    }
+
+    public Builder setMimeType(String mimeType) {
+      buildingType.mimeType = mimeType;
+      return this;
+    }
+
+    public Builder setFileSize(Long fileSize) {
+      buildingType.fileSize = fileSize;
+      return this;
+    }
+
+    public Builder setThumbnail(PhotoSize thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Audio build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier for this file, which can be used to download or reuse the file */
   @NotNull
   @SerializedName("file_id")

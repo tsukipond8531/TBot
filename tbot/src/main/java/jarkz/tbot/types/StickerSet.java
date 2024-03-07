@@ -8,6 +8,54 @@ import java.util.Objects;
 /** This object represents a sticker set. */
 public final class StickerSet {
 
+  public static final class Builder {
+
+    private StickerSet buildingType;
+
+    public Builder() {
+      buildingType = new StickerSet();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setStickerType(String stickerType) {
+      buildingType.stickerType = stickerType;
+      return this;
+    }
+
+    public Builder setAnimated(boolean isAnimated) {
+      buildingType.isAnimated = isAnimated;
+      return this;
+    }
+
+    public Builder setVideo(boolean isVideo) {
+      buildingType.isVideo = isVideo;
+      return this;
+    }
+
+    public Builder setStickers(List<Sticker> stickers) {
+      buildingType.stickers = stickers;
+      return this;
+    }
+
+    public Builder setThumbnail(PhotoSize thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public StickerSet build() {
+      return buildingType;
+    }
+  }
+
   /** Sticker set name */
   @NotNull public String name;
 

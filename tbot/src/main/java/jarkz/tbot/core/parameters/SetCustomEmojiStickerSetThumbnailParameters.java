@@ -7,6 +7,29 @@ import java.util.Objects;
 /** Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success. */
 public final class SetCustomEmojiStickerSetThumbnailParameters {
 
+  public static final class Builder {
+
+    private SetCustomEmojiStickerSetThumbnailParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetCustomEmojiStickerSetThumbnailParameters();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setCustomEmojiId(String customEmojiId) {
+      buildingType.customEmojiId = customEmojiId;
+      return this;
+    }
+
+    public SetCustomEmojiStickerSetThumbnailParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Sticker set name */
   @NotNull public String name;
 

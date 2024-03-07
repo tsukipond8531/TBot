@@ -6,6 +6,24 @@ import java.util.Objects;
 /** Represents a chat member that has no additional privileges or restrictions. */
 public final class ChatMemberMember implements ChatMember {
 
+  public static final class Builder {
+
+    private ChatMemberMember buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberMember();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public ChatMemberMember build() {
+      return buildingType;
+    }
+  }
+
   public static final String STATUS = "member";
 
   /** The member's status in the chat, always "member" */

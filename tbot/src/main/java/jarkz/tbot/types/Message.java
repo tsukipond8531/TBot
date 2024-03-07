@@ -8,6 +8,407 @@ import java.util.Objects;
 /** This object represents a message. */
 public final class Message implements MaybeInaccessibleMessage {
 
+  public static final class Builder {
+
+    private Message buildingType;
+
+    public Builder() {
+      buildingType = new Message();
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setSenderChat(Chat senderChat) {
+      buildingType.senderChat = senderChat;
+      return this;
+    }
+
+    public Builder setSenderBoostCount(Integer senderBoostCount) {
+      buildingType.senderBoostCount = senderBoostCount;
+      return this;
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setForwardOrigin(MessageOrigin forwardOrigin) {
+      buildingType.forwardOrigin = forwardOrigin;
+      return this;
+    }
+
+    public Builder setIsTopicMessage(Boolean isTopicMessage) {
+      buildingType.isTopicMessage = isTopicMessage;
+      return this;
+    }
+
+    public Builder setIsAutomaticForward(Boolean isAutomaticForward) {
+      buildingType.isAutomaticForward = isAutomaticForward;
+      return this;
+    }
+
+    public Builder setReplyToMessage(Message replyToMessage) {
+      buildingType.replyToMessage = replyToMessage;
+      return this;
+    }
+
+    public Builder setExternalReply(ExternalReplyInfo externalReply) {
+      buildingType.externalReply = externalReply;
+      return this;
+    }
+
+    public Builder setQuote(TextQuote quote) {
+      buildingType.quote = quote;
+      return this;
+    }
+
+    public Builder setReplyToStory(Story replyToStory) {
+      buildingType.replyToStory = replyToStory;
+      return this;
+    }
+
+    public Builder setViaBot(User viaBot) {
+      buildingType.viaBot = viaBot;
+      return this;
+    }
+
+    public Builder setEditDate(Integer editDate) {
+      buildingType.editDate = editDate;
+      return this;
+    }
+
+    public Builder setHasProtectedContent(Boolean hasProtectedContent) {
+      buildingType.hasProtectedContent = hasProtectedContent;
+      return this;
+    }
+
+    public Builder setMediaGroupId(String mediaGroupId) {
+      buildingType.mediaGroupId = mediaGroupId;
+      return this;
+    }
+
+    public Builder setAuthorSignature(String authorSignature) {
+      buildingType.authorSignature = authorSignature;
+      return this;
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setEntities(List<MessageEntity> entities) {
+      buildingType.entities = entities;
+      return this;
+    }
+
+    public Builder setLinkPreviewOptions(LinkPreviewOptions linkPreviewOptions) {
+      buildingType.linkPreviewOptions = linkPreviewOptions;
+      return this;
+    }
+
+    public Builder setAnimation(Animation animation) {
+      buildingType.animation = animation;
+      return this;
+    }
+
+    public Builder setAudio(Audio audio) {
+      buildingType.audio = audio;
+      return this;
+    }
+
+    public Builder setDocument(Document document) {
+      buildingType.document = document;
+      return this;
+    }
+
+    public Builder setPhoto(List<PhotoSize> photo) {
+      buildingType.photo = photo;
+      return this;
+    }
+
+    public Builder setSticker(Sticker sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setStory(Story story) {
+      buildingType.story = story;
+      return this;
+    }
+
+    public Builder setVideo(Video video) {
+      buildingType.video = video;
+      return this;
+    }
+
+    public Builder setVideoNote(VideoNote videoNote) {
+      buildingType.videoNote = videoNote;
+      return this;
+    }
+
+    public Builder setVoice(Voice voice) {
+      buildingType.voice = voice;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setHasMediaSpoiler(Boolean hasMediaSpoiler) {
+      buildingType.hasMediaSpoiler = hasMediaSpoiler;
+      return this;
+    }
+
+    public Builder setContact(Contact contact) {
+      buildingType.contact = contact;
+      return this;
+    }
+
+    public Builder setDice(Dice dice) {
+      buildingType.dice = dice;
+      return this;
+    }
+
+    public Builder setGame(Game game) {
+      buildingType.game = game;
+      return this;
+    }
+
+    public Builder setPoll(Poll poll) {
+      buildingType.poll = poll;
+      return this;
+    }
+
+    public Builder setVenue(Venue venue) {
+      buildingType.venue = venue;
+      return this;
+    }
+
+    public Builder setLocation(Location location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public Builder setNewChatMembers(List<User> newChatMembers) {
+      buildingType.newChatMembers = newChatMembers;
+      return this;
+    }
+
+    public Builder setLeftChatMember(User leftChatMember) {
+      buildingType.leftChatMember = leftChatMember;
+      return this;
+    }
+
+    public Builder setNewChatTitle(String newChatTitle) {
+      buildingType.newChatTitle = newChatTitle;
+      return this;
+    }
+
+    public Builder setNewChatPhoto(List<PhotoSize> newChatPhoto) {
+      buildingType.newChatPhoto = newChatPhoto;
+      return this;
+    }
+
+    public Builder setDeleteChatPhoto(Boolean deleteChatPhoto) {
+      buildingType.deleteChatPhoto = deleteChatPhoto;
+      return this;
+    }
+
+    public Builder setGroupChatCreated(Boolean groupChatCreated) {
+      buildingType.groupChatCreated = groupChatCreated;
+      return this;
+    }
+
+    public Builder setSupergroupChatCreated(Boolean supergroupChatCreated) {
+      buildingType.supergroupChatCreated = supergroupChatCreated;
+      return this;
+    }
+
+    public Builder setChannelChatCreated(Boolean channelChatCreated) {
+      buildingType.channelChatCreated = channelChatCreated;
+      return this;
+    }
+
+    public Builder setMessageAutoDeleteTimerChanged(
+        MessageAutoDeleteTimerChanged messageAutoDeleteTimerChanged) {
+      buildingType.messageAutoDeleteTimerChanged = messageAutoDeleteTimerChanged;
+      return this;
+    }
+
+    public Builder setMigrateToChatId(Long migrateToChatId) {
+      buildingType.migrateToChatId = migrateToChatId;
+      return this;
+    }
+
+    public Builder setMigrateFromChatId(Long migrateFromChatId) {
+      buildingType.migrateFromChatId = migrateFromChatId;
+      return this;
+    }
+
+    public Builder setPinnedMessage(MaybeInaccessibleMessage pinnedMessage) {
+      buildingType.pinnedMessage = pinnedMessage;
+      return this;
+    }
+
+    public Builder setInvoice(Invoice invoice) {
+      buildingType.invoice = invoice;
+      return this;
+    }
+
+    public Builder setSuccessfulPayment(SuccessfulPayment successfulPayment) {
+      buildingType.successfulPayment = successfulPayment;
+      return this;
+    }
+
+    public Builder setUsersShared(UsersShared usersShared) {
+      buildingType.usersShared = usersShared;
+      return this;
+    }
+
+    public Builder setChatShared(ChatShared chatShared) {
+      buildingType.chatShared = chatShared;
+      return this;
+    }
+
+    public Builder setConnectedWebsite(String connectedWebsite) {
+      buildingType.connectedWebsite = connectedWebsite;
+      return this;
+    }
+
+    public Builder setWriteAccessAllowed(WriteAccessAllowed writeAccessAllowed) {
+      buildingType.writeAccessAllowed = writeAccessAllowed;
+      return this;
+    }
+
+    public Builder setPassportData(PassportData passportData) {
+      buildingType.passportData = passportData;
+      return this;
+    }
+
+    public Builder setProximityAlertTriggered(ProximityAlertTriggered proximityAlertTriggered) {
+      buildingType.proximityAlertTriggered = proximityAlertTriggered;
+      return this;
+    }
+
+    public Builder setBoostAdded(ChatBoostAdded boostAdded) {
+      buildingType.boostAdded = boostAdded;
+      return this;
+    }
+
+    public Builder setForumTopicCreated(ForumTopicCreated forumTopicCreated) {
+      buildingType.forumTopicCreated = forumTopicCreated;
+      return this;
+    }
+
+    public Builder setForumTopicEdited(ForumTopicEdited forumTopicEdited) {
+      buildingType.forumTopicEdited = forumTopicEdited;
+      return this;
+    }
+
+    public Builder setForumTopicClosed(ForumTopicClosed forumTopicClosed) {
+      buildingType.forumTopicClosed = forumTopicClosed;
+      return this;
+    }
+
+    public Builder setForumTopicReopened(ForumTopicReopened forumTopicReopened) {
+      buildingType.forumTopicReopened = forumTopicReopened;
+      return this;
+    }
+
+    public Builder setGeneralForumTopicHidden(GeneralForumTopicHidden generalForumTopicHidden) {
+      buildingType.generalForumTopicHidden = generalForumTopicHidden;
+      return this;
+    }
+
+    public Builder setGeneralForumTopicUnhidden(
+        GeneralForumTopicUnhidden generalForumTopicUnhidden) {
+      buildingType.generalForumTopicUnhidden = generalForumTopicUnhidden;
+      return this;
+    }
+
+    public Builder setGiveawayCreated(GiveawayCreated giveawayCreated) {
+      buildingType.giveawayCreated = giveawayCreated;
+      return this;
+    }
+
+    public Builder setGiveaway(Giveaway giveaway) {
+      buildingType.giveaway = giveaway;
+      return this;
+    }
+
+    public Builder setGiveawayWinners(GiveawayWinners giveawayWinners) {
+      buildingType.giveawayWinners = giveawayWinners;
+      return this;
+    }
+
+    public Builder setGiveawayCompleted(GiveawayCompleted giveawayCompleted) {
+      buildingType.giveawayCompleted = giveawayCompleted;
+      return this;
+    }
+
+    public Builder setVideoChatScheduled(VideoChatScheduled videoChatScheduled) {
+      buildingType.videoChatScheduled = videoChatScheduled;
+      return this;
+    }
+
+    public Builder setVideoChatStarted(VideoChatStarted videoChatStarted) {
+      buildingType.videoChatStarted = videoChatStarted;
+      return this;
+    }
+
+    public Builder setVideoChatEnded(VideoChatEnded videoChatEnded) {
+      buildingType.videoChatEnded = videoChatEnded;
+      return this;
+    }
+
+    public Builder setVideoChatParticipantsInvited(
+        VideoChatParticipantsInvited videoChatParticipantsInvited) {
+      buildingType.videoChatParticipantsInvited = videoChatParticipantsInvited;
+      return this;
+    }
+
+    public Builder setWebAppData(WebAppData webAppData) {
+      buildingType.webAppData = webAppData;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Message build() {
+      return buildingType;
+    }
+  }
+
   /** Unique message identifier inside this chat */
   @NotNull
   @SerializedName("message_id")

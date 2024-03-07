@@ -7,6 +7,94 @@ import java.util.Objects;
 /** This object represents a sticker. */
 public final class Sticker {
 
+  public static final class Builder {
+
+    private Sticker buildingType;
+
+    public Builder() {
+      buildingType = new Sticker();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public Builder setFileUniqueId(String fileUniqueId) {
+      buildingType.fileUniqueId = fileUniqueId;
+      return this;
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setWidth(int width) {
+      buildingType.width = width;
+      return this;
+    }
+
+    public Builder setHeight(int height) {
+      buildingType.height = height;
+      return this;
+    }
+
+    public Builder setAnimated(boolean isAnimated) {
+      buildingType.isAnimated = isAnimated;
+      return this;
+    }
+
+    public Builder setVideo(boolean isVideo) {
+      buildingType.isVideo = isVideo;
+      return this;
+    }
+
+    public Builder setThumbnail(PhotoSize thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setEmoji(String emoji) {
+      buildingType.emoji = emoji;
+      return this;
+    }
+
+    public Builder setSetName(String setName) {
+      buildingType.setName = setName;
+      return this;
+    }
+
+    public Builder setPremiumAnimation(File premiumAnimation) {
+      buildingType.premiumAnimation = premiumAnimation;
+      return this;
+    }
+
+    public Builder setMaskPosition(MaskPosition maskPosition) {
+      buildingType.maskPosition = maskPosition;
+      return this;
+    }
+
+    public Builder setCustomEmojiId(String customEmojiId) {
+      buildingType.customEmojiId = customEmojiId;
+      return this;
+    }
+
+    public Builder setNeedsRepainting(Boolean needsRepainting) {
+      buildingType.needsRepainting = needsRepainting;
+      return this;
+    }
+
+    public Builder setFileSize(Integer fileSize) {
+      buildingType.fileSize = fileSize;
+      return this;
+    }
+
+    public Sticker build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier for this file, which can be used to download or reuse the file */
   @NotNull
   @SerializedName("file_id")

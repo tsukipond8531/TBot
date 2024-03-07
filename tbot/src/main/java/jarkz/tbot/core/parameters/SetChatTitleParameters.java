@@ -12,6 +12,29 @@ import java.util.Objects;
  */
 public final class SetChatTitleParameters {
 
+  public static final class Builder {
+
+    private SetChatTitleParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetChatTitleParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public SetChatTitleParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

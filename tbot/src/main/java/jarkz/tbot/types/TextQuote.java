@@ -11,6 +11,39 @@ import java.util.Objects;
  */
 public final class TextQuote {
 
+  public static final class Builder {
+
+    private TextQuote buildingType;
+
+    public Builder() {
+      buildingType = new TextQuote();
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setEntities(List<MessageEntity> entities) {
+      buildingType.entities = entities;
+      return this;
+    }
+
+    public Builder setPosition(int position) {
+      buildingType.position = position;
+      return this;
+    }
+
+    public Builder setIsManual(Boolean isManual) {
+      buildingType.isManual = isManual;
+      return this;
+    }
+
+    public TextQuote build() {
+      return buildingType;
+    }
+  }
+
   /** Text of the quoted part of a message that is replied to by the given message */
   @NotNull public String text;
 

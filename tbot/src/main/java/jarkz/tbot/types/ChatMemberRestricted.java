@@ -7,6 +7,104 @@ import java.util.Objects;
 /** Represents a chat member that is under certain restrictions in the chat. Supergroups only. */
 public final class ChatMemberRestricted implements ChatMember {
 
+  public static final class Builder {
+
+    private ChatMemberRestricted buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberRestricted();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setMember(boolean isMember) {
+      buildingType.isMember = isMember;
+      return this;
+    }
+
+    public Builder setCanSendMessages(boolean canSendMessages) {
+      buildingType.canSendMessages = canSendMessages;
+      return this;
+    }
+
+    public Builder setCanSendAudios(boolean canSendAudios) {
+      buildingType.canSendAudios = canSendAudios;
+      return this;
+    }
+
+    public Builder setCanSendDocuments(boolean canSendDocuments) {
+      buildingType.canSendDocuments = canSendDocuments;
+      return this;
+    }
+
+    public Builder setCanSendPhotos(boolean canSendPhotos) {
+      buildingType.canSendPhotos = canSendPhotos;
+      return this;
+    }
+
+    public Builder setCanSendVideos(boolean canSendVideos) {
+      buildingType.canSendVideos = canSendVideos;
+      return this;
+    }
+
+    public Builder setCanSendVideoNotes(boolean canSendVideoNotes) {
+      buildingType.canSendVideoNotes = canSendVideoNotes;
+      return this;
+    }
+
+    public Builder setCanSendVoiceNotes(boolean canSendVoiceNotes) {
+      buildingType.canSendVoiceNotes = canSendVoiceNotes;
+      return this;
+    }
+
+    public Builder setCanSendPolls(boolean canSendPolls) {
+      buildingType.canSendPolls = canSendPolls;
+      return this;
+    }
+
+    public Builder setCanSendOtherMessages(boolean canSendOtherMessages) {
+      buildingType.canSendOtherMessages = canSendOtherMessages;
+      return this;
+    }
+
+    public Builder setCanAddWebPagePreviews(boolean canAddWebPagePreviews) {
+      buildingType.canAddWebPagePreviews = canAddWebPagePreviews;
+      return this;
+    }
+
+    public Builder setCanChangeInfo(boolean canChangeInfo) {
+      buildingType.canChangeInfo = canChangeInfo;
+      return this;
+    }
+
+    public Builder setCanInviteUsers(boolean canInviteUsers) {
+      buildingType.canInviteUsers = canInviteUsers;
+      return this;
+    }
+
+    public Builder setCanPinMessages(boolean canPinMessages) {
+      buildingType.canPinMessages = canPinMessages;
+      return this;
+    }
+
+    public Builder setCanManageTopics(boolean canManageTopics) {
+      buildingType.canManageTopics = canManageTopics;
+      return this;
+    }
+
+    public Builder setUntilDate(int untilDate) {
+      buildingType.untilDate = untilDate;
+      return this;
+    }
+
+    public ChatMemberRestricted build() {
+      return buildingType;
+    }
+  }
+
   public static final String STATUS = "restricted";
 
   /** The member's status in the chat, always "restricted" */

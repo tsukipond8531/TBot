@@ -6,6 +6,39 @@ import java.util.Objects;
 /** This object represents information about an order. */
 public final class OrderInfo {
 
+  public static final class Builder {
+
+    private OrderInfo buildingType;
+
+    public Builder() {
+      buildingType = new OrderInfo();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setPhoneNumber(String phoneNumber) {
+      buildingType.phoneNumber = phoneNumber;
+      return this;
+    }
+
+    public Builder setEmail(String email) {
+      buildingType.email = email;
+      return this;
+    }
+
+    public Builder setShippingAddress(ShippingAddress shippingAddress) {
+      buildingType.shippingAddress = shippingAddress;
+      return this;
+    }
+
+    public OrderInfo build() {
+      return buildingType;
+    }
+  }
+
   /** Optional. User name */
   public String name;
 

@@ -11,6 +11,49 @@ import java.util.Objects;
  */
 public final class Game {
 
+  public static final class Builder {
+
+    private Game buildingType;
+
+    public Builder() {
+      buildingType = new Game();
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setPhoto(List<PhotoSize> photo) {
+      buildingType.photo = photo;
+      return this;
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setTextEntities(List<MessageEntity> textEntities) {
+      buildingType.textEntities = textEntities;
+      return this;
+    }
+
+    public Builder setAnimation(Animation animation) {
+      buildingType.animation = animation;
+      return this;
+    }
+
+    public Game build() {
+      return buildingType;
+    }
+  }
+
   /** Title of the game */
   @NotNull public String title;
 

@@ -13,6 +13,34 @@ import java.util.Objects;
  */
 public final class SetMyCommandsParameters {
 
+  public static final class Builder {
+
+    private SetMyCommandsParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetMyCommandsParameters();
+    }
+
+    public Builder setCommands(List<BotCommand> commands) {
+      buildingType.commands = commands;
+      return this;
+    }
+
+    public Builder setScope(BotCommandScope scope) {
+      buildingType.scope = scope;
+      return this;
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public SetMyCommandsParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100
    * commands can be specified.

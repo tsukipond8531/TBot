@@ -14,6 +14,49 @@ import java.util.Objects;
  */
 public final class ForwardMessagesParameters {
 
+  public static final class Builder {
+
+    private ForwardMessagesParameters buildingType;
+
+    public Builder() {
+      buildingType = new ForwardMessagesParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setFromChatId(Id fromChatId) {
+      buildingType.fromChatId = fromChatId;
+      return this;
+    }
+
+    public Builder setMessageIds(List<Integer> messageIds) {
+      buildingType.messageIds = messageIds;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public ForwardMessagesParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

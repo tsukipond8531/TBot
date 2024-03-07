@@ -14,6 +14,49 @@ import java.util.Objects;
  */
 public final class AnswerInlineQueryParameters {
 
+  public static final class Builder {
+
+    private AnswerInlineQueryParameters buildingType;
+
+    public Builder() {
+      buildingType = new AnswerInlineQueryParameters();
+    }
+
+    public Builder setInlineQueryId(String inlineQueryId) {
+      buildingType.inlineQueryId = inlineQueryId;
+      return this;
+    }
+
+    public Builder setResults(List<InlineQueryResult> results) {
+      buildingType.results = results;
+      return this;
+    }
+
+    public Builder setCacheTime(Integer cacheTime) {
+      buildingType.cacheTime = cacheTime;
+      return this;
+    }
+
+    public Builder setIsPersonal(Boolean isPersonal) {
+      buildingType.isPersonal = isPersonal;
+      return this;
+    }
+
+    public Builder setNextOffset(String nextOffset) {
+      buildingType.nextOffset = nextOffset;
+      return this;
+    }
+
+    public Builder setButton(InlineQueryResultsButton button) {
+      buildingType.button = button;
+      return this;
+    }
+
+    public AnswerInlineQueryParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the answered query */
   @NotNull
   @SerializedName("inline_query_id")

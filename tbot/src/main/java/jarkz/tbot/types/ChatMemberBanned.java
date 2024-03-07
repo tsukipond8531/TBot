@@ -10,6 +10,29 @@ import java.util.Objects;
  */
 public final class ChatMemberBanned implements ChatMember {
 
+  public static final class Builder {
+
+    private ChatMemberBanned buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberBanned();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setUntilDate(int untilDate) {
+      buildingType.untilDate = untilDate;
+      return this;
+    }
+
+    public ChatMemberBanned build() {
+      return buildingType;
+    }
+  }
+
   public static final String STATUS = "kicked";
 
   /** The member's status in the chat, always "kicked" */

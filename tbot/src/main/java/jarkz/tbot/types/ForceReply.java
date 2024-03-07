@@ -12,6 +12,34 @@ import java.util.Objects;
  */
 public final class ForceReply implements ReplyMarkup {
 
+  public static final class Builder {
+
+    private ForceReply buildingType;
+
+    public Builder() {
+      buildingType = new ForceReply();
+    }
+
+    public Builder setForceReply(boolean forceReply) {
+      buildingType.forceReply = forceReply;
+      return this;
+    }
+
+    public Builder setInputFieldPlaceholder(String inputFieldPlaceholder) {
+      buildingType.inputFieldPlaceholder = inputFieldPlaceholder;
+      return this;
+    }
+
+    public Builder setSelective(Boolean selective) {
+      buildingType.selective = selective;
+      return this;
+    }
+
+    public ForceReply build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Shows reply interface to the user, as if they manually selected the bot's message and tapped
    * 'Reply'

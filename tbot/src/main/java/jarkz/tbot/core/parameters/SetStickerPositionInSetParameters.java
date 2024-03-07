@@ -9,6 +9,29 @@ import java.util.Objects;
  */
 public final class SetStickerPositionInSetParameters {
 
+  public static final class Builder {
+
+    private SetStickerPositionInSetParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetStickerPositionInSetParameters();
+    }
+
+    public Builder setSticker(String sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setPosition(int position) {
+      buildingType.position = position;
+      return this;
+    }
+
+    public SetStickerPositionInSetParameters build() {
+      return buildingType;
+    }
+  }
+
   /** File identifier of the sticker */
   @NotNull public String sticker;
 

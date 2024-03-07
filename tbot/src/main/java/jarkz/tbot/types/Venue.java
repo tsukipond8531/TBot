@@ -7,6 +7,54 @@ import java.util.Objects;
 /** This object represents a venue. */
 public final class Venue {
 
+  public static final class Builder {
+
+    private Venue buildingType;
+
+    public Builder() {
+      buildingType = new Venue();
+    }
+
+    public Builder setLocation(Location location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setAddress(String address) {
+      buildingType.address = address;
+      return this;
+    }
+
+    public Builder setFoursquareId(String foursquareId) {
+      buildingType.foursquareId = foursquareId;
+      return this;
+    }
+
+    public Builder setFoursquareType(String foursquareType) {
+      buildingType.foursquareType = foursquareType;
+      return this;
+    }
+
+    public Builder setGooglePlaceId(String googlePlaceId) {
+      buildingType.googlePlaceId = googlePlaceId;
+      return this;
+    }
+
+    public Builder setGooglePlaceType(String googlePlaceType) {
+      buildingType.googlePlaceType = googlePlaceType;
+      return this;
+    }
+
+    public Venue build() {
+      return buildingType;
+    }
+  }
+
   /** Venue location. Can't be a live location */
   @NotNull public Location location;
 

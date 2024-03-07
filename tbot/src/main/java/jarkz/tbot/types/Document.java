@@ -7,6 +7,49 @@ import java.util.Objects;
 /** This object represents a general file (as opposed to photos, voice messages and audio files). */
 public final class Document {
 
+  public static final class Builder {
+
+    private Document buildingType;
+
+    public Builder() {
+      buildingType = new Document();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public Builder setFileUniqueId(String fileUniqueId) {
+      buildingType.fileUniqueId = fileUniqueId;
+      return this;
+    }
+
+    public Builder setThumbnail(PhotoSize thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setFileName(String fileName) {
+      buildingType.fileName = fileName;
+      return this;
+    }
+
+    public Builder setMimeType(String mimeType) {
+      buildingType.mimeType = mimeType;
+      return this;
+    }
+
+    public Builder setFileSize(Long fileSize) {
+      buildingType.fileSize = fileSize;
+      return this;
+    }
+
+    public Document build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier for this file, which can be used to download or reuse the file */
   @NotNull
   @SerializedName("file_id")

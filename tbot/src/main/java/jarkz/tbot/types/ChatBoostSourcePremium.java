@@ -9,6 +9,24 @@ import java.util.Objects;
  */
 public final class ChatBoostSourcePremium implements ChatBoostSource {
 
+  public static final class Builder {
+
+    private ChatBoostSourcePremium buildingType;
+
+    public Builder() {
+      buildingType = new ChatBoostSourcePremium();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public ChatBoostSourcePremium build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "premium";
 
   /** Source of the boost, always "premium" */

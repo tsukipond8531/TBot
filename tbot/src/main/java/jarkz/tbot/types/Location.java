@@ -7,6 +7,49 @@ import java.util.Objects;
 /** This object represents a point on the map. */
 public final class Location {
 
+  public static final class Builder {
+
+    private Location buildingType;
+
+    public Builder() {
+      buildingType = new Location();
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setHorizontalAccuracy(Float horizontalAccuracy) {
+      buildingType.horizontalAccuracy = horizontalAccuracy;
+      return this;
+    }
+
+    public Builder setLivePeriod(Integer livePeriod) {
+      buildingType.livePeriod = livePeriod;
+      return this;
+    }
+
+    public Builder setHeading(Integer heading) {
+      buildingType.heading = heading;
+      return this;
+    }
+
+    public Builder setProximityAlertRadius(Integer proximityAlertRadius) {
+      buildingType.proximityAlertRadius = proximityAlertRadius;
+      return this;
+    }
+
+    public Location build() {
+      return buildingType;
+    }
+  }
+
   /** Latitude as defined by sender */
   @NotNull public float latitude;
 

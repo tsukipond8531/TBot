@@ -6,6 +6,24 @@ import java.util.Objects;
 /** Use this method to get a sticker set. On success, a StickerSet object is returned. */
 public final class GetStickerSetParameters {
 
+  public static final class Builder {
+
+    private GetStickerSetParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetStickerSetParameters();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public GetStickerSetParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Name of the sticker set */
   @NotNull public String name;
 

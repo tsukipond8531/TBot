@@ -15,6 +15,34 @@ import java.util.Objects;
  */
 public final class SendChatActionParameters {
 
+  public static final class Builder {
+
+    private SendChatActionParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendChatActionParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setAction(String action) {
+      buildingType.action = action;
+      return this;
+    }
+
+    public SendChatActionParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

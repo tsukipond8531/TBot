@@ -7,6 +7,29 @@ import java.util.Objects;
 /** Describes data sent from a Web App to the bot. */
 public final class WebAppData {
 
+  public static final class Builder {
+
+    private WebAppData buildingType;
+
+    public Builder() {
+      buildingType = new WebAppData();
+    }
+
+    public Builder setData(String data) {
+      buildingType.data = data;
+      return this;
+    }
+
+    public Builder setButtonText(String buttonText) {
+      buildingType.buttonText = buttonText;
+      return this;
+    }
+
+    public WebAppData build() {
+      return buildingType;
+    }
+  }
+
   /** The data. Be aware that a bad client can send arbitrary data in this field. */
   @NotNull public String data;
 

@@ -7,6 +7,34 @@ import java.util.Objects;
 /** This object represents one shipping option. */
 public final class ShippingOption {
 
+  public static final class Builder {
+
+    private ShippingOption buildingType;
+
+    public Builder() {
+      buildingType = new ShippingOption();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setPrices(List<LabeledPrice> prices) {
+      buildingType.prices = prices;
+      return this;
+    }
+
+    public ShippingOption build() {
+      return buildingType;
+    }
+  }
+
   /** Shipping option identifier */
   @NotNull public String id;
 

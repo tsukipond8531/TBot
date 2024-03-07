@@ -6,6 +6,29 @@ import java.util.Objects;
 /** Use this method to set the title of a created sticker set. Returns True on success. */
 public final class SetStickerSetTitleParameters {
 
+  public static final class Builder {
+
+    private SetStickerSetTitleParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetStickerSetTitleParameters();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public SetStickerSetTitleParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Sticker set name */
   @NotNull public String name;
 

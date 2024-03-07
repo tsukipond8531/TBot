@@ -12,6 +12,24 @@ import java.util.Objects;
  */
 public final class CloseGeneralForumTopicParameters {
 
+  public static final class Builder {
+
+    private CloseGeneralForumTopicParameters buildingType;
+
+    public Builder() {
+      buildingType = new CloseGeneralForumTopicParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public CloseGeneralForumTopicParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
    * format @supergroupusername)

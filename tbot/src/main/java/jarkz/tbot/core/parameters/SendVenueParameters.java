@@ -10,6 +10,89 @@ import java.util.Objects;
 /** Use this method to send information about a venue. On success, the sent Message is returned. */
 public final class SendVenueParameters {
 
+  public static final class Builder {
+
+    private SendVenueParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendVenueParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setAddress(String address) {
+      buildingType.address = address;
+      return this;
+    }
+
+    public Builder setFoursquareId(String foursquareId) {
+      buildingType.foursquareId = foursquareId;
+      return this;
+    }
+
+    public Builder setFoursquareType(String foursquareType) {
+      buildingType.foursquareType = foursquareType;
+      return this;
+    }
+
+    public Builder setGooglePlaceId(String googlePlaceId) {
+      buildingType.googlePlaceId = googlePlaceId;
+      return this;
+    }
+
+    public Builder setGooglePlaceType(String googlePlaceType) {
+      buildingType.googlePlaceType = googlePlaceType;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(ReplyMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendVenueParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

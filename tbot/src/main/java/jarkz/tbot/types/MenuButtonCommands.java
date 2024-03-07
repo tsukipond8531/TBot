@@ -6,6 +6,19 @@ import java.util.Objects;
 /** Represents a menu button, which opens the bot's list of commands. */
 public final class MenuButtonCommands implements MenuButton {
 
+  public static final class Builder {
+
+    private MenuButtonCommands buildingType;
+
+    public Builder() {
+      buildingType = new MenuButtonCommands();
+    }
+
+    public MenuButtonCommands build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "commands";
 
   /** Type of the button, must be commands */

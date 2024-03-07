@@ -7,6 +7,39 @@ import java.util.Objects;
 /** This object describes the position on faces where a mask should be placed by default. */
 public final class MaskPosition {
 
+  public static final class Builder {
+
+    private MaskPosition buildingType;
+
+    public Builder() {
+      buildingType = new MaskPosition();
+    }
+
+    public Builder setPoint(String point) {
+      buildingType.point = point;
+      return this;
+    }
+
+    public Builder setXShift(float xShift) {
+      buildingType.xShift = xShift;
+      return this;
+    }
+
+    public Builder setYShift(float yShift) {
+      buildingType.yShift = yShift;
+      return this;
+    }
+
+    public Builder setScale(float scale) {
+      buildingType.scale = scale;
+      return this;
+    }
+
+    public MaskPosition build() {
+      return buildingType;
+    }
+  }
+
   /**
    * The part of the face relative to which the mask should be placed. One of "forehead", "eyes",
    * "mouth", or "chin".

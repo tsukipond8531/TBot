@@ -7,6 +7,34 @@ import java.util.Objects;
 /** Represents a Game. */
 public final class InlineQueryResultGame implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultGame buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultGame();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setGameShortName(String gameShortName) {
+      buildingType.gameShortName = gameShortName;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public InlineQueryResultGame build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "game";
 
   /** Type of the result, must be game */

@@ -17,6 +17,44 @@ import java.util.Objects;
  */
 public final class EditMessageMediaParameters {
 
+  public static final class Builder {
+
+    private EditMessageMediaParameters buildingType;
+
+    public Builder() {
+      buildingType = new EditMessageMediaParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public Builder setMedia(InputMedia media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public EditMessageMediaParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Required if inline_message_id is not specified. Unique identifier for the target chat or
    * username of the target channel (in the format @channelusername)

@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class GiveawayCompleted {
 
+  public static final class Builder {
+
+    private GiveawayCompleted buildingType;
+
+    public Builder() {
+      buildingType = new GiveawayCompleted();
+    }
+
+    public Builder setWinnerCount(int winnerCount) {
+      buildingType.winnerCount = winnerCount;
+      return this;
+    }
+
+    public Builder setUnclaimedPrizeCount(Integer unclaimedPrizeCount) {
+      buildingType.unclaimedPrizeCount = unclaimedPrizeCount;
+      return this;
+    }
+
+    public Builder setGiveawayMessage(Message giveawayMessage) {
+      buildingType.giveawayMessage = giveawayMessage;
+      return this;
+    }
+
+    public GiveawayCompleted build() {
+      return buildingType;
+    }
+  }
+
   /** Number of winners in the giveaway */
   @NotNull
   @SerializedName("winner_count")

@@ -10,6 +10,70 @@ import java.util.Objects;
  */
 public final class InlineKeyboardButton {
 
+  public static final class Builder {
+
+    private InlineKeyboardButton buildingType;
+
+    public Builder() {
+      buildingType = new InlineKeyboardButton();
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setCallbackData(String callbackData) {
+      buildingType.callbackData = callbackData;
+      return this;
+    }
+
+    public Builder setWebApp(WebAppInfo webApp) {
+      buildingType.webApp = webApp;
+      return this;
+    }
+
+    public Builder setLoginUrl(LoginUrl loginUrl) {
+      buildingType.loginUrl = loginUrl;
+      return this;
+    }
+
+    public Builder setSwitchInlineQuery(String switchInlineQuery) {
+      buildingType.switchInlineQuery = switchInlineQuery;
+      return this;
+    }
+
+    public Builder setSwitchInlineQueryCurrentChat(String switchInlineQueryCurrentChat) {
+      buildingType.switchInlineQueryCurrentChat = switchInlineQueryCurrentChat;
+      return this;
+    }
+
+    public Builder setSwitchInlineQueryChosenChat(
+        SwitchInlineQueryChosenChat switchInlineQueryChosenChat) {
+      buildingType.switchInlineQueryChosenChat = switchInlineQueryChosenChat;
+      return this;
+    }
+
+    public Builder setCallbackGame(CallbackGame callbackGame) {
+      buildingType.callbackGame = callbackGame;
+      return this;
+    }
+
+    public Builder setPay(Boolean pay) {
+      buildingType.pay = pay;
+      return this;
+    }
+
+    public InlineKeyboardButton build() {
+      return buildingType;
+    }
+  }
+
   /** Label text on the button */
   @NotNull public String text;
 

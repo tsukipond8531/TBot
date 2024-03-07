@@ -15,6 +15,49 @@ import java.util.Objects;
  */
 public final class SendMediaGroupParameters {
 
+  public static final class Builder {
+
+    private SendMediaGroupParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendMediaGroupParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setMedia(List<Media> media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public SendMediaGroupParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

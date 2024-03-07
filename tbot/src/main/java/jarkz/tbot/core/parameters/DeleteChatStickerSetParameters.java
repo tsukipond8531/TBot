@@ -13,6 +13,24 @@ import java.util.Objects;
  */
 public final class DeleteChatStickerSetParameters {
 
+  public static final class Builder {
+
+    private DeleteChatStickerSetParameters buildingType;
+
+    public Builder() {
+      buildingType = new DeleteChatStickerSetParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public DeleteChatStickerSetParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
    * format @supergroupusername)

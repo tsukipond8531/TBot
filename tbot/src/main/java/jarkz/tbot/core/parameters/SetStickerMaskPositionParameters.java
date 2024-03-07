@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class SetStickerMaskPositionParameters {
 
+  public static final class Builder {
+
+    private SetStickerMaskPositionParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetStickerMaskPositionParameters();
+    }
+
+    public Builder setSticker(String sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setMaskPosition(MaskPosition maskPosition) {
+      buildingType.maskPosition = maskPosition;
+      return this;
+    }
+
+    public SetStickerMaskPositionParameters build() {
+      return buildingType;
+    }
+  }
+
   /** File identifier of the sticker */
   @NotNull public String sticker;
 

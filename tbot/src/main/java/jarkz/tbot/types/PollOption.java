@@ -7,6 +7,29 @@ import java.util.Objects;
 /** This object contains information about one answer option in a poll. */
 public final class PollOption {
 
+  public static final class Builder {
+
+    private PollOption buildingType;
+
+    public Builder() {
+      buildingType = new PollOption();
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setVoterCount(int voterCount) {
+      buildingType.voterCount = voterCount;
+      return this;
+    }
+
+    public PollOption build() {
+      return buildingType;
+    }
+  }
+
   /** Option text, 1-100 characters */
   @NotNull public String text;
 

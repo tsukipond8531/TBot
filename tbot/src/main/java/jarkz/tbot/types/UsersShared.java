@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class UsersShared {
 
+  public static final class Builder {
+
+    private UsersShared buildingType;
+
+    public Builder() {
+      buildingType = new UsersShared();
+    }
+
+    public Builder setRequestId(int requestId) {
+      buildingType.requestId = requestId;
+      return this;
+    }
+
+    public Builder setUserIds(List<Integer> userIds) {
+      buildingType.userIds = userIds;
+      return this;
+    }
+
+    public UsersShared build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier of the request */
   @NotNull
   @SerializedName("request_id")

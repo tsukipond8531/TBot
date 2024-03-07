@@ -7,6 +7,24 @@ import java.util.Objects;
 /** This object represents the bot's short description. */
 public final class BotShortDescription {
 
+  public static final class Builder {
+
+    private BotShortDescription buildingType;
+
+    public Builder() {
+      buildingType = new BotShortDescription();
+    }
+
+    public Builder setShortDescription(String shortDescription) {
+      buildingType.shortDescription = shortDescription;
+      return this;
+    }
+
+    public BotShortDescription build() {
+      return buildingType;
+    }
+  }
+
   /** The bot's short description */
   @NotNull
   @SerializedName("short_description")

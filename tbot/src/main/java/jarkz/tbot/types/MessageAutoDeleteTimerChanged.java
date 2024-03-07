@@ -7,6 +7,24 @@ import java.util.Objects;
 /** This object represents a service message about a change in auto-delete timer settings. */
 public final class MessageAutoDeleteTimerChanged {
 
+  public static final class Builder {
+
+    private MessageAutoDeleteTimerChanged buildingType;
+
+    public Builder() {
+      buildingType = new MessageAutoDeleteTimerChanged();
+    }
+
+    public Builder setMessageAutoDeleteTime(int messageAutoDeleteTime) {
+      buildingType.messageAutoDeleteTime = messageAutoDeleteTime;
+      return this;
+    }
+
+    public MessageAutoDeleteTimerChanged build() {
+      return buildingType;
+    }
+  }
+
   /** New auto-delete time for messages in the chat; in seconds */
   @NotNull
   @SerializedName("message_auto_delete_time")

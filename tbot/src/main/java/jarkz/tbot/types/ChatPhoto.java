@@ -7,6 +7,39 @@ import java.util.Objects;
 /** This object represents a chat photo. */
 public final class ChatPhoto {
 
+  public static final class Builder {
+
+    private ChatPhoto buildingType;
+
+    public Builder() {
+      buildingType = new ChatPhoto();
+    }
+
+    public Builder setSmallFileId(String smallFileId) {
+      buildingType.smallFileId = smallFileId;
+      return this;
+    }
+
+    public Builder setSmallFileUniqueId(String smallFileUniqueId) {
+      buildingType.smallFileUniqueId = smallFileUniqueId;
+      return this;
+    }
+
+    public Builder setBigFileId(String bigFileId) {
+      buildingType.bigFileId = bigFileId;
+      return this;
+    }
+
+    public Builder setBigFileUniqueId(String bigFileUniqueId) {
+      buildingType.bigFileUniqueId = bigFileUniqueId;
+      return this;
+    }
+
+    public ChatPhoto build() {
+      return buildingType;
+    }
+  }
+
   /**
    * File identifier of small (160x160) chat photo. This file_id can be used only for photo download
    * and only for as long as the photo is not changed.

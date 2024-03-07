@@ -8,6 +8,59 @@ import java.util.Objects;
 /** This object represents a message about a scheduled giveaway. */
 public final class Giveaway {
 
+  public static final class Builder {
+
+    private Giveaway buildingType;
+
+    public Builder() {
+      buildingType = new Giveaway();
+    }
+
+    public Builder setChats(List<Chat> chats) {
+      buildingType.chats = chats;
+      return this;
+    }
+
+    public Builder setWinnersSelectionDate(int winnersSelectionDate) {
+      buildingType.winnersSelectionDate = winnersSelectionDate;
+      return this;
+    }
+
+    public Builder setWinnerCount(int winnerCount) {
+      buildingType.winnerCount = winnerCount;
+      return this;
+    }
+
+    public Builder setOnlyNewMembers(Boolean onlyNewMembers) {
+      buildingType.onlyNewMembers = onlyNewMembers;
+      return this;
+    }
+
+    public Builder setHasPublicWinners(Boolean hasPublicWinners) {
+      buildingType.hasPublicWinners = hasPublicWinners;
+      return this;
+    }
+
+    public Builder setPrizeDescription(String prizeDescription) {
+      buildingType.prizeDescription = prizeDescription;
+      return this;
+    }
+
+    public Builder setCountryCodes(List<String> countryCodes) {
+      buildingType.countryCodes = countryCodes;
+      return this;
+    }
+
+    public Builder setPremiumSubscriptionMonthCount(Integer premiumSubscriptionMonthCount) {
+      buildingType.premiumSubscriptionMonthCount = premiumSubscriptionMonthCount;
+      return this;
+    }
+
+    public Giveaway build() {
+      return buildingType;
+    }
+  }
+
   /** The list of chats which the user must join to participate in the giveaway */
   @NotNull public List<Chat> chats;
 

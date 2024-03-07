@@ -10,6 +10,29 @@ import java.util.Objects;
  */
 public final class ChatShared {
 
+  public static final class Builder {
+
+    private ChatShared buildingType;
+
+    public Builder() {
+      buildingType = new ChatShared();
+    }
+
+    public Builder setRequestId(int requestId) {
+      buildingType.requestId = requestId;
+      return this;
+    }
+
+    public Builder setChatId(long chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public ChatShared build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier of the request */
   @NotNull
   @SerializedName("request_id")

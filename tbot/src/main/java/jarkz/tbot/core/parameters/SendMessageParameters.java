@@ -13,6 +13,69 @@ import java.util.Objects;
 /** Use this method to send text messages. On success, the sent Message is returned. */
 public final class SendMessageParameters {
 
+  public static final class Builder {
+
+    private SendMessageParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendMessageParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setEntities(List<MessageEntity> entities) {
+      buildingType.entities = entities;
+      return this;
+    }
+
+    public Builder setLinkPreviewOptions(LinkPreviewOptions linkPreviewOptions) {
+      buildingType.linkPreviewOptions = linkPreviewOptions;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(ReplyMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendMessageParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

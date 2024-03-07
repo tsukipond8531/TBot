@@ -12,6 +12,64 @@ import java.util.Objects;
  */
 public final class InlineQueryResultVoice implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultVoice buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultVoice();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setVoiceUrl(String voiceUrl) {
+      buildingType.voiceUrl = voiceUrl;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setVoiceDuration(Integer voiceDuration) {
+      buildingType.voiceDuration = voiceDuration;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultVoice build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "voice";
 
   /** Type of the result, must be voice */

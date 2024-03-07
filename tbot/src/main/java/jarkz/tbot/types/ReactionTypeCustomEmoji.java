@@ -7,6 +7,24 @@ import java.util.Objects;
 /** The reaction is based on a custom emoji. */
 public final class ReactionTypeCustomEmoji implements ReactionType {
 
+  public static final class Builder {
+
+    private ReactionTypeCustomEmoji buildingType;
+
+    public Builder() {
+      buildingType = new ReactionTypeCustomEmoji();
+    }
+
+    public Builder setCustomEmojiId(String customEmojiId) {
+      buildingType.customEmojiId = customEmojiId;
+      return this;
+    }
+
+    public ReactionTypeCustomEmoji build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "custom_emoji";
 
   /** Type of the reaction, always "custom_emoji" */

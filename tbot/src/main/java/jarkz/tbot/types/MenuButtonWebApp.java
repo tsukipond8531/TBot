@@ -7,6 +7,29 @@ import java.util.Objects;
 /** Represents a menu button, which launches a Web App. */
 public final class MenuButtonWebApp implements MenuButton {
 
+  public static final class Builder {
+
+    private MenuButtonWebApp buildingType;
+
+    public Builder() {
+      buildingType = new MenuButtonWebApp();
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setWebApp(WebAppInfo webApp) {
+      buildingType.webApp = webApp;
+      return this;
+    }
+
+    public MenuButtonWebApp build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "web_app";
 
   /** Type of the button, must be web_app */

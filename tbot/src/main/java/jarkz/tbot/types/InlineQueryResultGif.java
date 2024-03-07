@@ -12,6 +12,84 @@ import java.util.Objects;
  */
 public final class InlineQueryResultGif implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultGif buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultGif();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setGifUrl(String gifUrl) {
+      buildingType.gifUrl = gifUrl;
+      return this;
+    }
+
+    public Builder setGifWidth(Integer gifWidth) {
+      buildingType.gifWidth = gifWidth;
+      return this;
+    }
+
+    public Builder setGifHeight(Integer gifHeight) {
+      buildingType.gifHeight = gifHeight;
+      return this;
+    }
+
+    public Builder setGifDuration(Integer gifDuration) {
+      buildingType.gifDuration = gifDuration;
+      return this;
+    }
+
+    public Builder setThumbnailUrl(String thumbnailUrl) {
+      buildingType.thumbnailUrl = thumbnailUrl;
+      return this;
+    }
+
+    public Builder setThumbnailMimeType(String thumbnailMimeType) {
+      buildingType.thumbnailMimeType = thumbnailMimeType;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultGif build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "gif";
 
   /** Type of the result, must be gif */

@@ -7,6 +7,24 @@ import java.util.Objects;
 /** Represents the scope of bot commands, covering a specific chat. */
 public final class BotCommandScopeChat implements BotCommandScope {
 
+  public static final class Builder {
+
+    private BotCommandScopeChat buildingType;
+
+    public Builder() {
+      buildingType = new BotCommandScopeChat();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public BotCommandScopeChat build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "chat";
 
   /** Scope type, must be chat */

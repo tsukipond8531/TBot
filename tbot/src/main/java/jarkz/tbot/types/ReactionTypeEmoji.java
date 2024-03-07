@@ -6,6 +6,24 @@ import java.util.Objects;
 /** The reaction is based on an emoji. */
 public final class ReactionTypeEmoji implements ReactionType {
 
+  public static final class Builder {
+
+    private ReactionTypeEmoji buildingType;
+
+    public Builder() {
+      buildingType = new ReactionTypeEmoji();
+    }
+
+    public Builder setEmoji(String emoji) {
+      buildingType.emoji = emoji;
+      return this;
+    }
+
+    public ReactionTypeEmoji build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "emoji";
 
   /** Type of the reaction, always "emoji" */

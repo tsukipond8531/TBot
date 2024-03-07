@@ -6,6 +6,29 @@ import java.util.Objects;
 /** This object represents a boost added to a chat or changed. */
 public final class ChatBoostUpdated {
 
+  public static final class Builder {
+
+    private ChatBoostUpdated buildingType;
+
+    public Builder() {
+      buildingType = new ChatBoostUpdated();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setBoost(ChatBoost boost) {
+      buildingType.boost = boost;
+      return this;
+    }
+
+    public ChatBoostUpdated build() {
+      return buildingType;
+    }
+  }
+
   /** Chat which was boosted */
   @NotNull public Chat chat;
 

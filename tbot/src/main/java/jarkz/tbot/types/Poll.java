@@ -8,6 +8,84 @@ import java.util.Objects;
 /** This object contains information about a poll. */
 public final class Poll {
 
+  public static final class Builder {
+
+    private Poll buildingType;
+
+    public Builder() {
+      buildingType = new Poll();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setQuestion(String question) {
+      buildingType.question = question;
+      return this;
+    }
+
+    public Builder setOptions(List<PollOption> options) {
+      buildingType.options = options;
+      return this;
+    }
+
+    public Builder setTotalVoterCount(int totalVoterCount) {
+      buildingType.totalVoterCount = totalVoterCount;
+      return this;
+    }
+
+    public Builder setClosed(boolean isClosed) {
+      buildingType.isClosed = isClosed;
+      return this;
+    }
+
+    public Builder setAnonymous(boolean isAnonymous) {
+      buildingType.isAnonymous = isAnonymous;
+      return this;
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setAllowsMultipleAnswers(boolean allowsMultipleAnswers) {
+      buildingType.allowsMultipleAnswers = allowsMultipleAnswers;
+      return this;
+    }
+
+    public Builder setCorrectOptionId(Integer correctOptionId) {
+      buildingType.correctOptionId = correctOptionId;
+      return this;
+    }
+
+    public Builder setExplanation(String explanation) {
+      buildingType.explanation = explanation;
+      return this;
+    }
+
+    public Builder setExplanationEntities(List<MessageEntity> explanationEntities) {
+      buildingType.explanationEntities = explanationEntities;
+      return this;
+    }
+
+    public Builder setOpenPeriod(Integer openPeriod) {
+      buildingType.openPeriod = openPeriod;
+      return this;
+    }
+
+    public Builder setCloseDate(Integer closeDate) {
+      buildingType.closeDate = closeDate;
+      return this;
+    }
+
+    public Poll build() {
+      return buildingType;
+    }
+  }
+
   /** Unique poll identifier */
   @NotNull public String id;
 

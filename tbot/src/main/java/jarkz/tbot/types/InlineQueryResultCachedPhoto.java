@@ -12,6 +12,64 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedPhoto implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultCachedPhoto buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultCachedPhoto();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setPhotoFileId(String photoFileId) {
+      buildingType.photoFileId = photoFileId;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultCachedPhoto build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "photo";
 
   /** Type of the result, must be photo */

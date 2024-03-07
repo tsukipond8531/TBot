@@ -14,6 +14,69 @@ import java.util.Objects;
  */
 public final class SendVideoNoteParameters {
 
+  public static final class Builder {
+
+    private SendVideoNoteParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendVideoNoteParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setVideoNote(InputFile videoNote) {
+      buildingType.videoNote = videoNote;
+      return this;
+    }
+
+    public Builder setDuration(Integer duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setLength(Integer length) {
+      buildingType.length = length;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(ReplyMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendVideoNoteParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

@@ -10,6 +10,24 @@ import java.util.Objects;
  */
 public final class LeaveChatParameters {
 
+  public static final class Builder {
+
+    private LeaveChatParameters buildingType;
+
+    public Builder() {
+      buildingType = new LeaveChatParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public LeaveChatParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup or channel (in the
    * format @channelusername)

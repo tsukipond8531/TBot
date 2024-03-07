@@ -11,6 +11,39 @@ import java.util.Objects;
  */
 public final class File {
 
+  public static final class Builder {
+
+    private File buildingType;
+
+    public Builder() {
+      buildingType = new File();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public Builder setFileUniqueId(String fileUniqueId) {
+      buildingType.fileUniqueId = fileUniqueId;
+      return this;
+    }
+
+    public Builder setFileSize(Long fileSize) {
+      buildingType.fileSize = fileSize;
+      return this;
+    }
+
+    public Builder setFilePath(String filePath) {
+      buildingType.filePath = filePath;
+      return this;
+    }
+
+    public File build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier for this file, which can be used to download or reuse the file */
   @NotNull
   @SerializedName("file_id")

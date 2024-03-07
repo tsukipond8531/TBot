@@ -9,6 +9,24 @@ import java.util.Objects;
  */
 public final class GetMyDefaultAdministratorRightsParameters {
 
+  public static final class Builder {
+
+    private GetMyDefaultAdministratorRightsParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetMyDefaultAdministratorRightsParameters();
+    }
+
+    public Builder setForChannels(Boolean forChannels) {
+      buildingType.forChannels = forChannels;
+      return this;
+    }
+
+    public GetMyDefaultAdministratorRightsParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Pass True to get default administrator rights of the bot in channels. Otherwise, default
    * administrator rights of the bot for groups and supergroups will be returned.

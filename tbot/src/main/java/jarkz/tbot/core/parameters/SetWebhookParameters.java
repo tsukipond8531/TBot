@@ -18,6 +18,54 @@ import java.util.Objects;
  */
 public final class SetWebhookParameters {
 
+  public static final class Builder {
+
+    private SetWebhookParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetWebhookParameters();
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setCertificate(InputFile certificate) {
+      buildingType.certificate = certificate;
+      return this;
+    }
+
+    public Builder setIpAddress(String ipAddress) {
+      buildingType.ipAddress = ipAddress;
+      return this;
+    }
+
+    public Builder setMaxConnections(Integer maxConnections) {
+      buildingType.maxConnections = maxConnections;
+      return this;
+    }
+
+    public Builder setAllowedUpdates(List<String> allowedUpdates) {
+      buildingType.allowedUpdates = allowedUpdates;
+      return this;
+    }
+
+    public Builder setDropPendingUpdates(Boolean dropPendingUpdates) {
+      buildingType.dropPendingUpdates = dropPendingUpdates;
+      return this;
+    }
+
+    public Builder setSecretToken(String secretToken) {
+      buildingType.secretToken = secretToken;
+      return this;
+    }
+
+    public SetWebhookParameters build() {
+      return buildingType;
+    }
+  }
+
   /** HTTPS URL to send updates to. Use an empty string to remove webhook integration */
   @NotNull public String url;
 

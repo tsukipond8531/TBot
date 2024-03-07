@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class GetMyCommandsParameters {
 
+  public static final class Builder {
+
+    private GetMyCommandsParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetMyCommandsParameters();
+    }
+
+    public Builder setScope(BotCommandScope scope) {
+      buildingType.scope = scope;
+      return this;
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public GetMyCommandsParameters build() {
+      return buildingType;
+    }
+  }
+
   /** A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault. */
   public BotCommandScope scope;
 

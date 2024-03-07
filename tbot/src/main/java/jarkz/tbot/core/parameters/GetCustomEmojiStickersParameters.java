@@ -11,6 +11,24 @@ import java.util.Objects;
  */
 public final class GetCustomEmojiStickersParameters {
 
+  public static final class Builder {
+
+    private GetCustomEmojiStickersParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetCustomEmojiStickersParameters();
+    }
+
+    public Builder setCustomEmojiIds(List<String> customEmojiIds) {
+      buildingType.customEmojiIds = customEmojiIds;
+      return this;
+    }
+
+    public GetCustomEmojiStickersParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * A JSON-serialized list of custom emoji identifiers. At most 200 custom emoji identifiers can be
    * specified.

@@ -9,6 +9,29 @@ import java.util.Objects;
  */
 public final class SetMyDescriptionParameters {
 
+  public static final class Builder {
+
+    private SetMyDescriptionParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetMyDescriptionParameters();
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public SetMyDescriptionParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * New bot description; 0-512 characters. Pass an empty string to remove the dedicated description
    * for the given language.

@@ -12,6 +12,109 @@ import java.util.Objects;
 /** Use this method to send a native poll. On success, the sent Message is returned. */
 public final class SendPollParameters {
 
+  public static final class Builder {
+
+    private SendPollParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendPollParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setQuestion(String question) {
+      buildingType.question = question;
+      return this;
+    }
+
+    public Builder setOptions(List<String> options) {
+      buildingType.options = options;
+      return this;
+    }
+
+    public Builder setIsAnonymous(Boolean isAnonymous) {
+      buildingType.isAnonymous = isAnonymous;
+      return this;
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setAllowsMultipleAnswers(Boolean allowsMultipleAnswers) {
+      buildingType.allowsMultipleAnswers = allowsMultipleAnswers;
+      return this;
+    }
+
+    public Builder setCorrectOptionId(Integer correctOptionId) {
+      buildingType.correctOptionId = correctOptionId;
+      return this;
+    }
+
+    public Builder setExplanation(String explanation) {
+      buildingType.explanation = explanation;
+      return this;
+    }
+
+    public Builder setExplanationParseMode(String explanationParseMode) {
+      buildingType.explanationParseMode = explanationParseMode;
+      return this;
+    }
+
+    public Builder setExplanationEntities(List<MessageEntity> explanationEntities) {
+      buildingType.explanationEntities = explanationEntities;
+      return this;
+    }
+
+    public Builder setOpenPeriod(Integer openPeriod) {
+      buildingType.openPeriod = openPeriod;
+      return this;
+    }
+
+    public Builder setCloseDate(Integer closeDate) {
+      buildingType.closeDate = closeDate;
+      return this;
+    }
+
+    public Builder setIsClosed(Boolean isClosed) {
+      buildingType.isClosed = isClosed;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(ReplyMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendPollParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

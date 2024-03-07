@@ -14,6 +14,39 @@ import java.util.Objects;
  */
 public final class SetMessageReactionParameters {
 
+  public static final class Builder {
+
+    private SetMessageReactionParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetMessageReactionParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setReaction(List<ReactionType> reaction) {
+      buildingType.reaction = reaction;
+      return this;
+    }
+
+    public Builder setIsBig(Boolean isBig) {
+      buildingType.isBig = isBig;
+      return this;
+    }
+
+    public SetMessageReactionParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

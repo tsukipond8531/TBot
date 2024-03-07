@@ -11,6 +11,34 @@ import java.util.Objects;
  */
 public final class SetChatAdministratorCustomTitleParameters {
 
+  public static final class Builder {
+
+    private SetChatAdministratorCustomTitleParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetChatAdministratorCustomTitleParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setCustomTitle(String customTitle) {
+      buildingType.customTitle = customTitle;
+      return this;
+    }
+
+    public SetChatAdministratorCustomTitleParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
    * format @supergroupusername)

@@ -7,6 +7,54 @@ import java.util.Objects;
 /** This object represents changes in the status of a chat member. */
 public final class ChatMemberUpdated {
 
+  public static final class Builder {
+
+    private ChatMemberUpdated buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberUpdated();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setOldChatMember(ChatMember oldChatMember) {
+      buildingType.oldChatMember = oldChatMember;
+      return this;
+    }
+
+    public Builder setNewChatMember(ChatMember newChatMember) {
+      buildingType.newChatMember = newChatMember;
+      return this;
+    }
+
+    public Builder setInviteLink(ChatInviteLink inviteLink) {
+      buildingType.inviteLink = inviteLink;
+      return this;
+    }
+
+    public Builder setViaChatFolderInviteLink(Boolean viaChatFolderInviteLink) {
+      buildingType.viaChatFolderInviteLink = viaChatFolderInviteLink;
+      return this;
+    }
+
+    public ChatMemberUpdated build() {
+      return buildingType;
+    }
+  }
+
   /** Chat the user belongs to */
   @NotNull public Chat chat;
 

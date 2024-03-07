@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class PassportElementErrorFile implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorFile buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorFile();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setFileHash(String fileHash) {
+      buildingType.fileHash = fileHash;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorFile build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "file";
 
   /** Error source, must be file */

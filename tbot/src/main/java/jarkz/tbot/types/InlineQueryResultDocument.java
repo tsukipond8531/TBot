@@ -12,6 +12,84 @@ import java.util.Objects;
  */
 public final class InlineQueryResultDocument implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultDocument buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultDocument();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setDocumentUrl(String documentUrl) {
+      buildingType.documentUrl = documentUrl;
+      return this;
+    }
+
+    public Builder setMimeType(String mimeType) {
+      buildingType.mimeType = mimeType;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public Builder setThumbnailUrl(String thumbnailUrl) {
+      buildingType.thumbnailUrl = thumbnailUrl;
+      return this;
+    }
+
+    public Builder setThumbnailWidth(Integer thumbnailWidth) {
+      buildingType.thumbnailWidth = thumbnailWidth;
+      return this;
+    }
+
+    public Builder setThumbnailHeight(Integer thumbnailHeight) {
+      buildingType.thumbnailHeight = thumbnailHeight;
+      return this;
+    }
+
+    public InlineQueryResultDocument build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "document";
 
   /** Type of the result, must be document */

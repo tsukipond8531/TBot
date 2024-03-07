@@ -6,6 +6,19 @@ package jarkz.tbot.types;
  */
 public final class VideoChatStarted {
 
+  public static final class Builder {
+
+    private VideoChatStarted buildingType;
+
+    public Builder() {
+      buildingType = new VideoChatStarted();
+    }
+
+    public VideoChatStarted build() {
+      return buildingType;
+    }
+  }
+
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;

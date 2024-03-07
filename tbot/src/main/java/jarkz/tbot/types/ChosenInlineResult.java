@@ -13,6 +13,44 @@ import java.util.Objects;
  */
 public final class ChosenInlineResult {
 
+  public static final class Builder {
+
+    private ChosenInlineResult buildingType;
+
+    public Builder() {
+      buildingType = new ChosenInlineResult();
+    }
+
+    public Builder setResultId(String resultId) {
+      buildingType.resultId = resultId;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setLocation(Location location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public Builder setQuery(String query) {
+      buildingType.query = query;
+      return this;
+    }
+
+    public ChosenInlineResult build() {
+      return buildingType;
+    }
+  }
+
   /** The unique identifier for the result that was chosen */
   @NotNull
   @SerializedName("result_id")

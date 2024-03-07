@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class EncryptedCredentials {
 
+  public static final class Builder {
+
+    private EncryptedCredentials buildingType;
+
+    public Builder() {
+      buildingType = new EncryptedCredentials();
+    }
+
+    public Builder setData(String data) {
+      buildingType.data = data;
+      return this;
+    }
+
+    public Builder setHash(String hash) {
+      buildingType.hash = hash;
+      return this;
+    }
+
+    public Builder setSecret(String secret) {
+      buildingType.secret = secret;
+      return this;
+    }
+
+    public EncryptedCredentials build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and
    * secrets required for EncryptedPassportElement decryption and authentication

@@ -8,6 +8,39 @@ import java.util.Objects;
 /** This object represents reaction changes on a message with anonymous reactions. */
 public final class MessageReactionCountUpdated {
 
+  public static final class Builder {
+
+    private MessageReactionCountUpdated buildingType;
+
+    public Builder() {
+      buildingType = new MessageReactionCountUpdated();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setReactions(List<ReactionCount> reactions) {
+      buildingType.reactions = reactions;
+      return this;
+    }
+
+    public MessageReactionCountUpdated build() {
+      return buildingType;
+    }
+  }
+
   /** The chat containing the message */
   @NotNull public Chat chat;
 

@@ -11,6 +11,39 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedSticker implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultCachedSticker buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultCachedSticker();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setStickerFileId(String stickerFileId) {
+      buildingType.stickerFileId = stickerFileId;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultCachedSticker build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "sticker";
 
   /** Type of the result, must be sticker */

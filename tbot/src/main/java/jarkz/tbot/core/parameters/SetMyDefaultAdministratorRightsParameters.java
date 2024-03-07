@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class SetMyDefaultAdministratorRightsParameters {
 
+  public static final class Builder {
+
+    private SetMyDefaultAdministratorRightsParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetMyDefaultAdministratorRightsParameters();
+    }
+
+    public Builder setRights(ChatAdministratorRights rights) {
+      buildingType.rights = rights;
+      return this;
+    }
+
+    public Builder setForChannels(Boolean forChannels) {
+      buildingType.forChannels = forChannels;
+      return this;
+    }
+
+    public SetMyDefaultAdministratorRightsParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * A JSON-serialized object describing new default administrator rights. If not specified, the
    * default administrator rights will be cleared.

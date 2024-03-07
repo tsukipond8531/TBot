@@ -7,6 +7,34 @@ import java.util.Objects;
 /** Represents a chat member that owns the chat and has all administrator privileges. */
 public final class ChatMemberOwner implements ChatMember {
 
+  public static final class Builder {
+
+    private ChatMemberOwner buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberOwner();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setAnonymous(boolean isAnonymous) {
+      buildingType.isAnonymous = isAnonymous;
+      return this;
+    }
+
+    public Builder setCustomTitle(String customTitle) {
+      buildingType.customTitle = customTitle;
+      return this;
+    }
+
+    public ChatMemberOwner build() {
+      return buildingType;
+    }
+  }
+
   public static final String STATUS = "creator";
 
   /** The member's status in the chat, always "creator" */

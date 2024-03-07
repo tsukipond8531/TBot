@@ -6,6 +6,19 @@ package jarkz.tbot.types;
  */
 public final class GiveawayCreated {
 
+  public static final class Builder {
+
+    private GiveawayCreated buildingType;
+
+    public Builder() {
+      buildingType = new GiveawayCreated();
+    }
+
+    public GiveawayCreated build() {
+      return buildingType;
+    }
+  }
+
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;

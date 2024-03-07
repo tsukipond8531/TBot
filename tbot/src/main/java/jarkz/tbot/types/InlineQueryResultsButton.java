@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class InlineQueryResultsButton {
 
+  public static final class Builder {
+
+    private InlineQueryResultsButton buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultsButton();
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setWebApp(WebAppInfo webApp) {
+      buildingType.webApp = webApp;
+      return this;
+    }
+
+    public Builder setStartParameter(String startParameter) {
+      buildingType.startParameter = startParameter;
+      return this;
+    }
+
+    public InlineQueryResultsButton build() {
+      return buildingType;
+    }
+  }
+
   /** Label text on the button */
   @NotNull public String text;
 

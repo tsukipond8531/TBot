@@ -10,6 +10,54 @@ import java.util.Objects;
  */
 public final class MessageEntity {
 
+  public static final class Builder {
+
+    private MessageEntity buildingType;
+
+    public Builder() {
+      buildingType = new MessageEntity();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setOffset(int offset) {
+      buildingType.offset = offset;
+      return this;
+    }
+
+    public Builder setLength(int length) {
+      buildingType.length = length;
+      return this;
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setLanguage(String language) {
+      buildingType.language = language;
+      return this;
+    }
+
+    public Builder setCustomEmojiId(String customEmojiId) {
+      buildingType.customEmojiId = customEmojiId;
+      return this;
+    }
+
+    public MessageEntity build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag"
    * ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email"

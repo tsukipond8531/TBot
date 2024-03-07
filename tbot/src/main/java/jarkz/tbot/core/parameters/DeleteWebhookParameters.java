@@ -9,6 +9,24 @@ import java.util.Objects;
  */
 public final class DeleteWebhookParameters {
 
+  public static final class Builder {
+
+    private DeleteWebhookParameters buildingType;
+
+    public Builder() {
+      buildingType = new DeleteWebhookParameters();
+    }
+
+    public Builder setDropPendingUpdates(Boolean dropPendingUpdates) {
+      buildingType.dropPendingUpdates = dropPendingUpdates;
+      return this;
+    }
+
+    public DeleteWebhookParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Pass True to drop all pending updates */
   @SerializedName("drop_pending_updates")
   public Boolean dropPendingUpdates;

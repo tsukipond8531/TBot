@@ -6,6 +6,29 @@ import java.util.Objects;
 /** Describes why a request was unsuccessful. */
 public final class ResponseParameters {
 
+  public static final class Builder {
+
+    private ResponseParameters buildingType;
+
+    public Builder() {
+      buildingType = new ResponseParameters();
+    }
+
+    public Builder setMigrateToChatId(Long migrateToChatId) {
+      buildingType.migrateToChatId = migrateToChatId;
+      return this;
+    }
+
+    public Builder setRetryAfter(Integer retryAfter) {
+      buildingType.retryAfter = retryAfter;
+      return this;
+    }
+
+    public ResponseParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Optional. The group has been migrated to a supergroup with the specified identifier. This
    * number may have more than 32 significant bits and some programming languages may have

@@ -6,6 +6,24 @@ import java.util.Objects;
 /** Use this method to delete a sticker from a set created by the bot. Returns True on success. */
 public final class DeleteStickerFromSetParameters {
 
+  public static final class Builder {
+
+    private DeleteStickerFromSetParameters buildingType;
+
+    public Builder() {
+      buildingType = new DeleteStickerFromSetParameters();
+    }
+
+    public Builder setSticker(String sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public DeleteStickerFromSetParameters build() {
+      return buildingType;
+    }
+  }
+
   /** File identifier of the sticker */
   @NotNull public String sticker;
 

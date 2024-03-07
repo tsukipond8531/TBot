@@ -7,6 +7,24 @@ import java.util.Objects;
 /** This object represents a service message about a user boosting a chat. */
 public final class ChatBoostAdded {
 
+  public static final class Builder {
+
+    private ChatBoostAdded buildingType;
+
+    public Builder() {
+      buildingType = new ChatBoostAdded();
+    }
+
+    public Builder setBoostCount(int boostCount) {
+      buildingType.boostCount = boostCount;
+      return this;
+    }
+
+    public ChatBoostAdded build() {
+      return buildingType;
+    }
+  }
+
   /** Number of boosts added by the user */
   @NotNull
   @SerializedName("boost_count")

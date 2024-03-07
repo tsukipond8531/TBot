@@ -7,6 +7,34 @@ import java.util.Objects;
 /** The message was originally sent on behalf of a chat to a group chat. */
 public final class MessageOriginChat implements MessageOrigin {
 
+  public static final class Builder {
+
+    private MessageOriginChat buildingType;
+
+    public Builder() {
+      buildingType = new MessageOriginChat();
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setSenderChat(Chat senderChat) {
+      buildingType.senderChat = senderChat;
+      return this;
+    }
+
+    public Builder setAuthorSignature(String authorSignature) {
+      buildingType.authorSignature = authorSignature;
+      return this;
+    }
+
+    public MessageOriginChat build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "chat";
 
   /** Type of the message origin, always "chat" */

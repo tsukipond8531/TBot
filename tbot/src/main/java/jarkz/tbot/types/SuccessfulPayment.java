@@ -7,6 +7,54 @@ import java.util.Objects;
 /** This object contains basic information about a successful payment. */
 public final class SuccessfulPayment {
 
+  public static final class Builder {
+
+    private SuccessfulPayment buildingType;
+
+    public Builder() {
+      buildingType = new SuccessfulPayment();
+    }
+
+    public Builder setCurrency(String currency) {
+      buildingType.currency = currency;
+      return this;
+    }
+
+    public Builder setTotalAmount(int totalAmount) {
+      buildingType.totalAmount = totalAmount;
+      return this;
+    }
+
+    public Builder setInvoicePayload(String invoicePayload) {
+      buildingType.invoicePayload = invoicePayload;
+      return this;
+    }
+
+    public Builder setShippingOptionId(String shippingOptionId) {
+      buildingType.shippingOptionId = shippingOptionId;
+      return this;
+    }
+
+    public Builder setOrderInfo(OrderInfo orderInfo) {
+      buildingType.orderInfo = orderInfo;
+      return this;
+    }
+
+    public Builder setTelegramPaymentChargeId(String telegramPaymentChargeId) {
+      buildingType.telegramPaymentChargeId = telegramPaymentChargeId;
+      return this;
+    }
+
+    public Builder setProviderPaymentChargeId(String providerPaymentChargeId) {
+      buildingType.providerPaymentChargeId = providerPaymentChargeId;
+      return this;
+    }
+
+    public SuccessfulPayment build() {
+      return buildingType;
+    }
+  }
+
   /** Three-letter ISO 4217 currency code */
   @NotNull public String currency;
 

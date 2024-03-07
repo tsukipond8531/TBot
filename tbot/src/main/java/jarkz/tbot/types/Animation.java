@@ -7,6 +7,64 @@ import java.util.Objects;
 /** This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound). */
 public final class Animation {
 
+  public static final class Builder {
+
+    private Animation buildingType;
+
+    public Builder() {
+      buildingType = new Animation();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public Builder setFileUniqueId(String fileUniqueId) {
+      buildingType.fileUniqueId = fileUniqueId;
+      return this;
+    }
+
+    public Builder setWidth(int width) {
+      buildingType.width = width;
+      return this;
+    }
+
+    public Builder setHeight(int height) {
+      buildingType.height = height;
+      return this;
+    }
+
+    public Builder setDuration(int duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setThumbnail(PhotoSize thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setFileName(String fileName) {
+      buildingType.fileName = fileName;
+      return this;
+    }
+
+    public Builder setMimeType(String mimeType) {
+      buildingType.mimeType = mimeType;
+      return this;
+    }
+
+    public Builder setFileSize(Long fileSize) {
+      buildingType.fileSize = fileSize;
+      return this;
+    }
+
+    public Animation build() {
+      return buildingType;
+    }
+  }
+
   /** Identifier for this file, which can be used to download or reuse the file */
   @NotNull
   @SerializedName("file_id")

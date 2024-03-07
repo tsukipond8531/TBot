@@ -13,6 +13,54 @@ import java.util.Objects;
  */
 public final class EditMessageCaptionParameters {
 
+  public static final class Builder {
+
+    private EditMessageCaptionParameters buildingType;
+
+    public Builder() {
+      buildingType = new EditMessageCaptionParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public EditMessageCaptionParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Required if inline_message_id is not specified. Unique identifier for the target chat or
    * username of the target channel (in the format @channelusername)

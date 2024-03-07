@@ -11,6 +11,34 @@ import java.util.Objects;
  */
 public final class SetStickerSetThumbnailParameters {
 
+  public static final class Builder {
+
+    private SetStickerSetThumbnailParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetStickerSetThumbnailParameters();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public SetStickerSetThumbnailParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Sticker set name */
   @NotNull public String name;
 

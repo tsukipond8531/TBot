@@ -7,6 +7,39 @@ import java.util.Objects;
 /** This object represents a boost removed from a chat. */
 public final class ChatBoostRemoved {
 
+  public static final class Builder {
+
+    private ChatBoostRemoved buildingType;
+
+    public Builder() {
+      buildingType = new ChatBoostRemoved();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setBoostId(String boostId) {
+      buildingType.boostId = boostId;
+      return this;
+    }
+
+    public Builder setRemoveDate(int removeDate) {
+      buildingType.removeDate = removeDate;
+      return this;
+    }
+
+    public Builder setSource(ChatBoostSource source) {
+      buildingType.source = source;
+      return this;
+    }
+
+    public ChatBoostRemoved build() {
+      return buildingType;
+    }
+  }
+
   /** Chat which was boosted */
   @NotNull public Chat chat;
 

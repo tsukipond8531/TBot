@@ -11,6 +11,114 @@ import java.util.Objects;
  */
 public final class Update {
 
+  public static final class Builder {
+
+    private Update buildingType;
+
+    public Builder() {
+      buildingType = new Update();
+    }
+
+    public Builder setUpdateId(int updateId) {
+      buildingType.updateId = updateId;
+      return this;
+    }
+
+    public Builder setMessage(Message message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public Builder setEditedMessage(Message editedMessage) {
+      buildingType.editedMessage = editedMessage;
+      return this;
+    }
+
+    public Builder setChannelPost(Message channelPost) {
+      buildingType.channelPost = channelPost;
+      return this;
+    }
+
+    public Builder setEditedChannelPost(Message editedChannelPost) {
+      buildingType.editedChannelPost = editedChannelPost;
+      return this;
+    }
+
+    public Builder setMessageReaction(MessageReactionUpdated messageReaction) {
+      buildingType.messageReaction = messageReaction;
+      return this;
+    }
+
+    public Builder setMessageReactionCount(MessageReactionCountUpdated messageReactionCount) {
+      buildingType.messageReactionCount = messageReactionCount;
+      return this;
+    }
+
+    public Builder setInlineQuery(InlineQuery inlineQuery) {
+      buildingType.inlineQuery = inlineQuery;
+      return this;
+    }
+
+    public Builder setChosenInlineResult(ChosenInlineResult chosenInlineResult) {
+      buildingType.chosenInlineResult = chosenInlineResult;
+      return this;
+    }
+
+    public Builder setCallbackQuery(CallbackQuery callbackQuery) {
+      buildingType.callbackQuery = callbackQuery;
+      return this;
+    }
+
+    public Builder setShippingQuery(ShippingQuery shippingQuery) {
+      buildingType.shippingQuery = shippingQuery;
+      return this;
+    }
+
+    public Builder setPreCheckoutQuery(PreCheckoutQuery preCheckoutQuery) {
+      buildingType.preCheckoutQuery = preCheckoutQuery;
+      return this;
+    }
+
+    public Builder setPoll(Poll poll) {
+      buildingType.poll = poll;
+      return this;
+    }
+
+    public Builder setPollAnswer(PollAnswer pollAnswer) {
+      buildingType.pollAnswer = pollAnswer;
+      return this;
+    }
+
+    public Builder setMyChatMember(ChatMemberUpdated myChatMember) {
+      buildingType.myChatMember = myChatMember;
+      return this;
+    }
+
+    public Builder setChatMember(ChatMemberUpdated chatMember) {
+      buildingType.chatMember = chatMember;
+      return this;
+    }
+
+    public Builder setChatJoinRequest(ChatJoinRequest chatJoinRequest) {
+      buildingType.chatJoinRequest = chatJoinRequest;
+      return this;
+    }
+
+    public Builder setChatBoost(ChatBoostUpdated chatBoost) {
+      buildingType.chatBoost = chatBoost;
+      return this;
+    }
+
+    public Builder setRemovedChatBoost(ChatBoostRemoved removedChatBoost) {
+      buildingType.removedChatBoost = removedChatBoost;
+      return this;
+    }
+
+    public Update build() {
+      return buildingType;
+    }
+  }
+
   /**
    * The update's unique identifier. Update identifiers start from a certain positive number and
    * increase sequentially. This identifier becomes especially handy if you're using webhooks, since

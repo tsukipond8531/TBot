@@ -6,6 +6,29 @@ import java.util.Objects;
 /** Represents a location to which a chat is connected. */
 public final class ChatLocation {
 
+  public static final class Builder {
+
+    private ChatLocation buildingType;
+
+    public Builder() {
+      buildingType = new ChatLocation();
+    }
+
+    public Builder setLocation(Location location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public Builder setAddress(String address) {
+      buildingType.address = address;
+      return this;
+    }
+
+    public ChatLocation build() {
+      return buildingType;
+    }
+  }
+
   /** The location to which the supergroup is connected. Can't be a live location. */
   @NotNull public Location location;
 

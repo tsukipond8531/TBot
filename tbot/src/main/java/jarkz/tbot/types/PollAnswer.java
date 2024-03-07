@@ -8,6 +8,39 @@ import java.util.Objects;
 /** This object represents an answer of a user in a non-anonymous poll. */
 public final class PollAnswer {
 
+  public static final class Builder {
+
+    private PollAnswer buildingType;
+
+    public Builder() {
+      buildingType = new PollAnswer();
+    }
+
+    public Builder setPollId(String pollId) {
+      buildingType.pollId = pollId;
+      return this;
+    }
+
+    public Builder setVoterChat(Chat voterChat) {
+      buildingType.voterChat = voterChat;
+      return this;
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setOptionIds(List<Integer> optionIds) {
+      buildingType.optionIds = optionIds;
+      return this;
+    }
+
+    public PollAnswer build() {
+      return buildingType;
+    }
+  }
+
   /** Unique poll identifier */
   @NotNull
   @SerializedName("poll_id")

@@ -9,6 +9,54 @@ import java.util.Objects;
 /** Use this method to send a game. On success, the sent Message is returned. */
 public final class SendGameParameters {
 
+  public static final class Builder {
+
+    private SendGameParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendGameParameters();
+    }
+
+    public Builder setChatId(int chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setGameShortName(String gameShortName) {
+      buildingType.gameShortName = gameShortName;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendGameParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the target chat */
   @NotNull
   @SerializedName("chat_id")

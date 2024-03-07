@@ -8,6 +8,59 @@ import java.util.Objects;
 /** Represents an audio file to be treated as music to be sent. */
 public final class InputMediaAudio implements InputMedia, Media {
 
+  public static final class Builder {
+
+    private InputMediaAudio buildingType;
+
+    public Builder() {
+      buildingType = new InputMediaAudio();
+    }
+
+    public Builder setMedia(InputFile media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setDuration(Integer duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setPerformer(String performer) {
+      buildingType.performer = performer;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public InputMediaAudio build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "audio";
 
   /** Type of the result, must be audio */

@@ -17,6 +17,94 @@ import java.util.Objects;
  */
 public final class SendAnimationParameters {
 
+  public static final class Builder {
+
+    private SendAnimationParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendAnimationParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setAnimation(InputFile animation) {
+      buildingType.animation = animation;
+      return this;
+    }
+
+    public Builder setDuration(Integer duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setWidth(Integer width) {
+      buildingType.width = width;
+      return this;
+    }
+
+    public Builder setHeight(Integer height) {
+      buildingType.height = height;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setHasSpoiler(Boolean hasSpoiler) {
+      buildingType.hasSpoiler = hasSpoiler;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(ReplyMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendAnimationParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

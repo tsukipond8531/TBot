@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class ChatBoostSourceGiveaway implements ChatBoostSource {
 
+  public static final class Builder {
+
+    private ChatBoostSourceGiveaway buildingType;
+
+    public Builder() {
+      buildingType = new ChatBoostSourceGiveaway();
+    }
+
+    public Builder setGiveawayMessageId(int giveawayMessageId) {
+      buildingType.giveawayMessageId = giveawayMessageId;
+      return this;
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setIsUnclaimed(Boolean isUnclaimed) {
+      buildingType.isUnclaimed = isUnclaimed;
+      return this;
+    }
+
+    public ChatBoostSourceGiveaway build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "giveaway";
 
   /** Source of the boost, always "giveaway" */

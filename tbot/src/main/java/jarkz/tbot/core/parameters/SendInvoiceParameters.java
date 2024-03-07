@@ -12,6 +12,154 @@ import java.util.Objects;
 /** Use this method to send invoices. On success, the sent Message is returned. */
 public final class SendInvoiceParameters {
 
+  public static final class Builder {
+
+    private SendInvoiceParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendInvoiceParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setPayload(String payload) {
+      buildingType.payload = payload;
+      return this;
+    }
+
+    public Builder setProviderToken(String providerToken) {
+      buildingType.providerToken = providerToken;
+      return this;
+    }
+
+    public Builder setCurrency(String currency) {
+      buildingType.currency = currency;
+      return this;
+    }
+
+    public Builder setPrices(List<LabeledPrice> prices) {
+      buildingType.prices = prices;
+      return this;
+    }
+
+    public Builder setMaxTipAmount(Integer maxTipAmount) {
+      buildingType.maxTipAmount = maxTipAmount;
+      return this;
+    }
+
+    public Builder setSuggestedTipAmounts(List<Integer> suggestedTipAmounts) {
+      buildingType.suggestedTipAmounts = suggestedTipAmounts;
+      return this;
+    }
+
+    public Builder setStartParameter(String startParameter) {
+      buildingType.startParameter = startParameter;
+      return this;
+    }
+
+    public Builder setProviderData(String providerData) {
+      buildingType.providerData = providerData;
+      return this;
+    }
+
+    public Builder setPhotoUrl(String photoUrl) {
+      buildingType.photoUrl = photoUrl;
+      return this;
+    }
+
+    public Builder setPhotoSize(Integer photoSize) {
+      buildingType.photoSize = photoSize;
+      return this;
+    }
+
+    public Builder setPhotoWidth(Integer photoWidth) {
+      buildingType.photoWidth = photoWidth;
+      return this;
+    }
+
+    public Builder setPhotoHeight(Integer photoHeight) {
+      buildingType.photoHeight = photoHeight;
+      return this;
+    }
+
+    public Builder setNeedName(Boolean needName) {
+      buildingType.needName = needName;
+      return this;
+    }
+
+    public Builder setNeedPhoneNumber(Boolean needPhoneNumber) {
+      buildingType.needPhoneNumber = needPhoneNumber;
+      return this;
+    }
+
+    public Builder setNeedEmail(Boolean needEmail) {
+      buildingType.needEmail = needEmail;
+      return this;
+    }
+
+    public Builder setNeedShippingAddress(Boolean needShippingAddress) {
+      buildingType.needShippingAddress = needShippingAddress;
+      return this;
+    }
+
+    public Builder setSendPhoneNumberToProvider(Boolean sendPhoneNumberToProvider) {
+      buildingType.sendPhoneNumberToProvider = sendPhoneNumberToProvider;
+      return this;
+    }
+
+    public Builder setSendEmailToProvider(Boolean sendEmailToProvider) {
+      buildingType.sendEmailToProvider = sendEmailToProvider;
+      return this;
+    }
+
+    public Builder setIsFlexible(Boolean isFlexible) {
+      buildingType.isFlexible = isFlexible;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendInvoiceParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

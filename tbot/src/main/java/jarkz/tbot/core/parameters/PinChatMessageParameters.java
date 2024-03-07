@@ -13,6 +13,34 @@ import java.util.Objects;
  */
 public final class PinChatMessageParameters {
 
+  public static final class Builder {
+
+    private PinChatMessageParameters buildingType;
+
+    public Builder() {
+      buildingType = new PinChatMessageParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public PinChatMessageParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

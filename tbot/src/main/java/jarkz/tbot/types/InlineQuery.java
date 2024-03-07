@@ -10,6 +10,49 @@ import java.util.Objects;
  */
 public final class InlineQuery {
 
+  public static final class Builder {
+
+    private InlineQuery buildingType;
+
+    public Builder() {
+      buildingType = new InlineQuery();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setQuery(String query) {
+      buildingType.query = query;
+      return this;
+    }
+
+    public Builder setOffset(String offset) {
+      buildingType.offset = offset;
+      return this;
+    }
+
+    public Builder setChatType(String chatType) {
+      buildingType.chatType = chatType;
+      return this;
+    }
+
+    public Builder setLocation(Location location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public InlineQuery build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for this query */
   @NotNull public String id;
 

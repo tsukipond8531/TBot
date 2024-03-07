@@ -13,6 +13,54 @@ import java.util.Objects;
  */
 public final class CallbackQuery {
 
+  public static final class Builder {
+
+    private CallbackQuery buildingType;
+
+    public Builder() {
+      buildingType = new CallbackQuery();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setMessage(MaybeInaccessibleMessage message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public Builder setChatInstance(String chatInstance) {
+      buildingType.chatInstance = chatInstance;
+      return this;
+    }
+
+    public Builder setData(String data) {
+      buildingType.data = data;
+      return this;
+    }
+
+    public Builder setGameShortName(String gameShortName) {
+      buildingType.gameShortName = gameShortName;
+      return this;
+    }
+
+    public CallbackQuery build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for this query */
   @NotNull public String id;
 

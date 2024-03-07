@@ -12,6 +12,29 @@ import java.util.Objects;
  */
 public final class AnswerWebAppQueryParameters {
 
+  public static final class Builder {
+
+    private AnswerWebAppQueryParameters buildingType;
+
+    public Builder() {
+      buildingType = new AnswerWebAppQueryParameters();
+    }
+
+    public Builder setWebAppQueryId(String webAppQueryId) {
+      buildingType.webAppQueryId = webAppQueryId;
+      return this;
+    }
+
+    public Builder setResult(InlineQueryResult result) {
+      buildingType.result = result;
+      return this;
+    }
+
+    public AnswerWebAppQueryParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the query to be answered */
   @NotNull
   @SerializedName("web_app_query_id")

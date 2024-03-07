@@ -7,6 +7,39 @@ import java.util.Objects;
 /** This object contains information about an incoming shipping query. */
 public final class ShippingQuery {
 
+  public static final class Builder {
+
+    private ShippingQuery buildingType;
+
+    public Builder() {
+      buildingType = new ShippingQuery();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setInvoicePayload(String invoicePayload) {
+      buildingType.invoicePayload = invoicePayload;
+      return this;
+    }
+
+    public Builder setShippingAddress(ShippingAddress shippingAddress) {
+      buildingType.shippingAddress = shippingAddress;
+      return this;
+    }
+
+    public ShippingQuery build() {
+      return buildingType;
+    }
+  }
+
   /** Unique query identifier */
   @NotNull public String id;
 

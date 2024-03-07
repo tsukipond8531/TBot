@@ -7,6 +7,29 @@ import java.util.Objects;
 /** The message was originally sent by a known user. */
 public final class MessageOriginUser implements MessageOrigin {
 
+  public static final class Builder {
+
+    private MessageOriginUser buildingType;
+
+    public Builder() {
+      buildingType = new MessageOriginUser();
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setSenderUser(User senderUser) {
+      buildingType.senderUser = senderUser;
+      return this;
+    }
+
+    public MessageOriginUser build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "user";
 
   /** Type of the message origin, always "user" */

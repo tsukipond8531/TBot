@@ -7,6 +7,49 @@ import java.util.Objects;
 /** Represents the content of a location message to be sent as the result of an inline query. */
 public final class InputLocationMessageContent implements InputMessageContent {
 
+  public static final class Builder {
+
+    private InputLocationMessageContent buildingType;
+
+    public Builder() {
+      buildingType = new InputLocationMessageContent();
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setHorizontalAccuracy(Float horizontalAccuracy) {
+      buildingType.horizontalAccuracy = horizontalAccuracy;
+      return this;
+    }
+
+    public Builder setLivePeriod(Integer livePeriod) {
+      buildingType.livePeriod = livePeriod;
+      return this;
+    }
+
+    public Builder setHeading(Integer heading) {
+      buildingType.heading = heading;
+      return this;
+    }
+
+    public Builder setProximityAlertRadius(Integer proximityAlertRadius) {
+      buildingType.proximityAlertRadius = proximityAlertRadius;
+      return this;
+    }
+
+    public InputLocationMessageContent build() {
+      return buildingType;
+    }
+  }
+
   /** Latitude of the location in degrees */
   @NotNull public float latitude;
 

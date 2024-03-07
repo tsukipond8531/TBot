@@ -8,6 +8,205 @@ import java.util.Objects;
 /** This object represents a chat. */
 public final class Chat {
 
+  public static final class Builder {
+
+    private Chat buildingType;
+
+    public Builder() {
+      buildingType = new Chat();
+    }
+
+    public Builder setId(long id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setUsername(String username) {
+      buildingType.username = username;
+      return this;
+    }
+
+    public Builder setFirstName(String firstName) {
+      buildingType.firstName = firstName;
+      return this;
+    }
+
+    public Builder setLastName(String lastName) {
+      buildingType.lastName = lastName;
+      return this;
+    }
+
+    public Builder setIsForum(Boolean isForum) {
+      buildingType.isForum = isForum;
+      return this;
+    }
+
+    public Builder setPhoto(ChatPhoto photo) {
+      buildingType.photo = photo;
+      return this;
+    }
+
+    public Builder setActiveUsernames(List<String> activeUsernames) {
+      buildingType.activeUsernames = activeUsernames;
+      return this;
+    }
+
+    public Builder setAvailableReactions(List<ReactionType> availableReactions) {
+      buildingType.availableReactions = availableReactions;
+      return this;
+    }
+
+    public Builder setAccentColorId(Integer accentColorId) {
+      buildingType.accentColorId = accentColorId;
+      return this;
+    }
+
+    public Builder setBackgroundCustomEmojiId(String backgroundCustomEmojiId) {
+      buildingType.backgroundCustomEmojiId = backgroundCustomEmojiId;
+      return this;
+    }
+
+    public Builder setProfileAccentColorId(Integer profileAccentColorId) {
+      buildingType.profileAccentColorId = profileAccentColorId;
+      return this;
+    }
+
+    public Builder setProfileBackgroundCustomEmojiId(String profileBackgroundCustomEmojiId) {
+      buildingType.profileBackgroundCustomEmojiId = profileBackgroundCustomEmojiId;
+      return this;
+    }
+
+    public Builder setEmojiStatusCustomEmojiId(String emojiStatusCustomEmojiId) {
+      buildingType.emojiStatusCustomEmojiId = emojiStatusCustomEmojiId;
+      return this;
+    }
+
+    public Builder setEmojiStatusExpirationDate(Integer emojiStatusExpirationDate) {
+      buildingType.emojiStatusExpirationDate = emojiStatusExpirationDate;
+      return this;
+    }
+
+    public Builder setBio(String bio) {
+      buildingType.bio = bio;
+      return this;
+    }
+
+    public Builder setHasPrivateForwards(Boolean hasPrivateForwards) {
+      buildingType.hasPrivateForwards = hasPrivateForwards;
+      return this;
+    }
+
+    public Builder setHasRestrictedVoiceAndVideoMessages(
+        Boolean hasRestrictedVoiceAndVideoMessages) {
+      buildingType.hasRestrictedVoiceAndVideoMessages = hasRestrictedVoiceAndVideoMessages;
+      return this;
+    }
+
+    public Builder setJoinToSendMessages(Boolean joinToSendMessages) {
+      buildingType.joinToSendMessages = joinToSendMessages;
+      return this;
+    }
+
+    public Builder setJoinByRequest(Boolean joinByRequest) {
+      buildingType.joinByRequest = joinByRequest;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setInviteLink(String inviteLink) {
+      buildingType.inviteLink = inviteLink;
+      return this;
+    }
+
+    public Builder setPinnedMessage(Message pinnedMessage) {
+      buildingType.pinnedMessage = pinnedMessage;
+      return this;
+    }
+
+    public Builder setPermissions(ChatPermissions permissions) {
+      buildingType.permissions = permissions;
+      return this;
+    }
+
+    public Builder setSlowModeDelay(Integer slowModeDelay) {
+      buildingType.slowModeDelay = slowModeDelay;
+      return this;
+    }
+
+    public Builder setUnrestrictBoostCount(Integer unrestrictBoostCount) {
+      buildingType.unrestrictBoostCount = unrestrictBoostCount;
+      return this;
+    }
+
+    public Builder setMessageAutoDeleteTime(Integer messageAutoDeleteTime) {
+      buildingType.messageAutoDeleteTime = messageAutoDeleteTime;
+      return this;
+    }
+
+    public Builder setHasAggressiveAntiSpamEnabled(Boolean hasAggressiveAntiSpamEnabled) {
+      buildingType.hasAggressiveAntiSpamEnabled = hasAggressiveAntiSpamEnabled;
+      return this;
+    }
+
+    public Builder setHasHiddenMembers(Boolean hasHiddenMembers) {
+      buildingType.hasHiddenMembers = hasHiddenMembers;
+      return this;
+    }
+
+    public Builder setHasProtectedContent(Boolean hasProtectedContent) {
+      buildingType.hasProtectedContent = hasProtectedContent;
+      return this;
+    }
+
+    public Builder setHasVisibleHistory(Boolean hasVisibleHistory) {
+      buildingType.hasVisibleHistory = hasVisibleHistory;
+      return this;
+    }
+
+    public Builder setStickerSetName(String stickerSetName) {
+      buildingType.stickerSetName = stickerSetName;
+      return this;
+    }
+
+    public Builder setCanSetStickerSet(Boolean canSetStickerSet) {
+      buildingType.canSetStickerSet = canSetStickerSet;
+      return this;
+    }
+
+    public Builder setCustomEmojiStickerSetName(String customEmojiStickerSetName) {
+      buildingType.customEmojiStickerSetName = customEmojiStickerSetName;
+      return this;
+    }
+
+    public Builder setLinkedChatId(Long linkedChatId) {
+      buildingType.linkedChatId = linkedChatId;
+      return this;
+    }
+
+    public Builder setLocation(ChatLocation location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public Chat build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for this chat. This number may have more than 32 significant bits and some
    * programming languages may have difficulty/silent defects in interpreting it. But it has at most

@@ -8,6 +8,54 @@ import java.util.Objects;
 /** Describes reply parameters for the message that is being sent. */
 public final class ReplyParameters {
 
+  public static final class Builder {
+
+    private ReplyParameters buildingType;
+
+    public Builder() {
+      buildingType = new ReplyParameters();
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setAllowSendingWithoutReply(Boolean allowSendingWithoutReply) {
+      buildingType.allowSendingWithoutReply = allowSendingWithoutReply;
+      return this;
+    }
+
+    public Builder setQuote(String quote) {
+      buildingType.quote = quote;
+      return this;
+    }
+
+    public Builder setQuoteParseMode(String quoteParseMode) {
+      buildingType.quoteParseMode = quoteParseMode;
+      return this;
+    }
+
+    public Builder setQuoteEntities(List<MessageEntity> quoteEntities) {
+      buildingType.quoteEntities = quoteEntities;
+      return this;
+    }
+
+    public Builder setQuotePosition(Integer quotePosition) {
+      buildingType.quotePosition = quotePosition;
+      return this;
+    }
+
+    public ReplyParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Identifier of the message that will be replied to in the current chat, or in the chat chat_id
    * if it is specified

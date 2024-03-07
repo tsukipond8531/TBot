@@ -7,6 +7,49 @@ import java.util.Objects;
 /** Represents a join request sent to a chat. */
 public final class ChatJoinRequest {
 
+  public static final class Builder {
+
+    private ChatJoinRequest buildingType;
+
+    public Builder() {
+      buildingType = new ChatJoinRequest();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setFrom(User from) {
+      buildingType.from = from;
+      return this;
+    }
+
+    public Builder setUserChatId(long userChatId) {
+      buildingType.userChatId = userChatId;
+      return this;
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setBio(String bio) {
+      buildingType.bio = bio;
+      return this;
+    }
+
+    public Builder setInviteLink(ChatInviteLink inviteLink) {
+      buildingType.inviteLink = inviteLink;
+      return this;
+    }
+
+    public ChatJoinRequest build() {
+      return buildingType;
+    }
+  }
+
   /** Chat to which the request was sent */
   @NotNull public Chat chat;
 

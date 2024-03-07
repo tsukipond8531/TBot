@@ -6,6 +6,24 @@ import java.util.Objects;
 /** Describes a Web App. */
 public final class WebAppInfo {
 
+  public static final class Builder {
+
+    private WebAppInfo buildingType;
+
+    public Builder() {
+      buildingType = new WebAppInfo();
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public WebAppInfo build() {
+      return buildingType;
+    }
+  }
+
   /**
    * An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web
    * Apps

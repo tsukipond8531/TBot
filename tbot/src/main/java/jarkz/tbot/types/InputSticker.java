@@ -8,6 +8,39 @@ import java.util.Objects;
 /** This object describes a sticker to be added to a sticker set. */
 public final class InputSticker {
 
+  public static final class Builder {
+
+    private InputSticker buildingType;
+
+    public Builder() {
+      buildingType = new InputSticker();
+    }
+
+    public Builder setSticker(InputFile sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setEmojiList(List<String> emojiList) {
+      buildingType.emojiList = emojiList;
+      return this;
+    }
+
+    public Builder setMaskPosition(MaskPosition maskPosition) {
+      buildingType.maskPosition = maskPosition;
+      return this;
+    }
+
+    public Builder setKeywords(List<String> keywords) {
+      buildingType.keywords = keywords;
+      return this;
+    }
+
+    public InputSticker build() {
+      return buildingType;
+    }
+  }
+
   /**
    * The added sticker. Pass a file_id as a String to send a file that already exists on the
    * Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet,

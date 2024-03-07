@@ -8,6 +8,29 @@ import java.util.Objects;
 /** This object represent a user's profile pictures. */
 public final class UserProfilePhotos {
 
+  public static final class Builder {
+
+    private UserProfilePhotos buildingType;
+
+    public Builder() {
+      buildingType = new UserProfilePhotos();
+    }
+
+    public Builder setTotalCount(int totalCount) {
+      buildingType.totalCount = totalCount;
+      return this;
+    }
+
+    public Builder setPhotos(List<List<PhotoSize>> photos) {
+      buildingType.photos = photos;
+      return this;
+    }
+
+    public UserProfilePhotos build() {
+      return buildingType;
+    }
+  }
+
   /** Total number of profile pictures the target user has */
   @NotNull
   @SerializedName("total_count")

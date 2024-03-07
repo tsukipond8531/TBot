@@ -8,6 +8,64 @@ import java.util.Objects;
 /** Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent. */
 public final class InputMediaAnimation implements InputMedia {
 
+  public static final class Builder {
+
+    private InputMediaAnimation buildingType;
+
+    public Builder() {
+      buildingType = new InputMediaAnimation();
+    }
+
+    public Builder setMedia(InputFile media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setWidth(Integer width) {
+      buildingType.width = width;
+      return this;
+    }
+
+    public Builder setHeight(Integer height) {
+      buildingType.height = height;
+      return this;
+    }
+
+    public Builder setDuration(Integer duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setHasSpoiler(Boolean hasSpoiler) {
+      buildingType.hasSpoiler = hasSpoiler;
+      return this;
+    }
+
+    public InputMediaAnimation build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "animation";
 
   /** Type of the result, must be animation */

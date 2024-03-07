@@ -9,6 +9,34 @@ import java.util.Objects;
  */
 public final class GetUserProfilePhotosParameters {
 
+  public static final class Builder {
+
+    private GetUserProfilePhotosParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetUserProfilePhotosParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setOffset(Integer offset) {
+      buildingType.offset = offset;
+      return this;
+    }
+
+    public Builder setLimit(Integer limit) {
+      buildingType.limit = limit;
+      return this;
+    }
+
+    public GetUserProfilePhotosParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier of the target user */
   @NotNull
   @SerializedName("user_id")

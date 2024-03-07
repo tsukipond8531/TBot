@@ -8,6 +8,69 @@ import java.util.Objects;
 /** Represents a video to be sent. */
 public final class InputMediaVideo implements InputMedia, Media {
 
+  public static final class Builder {
+
+    private InputMediaVideo buildingType;
+
+    public Builder() {
+      buildingType = new InputMediaVideo();
+    }
+
+    public Builder setMedia(InputFile media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setWidth(Integer width) {
+      buildingType.width = width;
+      return this;
+    }
+
+    public Builder setHeight(Integer height) {
+      buildingType.height = height;
+      return this;
+    }
+
+    public Builder setDuration(Integer duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public Builder setSupportsStreaming(Boolean supportsStreaming) {
+      buildingType.supportsStreaming = supportsStreaming;
+      return this;
+    }
+
+    public Builder setHasSpoiler(Boolean hasSpoiler) {
+      buildingType.hasSpoiler = hasSpoiler;
+      return this;
+    }
+
+    public InputMediaVideo build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "video";
 
   /** Type of the result, must be video */

@@ -8,6 +8,24 @@ import java.util.Objects;
  */
 public final class ChatMemberLeft implements ChatMember {
 
+  public static final class Builder {
+
+    private ChatMemberLeft buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberLeft();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public ChatMemberLeft build() {
+      return buildingType;
+    }
+  }
+
   public static final String STATUS = "left";
 
   /** The member's status in the chat, always "left" */

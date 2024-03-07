@@ -6,6 +6,29 @@ import java.util.Objects;
 /** This object represents an animated emoji that displays a random value. */
 public final class Dice {
 
+  public static final class Builder {
+
+    private Dice buildingType;
+
+    public Builder() {
+      buildingType = new Dice();
+    }
+
+    public Builder setEmoji(String emoji) {
+      buildingType.emoji = emoji;
+      return this;
+    }
+
+    public Builder setValue(int value) {
+      buildingType.value = value;
+      return this;
+    }
+
+    public Dice build() {
+      return buildingType;
+    }
+  }
+
   /** Emoji on which the dice throw animation is based */
   @NotNull public String emoji;
 

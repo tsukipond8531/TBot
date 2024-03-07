@@ -7,6 +7,29 @@ import java.util.Objects;
 /** Represents a reaction added to a message along with the number of times it was added. */
 public final class ReactionCount {
 
+  public static final class Builder {
+
+    private ReactionCount buildingType;
+
+    public Builder() {
+      buildingType = new ReactionCount();
+    }
+
+    public Builder setType(ReactionType type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setTotalCount(int totalCount) {
+      buildingType.totalCount = totalCount;
+      return this;
+    }
+
+    public ReactionCount build() {
+      return buildingType;
+    }
+  }
+
   /** Type of the reaction */
   @NotNull public ReactionType type;
 

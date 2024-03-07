@@ -12,6 +12,49 @@ import java.util.Objects;
  */
 public final class EditChatInviteLinkParameters {
 
+  public static final class Builder {
+
+    private EditChatInviteLinkParameters buildingType;
+
+    public Builder() {
+      buildingType = new EditChatInviteLinkParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setInviteLink(String inviteLink) {
+      buildingType.inviteLink = inviteLink;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setExpireDate(Integer expireDate) {
+      buildingType.expireDate = expireDate;
+      return this;
+    }
+
+    public Builder setMemberLimit(Integer memberLimit) {
+      buildingType.memberLimit = memberLimit;
+      return this;
+    }
+
+    public Builder setCreatesJoinRequest(Boolean createsJoinRequest) {
+      buildingType.createsJoinRequest = createsJoinRequest;
+      return this;
+    }
+
+    public EditChatInviteLinkParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

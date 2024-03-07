@@ -6,6 +6,89 @@ import java.util.Objects;
 /** Describes actions that a non-administrator user is allowed to take in a chat. */
 public final class ChatPermissions {
 
+  public static final class Builder {
+
+    private ChatPermissions buildingType;
+
+    public Builder() {
+      buildingType = new ChatPermissions();
+    }
+
+    public Builder setCanSendMessages(Boolean canSendMessages) {
+      buildingType.canSendMessages = canSendMessages;
+      return this;
+    }
+
+    public Builder setCanSendAudios(Boolean canSendAudios) {
+      buildingType.canSendAudios = canSendAudios;
+      return this;
+    }
+
+    public Builder setCanSendDocuments(Boolean canSendDocuments) {
+      buildingType.canSendDocuments = canSendDocuments;
+      return this;
+    }
+
+    public Builder setCanSendPhotos(Boolean canSendPhotos) {
+      buildingType.canSendPhotos = canSendPhotos;
+      return this;
+    }
+
+    public Builder setCanSendVideos(Boolean canSendVideos) {
+      buildingType.canSendVideos = canSendVideos;
+      return this;
+    }
+
+    public Builder setCanSendVideoNotes(Boolean canSendVideoNotes) {
+      buildingType.canSendVideoNotes = canSendVideoNotes;
+      return this;
+    }
+
+    public Builder setCanSendVoiceNotes(Boolean canSendVoiceNotes) {
+      buildingType.canSendVoiceNotes = canSendVoiceNotes;
+      return this;
+    }
+
+    public Builder setCanSendPolls(Boolean canSendPolls) {
+      buildingType.canSendPolls = canSendPolls;
+      return this;
+    }
+
+    public Builder setCanSendOtherMessages(Boolean canSendOtherMessages) {
+      buildingType.canSendOtherMessages = canSendOtherMessages;
+      return this;
+    }
+
+    public Builder setCanAddWebPagePreviews(Boolean canAddWebPagePreviews) {
+      buildingType.canAddWebPagePreviews = canAddWebPagePreviews;
+      return this;
+    }
+
+    public Builder setCanChangeInfo(Boolean canChangeInfo) {
+      buildingType.canChangeInfo = canChangeInfo;
+      return this;
+    }
+
+    public Builder setCanInviteUsers(Boolean canInviteUsers) {
+      buildingType.canInviteUsers = canInviteUsers;
+      return this;
+    }
+
+    public Builder setCanPinMessages(Boolean canPinMessages) {
+      buildingType.canPinMessages = canPinMessages;
+      return this;
+    }
+
+    public Builder setCanManageTopics(Boolean canManageTopics) {
+      buildingType.canManageTopics = canManageTopics;
+      return this;
+    }
+
+    public ChatPermissions build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Optional. True, if the user is allowed to send text messages, contacts, giveaways, giveaway
    * winners, invoices, locations and venues

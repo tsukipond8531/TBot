@@ -7,6 +7,59 @@ import java.util.Objects;
 /** Represents the content of a venue message to be sent as the result of an inline query. */
 public final class InputVenueMessageContent implements InputMessageContent {
 
+  public static final class Builder {
+
+    private InputVenueMessageContent buildingType;
+
+    public Builder() {
+      buildingType = new InputVenueMessageContent();
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setAddress(String address) {
+      buildingType.address = address;
+      return this;
+    }
+
+    public Builder setFoursquareId(String foursquareId) {
+      buildingType.foursquareId = foursquareId;
+      return this;
+    }
+
+    public Builder setFoursquareType(String foursquareType) {
+      buildingType.foursquareType = foursquareType;
+      return this;
+    }
+
+    public Builder setGooglePlaceId(String googlePlaceId) {
+      buildingType.googlePlaceId = googlePlaceId;
+      return this;
+    }
+
+    public Builder setGooglePlaceType(String googlePlaceType) {
+      buildingType.googlePlaceType = googlePlaceType;
+      return this;
+    }
+
+    public InputVenueMessageContent build() {
+      return buildingType;
+    }
+  }
+
   /** Latitude of the venue in degrees */
   @NotNull public float latitude;
 

@@ -10,6 +10,39 @@ import java.util.Objects;
  */
 public final class GetUpdatesParameters {
 
+  public static final class Builder {
+
+    private GetUpdatesParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetUpdatesParameters();
+    }
+
+    public Builder setOffset(Integer offset) {
+      buildingType.offset = offset;
+      return this;
+    }
+
+    public Builder setLimit(Integer limit) {
+      buildingType.limit = limit;
+      return this;
+    }
+
+    public Builder setTimeout(Integer timeout) {
+      buildingType.timeout = timeout;
+      return this;
+    }
+
+    public Builder setAllowedUpdates(List<String> allowedUpdates) {
+      buildingType.allowedUpdates = allowedUpdates;
+      return this;
+    }
+
+    public GetUpdatesParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Identifier of the first update to be returned. Must be greater by one than the highest among
    * the identifiers of previously received updates. By default, updates starting with the earliest

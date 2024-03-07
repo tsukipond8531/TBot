@@ -13,6 +13,29 @@ import java.util.Objects;
  */
 public final class BanChatSenderChatParameters {
 
+  public static final class Builder {
+
+    private BanChatSenderChatParameters buildingType;
+
+    public Builder() {
+      buildingType = new BanChatSenderChatParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setSenderChatId(int senderChatId) {
+      buildingType.senderChatId = senderChatId;
+      return this;
+    }
+
+    public BanChatSenderChatParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

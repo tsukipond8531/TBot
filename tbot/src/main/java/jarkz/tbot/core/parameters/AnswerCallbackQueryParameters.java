@@ -11,6 +11,44 @@ import java.util.Objects;
  */
 public final class AnswerCallbackQueryParameters {
 
+  public static final class Builder {
+
+    private AnswerCallbackQueryParameters buildingType;
+
+    public Builder() {
+      buildingType = new AnswerCallbackQueryParameters();
+    }
+
+    public Builder setCallbackQueryId(String callbackQueryId) {
+      buildingType.callbackQueryId = callbackQueryId;
+      return this;
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setShowAlert(Boolean showAlert) {
+      buildingType.showAlert = showAlert;
+      return this;
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setCacheTime(Integer cacheTime) {
+      buildingType.cacheTime = cacheTime;
+      return this;
+    }
+
+    public AnswerCallbackQueryParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the query to be answered */
   @NotNull
   @SerializedName("callback_query_id")

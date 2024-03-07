@@ -15,6 +15,54 @@ import java.util.Objects;
  */
 public final class KeyboardButton {
 
+  public static final class Builder {
+
+    private KeyboardButton buildingType;
+
+    public Builder() {
+      buildingType = new KeyboardButton();
+    }
+
+    public Builder setText(String text) {
+      buildingType.text = text;
+      return this;
+    }
+
+    public Builder setRequestUsers(KeyboardButtonRequestUsers requestUsers) {
+      buildingType.requestUsers = requestUsers;
+      return this;
+    }
+
+    public Builder setRequestChat(KeyboardButtonRequestChat requestChat) {
+      buildingType.requestChat = requestChat;
+      return this;
+    }
+
+    public Builder setRequestContact(Boolean requestContact) {
+      buildingType.requestContact = requestContact;
+      return this;
+    }
+
+    public Builder setRequestLocation(Boolean requestLocation) {
+      buildingType.requestLocation = requestLocation;
+      return this;
+    }
+
+    public Builder setRequestPoll(KeyboardButtonPollType requestPoll) {
+      buildingType.requestPoll = requestPoll;
+      return this;
+    }
+
+    public Builder setWebApp(WebAppInfo webApp) {
+      buildingType.webApp = webApp;
+      return this;
+    }
+
+    public KeyboardButton build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Text of the button. If none of the optional fields are used, it will be sent as a message when
    * the button is pressed

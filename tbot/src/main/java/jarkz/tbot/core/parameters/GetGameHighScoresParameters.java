@@ -10,6 +10,39 @@ import java.util.Objects;
  */
 public final class GetGameHighScoresParameters {
 
+  public static final class Builder {
+
+    private GetGameHighScoresParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetGameHighScoresParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setChatId(Integer chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public GetGameHighScoresParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Target user id */
   @NotNull
   @SerializedName("user_id")

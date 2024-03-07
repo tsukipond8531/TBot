@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class PassportElementErrorUnspecified implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorUnspecified buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorUnspecified();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setElementHash(String elementHash) {
+      buildingType.elementHash = elementHash;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorUnspecified build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "unspecified";
 
   /** Error source, must be unspecified */

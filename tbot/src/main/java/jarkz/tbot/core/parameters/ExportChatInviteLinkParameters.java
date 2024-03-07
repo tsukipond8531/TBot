@@ -12,6 +12,24 @@ import java.util.Objects;
  */
 public final class ExportChatInviteLinkParameters {
 
+  public static final class Builder {
+
+    private ExportChatInviteLinkParameters buildingType;
+
+    public Builder() {
+      buildingType = new ExportChatInviteLinkParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public ExportChatInviteLinkParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

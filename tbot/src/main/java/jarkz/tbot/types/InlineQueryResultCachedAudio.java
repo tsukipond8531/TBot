@@ -12,6 +12,54 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedAudio implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultCachedAudio buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultCachedAudio();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setAudioFileId(String audioFileId) {
+      buildingType.audioFileId = audioFileId;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultCachedAudio build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "audio";
 
   /** Type of the result, must be audio */

@@ -6,6 +6,24 @@ import java.util.Objects;
 /** This object represents the bot's name. */
 public final class BotName {
 
+  public static final class Builder {
+
+    private BotName buildingType;
+
+    public Builder() {
+      buildingType = new BotName();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public BotName build() {
+      return buildingType;
+    }
+  }
+
   /** The bot's name */
   @NotNull public String name;
 

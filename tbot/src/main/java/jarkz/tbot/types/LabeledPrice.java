@@ -6,6 +6,29 @@ import java.util.Objects;
 /** This object represents a portion of the price for goods or services. */
 public final class LabeledPrice {
 
+  public static final class Builder {
+
+    private LabeledPrice buildingType;
+
+    public Builder() {
+      buildingType = new LabeledPrice();
+    }
+
+    public Builder setLabel(String label) {
+      buildingType.label = label;
+      return this;
+    }
+
+    public Builder setAmount(int amount) {
+      buildingType.amount = amount;
+      return this;
+    }
+
+    public LabeledPrice build() {
+      return buildingType;
+    }
+  }
+
   /** Portion label */
   @NotNull public String label;
 

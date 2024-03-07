@@ -9,6 +9,24 @@ import java.util.Objects;
  */
 public final class GetMyNameParameters {
 
+  public static final class Builder {
+
+    private GetMyNameParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetMyNameParameters();
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public GetMyNameParameters build() {
+      return buildingType;
+    }
+  }
+
   /** A two-letter ISO 639-1 language code or an empty string */
   @SerializedName("language_code")
   public String languageCode;

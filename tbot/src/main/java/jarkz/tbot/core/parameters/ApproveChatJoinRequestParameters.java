@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class ApproveChatJoinRequestParameters {
 
+  public static final class Builder {
+
+    private ApproveChatJoinRequestParameters buildingType;
+
+    public Builder() {
+      buildingType = new ApproveChatJoinRequestParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public ApproveChatJoinRequestParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

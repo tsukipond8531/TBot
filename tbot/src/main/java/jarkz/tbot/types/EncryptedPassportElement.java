@@ -8,6 +8,69 @@ import java.util.Objects;
 /** Describes documents or other Telegram Passport elements shared with the bot by the user. */
 public final class EncryptedPassportElement {
 
+  public static final class Builder {
+
+    private EncryptedPassportElement buildingType;
+
+    public Builder() {
+      buildingType = new EncryptedPassportElement();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setData(String data) {
+      buildingType.data = data;
+      return this;
+    }
+
+    public Builder setPhoneNumber(String phoneNumber) {
+      buildingType.phoneNumber = phoneNumber;
+      return this;
+    }
+
+    public Builder setEmail(String email) {
+      buildingType.email = email;
+      return this;
+    }
+
+    public Builder setFiles(List<PassportFile> files) {
+      buildingType.files = files;
+      return this;
+    }
+
+    public Builder setFrontSide(PassportFile frontSide) {
+      buildingType.frontSide = frontSide;
+      return this;
+    }
+
+    public Builder setReverseSide(PassportFile reverseSide) {
+      buildingType.reverseSide = reverseSide;
+      return this;
+    }
+
+    public Builder setSelfie(PassportFile selfie) {
+      buildingType.selfie = selfie;
+      return this;
+    }
+
+    public Builder setTranslation(List<PassportFile> translation) {
+      buildingType.translation = translation;
+      return this;
+    }
+
+    public Builder setHash(String hash) {
+      buildingType.hash = hash;
+      return this;
+    }
+
+    public EncryptedPassportElement build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Element type. One of "personal_details", "passport", "driver_license", "identity_card",
    * "internal_passport", "address", "utility_bill", "bank_statement", "rental_agreement",

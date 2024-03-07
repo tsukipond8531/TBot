@@ -7,6 +7,29 @@ import java.util.Objects;
 /** Describes Telegram Passport data shared with the bot by the user. */
 public final class PassportData {
 
+  public static final class Builder {
+
+    private PassportData buildingType;
+
+    public Builder() {
+      buildingType = new PassportData();
+    }
+
+    public Builder setData(List<EncryptedPassportElement> data) {
+      buildingType.data = data;
+      return this;
+    }
+
+    public Builder setCredentials(EncryptedCredentials credentials) {
+      buildingType.credentials = credentials;
+      return this;
+    }
+
+    public PassportData build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Array with information about documents and other Telegram Passport elements that was shared
    * with the bot

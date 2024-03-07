@@ -11,6 +11,39 @@ import java.util.Objects;
  */
 public final class EditMessageReplyMarkupParameters {
 
+  public static final class Builder {
+
+    private EditMessageReplyMarkupParameters buildingType;
+
+    public Builder() {
+      buildingType = new EditMessageReplyMarkupParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public EditMessageReplyMarkupParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Required if inline_message_id is not specified. Unique identifier for the target chat or
    * username of the target channel (in the format @channelusername)

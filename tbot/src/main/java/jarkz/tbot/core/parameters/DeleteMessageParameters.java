@@ -29,6 +29,29 @@ import java.util.Objects;
  */
 public final class DeleteMessageParameters {
 
+  public static final class Builder {
+
+    private DeleteMessageParameters buildingType;
+
+    public Builder() {
+      buildingType = new DeleteMessageParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public DeleteMessageParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

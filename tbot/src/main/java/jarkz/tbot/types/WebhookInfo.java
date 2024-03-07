@@ -8,6 +8,64 @@ import java.util.Objects;
 /** Describes the current status of a webhook. */
 public final class WebhookInfo {
 
+  public static final class Builder {
+
+    private WebhookInfo buildingType;
+
+    public Builder() {
+      buildingType = new WebhookInfo();
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setHasCustomCertificate(boolean hasCustomCertificate) {
+      buildingType.hasCustomCertificate = hasCustomCertificate;
+      return this;
+    }
+
+    public Builder setPendingUpdateCount(int pendingUpdateCount) {
+      buildingType.pendingUpdateCount = pendingUpdateCount;
+      return this;
+    }
+
+    public Builder setIpAddress(String ipAddress) {
+      buildingType.ipAddress = ipAddress;
+      return this;
+    }
+
+    public Builder setLastErrorDate(Integer lastErrorDate) {
+      buildingType.lastErrorDate = lastErrorDate;
+      return this;
+    }
+
+    public Builder setLastErrorMessage(String lastErrorMessage) {
+      buildingType.lastErrorMessage = lastErrorMessage;
+      return this;
+    }
+
+    public Builder setLastSynchronizationErrorDate(Integer lastSynchronizationErrorDate) {
+      buildingType.lastSynchronizationErrorDate = lastSynchronizationErrorDate;
+      return this;
+    }
+
+    public Builder setMaxConnections(Integer maxConnections) {
+      buildingType.maxConnections = maxConnections;
+      return this;
+    }
+
+    public Builder setAllowedUpdates(List<String> allowedUpdates) {
+      buildingType.allowedUpdates = allowedUpdates;
+      return this;
+    }
+
+    public WebhookInfo build() {
+      return buildingType;
+    }
+  }
+
   /** Webhook URL, may be empty if webhook is not set up */
   @NotNull public String url;
 

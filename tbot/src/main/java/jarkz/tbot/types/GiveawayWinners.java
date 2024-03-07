@@ -8,6 +8,74 @@ import java.util.Objects;
 /** This object represents a message about the completion of a giveaway with public winners. */
 public final class GiveawayWinners {
 
+  public static final class Builder {
+
+    private GiveawayWinners buildingType;
+
+    public Builder() {
+      buildingType = new GiveawayWinners();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setGiveawayMessageId(int giveawayMessageId) {
+      buildingType.giveawayMessageId = giveawayMessageId;
+      return this;
+    }
+
+    public Builder setWinnersSelectionDate(int winnersSelectionDate) {
+      buildingType.winnersSelectionDate = winnersSelectionDate;
+      return this;
+    }
+
+    public Builder setWinnerCount(int winnerCount) {
+      buildingType.winnerCount = winnerCount;
+      return this;
+    }
+
+    public Builder setWinners(List<User> winners) {
+      buildingType.winners = winners;
+      return this;
+    }
+
+    public Builder setAdditionalChatCount(Integer additionalChatCount) {
+      buildingType.additionalChatCount = additionalChatCount;
+      return this;
+    }
+
+    public Builder setPremiumSubscriptionMonthCount(Integer premiumSubscriptionMonthCount) {
+      buildingType.premiumSubscriptionMonthCount = premiumSubscriptionMonthCount;
+      return this;
+    }
+
+    public Builder setUnclaimedPrizeCount(Integer unclaimedPrizeCount) {
+      buildingType.unclaimedPrizeCount = unclaimedPrizeCount;
+      return this;
+    }
+
+    public Builder setOnlyNewMembers(Boolean onlyNewMembers) {
+      buildingType.onlyNewMembers = onlyNewMembers;
+      return this;
+    }
+
+    public Builder setWasRefunded(Boolean wasRefunded) {
+      buildingType.wasRefunded = wasRefunded;
+      return this;
+    }
+
+    public Builder setPrizeDescription(String prizeDescription) {
+      buildingType.prizeDescription = prizeDescription;
+      return this;
+    }
+
+    public GiveawayWinners build() {
+      return buildingType;
+    }
+  }
+
   /** The chat that created the giveaway */
   @NotNull public Chat chat;
 

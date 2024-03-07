@@ -9,6 +9,29 @@ import java.util.Objects;
  */
 public final class BotCommandScopeChatMember implements BotCommandScope {
 
+  public static final class Builder {
+
+    private BotCommandScopeChatMember buildingType;
+
+    public Builder() {
+      buildingType = new BotCommandScopeChatMember();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public BotCommandScopeChatMember build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "chat_member";
 
   /** Scope type, must be chat_member */

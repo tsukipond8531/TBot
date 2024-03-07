@@ -6,6 +6,19 @@ package jarkz.tbot.types;
  */
 public final class GeneralForumTopicHidden {
 
+  public static final class Builder {
+
+    private GeneralForumTopicHidden buildingType;
+
+    public Builder() {
+      buildingType = new GeneralForumTopicHidden();
+    }
+
+    public GeneralForumTopicHidden build() {
+      return buildingType;
+    }
+  }
+
   @Override
   public final boolean equals(Object obj) {
     if (this == obj) return true;

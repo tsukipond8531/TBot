@@ -13,6 +13,34 @@ import java.util.Objects;
  */
 public final class AddStickerToSetParameters {
 
+  public static final class Builder {
+
+    private AddStickerToSetParameters buildingType;
+
+    public Builder() {
+      buildingType = new AddStickerToSetParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setSticker(InputSticker sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public AddStickerToSetParameters build() {
+      return buildingType;
+    }
+  }
+
   /** User identifier of sticker set owner */
   @NotNull
   @SerializedName("user_id")

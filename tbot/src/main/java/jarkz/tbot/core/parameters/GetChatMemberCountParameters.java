@@ -8,6 +8,24 @@ import java.util.Objects;
 /** Use this method to get the number of members in a chat. Returns Int on success. */
 public final class GetChatMemberCountParameters {
 
+  public static final class Builder {
+
+    private GetChatMemberCountParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetChatMemberCountParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public GetChatMemberCountParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup or channel (in the
    * format @channelusername)

@@ -7,6 +7,74 @@ import java.util.Objects;
 /** This object represents a Telegram user or bot. */
 public final class User {
 
+  public static final class Builder {
+
+    private User buildingType;
+
+    public Builder() {
+      buildingType = new User();
+    }
+
+    public Builder setId(long id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setBot(boolean isBot) {
+      buildingType.isBot = isBot;
+      return this;
+    }
+
+    public Builder setFirstName(String firstName) {
+      buildingType.firstName = firstName;
+      return this;
+    }
+
+    public Builder setLastName(String lastName) {
+      buildingType.lastName = lastName;
+      return this;
+    }
+
+    public Builder setUsername(String username) {
+      buildingType.username = username;
+      return this;
+    }
+
+    public Builder setLanguageCode(String languageCode) {
+      buildingType.languageCode = languageCode;
+      return this;
+    }
+
+    public Builder setIsPremium(Boolean isPremium) {
+      buildingType.isPremium = isPremium;
+      return this;
+    }
+
+    public Builder setAddedToAttachmentMenu(Boolean addedToAttachmentMenu) {
+      buildingType.addedToAttachmentMenu = addedToAttachmentMenu;
+      return this;
+    }
+
+    public Builder setCanJoinGroups(Boolean canJoinGroups) {
+      buildingType.canJoinGroups = canJoinGroups;
+      return this;
+    }
+
+    public Builder setCanReadAllGroupMessages(Boolean canReadAllGroupMessages) {
+      buildingType.canReadAllGroupMessages = canReadAllGroupMessages;
+      return this;
+    }
+
+    public Builder setSupportsInlineQueries(Boolean supportsInlineQueries) {
+      buildingType.supportsInlineQueries = supportsInlineQueries;
+      return this;
+    }
+
+    public User build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for this user or bot. This number may have more than 32 significant bits and
    * some programming languages may have difficulty/silent defects in interpreting it. But it has at

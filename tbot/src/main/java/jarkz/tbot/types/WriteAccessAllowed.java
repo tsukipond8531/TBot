@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class WriteAccessAllowed {
 
+  public static final class Builder {
+
+    private WriteAccessAllowed buildingType;
+
+    public Builder() {
+      buildingType = new WriteAccessAllowed();
+    }
+
+    public Builder setFromRequest(Boolean fromRequest) {
+      buildingType.fromRequest = fromRequest;
+      return this;
+    }
+
+    public Builder setWebAppName(String webAppName) {
+      buildingType.webAppName = webAppName;
+      return this;
+    }
+
+    public Builder setFromAttachmentMenu(Boolean fromAttachmentMenu) {
+      buildingType.fromAttachmentMenu = fromAttachmentMenu;
+      return this;
+    }
+
+    public WriteAccessAllowed build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Optional. True, if the access was granted after the user accepted an explicit request from a
    * Web App sent by the method requestWriteAccess

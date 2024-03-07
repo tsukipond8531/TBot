@@ -12,6 +12,34 @@ import java.util.Objects;
  */
 public final class AnswerPreCheckoutQueryParameters {
 
+  public static final class Builder {
+
+    private AnswerPreCheckoutQueryParameters buildingType;
+
+    public Builder() {
+      buildingType = new AnswerPreCheckoutQueryParameters();
+    }
+
+    public Builder setPreCheckoutQueryId(String preCheckoutQueryId) {
+      buildingType.preCheckoutQueryId = preCheckoutQueryId;
+      return this;
+    }
+
+    public Builder setOk(boolean ok) {
+      buildingType.ok = ok;
+      return this;
+    }
+
+    public Builder setErrorMessage(String errorMessage) {
+      buildingType.errorMessage = errorMessage;
+      return this;
+    }
+
+    public AnswerPreCheckoutQueryParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the query to be answered */
   @NotNull
   @SerializedName("pre_checkout_query_id")

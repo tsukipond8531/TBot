@@ -12,6 +12,34 @@ import java.util.Objects;
  */
 public final class UploadStickerFileParameters {
 
+  public static final class Builder {
+
+    private UploadStickerFileParameters buildingType;
+
+    public Builder() {
+      buildingType = new UploadStickerFileParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setSticker(InputFile sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setStickerFormat(String stickerFormat) {
+      buildingType.stickerFormat = stickerFormat;
+      return this;
+    }
+
+    public UploadStickerFileParameters build() {
+      return buildingType;
+    }
+  }
+
   /** User identifier of sticker file owner */
   @NotNull
   @SerializedName("user_id")

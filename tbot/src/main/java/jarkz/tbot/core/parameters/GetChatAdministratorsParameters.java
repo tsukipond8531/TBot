@@ -11,6 +11,24 @@ import java.util.Objects;
  */
 public final class GetChatAdministratorsParameters {
 
+  public static final class Builder {
+
+    private GetChatAdministratorsParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetChatAdministratorsParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public GetChatAdministratorsParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup or channel (in the
    * format @channelusername)

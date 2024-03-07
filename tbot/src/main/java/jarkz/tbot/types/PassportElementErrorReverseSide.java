@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class PassportElementErrorReverseSide implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorReverseSide buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorReverseSide();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setFileHash(String fileHash) {
+      buildingType.fileHash = fileHash;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorReverseSide build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "reverse_side";
 
   /** Error source, must be reverse_side */

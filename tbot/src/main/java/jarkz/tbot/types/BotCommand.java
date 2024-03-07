@@ -6,6 +6,29 @@ import java.util.Objects;
 /** This object represents a bot command. */
 public final class BotCommand {
 
+  public static final class Builder {
+
+    private BotCommand buildingType;
+
+    public Builder() {
+      buildingType = new BotCommand();
+    }
+
+    public Builder setCommand(String command) {
+      buildingType.command = command;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public BotCommand build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and
    * underscores.

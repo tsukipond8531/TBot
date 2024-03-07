@@ -6,6 +6,29 @@ import java.util.Objects;
 /** This object represents a service message about an edited forum topic. */
 public final class ForumTopicEdited {
 
+  public static final class Builder {
+
+    private ForumTopicEdited buildingType;
+
+    public Builder() {
+      buildingType = new ForumTopicEdited();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setIconCustomEmojiId(String iconCustomEmojiId) {
+      buildingType.iconCustomEmojiId = iconCustomEmojiId;
+      return this;
+    }
+
+    public ForumTopicEdited build() {
+      return buildingType;
+    }
+  }
+
   /** Optional. New name of the topic, if it was edited */
   public String name;
 

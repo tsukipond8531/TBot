@@ -6,6 +6,19 @@ import java.util.Objects;
 /** Represents the scope of bot commands, covering all private chats. */
 public final class BotCommandScopeAllPrivateChats implements BotCommandScope {
 
+  public static final class Builder {
+
+    private BotCommandScopeAllPrivateChats buildingType;
+
+    public Builder() {
+      buildingType = new BotCommandScopeAllPrivateChats();
+    }
+
+    public BotCommandScopeAllPrivateChats build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "all_private_chats";
 
   /** Scope type, must be all_private_chats */

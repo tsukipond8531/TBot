@@ -7,6 +7,44 @@ import java.util.Objects;
 /** This object contains basic information about an invoice. */
 public final class Invoice {
 
+  public static final class Builder {
+
+    private Invoice buildingType;
+
+    public Builder() {
+      buildingType = new Invoice();
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      buildingType.description = description;
+      return this;
+    }
+
+    public Builder setStartParameter(String startParameter) {
+      buildingType.startParameter = startParameter;
+      return this;
+    }
+
+    public Builder setCurrency(String currency) {
+      buildingType.currency = currency;
+      return this;
+    }
+
+    public Builder setTotalAmount(int totalAmount) {
+      buildingType.totalAmount = totalAmount;
+      return this;
+    }
+
+    public Invoice build() {
+      return buildingType;
+    }
+  }
+
   /** Product name */
   @NotNull public String title;
 

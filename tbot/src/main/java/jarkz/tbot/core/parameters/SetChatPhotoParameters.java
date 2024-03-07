@@ -13,6 +13,29 @@ import java.util.Objects;
  */
 public final class SetChatPhotoParameters {
 
+  public static final class Builder {
+
+    private SetChatPhotoParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetChatPhotoParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setPhoto(InputFile photo) {
+      buildingType.photo = photo;
+      return this;
+    }
+
+    public SetChatPhotoParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

@@ -11,6 +11,34 @@ import java.util.Objects;
  */
 public final class PassportElementErrorFiles implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorFiles buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorFiles();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setFileHashes(List<String> fileHashes) {
+      buildingType.fileHashes = fileHashes;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorFiles build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "files";
 
   /** Error source, must be files */

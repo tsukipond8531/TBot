@@ -12,6 +12,104 @@ import java.util.Objects;
  */
 public final class PromoteChatMemberParameters {
 
+  public static final class Builder {
+
+    private PromoteChatMemberParameters buildingType;
+
+    public Builder() {
+      buildingType = new PromoteChatMemberParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setIsAnonymous(Boolean isAnonymous) {
+      buildingType.isAnonymous = isAnonymous;
+      return this;
+    }
+
+    public Builder setCanManageChat(Boolean canManageChat) {
+      buildingType.canManageChat = canManageChat;
+      return this;
+    }
+
+    public Builder setCanDeleteMessages(Boolean canDeleteMessages) {
+      buildingType.canDeleteMessages = canDeleteMessages;
+      return this;
+    }
+
+    public Builder setCanManageVideoChats(Boolean canManageVideoChats) {
+      buildingType.canManageVideoChats = canManageVideoChats;
+      return this;
+    }
+
+    public Builder setCanRestrictMembers(Boolean canRestrictMembers) {
+      buildingType.canRestrictMembers = canRestrictMembers;
+      return this;
+    }
+
+    public Builder setCanPromoteMembers(Boolean canPromoteMembers) {
+      buildingType.canPromoteMembers = canPromoteMembers;
+      return this;
+    }
+
+    public Builder setCanChangeInfo(Boolean canChangeInfo) {
+      buildingType.canChangeInfo = canChangeInfo;
+      return this;
+    }
+
+    public Builder setCanInviteUsers(Boolean canInviteUsers) {
+      buildingType.canInviteUsers = canInviteUsers;
+      return this;
+    }
+
+    public Builder setCanPostStories(Boolean canPostStories) {
+      buildingType.canPostStories = canPostStories;
+      return this;
+    }
+
+    public Builder setCanEditStories(Boolean canEditStories) {
+      buildingType.canEditStories = canEditStories;
+      return this;
+    }
+
+    public Builder setCanDeleteStories(Boolean canDeleteStories) {
+      buildingType.canDeleteStories = canDeleteStories;
+      return this;
+    }
+
+    public Builder setCanPostMessages(Boolean canPostMessages) {
+      buildingType.canPostMessages = canPostMessages;
+      return this;
+    }
+
+    public Builder setCanEditMessages(Boolean canEditMessages) {
+      buildingType.canEditMessages = canEditMessages;
+      return this;
+    }
+
+    public Builder setCanPinMessages(Boolean canPinMessages) {
+      buildingType.canPinMessages = canPinMessages;
+      return this;
+    }
+
+    public Builder setCanManageTopics(Boolean canManageTopics) {
+      buildingType.canManageTopics = canManageTopics;
+      return this;
+    }
+
+    public PromoteChatMemberParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

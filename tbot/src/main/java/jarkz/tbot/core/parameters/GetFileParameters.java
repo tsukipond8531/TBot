@@ -16,6 +16,24 @@ import java.util.Objects;
  */
 public final class GetFileParameters {
 
+  public static final class Builder {
+
+    private GetFileParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetFileParameters();
+    }
+
+    public Builder setFileId(String fileId) {
+      buildingType.fileId = fileId;
+      return this;
+    }
+
+    public GetFileParameters build() {
+      return buildingType;
+    }
+  }
+
   /** File identifier to get information about */
   @NotNull
   @SerializedName("file_id")

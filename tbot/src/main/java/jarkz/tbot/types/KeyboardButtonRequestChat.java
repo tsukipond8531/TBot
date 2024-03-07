@@ -11,6 +11,59 @@ import java.util.Objects;
  */
 public final class KeyboardButtonRequestChat {
 
+  public static final class Builder {
+
+    private KeyboardButtonRequestChat buildingType;
+
+    public Builder() {
+      buildingType = new KeyboardButtonRequestChat();
+    }
+
+    public Builder setRequestId(int requestId) {
+      buildingType.requestId = requestId;
+      return this;
+    }
+
+    public Builder setChatIsChannel(boolean chatIsChannel) {
+      buildingType.chatIsChannel = chatIsChannel;
+      return this;
+    }
+
+    public Builder setChatIsForum(Boolean chatIsForum) {
+      buildingType.chatIsForum = chatIsForum;
+      return this;
+    }
+
+    public Builder setChatHasUsername(Boolean chatHasUsername) {
+      buildingType.chatHasUsername = chatHasUsername;
+      return this;
+    }
+
+    public Builder setChatIsCreated(Boolean chatIsCreated) {
+      buildingType.chatIsCreated = chatIsCreated;
+      return this;
+    }
+
+    public Builder setUserAdministratorRights(ChatAdministratorRights userAdministratorRights) {
+      buildingType.userAdministratorRights = userAdministratorRights;
+      return this;
+    }
+
+    public Builder setBotAdministratorRights(ChatAdministratorRights botAdministratorRights) {
+      buildingType.botAdministratorRights = botAdministratorRights;
+      return this;
+    }
+
+    public Builder setBotIsMember(Boolean botIsMember) {
+      buildingType.botIsMember = botIsMember;
+      return this;
+    }
+
+    public KeyboardButtonRequestChat build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Signed 32-bit identifier of the request, which will be received back in the ChatShared object.
    * Must be unique within the message

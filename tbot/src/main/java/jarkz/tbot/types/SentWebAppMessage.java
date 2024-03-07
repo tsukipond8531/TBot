@@ -6,6 +6,24 @@ import java.util.Objects;
 /** Describes an inline message sent by a Web App on behalf of a user. */
 public final class SentWebAppMessage {
 
+  public static final class Builder {
+
+    private SentWebAppMessage buildingType;
+
+    public Builder() {
+      buildingType = new SentWebAppMessage();
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public SentWebAppMessage build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Optional. Identifier of the sent inline message. Available only if there is an inline keyboard
    * attached to the message.

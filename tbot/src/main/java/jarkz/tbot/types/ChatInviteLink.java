@@ -7,6 +7,64 @@ import java.util.Objects;
 /** Represents an invite link for a chat. */
 public final class ChatInviteLink {
 
+  public static final class Builder {
+
+    private ChatInviteLink buildingType;
+
+    public Builder() {
+      buildingType = new ChatInviteLink();
+    }
+
+    public Builder setInviteLink(String inviteLink) {
+      buildingType.inviteLink = inviteLink;
+      return this;
+    }
+
+    public Builder setCreator(User creator) {
+      buildingType.creator = creator;
+      return this;
+    }
+
+    public Builder setCreatesJoinRequest(boolean createsJoinRequest) {
+      buildingType.createsJoinRequest = createsJoinRequest;
+      return this;
+    }
+
+    public Builder setPrimary(boolean isPrimary) {
+      buildingType.isPrimary = isPrimary;
+      return this;
+    }
+
+    public Builder setRevoked(boolean isRevoked) {
+      buildingType.isRevoked = isRevoked;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setExpireDate(Integer expireDate) {
+      buildingType.expireDate = expireDate;
+      return this;
+    }
+
+    public Builder setMemberLimit(Integer memberLimit) {
+      buildingType.memberLimit = memberLimit;
+      return this;
+    }
+
+    public Builder setPendingJoinRequestCount(Integer pendingJoinRequestCount) {
+      buildingType.pendingJoinRequestCount = pendingJoinRequestCount;
+      return this;
+    }
+
+    public ChatInviteLink build() {
+      return buildingType;
+    }
+  }
+
   /**
    * The invite link. If the link was created by another chat administrator, then the second part of
    * the link will be replaced with "...".

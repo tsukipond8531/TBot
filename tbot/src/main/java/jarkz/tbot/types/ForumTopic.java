@@ -7,6 +7,39 @@ import java.util.Objects;
 /** This object represents a forum topic. */
 public final class ForumTopic {
 
+  public static final class Builder {
+
+    private ForumTopic buildingType;
+
+    public Builder() {
+      buildingType = new ForumTopic();
+    }
+
+    public Builder setMessageThreadId(int messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setIconColor(int iconColor) {
+      buildingType.iconColor = iconColor;
+      return this;
+    }
+
+    public Builder setIconCustomEmojiId(String iconCustomEmojiId) {
+      buildingType.iconCustomEmojiId = iconCustomEmojiId;
+      return this;
+    }
+
+    public ForumTopic build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier of the forum topic */
   @NotNull
   @SerializedName("message_thread_id")

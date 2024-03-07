@@ -10,6 +10,39 @@ import java.util.Objects;
  */
 public final class PassportElementErrorDataField implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorDataField buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorDataField();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setFieldName(String fieldName) {
+      buildingType.fieldName = fieldName;
+      return this;
+    }
+
+    public Builder setDataHash(String dataHash) {
+      buildingType.dataHash = dataHash;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorDataField build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "data";
 
   /** Error source, must be data */

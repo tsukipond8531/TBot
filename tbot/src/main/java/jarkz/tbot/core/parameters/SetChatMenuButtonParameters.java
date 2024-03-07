@@ -10,6 +10,29 @@ import java.util.Objects;
  */
 public final class SetChatMenuButtonParameters {
 
+  public static final class Builder {
+
+    private SetChatMenuButtonParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetChatMenuButtonParameters();
+    }
+
+    public Builder setChatId(Integer chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMenuButton(MenuButton menuButton) {
+      buildingType.menuButton = menuButton;
+      return this;
+    }
+
+    public SetChatMenuButtonParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target private chat. If not specified, default bot's menu button will
    * be changed

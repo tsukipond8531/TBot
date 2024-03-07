@@ -10,6 +10,24 @@ import java.util.Objects;
  */
 public final class InlineKeyboardMarkup implements ReplyMarkup {
 
+  public static final class Builder {
+
+    private InlineKeyboardMarkup buildingType;
+
+    public Builder() {
+      buildingType = new InlineKeyboardMarkup();
+    }
+
+    public Builder setInlineKeyboard(List<List<InlineKeyboardButton>> inlineKeyboard) {
+      buildingType.inlineKeyboard = inlineKeyboard;
+      return this;
+    }
+
+    public InlineKeyboardMarkup build() {
+      return buildingType;
+    }
+  }
+
   /** Array of button rows, each represented by an Array of InlineKeyboardButton objects */
   @NotNull
   @SerializedName("inline_keyboard")

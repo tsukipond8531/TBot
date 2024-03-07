@@ -7,6 +7,39 @@ import java.util.Objects;
 /** The message was originally sent to a channel chat. */
 public final class MessageOriginChannel implements MessageOrigin {
 
+  public static final class Builder {
+
+    private MessageOriginChannel buildingType;
+
+    public Builder() {
+      buildingType = new MessageOriginChannel();
+    }
+
+    public Builder setDate(int date) {
+      buildingType.date = date;
+      return this;
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setAuthorSignature(String authorSignature) {
+      buildingType.authorSignature = authorSignature;
+      return this;
+    }
+
+    public MessageOriginChannel build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "channel";
 
   /** Type of the message origin, always "channel" */

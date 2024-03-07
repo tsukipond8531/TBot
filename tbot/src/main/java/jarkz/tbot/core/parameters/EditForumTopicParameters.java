@@ -12,6 +12,39 @@ import java.util.Objects;
  */
 public final class EditForumTopicParameters {
 
+  public static final class Builder {
+
+    private EditForumTopicParameters buildingType;
+
+    public Builder() {
+      buildingType = new EditForumTopicParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(int messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setIconCustomEmojiId(String iconCustomEmojiId) {
+      buildingType.iconCustomEmojiId = iconCustomEmojiId;
+      return this;
+    }
+
+    public EditForumTopicParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target supergroup (in the
    * format @supergroupusername)

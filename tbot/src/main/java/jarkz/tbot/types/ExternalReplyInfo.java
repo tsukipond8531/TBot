@@ -11,6 +11,134 @@ import java.util.Objects;
  */
 public final class ExternalReplyInfo {
 
+  public static final class Builder {
+
+    private ExternalReplyInfo buildingType;
+
+    public Builder() {
+      buildingType = new ExternalReplyInfo();
+    }
+
+    public Builder setOrigin(MessageOrigin origin) {
+      buildingType.origin = origin;
+      return this;
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setLinkPreviewOptions(LinkPreviewOptions linkPreviewOptions) {
+      buildingType.linkPreviewOptions = linkPreviewOptions;
+      return this;
+    }
+
+    public Builder setAnimation(Animation animation) {
+      buildingType.animation = animation;
+      return this;
+    }
+
+    public Builder setAudio(Audio audio) {
+      buildingType.audio = audio;
+      return this;
+    }
+
+    public Builder setDocument(Document document) {
+      buildingType.document = document;
+      return this;
+    }
+
+    public Builder setPhoto(List<PhotoSize> photo) {
+      buildingType.photo = photo;
+      return this;
+    }
+
+    public Builder setSticker(Sticker sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setStory(Story story) {
+      buildingType.story = story;
+      return this;
+    }
+
+    public Builder setVideo(Video video) {
+      buildingType.video = video;
+      return this;
+    }
+
+    public Builder setVideoNote(VideoNote videoNote) {
+      buildingType.videoNote = videoNote;
+      return this;
+    }
+
+    public Builder setVoice(Voice voice) {
+      buildingType.voice = voice;
+      return this;
+    }
+
+    public Builder setHasMediaSpoiler(Boolean hasMediaSpoiler) {
+      buildingType.hasMediaSpoiler = hasMediaSpoiler;
+      return this;
+    }
+
+    public Builder setContact(Contact contact) {
+      buildingType.contact = contact;
+      return this;
+    }
+
+    public Builder setDice(Dice dice) {
+      buildingType.dice = dice;
+      return this;
+    }
+
+    public Builder setGame(Game game) {
+      buildingType.game = game;
+      return this;
+    }
+
+    public Builder setGiveaway(Giveaway giveaway) {
+      buildingType.giveaway = giveaway;
+      return this;
+    }
+
+    public Builder setGiveawayWinners(GiveawayWinners giveawayWinners) {
+      buildingType.giveawayWinners = giveawayWinners;
+      return this;
+    }
+
+    public Builder setInvoice(Invoice invoice) {
+      buildingType.invoice = invoice;
+      return this;
+    }
+
+    public Builder setLocation(Location location) {
+      buildingType.location = location;
+      return this;
+    }
+
+    public Builder setPoll(Poll poll) {
+      buildingType.poll = poll;
+      return this;
+    }
+
+    public Builder setVenue(Venue venue) {
+      buildingType.venue = venue;
+      return this;
+    }
+
+    public ExternalReplyInfo build() {
+      return buildingType;
+    }
+  }
+
   /** Origin of the message replied to by the given message */
   @NotNull public MessageOrigin origin;
 

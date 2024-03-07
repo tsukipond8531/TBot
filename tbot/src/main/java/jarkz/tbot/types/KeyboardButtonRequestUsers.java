@@ -11,6 +11,39 @@ import java.util.Objects;
  */
 public final class KeyboardButtonRequestUsers {
 
+  public static final class Builder {
+
+    private KeyboardButtonRequestUsers buildingType;
+
+    public Builder() {
+      buildingType = new KeyboardButtonRequestUsers();
+    }
+
+    public Builder setRequestId(int requestId) {
+      buildingType.requestId = requestId;
+      return this;
+    }
+
+    public Builder setUserIsBot(Boolean userIsBot) {
+      buildingType.userIsBot = userIsBot;
+      return this;
+    }
+
+    public Builder setUserIsPremium(Boolean userIsPremium) {
+      buildingType.userIsPremium = userIsPremium;
+      return this;
+    }
+
+    public Builder setMaxQuantity(Integer maxQuantity) {
+      buildingType.maxQuantity = maxQuantity;
+      return this;
+    }
+
+    public KeyboardButtonRequestUsers build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Signed 32-bit identifier of the request that will be received back in the UsersShared object.
    * Must be unique within the message

@@ -6,6 +6,34 @@ import java.util.Objects;
 /** This object represents one row of the high scores table for a game. */
 public final class GameHighScore {
 
+  public static final class Builder {
+
+    private GameHighScore buildingType;
+
+    public Builder() {
+      buildingType = new GameHighScore();
+    }
+
+    public Builder setPosition(int position) {
+      buildingType.position = position;
+      return this;
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setScore(int score) {
+      buildingType.score = score;
+      return this;
+    }
+
+    public GameHighScore build() {
+      return buildingType;
+    }
+  }
+
   /** Position in high score table for the game */
   @NotNull public int position;
 

@@ -13,6 +13,39 @@ import java.util.Objects;
  */
 public final class BanChatMemberParameters {
 
+  public static final class Builder {
+
+    private BanChatMemberParameters buildingType;
+
+    public Builder() {
+      buildingType = new BanChatMemberParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setUntilDate(Integer untilDate) {
+      buildingType.untilDate = untilDate;
+      return this;
+    }
+
+    public Builder setRevokeMessages(Boolean revokeMessages) {
+      buildingType.revokeMessages = revokeMessages;
+      return this;
+    }
+
+    public BanChatMemberParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target group or username of the target supergroup or channel (in the
    * format @channelusername)

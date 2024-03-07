@@ -7,6 +7,109 @@ import java.util.Objects;
 /** Represents a chat member that has some additional privileges. */
 public final class ChatMemberAdministrator implements ChatMember {
 
+  public static final class Builder {
+
+    private ChatMemberAdministrator buildingType;
+
+    public Builder() {
+      buildingType = new ChatMemberAdministrator();
+    }
+
+    public Builder setUser(User user) {
+      buildingType.user = user;
+      return this;
+    }
+
+    public Builder setCanBeEdited(boolean canBeEdited) {
+      buildingType.canBeEdited = canBeEdited;
+      return this;
+    }
+
+    public Builder setAnonymous(boolean isAnonymous) {
+      buildingType.isAnonymous = isAnonymous;
+      return this;
+    }
+
+    public Builder setCanManageChat(boolean canManageChat) {
+      buildingType.canManageChat = canManageChat;
+      return this;
+    }
+
+    public Builder setCanDeleteMessages(boolean canDeleteMessages) {
+      buildingType.canDeleteMessages = canDeleteMessages;
+      return this;
+    }
+
+    public Builder setCanManageVideoChats(boolean canManageVideoChats) {
+      buildingType.canManageVideoChats = canManageVideoChats;
+      return this;
+    }
+
+    public Builder setCanRestrictMembers(boolean canRestrictMembers) {
+      buildingType.canRestrictMembers = canRestrictMembers;
+      return this;
+    }
+
+    public Builder setCanPromoteMembers(boolean canPromoteMembers) {
+      buildingType.canPromoteMembers = canPromoteMembers;
+      return this;
+    }
+
+    public Builder setCanChangeInfo(boolean canChangeInfo) {
+      buildingType.canChangeInfo = canChangeInfo;
+      return this;
+    }
+
+    public Builder setCanInviteUsers(boolean canInviteUsers) {
+      buildingType.canInviteUsers = canInviteUsers;
+      return this;
+    }
+
+    public Builder setCanPostStories(boolean canPostStories) {
+      buildingType.canPostStories = canPostStories;
+      return this;
+    }
+
+    public Builder setCanEditStories(boolean canEditStories) {
+      buildingType.canEditStories = canEditStories;
+      return this;
+    }
+
+    public Builder setCanDeleteStories(boolean canDeleteStories) {
+      buildingType.canDeleteStories = canDeleteStories;
+      return this;
+    }
+
+    public Builder setCanPostMessages(Boolean canPostMessages) {
+      buildingType.canPostMessages = canPostMessages;
+      return this;
+    }
+
+    public Builder setCanEditMessages(Boolean canEditMessages) {
+      buildingType.canEditMessages = canEditMessages;
+      return this;
+    }
+
+    public Builder setCanPinMessages(Boolean canPinMessages) {
+      buildingType.canPinMessages = canPinMessages;
+      return this;
+    }
+
+    public Builder setCanManageTopics(Boolean canManageTopics) {
+      buildingType.canManageTopics = canManageTopics;
+      return this;
+    }
+
+    public Builder setCustomTitle(String customTitle) {
+      buildingType.customTitle = customTitle;
+      return this;
+    }
+
+    public ChatMemberAdministrator build() {
+      return buildingType;
+    }
+  }
+
   public static final String STATUS = "administrator";
 
   /** The member's status in the chat, always "administrator" */

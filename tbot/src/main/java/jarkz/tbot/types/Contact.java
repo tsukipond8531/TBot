@@ -7,6 +7,44 @@ import java.util.Objects;
 /** This object represents a phone contact. */
 public final class Contact {
 
+  public static final class Builder {
+
+    private Contact buildingType;
+
+    public Builder() {
+      buildingType = new Contact();
+    }
+
+    public Builder setPhoneNumber(String phoneNumber) {
+      buildingType.phoneNumber = phoneNumber;
+      return this;
+    }
+
+    public Builder setFirstName(String firstName) {
+      buildingType.firstName = firstName;
+      return this;
+    }
+
+    public Builder setLastName(String lastName) {
+      buildingType.lastName = lastName;
+      return this;
+    }
+
+    public Builder setUserId(Long userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setVcard(String vcard) {
+      buildingType.vcard = vcard;
+      return this;
+    }
+
+    public Contact build() {
+      return buildingType;
+    }
+  }
+
   /** Contact's phone number */
   @NotNull
   @SerializedName("phone_number")

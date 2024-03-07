@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class GetUserChatBoostsParameters {
 
+  public static final class Builder {
+
+    private GetUserChatBoostsParameters buildingType;
+
+    public Builder() {
+      buildingType = new GetUserChatBoostsParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public GetUserChatBoostsParameters build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier for the chat or username of the channel (in the format @channelusername) */
   @NotNull
   @SerializedName("chat_id")

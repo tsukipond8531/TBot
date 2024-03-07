@@ -7,6 +7,39 @@ import java.util.Objects;
 /** This object contains information about a chat boost. */
 public final class ChatBoost {
 
+  public static final class Builder {
+
+    private ChatBoost buildingType;
+
+    public Builder() {
+      buildingType = new ChatBoost();
+    }
+
+    public Builder setBoostId(String boostId) {
+      buildingType.boostId = boostId;
+      return this;
+    }
+
+    public Builder setAddDate(int addDate) {
+      buildingType.addDate = addDate;
+      return this;
+    }
+
+    public Builder setExpirationDate(int expirationDate) {
+      buildingType.expirationDate = expirationDate;
+      return this;
+    }
+
+    public Builder setSource(ChatBoostSource source) {
+      buildingType.source = source;
+      return this;
+    }
+
+    public ChatBoost build() {
+      return buildingType;
+    }
+  }
+
   /** Unique identifier of the boost */
   @NotNull
   @SerializedName("boost_id")

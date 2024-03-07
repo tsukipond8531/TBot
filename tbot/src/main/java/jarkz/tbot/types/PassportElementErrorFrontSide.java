@@ -10,6 +10,34 @@ import java.util.Objects;
  */
 public final class PassportElementErrorFrontSide implements PassportElementError {
 
+  public static final class Builder {
+
+    private PassportElementErrorFrontSide buildingType;
+
+    public Builder() {
+      buildingType = new PassportElementErrorFrontSide();
+    }
+
+    public Builder setType(String type) {
+      buildingType.type = type;
+      return this;
+    }
+
+    public Builder setFileHash(String fileHash) {
+      buildingType.fileHash = fileHash;
+      return this;
+    }
+
+    public Builder setMessage(String message) {
+      buildingType.message = message;
+      return this;
+    }
+
+    public PassportElementErrorFrontSide build() {
+      return buildingType;
+    }
+  }
+
   public static final String SOURCE = "front_side";
 
   /** Error source, must be front_side */

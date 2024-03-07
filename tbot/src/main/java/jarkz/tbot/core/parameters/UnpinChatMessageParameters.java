@@ -13,6 +13,29 @@ import java.util.Objects;
  */
 public final class UnpinChatMessageParameters {
 
+  public static final class Builder {
+
+    private UnpinChatMessageParameters buildingType;
+
+    public Builder() {
+      buildingType = new UnpinChatMessageParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public UnpinChatMessageParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

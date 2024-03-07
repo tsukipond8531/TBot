@@ -8,6 +8,44 @@ import java.util.Objects;
 /** Represents a photo to be sent. */
 public final class InputMediaPhoto implements InputMedia, Media {
 
+  public static final class Builder {
+
+    private InputMediaPhoto buildingType;
+
+    public Builder() {
+      buildingType = new InputMediaPhoto();
+    }
+
+    public Builder setMedia(InputFile media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setHasSpoiler(Boolean hasSpoiler) {
+      buildingType.hasSpoiler = hasSpoiler;
+      return this;
+    }
+
+    public InputMediaPhoto build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "photo";
 
   /** Type of the result, must be photo */

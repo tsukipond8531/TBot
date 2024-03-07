@@ -12,6 +12,54 @@ import java.util.Objects;
  */
 public final class SetGameScoreParameters {
 
+  public static final class Builder {
+
+    private SetGameScoreParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetGameScoreParameters();
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setScore(int score) {
+      buildingType.score = score;
+      return this;
+    }
+
+    public Builder setForce(Boolean force) {
+      buildingType.force = force;
+      return this;
+    }
+
+    public Builder setDisableEditMessage(Boolean disableEditMessage) {
+      buildingType.disableEditMessage = disableEditMessage;
+      return this;
+    }
+
+    public Builder setChatId(Integer chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageId(Integer messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public Builder setInlineMessageId(String inlineMessageId) {
+      buildingType.inlineMessageId = inlineMessageId;
+      return this;
+    }
+
+    public SetGameScoreParameters build() {
+      return buildingType;
+    }
+  }
+
   /** User identifier */
   @NotNull
   @SerializedName("user_id")

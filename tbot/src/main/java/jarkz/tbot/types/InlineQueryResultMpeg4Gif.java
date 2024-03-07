@@ -12,6 +12,84 @@ import java.util.Objects;
  */
 public final class InlineQueryResultMpeg4Gif implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultMpeg4Gif buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultMpeg4Gif();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setMpeg4Url(String mpeg4Url) {
+      buildingType.mpeg4Url = mpeg4Url;
+      return this;
+    }
+
+    public Builder setMpeg4Width(Integer mpeg4Width) {
+      buildingType.mpeg4Width = mpeg4Width;
+      return this;
+    }
+
+    public Builder setMpeg4Height(Integer mpeg4Height) {
+      buildingType.mpeg4Height = mpeg4Height;
+      return this;
+    }
+
+    public Builder setMpeg4Duration(Integer mpeg4Duration) {
+      buildingType.mpeg4Duration = mpeg4Duration;
+      return this;
+    }
+
+    public Builder setThumbnailUrl(String thumbnailUrl) {
+      buildingType.thumbnailUrl = thumbnailUrl;
+      return this;
+    }
+
+    public Builder setThumbnailMimeType(String thumbnailMimeType) {
+      buildingType.thumbnailMimeType = thumbnailMimeType;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultMpeg4Gif build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "mpeg4_gif";
 
   /** Type of the result, must be mpeg4_gif */

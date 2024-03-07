@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class SetStickerEmojiListParameters {
 
+  public static final class Builder {
+
+    private SetStickerEmojiListParameters buildingType;
+
+    public Builder() {
+      buildingType = new SetStickerEmojiListParameters();
+    }
+
+    public Builder setSticker(String sticker) {
+      buildingType.sticker = sticker;
+      return this;
+    }
+
+    public Builder setEmojiList(List<String> emojiList) {
+      buildingType.emojiList = emojiList;
+      return this;
+    }
+
+    public SetStickerEmojiListParameters build() {
+      return buildingType;
+    }
+  }
+
   /** File identifier of the sticker */
   @NotNull public String sticker;
 

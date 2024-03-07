@@ -7,6 +7,49 @@ import java.util.Objects;
 /** This object represents a shipping address. */
 public final class ShippingAddress {
 
+  public static final class Builder {
+
+    private ShippingAddress buildingType;
+
+    public Builder() {
+      buildingType = new ShippingAddress();
+    }
+
+    public Builder setCountryCode(String countryCode) {
+      buildingType.countryCode = countryCode;
+      return this;
+    }
+
+    public Builder setState(String state) {
+      buildingType.state = state;
+      return this;
+    }
+
+    public Builder setCity(String city) {
+      buildingType.city = city;
+      return this;
+    }
+
+    public Builder setStreetLine1(String streetLine1) {
+      buildingType.streetLine1 = streetLine1;
+      return this;
+    }
+
+    public Builder setStreetLine2(String streetLine2) {
+      buildingType.streetLine2 = streetLine2;
+      return this;
+    }
+
+    public Builder setPostCode(String postCode) {
+      buildingType.postCode = postCode;
+      return this;
+    }
+
+    public ShippingAddress build() {
+      return buildingType;
+    }
+  }
+
   /** Two-letter ISO 3166-1 alpha-2 country code */
   @NotNull
   @SerializedName("country_code")

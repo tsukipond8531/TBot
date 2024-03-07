@@ -7,6 +7,94 @@ import java.util.Objects;
 /** Represents the rights of an administrator in a chat. */
 public final class ChatAdministratorRights {
 
+  public static final class Builder {
+
+    private ChatAdministratorRights buildingType;
+
+    public Builder() {
+      buildingType = new ChatAdministratorRights();
+    }
+
+    public Builder setAnonymous(boolean isAnonymous) {
+      buildingType.isAnonymous = isAnonymous;
+      return this;
+    }
+
+    public Builder setCanManageChat(boolean canManageChat) {
+      buildingType.canManageChat = canManageChat;
+      return this;
+    }
+
+    public Builder setCanDeleteMessages(boolean canDeleteMessages) {
+      buildingType.canDeleteMessages = canDeleteMessages;
+      return this;
+    }
+
+    public Builder setCanManageVideoChats(boolean canManageVideoChats) {
+      buildingType.canManageVideoChats = canManageVideoChats;
+      return this;
+    }
+
+    public Builder setCanRestrictMembers(boolean canRestrictMembers) {
+      buildingType.canRestrictMembers = canRestrictMembers;
+      return this;
+    }
+
+    public Builder setCanPromoteMembers(boolean canPromoteMembers) {
+      buildingType.canPromoteMembers = canPromoteMembers;
+      return this;
+    }
+
+    public Builder setCanChangeInfo(boolean canChangeInfo) {
+      buildingType.canChangeInfo = canChangeInfo;
+      return this;
+    }
+
+    public Builder setCanInviteUsers(boolean canInviteUsers) {
+      buildingType.canInviteUsers = canInviteUsers;
+      return this;
+    }
+
+    public Builder setCanPostStories(boolean canPostStories) {
+      buildingType.canPostStories = canPostStories;
+      return this;
+    }
+
+    public Builder setCanEditStories(boolean canEditStories) {
+      buildingType.canEditStories = canEditStories;
+      return this;
+    }
+
+    public Builder setCanDeleteStories(boolean canDeleteStories) {
+      buildingType.canDeleteStories = canDeleteStories;
+      return this;
+    }
+
+    public Builder setCanPostMessages(Boolean canPostMessages) {
+      buildingType.canPostMessages = canPostMessages;
+      return this;
+    }
+
+    public Builder setCanEditMessages(Boolean canEditMessages) {
+      buildingType.canEditMessages = canEditMessages;
+      return this;
+    }
+
+    public Builder setCanPinMessages(Boolean canPinMessages) {
+      buildingType.canPinMessages = canPinMessages;
+      return this;
+    }
+
+    public Builder setCanManageTopics(Boolean canManageTopics) {
+      buildingType.canManageTopics = canManageTopics;
+      return this;
+    }
+
+    public ChatAdministratorRights build() {
+      return buildingType;
+    }
+  }
+
   /** True, if the user's presence in the chat is hidden */
   @NotNull
   @SerializedName("is_anonymous")

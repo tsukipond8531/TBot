@@ -6,6 +6,29 @@ import java.util.Objects;
 /** This object represents a story. */
 public final class Story {
 
+  public static final class Builder {
+
+    private Story buildingType;
+
+    public Builder() {
+      buildingType = new Story();
+    }
+
+    public Builder setChat(Chat chat) {
+      buildingType.chat = chat;
+      return this;
+    }
+
+    public Builder setId(int id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Story build() {
+      return buildingType;
+    }
+  }
+
   /** Chat that posted the story */
   @NotNull public Chat chat;
 

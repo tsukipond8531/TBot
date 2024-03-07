@@ -13,6 +13,39 @@ import java.util.Objects;
  */
 public final class LoginUrl {
 
+  public static final class Builder {
+
+    private LoginUrl buildingType;
+
+    public Builder() {
+      buildingType = new LoginUrl();
+    }
+
+    public Builder setUrl(String url) {
+      buildingType.url = url;
+      return this;
+    }
+
+    public Builder setForwardText(String forwardText) {
+      buildingType.forwardText = forwardText;
+      return this;
+    }
+
+    public Builder setBotUsername(String botUsername) {
+      buildingType.botUsername = botUsername;
+      return this;
+    }
+
+    public Builder setRequestWriteAccess(Boolean requestWriteAccess) {
+      buildingType.requestWriteAccess = requestWriteAccess;
+      return this;
+    }
+
+    public LoginUrl build() {
+      return buildingType;
+    }
+  }
+
   /**
    * An HTTPS URL to be opened with user authorization data added to the query string when the
    * button is pressed. If the user refuses to provide authorization data, the original URL without

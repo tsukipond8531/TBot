@@ -8,6 +8,49 @@ import java.util.Objects;
 /** Represents a general file to be sent. */
 public final class InputMediaDocument implements InputMedia, Media {
 
+  public static final class Builder {
+
+    private InputMediaDocument buildingType;
+
+    public Builder() {
+      buildingType = new InputMediaDocument();
+    }
+
+    public Builder setMedia(InputFile media) {
+      buildingType.media = media;
+      return this;
+    }
+
+    public Builder setThumbnail(InputFile thumbnail) {
+      buildingType.thumbnail = thumbnail;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setDisableContentTypeDetection(Boolean disableContentTypeDetection) {
+      buildingType.disableContentTypeDetection = disableContentTypeDetection;
+      return this;
+    }
+
+    public InputMediaDocument build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "document";
 
   /** Type of the result, must be document */

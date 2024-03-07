@@ -7,6 +7,34 @@ import java.util.Objects;
 /** This object represents a service message about a new forum topic created in the chat. */
 public final class ForumTopicCreated {
 
+  public static final class Builder {
+
+    private ForumTopicCreated buildingType;
+
+    public Builder() {
+      buildingType = new ForumTopicCreated();
+    }
+
+    public Builder setName(String name) {
+      buildingType.name = name;
+      return this;
+    }
+
+    public Builder setIconColor(int iconColor) {
+      buildingType.iconColor = iconColor;
+      return this;
+    }
+
+    public Builder setIconCustomEmojiId(String iconCustomEmojiId) {
+      buildingType.iconCustomEmojiId = iconCustomEmojiId;
+      return this;
+    }
+
+    public ForumTopicCreated build() {
+      return buildingType;
+    }
+  }
+
   /** Name of the topic */
   @NotNull public String name;
 

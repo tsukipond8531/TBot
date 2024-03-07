@@ -7,6 +7,24 @@ import java.util.Objects;
 /** This object represents a service message about new members invited to a video chat. */
 public final class VideoChatParticipantsInvited {
 
+  public static final class Builder {
+
+    private VideoChatParticipantsInvited buildingType;
+
+    public Builder() {
+      buildingType = new VideoChatParticipantsInvited();
+    }
+
+    public Builder setUsers(List<User> users) {
+      buildingType.users = users;
+      return this;
+    }
+
+    public VideoChatParticipantsInvited build() {
+      return buildingType;
+    }
+  }
+
   /** New members that were invited to the video chat */
   @NotNull public List<User> users;
 

@@ -11,6 +11,84 @@ import java.util.Objects;
  */
 public final class InlineQueryResultLocation implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultLocation buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultLocation();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setHorizontalAccuracy(Float horizontalAccuracy) {
+      buildingType.horizontalAccuracy = horizontalAccuracy;
+      return this;
+    }
+
+    public Builder setLivePeriod(Integer livePeriod) {
+      buildingType.livePeriod = livePeriod;
+      return this;
+    }
+
+    public Builder setHeading(Integer heading) {
+      buildingType.heading = heading;
+      return this;
+    }
+
+    public Builder setProximityAlertRadius(Integer proximityAlertRadius) {
+      buildingType.proximityAlertRadius = proximityAlertRadius;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public Builder setThumbnailUrl(String thumbnailUrl) {
+      buildingType.thumbnailUrl = thumbnailUrl;
+      return this;
+    }
+
+    public Builder setThumbnailWidth(Integer thumbnailWidth) {
+      buildingType.thumbnailWidth = thumbnailWidth;
+      return this;
+    }
+
+    public Builder setThumbnailHeight(Integer thumbnailHeight) {
+      buildingType.thumbnailHeight = thumbnailHeight;
+      return this;
+    }
+
+    public InlineQueryResultLocation build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "location";
 
   /** Type of the result, must be location */

@@ -15,6 +15,34 @@ import java.util.Objects;
  */
 public final class UnbanChatMemberParameters {
 
+  public static final class Builder {
+
+    private UnbanChatMemberParameters buildingType;
+
+    public Builder() {
+      buildingType = new UnbanChatMemberParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public Builder setOnlyIfBanned(Boolean onlyIfBanned) {
+      buildingType.onlyIfBanned = onlyIfBanned;
+      return this;
+    }
+
+    public UnbanChatMemberParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target group or username of the target supergroup or channel (in the
    * format @channelusername)

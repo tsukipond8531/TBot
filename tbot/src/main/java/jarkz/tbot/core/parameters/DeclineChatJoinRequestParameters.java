@@ -11,6 +11,29 @@ import java.util.Objects;
  */
 public final class DeclineChatJoinRequestParameters {
 
+  public static final class Builder {
+
+    private DeclineChatJoinRequestParameters buildingType;
+
+    public Builder() {
+      buildingType = new DeclineChatJoinRequestParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setUserId(int userId) {
+      buildingType.userId = userId;
+      return this;
+    }
+
+    public DeclineChatJoinRequestParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

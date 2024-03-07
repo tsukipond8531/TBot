@@ -7,6 +7,39 @@ import java.util.Objects;
 /** Represents the content of a contact message to be sent as the result of an inline query. */
 public final class InputContactMessageContent implements InputMessageContent {
 
+  public static final class Builder {
+
+    private InputContactMessageContent buildingType;
+
+    public Builder() {
+      buildingType = new InputContactMessageContent();
+    }
+
+    public Builder setPhoneNumber(String phoneNumber) {
+      buildingType.phoneNumber = phoneNumber;
+      return this;
+    }
+
+    public Builder setFirstName(String firstName) {
+      buildingType.firstName = firstName;
+      return this;
+    }
+
+    public Builder setLastName(String lastName) {
+      buildingType.lastName = lastName;
+      return this;
+    }
+
+    public Builder setVcard(String vcard) {
+      buildingType.vcard = vcard;
+      return this;
+    }
+
+    public InputContactMessageContent build() {
+      return buildingType;
+    }
+  }
+
   /** Contact's phone number */
   @NotNull
   @SerializedName("phone_number")

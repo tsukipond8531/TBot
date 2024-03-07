@@ -7,6 +7,24 @@ import java.util.Objects;
 /** This object represents a unique message identifier. */
 public final class MessageId {
 
+  public static final class Builder {
+
+    private MessageId buildingType;
+
+    public Builder() {
+      buildingType = new MessageId();
+    }
+
+    public Builder setMessageId(int messageId) {
+      buildingType.messageId = messageId;
+      return this;
+    }
+
+    public MessageId build() {
+      return buildingType;
+    }
+  }
+
   /** Unique message identifier */
   @NotNull
   @SerializedName("message_id")

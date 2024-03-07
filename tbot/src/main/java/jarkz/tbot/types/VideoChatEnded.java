@@ -6,6 +6,24 @@ import java.util.Objects;
 /** This object represents a service message about a video chat ended in the chat. */
 public final class VideoChatEnded {
 
+  public static final class Builder {
+
+    private VideoChatEnded buildingType;
+
+    public Builder() {
+      buildingType = new VideoChatEnded();
+    }
+
+    public Builder setDuration(int duration) {
+      buildingType.duration = duration;
+      return this;
+    }
+
+    public VideoChatEnded build() {
+      return buildingType;
+    }
+  }
+
   /** Video chat duration in seconds */
   @NotNull public int duration;
 

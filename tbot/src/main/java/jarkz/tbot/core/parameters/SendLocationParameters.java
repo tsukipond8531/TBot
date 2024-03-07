@@ -10,6 +10,79 @@ import java.util.Objects;
 /** Use this method to send point on the map. On success, the sent Message is returned. */
 public final class SendLocationParameters {
 
+  public static final class Builder {
+
+    private SendLocationParameters buildingType;
+
+    public Builder() {
+      buildingType = new SendLocationParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setMessageThreadId(Integer messageThreadId) {
+      buildingType.messageThreadId = messageThreadId;
+      return this;
+    }
+
+    public Builder setLatitude(float latitude) {
+      buildingType.latitude = latitude;
+      return this;
+    }
+
+    public Builder setLongitude(float longitude) {
+      buildingType.longitude = longitude;
+      return this;
+    }
+
+    public Builder setHorizontalAccuracy(Float horizontalAccuracy) {
+      buildingType.horizontalAccuracy = horizontalAccuracy;
+      return this;
+    }
+
+    public Builder setLivePeriod(Integer livePeriod) {
+      buildingType.livePeriod = livePeriod;
+      return this;
+    }
+
+    public Builder setHeading(Integer heading) {
+      buildingType.heading = heading;
+      return this;
+    }
+
+    public Builder setProximityAlertRadius(Integer proximityAlertRadius) {
+      buildingType.proximityAlertRadius = proximityAlertRadius;
+      return this;
+    }
+
+    public Builder setDisableNotification(Boolean disableNotification) {
+      buildingType.disableNotification = disableNotification;
+      return this;
+    }
+
+    public Builder setProtectContent(Boolean protectContent) {
+      buildingType.protectContent = protectContent;
+      return this;
+    }
+
+    public Builder setReplyParameters(ReplyParameters replyParameters) {
+      buildingType.replyParameters = replyParameters;
+      return this;
+    }
+
+    public Builder setReplyMarkup(ReplyMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public SendLocationParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier for the target chat or username of the target channel (in the
    * format @channelusername)

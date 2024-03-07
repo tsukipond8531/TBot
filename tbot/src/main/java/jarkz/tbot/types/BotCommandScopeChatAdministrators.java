@@ -10,6 +10,24 @@ import java.util.Objects;
  */
 public final class BotCommandScopeChatAdministrators implements BotCommandScope {
 
+  public static final class Builder {
+
+    private BotCommandScopeChatAdministrators buildingType;
+
+    public Builder() {
+      buildingType = new BotCommandScopeChatAdministrators();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public BotCommandScopeChatAdministrators build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "chat_administrators";
 
   /** Scope type, must be chat_administrators */

@@ -13,6 +13,29 @@ import java.util.Objects;
  */
 public final class RevokeChatInviteLinkParameters {
 
+  public static final class Builder {
+
+    private RevokeChatInviteLinkParameters buildingType;
+
+    public Builder() {
+      buildingType = new RevokeChatInviteLinkParameters();
+    }
+
+    public Builder setChatId(Id chatId) {
+      buildingType.chatId = chatId;
+      return this;
+    }
+
+    public Builder setInviteLink(String inviteLink) {
+      buildingType.inviteLink = inviteLink;
+      return this;
+    }
+
+    public RevokeChatInviteLinkParameters build() {
+      return buildingType;
+    }
+  }
+
   /**
    * Unique identifier of the target chat or username of the target channel (in the
    * format @channelusername)

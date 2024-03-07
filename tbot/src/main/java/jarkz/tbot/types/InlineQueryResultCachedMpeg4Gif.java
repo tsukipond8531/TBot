@@ -13,6 +13,59 @@ import java.util.Objects;
  */
 public final class InlineQueryResultCachedMpeg4Gif implements InlineQueryResult {
 
+  public static final class Builder {
+
+    private InlineQueryResultCachedMpeg4Gif buildingType;
+
+    public Builder() {
+      buildingType = new InlineQueryResultCachedMpeg4Gif();
+    }
+
+    public Builder setId(String id) {
+      buildingType.id = id;
+      return this;
+    }
+
+    public Builder setMpeg4FileId(String mpeg4FileId) {
+      buildingType.mpeg4FileId = mpeg4FileId;
+      return this;
+    }
+
+    public Builder setTitle(String title) {
+      buildingType.title = title;
+      return this;
+    }
+
+    public Builder setCaption(String caption) {
+      buildingType.caption = caption;
+      return this;
+    }
+
+    public Builder setParseMode(String parseMode) {
+      buildingType.parseMode = parseMode;
+      return this;
+    }
+
+    public Builder setCaptionEntities(List<MessageEntity> captionEntities) {
+      buildingType.captionEntities = captionEntities;
+      return this;
+    }
+
+    public Builder setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+      buildingType.replyMarkup = replyMarkup;
+      return this;
+    }
+
+    public Builder setInputMessageContent(InputMessageContent inputMessageContent) {
+      buildingType.inputMessageContent = inputMessageContent;
+      return this;
+    }
+
+    public InlineQueryResultCachedMpeg4Gif build() {
+      return buildingType;
+    }
+  }
+
   public static final String TYPE = "mpeg4_gif";
 
   /** Type of the result, must be mpeg4_gif */
