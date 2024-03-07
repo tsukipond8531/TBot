@@ -100,8 +100,8 @@ tasks.register("genTypes") {
   doLast {
     clone_git("https://github.com/JarKz/tbot_type_generator")
     run_python_process("tbot_type_generator")
-    copy("output/types", "lib/src/main/java/jarkz/tbot/")
-    copy("output/core", "lib/src/main/java/jarkz/tbot/")
+    copy("output/types", "tbot/src/main/java/jarkz/tbot/")
+    copy("output/core", "tbot/src/main/java/jarkz/tbot/")
     removeAll("api.json", "tbot_type_generator", "output")
   }
   finalizedBy("spotlessApply")
