@@ -22,9 +22,10 @@ public class TBotApplication {
     classInfos.stream().forEach(ci -> ci.registerIntoPool());
 
     var executor = new EventExecutor(botApi);
-    try {
 
+    try {
       executor.runPolling();
+
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }

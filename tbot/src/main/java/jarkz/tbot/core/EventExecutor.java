@@ -25,8 +25,7 @@ public class EventExecutor {
 
   public void runPolling() throws InterruptedException {
     while (true) {
-      var params = new GetUpdatesParameters();
-      params.offset = offset;
+      var params = new GetUpdatesParameters.Builder().setOffset(offset).build();
       var updates = api.getUpdates(params);
 
       for (var event : updates) {

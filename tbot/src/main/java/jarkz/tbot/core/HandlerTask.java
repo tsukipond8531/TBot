@@ -23,6 +23,22 @@ public class HandlerTask implements Runnable {
     return Optional.empty();
   }
 
+  private Object[] buildArgs(Method method) {
+    var parameters = method.getParameters();
+    var args = new Object[parameters.length];
+
+    for (var i = 0; i < parameters.length; i++) {
+      var argType = parameters[i].getType();
+      if (argType == Update.class) {
+        args[i] = event;
+        continue;
+      }
+      args[i] = BotCore.objectPool.get(argType);
+    }
+
+    return args;
+  }
+
   @Override
   public void run() {
 
@@ -32,16 +48,7 @@ public class HandlerTask implements Runnable {
     }
 
     var method = maybeMethod.get();
-    var parameters = method.getParameters();
-    var args = new Object[parameters.length];
-    for (var i = 0; i < parameters.length; i++) {
-      var argType = parameters[i].getType();
-      if (argType == Update.class) {
-        args[i] = event;
-        continue;
-      }
-      args[i] = BotCore.objectPool.get(argType);
-    }
+    var args = buildArgs(method);
 
     var declClass = method.getDeclaringClass();
     var instance = BotCore.objectPool.get(declClass);

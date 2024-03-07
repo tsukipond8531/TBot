@@ -22,7 +22,6 @@ public class PackageScanner {
   }
 
   public Optional<ClassInfo> scanClass(Class<?> classToScan) {
-
     ClassInfo info = null;
 
     var methods = classToScan.getDeclaredMethods();
