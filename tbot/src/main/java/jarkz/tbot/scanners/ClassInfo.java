@@ -63,13 +63,14 @@ public class ClassInfo {
   }
 
   private void instantiateRuleClasses() {
-    final Consumer<Rule> checkRuleMethodExistence = rule -> {
-      try {
-        rule.mentionedClass().getMethod(rule.methodName(), Update.class);
-      } catch (NoSuchMethodException e) {
-        throw new RuntimeException(e);
-      }
-    };
+    final Consumer<Rule> checkRuleMethodExistence =
+        rule -> {
+          try {
+            rule.mentionedClass().getMethod(rule.methodName(), Update.class);
+          } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+          }
+        };
 
     for (var methodInfo : methods) {
       var rule = methodInfo.rule();
