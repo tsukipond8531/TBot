@@ -31,7 +31,7 @@ public class EventExecutor {
       for (var event : updates) {
         offset = Math.max(offset, event.updateId + 1);
 
-        var handler = new HandlerTask(event);
+        var handler = new TaskHandler(event);
         service.execute(handler);
       }
 

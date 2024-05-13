@@ -5,11 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Optional;
 
-public class HandlerTask implements Runnable {
+public class TaskHandler implements Runnable {
 
   private Update event;
 
-  public HandlerTask(Update event) {
+  public TaskHandler(Update event) {
     this.event = event;
   }
 
