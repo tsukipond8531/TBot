@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ClassInfo {
 
@@ -62,16 +63,20 @@ public class ClassInfo {
   }
 
   private void instantiateRuleClasses() {
-    for (var methodInfo : methods) {
-      var rule = methodInfo.rule();
-      var mentionedClassInfo = new ClassInfo(rule.mentionedClass());
-      mentionedClassInfo.instantiateIntoPool();
-
+    final Consumer<Rule> checkRuleMethodExistence = rule -> {
       try {
         rule.mentionedClass().getMethod(rule.methodName(), Update.class);
       } catch (NoSuchMethodException e) {
         throw new RuntimeException(e);
       }
+    };
+
+    for (var methodInfo : methods) {
+      var rule = methodInfo.rule();
+      var mentionedClassInfo = new ClassInfo(rule.mentionedClass());
+      mentionedClassInfo.instantiateIntoPool();
+
+      checkRuleMethodExistence.accept(rule);
     }
   }
 
